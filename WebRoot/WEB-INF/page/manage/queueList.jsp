@@ -61,6 +61,7 @@
 					<td>${queue.kind }</td>
 					<td>${queue.cdt }</td>
 					<td>
+						
 						<a href="javascript:saveTask('edit','${queue.tid }','${queue.tname }','${queue.ani }','${queue.overflowto }')">修改</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/queueAction_deleteQueue.action?tid=${queue.tid }">删除</a>
 					</td>

@@ -17,7 +17,6 @@
 		.huifanginfo2 .btnline{text-indent:45px;}
 	</style>
 	<script type="text/javascript">
-		alert("a");
 	</script>
 </head>
 

@@ -63,6 +63,22 @@
 		<servlet-name>HuiFangOne</servlet-name>
 		<url-pattern>/huiFangOne</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>HuiFangTwo</servlet-name>
+		<servlet-class>cn.voicet.gc.servlet.HuiFangTwo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HuiFangTwo</servlet-name>
+		<url-pattern>/huiFangTwo</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>HuiFangThree</servlet-name>
+		<servlet-class>cn.voicet.gc.servlet.HuiFangThree</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HuiFangThree</servlet-name>
+		<url-pattern>/huiFangThree</url-pattern>
+	</servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.action</welcome-file>
