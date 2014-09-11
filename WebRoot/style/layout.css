@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+/* container */
+#container{width:1024px; margin:0 auto;}
+/* header */
+#header{height:85px; padding:15px 0 0 80px; background:url(../images/logo.png) no-repeat;}
+.tit1{height:25px; font-size:20px; font-weight:bold; color:#0E72C7; text-align:left;}
+.tit2{height:35px; font-size:35px; font-weight:bold; color:#0E72C7; text-align:left;}
+.tit3{float:right; width:240px; color:#9CCFFF;}
+/* nav */
+#nav{height:30px; line-height:30px; padding-left:20px; color:#FFF; background:url(../images/nav-bg0.png) repeat-x;}
+.nav_left{width:750px; float:left; text-align:left;}
+.nav_left_wel{float:left;}
+.nav_left_wel span{margin-right:40px;}
+.nav_left_path{float:left;}
+.nav_right{width:200px; float:left; color:#FFF;}
+.nav_right span{margin-left:30px;}
+/* main */
+#main{width:1024px; height:672px; overflow:hidden;}
+.main_left{float:left; width:155px; height:672px; background:#B1D8F9; text-align:left;}
+.main_right{float:right; width:868px; height:672px; background:#E0EEFB;}
+.mainFrame{width:868px; height:672px;background:#E0EEFB;}
+/* footer */
+#footer{height:50px; line-height:20px; text-align:center; background:#91C4EF; margin-top:1px; padding:10px 0 0 0;}
+#footer p,span{height:20px;}
+/* login */
+.login_wrap{width:1024px; height:528px; margin:0 auto; padding-top:240px; background:url(../images/vt_rec_loginback3.jpg) repeat-x;}
+.login_main{width:566px; height:251px; background:#91C4EF; margin:0 auto;}
+.login_main_up{height:75px; background:url(../images/login_up.jpg) repeat-x;}
+.login_product{font-size:20px; color:#447DB4; text-align:right; width:546px; padding:10px 20px 0 0;}
+.login_company{font-size:32px; color:#447DB4; text-align:left; font-weight:bold; width:200px; padding-left:80px;}
+.login_main_down{height:186px; background:url(../images/login_down.jpg) repeat-x;}
+.login_content{float:right; width:240px; padding-left:80px;}
+.login_label{font:14px Microsoft YaHei; text-align:right; color:#111;}
+.table_login{margin-top:8px;}
+
+/* contentWrap */
+#contentWrap{width:868px; height:672px; background:#E0EEFB;}
+
+/* query param */
+.queryWrap_ul{width:856px; height:40px;border: 1px solid #3B9FFF; padding-left:10px;margin-top:1px;}
+.queryWrap_ul li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
+.queryWrap_ul_h60{width:856px; height:60px;border: 1px solid #3B9FFF; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_h60 li{float:left; margin-right:30px; display:inline; padding:5px 0px 0px;}
+
+.queryDiv{width:856px; height:40px; border:1px solid #3B9FFF;}
+.queryWrap_ul_w600{width:600px; height:40px; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_w600 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+.queryWrap_ul_w100{width:100px; height:40px; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_w100 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
+
+/* data list */
+.content_List548{width:868px; height:548px; border-bottom:0px solid #3B9FFF; margin-top:10px;}
+.content_List568{width:868px; height:568px; border-bottom:0px solid #3B9FFF; margin-top:10px;}
+.content_List620{width:868px; height:620px; text-align:center;}
+
+/* split page */
+.split_page_wrap{width:100%; height:26px; line-height:26px; text-align:center;}
+.split_page_wrap a{margin-right:10px;}
+
+/* table border */
+.tab_border{border-top:1px solid #3B9FFF; border-left:1px solid #3B9FFF;}
+.tab_border th{border-right:1px solid #3B9FFF; border-bottom:1px solid #3B9FFF;}
+.tab_border td{border-right:1px solid #3B9FFF; border-bottom:1px solid #3B9FFF;}
+
+
+/** form table */
+
+.lab_ipt_item{height:28px; line-height:28px; margin:8px 0px;}
+.lab100{width:100px; height:28px; padding-right:4px; text-align:right; float:left;}
+.lab120{width:120px; height:28px; padding-right:4px; text-align:right; float:left;}
+.ipt-box{color: #878787; height: 28px; float:left;}
+.ipt_text_w150{padding:4px 2px; width:150px; height:18px; line-height:18px;border: 1px solid #B8B8B8; background: none repeat scroll 0% 0% #FFF;  color:#878787; font-size:12px; margin-right:10px;}
+.asterisk{color:#F00;}
+.ipt_textarea_w300{width:300px; height:122px; overflow:hidden; resize:none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

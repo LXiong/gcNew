@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<!-- 配置action的访问路径为.do的形式 -->
+	<constant name="struts.action.extension" value="action"></constant>
+	<!-- 配置struts的开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 配置struts文件上传大小限制 -->
+	<constant name="struts.multipart.maxSize" value="1000000000"/>
+	<!-- 配置struts的简单模式 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<package name="system" namespace="/" extends="struts-default">
+		<!-- 首页功能 -->
+		<action name="index" class="indexAction" method="index">
+			<result name="show_login">/WEB-INF/page/admin/login.jsp</result>
+		</action>
+		<!-- 用户登录 -->
+		<action name="userAction_*" class="userAction" method="{1}">
+			<result name="show_home">/WEB-INF/page/admin/home.jsp</result>
+			<result name="show_logout" type="redirectAction">index</result>
+			<!-- 处理验证登录失败, 跳转到login.jsp -->
+			<result name="show_error">/WEB-INF/page/admin/login.jsp</result>
+		</action>
+		
+		<!-- 呼叫队列 -->
+		<action name="queueAction_*" class="queueAction" method="{1}">
+			<result name="show_queuelist">/WEB-INF/page/manage/queueList.jsp</result>
+		</action>
+		
+		<!-- 呼叫黑名单 -->
+		<action name="blackAction_*" class="blackAction" method="{1}">
+			<result name="show_blacklist">/WEB-INF/page/manage/blackList.jsp</result>
+		</action>
+		
+		<!-- 数据库维护 -->
+		<action name="databaseConfigAction_*" class="databaseConfigAction" method="{1}">
+			<result name="show_database">/WEB-INF/page/admin/databaseConfig.jsp</result>
+		</action>
+		
+		<!-- 系统日志查看 -->
+		<action name="systemLogAction_*" class="systemLogAction" method="{1}">
+			<result name="show_log">/WEB-INF/page/admin/systemLog.jsp</result>
+		</action>
+		
+	</package>  
+	<package name="dot" namespace="/" extends="json-default">
+		<!-- login -->
+		<action name="ajaxlogin" class="userAction" method="ajaxlogin">
+			<result type="json"></result>
+		</action>
+		<!-- 修改密码 -->
+		<action name="updatepwd" class="userAction" method="updatePassword">
+			<result type="json"></result>
+		</action>
+		<!-- 清空数据库日志 -->
+		<action name="databaseConfigAction_empty" class="databaseConfigAction" method="empty">
+			<result type="json"></result>
+		</action>
+		<!-- 备份数据库 -->
+		<action name="databaseConfigAction_backup" class="databaseConfigAction" method="backup">
+			<result type="json"></result>
+		</action>
+		<!-- 数据库索引管理 -->
+		<action name="databaseConfigAction_index" class="databaseConfigAction" method="dbIndex">
+			<result type="json"></result>
+		</action>
+	</package>
+</struts>

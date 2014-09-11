@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dot2014 product="电话自动外呼系统" provider="南京威帝通讯科技有限公司" customer="威帝通讯科技"
+	fax="02584868924" tel="02584869817" url="http://www.voicet.com.cn"
+	mail="jime6688@163.com" version="1.0">
+	<role roleid="0" describle="未登录"></role>
+	<role roleid="1" describle="系统管理员">
+		<grp name="日常工作">
+			<fun name="外呼号码管理" action="govBrowerAction_home.action" />
+		</grp>
+	    <grp name="维护管理">
+	      <fun name="话务员帐号管理" action="govBrowerAction_home.action" />
+	      <fun name="座席分机管理" action="databaseConfigAction_home.action" />
+	      <fun name="呼叫队列管理" action="queueAction_home.action" />
+	      <fun name="呼叫黑名单" action="blackAction_home.action" />
+	    </grp>
+	    <grp name="数据库">
+	      	<fun name="数据库维护" action="databaseConfigAction_home.action" />
+	    </grp>
+	</role>
+	<role roleid="2" describle="管理员">
+	    <grp name="日常工作">
+        <fun name="任务管理" action="taskManageAction_home.action" />
+	    </grp>
+	</role>
+	<role roleid="3" describle="话务员">
+		<grp name="日常工作">
+	      	<fun name="任务管理" action="taskManageAction_home.action" />
+	    </grp>
+	</role>
+	<list name="taskstate" describle="任务状态">
+  		<item id="0" name="暂停中" />
+  		<item id="1" name="执行中" />
+  		<item id="2" name="已完成" />
+	</list>
+	<list name="callresult" describle="呼叫状态">
+		<item id="0" name="未呼叫" />
+		<item id="1" name="呼叫成功" />
+		<item id="2" name="呼叫失败" />
+	</list>
+	<list name="workmode" describle="工作模式">
+		<item id="0" name="0:TTS合成语音播放" />
+		<item id="1" name="1:转入业务组" />
+	</list>
+	
+	<list name="taskkind" describle="队列业务类型">
+		<item id="0" name="0:标准" />
+		<item id="1" name="1:回访1" />
+		<item id="2" name="2:回访2" />
+		<item id="3" name="3:回访3" />
+	</list>
+	
+</dot2014>

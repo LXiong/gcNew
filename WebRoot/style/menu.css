@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+/* 全兼容可高亮二级缓冲折叠菜单*/
+a:link,a:visited{ text-decoration:none;}
+/*菜单个性设置*/
+#sidebar ul{list-style:none; text-align:left;}
+/*一级菜单*/
+.menu li.level1 a{display:block; line-height:26px; height:27px; padding-left:35px; font-size:12px; font-weight:bold; color:#000; background:url(../images/menubg.gif) no-repeat left top;}
+/*一级菜单两态样式,供JS调用*/
+.menu li.level1 a.hove{background-position:left -31px;}
+.menu li.level1 a.cur{background-position:left -62px;}
+/*二级菜单*/
+.menu li ul{padding-left:0px; overflow:hidden;}
+.menu li ul.level2{width:155px; display:none;}
+.menu li ul.level2 li{height:26px; line-height:26px;}
+.menu li ul.level2 li a{display:block; height:26px; line-height:24px; background:#B1D8F9 url(../images/t1.gif) no-repeat 16px center; padding-left:26px; font-weight:normal; color:#000; border-top:1px #B8C2CB solid; overflow:hidden;}
+/*二级菜单两态样式,供JS调用*/
+.menu li ul.level2 li a.hove1{background:#56bbf5 url(../images/t2.gif) no-repeat 16px center; color:#fff;}
