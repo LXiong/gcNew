@@ -183,7 +183,7 @@ public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
 				conn.setAutoCommit(false);
 				ps = conn.prepareStatement(sp_name[iKind]);
 				boolean bCheckOK;
-				String rowDatas[]=new String[MAX_COL_CHECK];
+				String cellValues[]=new String[MAX_COL_CHECK];
 				//
 				try 
 				{
@@ -191,24 +191,26 @@ public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
 					Workbook wb = VTJime.create(inStream);
 					Sheet sheet = wb.getSheetAt(0);
 					int totalRowNum = sheet.getPhysicalNumberOfRows();
+					//curRow
 					for(int i=1; i<totalRowNum;i++)
 					{
 						Row row = sheet.getRow(i);
 						Cell cell;
 						bCheckOK=true;
+						//curCol
 						for(int j=0;j<COL_ACTUAL_NUM[iKind];j++)
 						{
 							cell = row.getCell(j);
 							if(null!=cell)
 							{
 								cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-								rowDatas[j] = row.getCell(j).getStringCellValue();
+								cellValues[j] = row.getCell(j).getStringCellValue();
 							}
 							else
 							{
-								rowDatas[j]="";
+								cellValues[j]="";
 							}
-							if(!checkCellOK(iKind,j,rowDatas[j])) 
+							if(!checkCellOK(iKind,i,j,cellValues[j])) 
 							{
 								bCheckOK=false;
 								break;
@@ -221,7 +223,7 @@ public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
 							ps.setInt(1, iTid);
 							for(int j=0; j<COL_ACTUAL_NUM[iKind]; j++)
 							{
-								ps.setString(j+2, rowDatas[j]);
+								ps.setString(j+2, cellValues[j]);
 							}
 							ps.addBatch();
 							//
@@ -252,18 +254,28 @@ public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
 		
 	}
 
-	private boolean checkCellOK(int iKind, int col, String rowData) {
-		if(null==rowData || rowData.length()<=0) return false;
+	public StringBuffer errorString;  
+	private boolean checkCellOK(int iKind, int curRow, int curCol, String cellValue) {
+		if(null==cellValue || cellValue.length()<=0) return false;
 		//
 		switch (iKind) {
 		case 0:
-			switch (col) {
+			switch (curCol) {
 				case 1:
 					//ttid
-					
+					if(cellValue.equals("") || null==cellValue)
+					{
+						errorString.append("第"+curRow+"行,第"+curCol+"列:"+"电话编号不能为空");
+						return false;
+					}
 					break;
 				case 2:
 					//telnum
+					if(cellValue.equals("") || null==cellValue)
+					{
+						errorString.append("第"+curRow+"行,第"+curCol+"列:"+"电话号码不能为空");
+						return false;
+					}
 					break;
 					
 				default:
@@ -272,7 +284,7 @@ public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
 			break;
 			//
 		case 1:
-			switch (col) {
+			switch (curCol) {
 				case 1:
 					break;
 				case 2:
@@ -292,7 +304,7 @@ public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
 			break;
 			//
 		case 2:
-			switch (col) {
+			switch (curCol) {
 				case 1:
 					break;
 				case 2:
@@ -309,7 +321,7 @@ public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
 			break;
 			//
 		case 3:
-			switch (col) {
+			switch (curCol) {
 				case 1:
 					break;
 				case 2:

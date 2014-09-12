@@ -1,10 +1,13 @@
 package cn.voicet.gc.web.action;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -55,11 +58,15 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	/**
 	 * excel批量导入
 	 * @return
+	 * @throws IOException 
 	 */
-	public String importTaskTel()
+	public String importTaskTel() throws IOException
 	{
 		log.info("tid:"+queueForm.getTid()+", kind:"+queueForm.getKind()+", uploadExcel file:"+uploadExcel);
 		queueService.batchImportData(uploadExcel, queueForm.getTid(), queueForm.getKind());	
+		
+		response.getWriter().print(true);
+		
 		return null;
 	}
 	

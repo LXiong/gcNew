@@ -145,10 +145,16 @@
 	{
 		if(!validateExcelUpLoadFile(form)) return false;
 		$("#form2").ajaxSubmit({ 
-            success:function(data){ //提交成功的回调函数  
-				layer.msg("succss",2,1,function(){
-					layer.closeAll();
-				});
+            success:function(data){ //提交成功的回调函数
+    			layer.closeAll(); 
+            	if(!data)
+            	{ 
+    				layer.msg("数据导入成功",2,1);
+            	}
+            	else
+            	{
+    				layer.msg("数据导入失败，请重新导入 ",2,5);
+            	}
             }  
 		}); 
         return false;	//not refresh page
