@@ -58,10 +58,14 @@
 					<td>${queue.tname }</td>
 					<td>${queue.ani }</td>
 					<td>${queue.state }</td>
-					<td>${queue.kind }</td>
+					<td>
+						<c:if test="${queue.kind eq 0 }">标准</c:if>
+						<c:if test="${queue.kind eq 1 }">回访1</c:if>
+						<c:if test="${queue.kind eq 2 }">回访2</c:if>
+						<c:if test="${queue.kind eq 3 }">回访3</c:if>
+					</td>
 					<td>${queue.cdt }</td>
 					<td>
-						
 						<a href="javascript:saveTask('edit','${queue.tid }','${queue.tname }','${queue.ani }','${queue.overflowto }')">修改</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/queueAction_deleteQueue.action?tid=${queue.tid }">删除</a>
 					</td>

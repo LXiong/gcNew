@@ -5,7 +5,7 @@
 	<role roleid="0" describle="未登录"></role>
 	<role roleid="1" describle="系统管理员">
 		<grp name="日常工作">
-			<fun name="外呼号码管理" action="govBrowerAction_home.action" />
+			<fun name="外呼号码管理" action="taskTelAction_home.action" />
 		</grp>
 	    <grp name="维护管理">
 	      <fun name="话务员帐号管理" action="govBrowerAction_home.action" />

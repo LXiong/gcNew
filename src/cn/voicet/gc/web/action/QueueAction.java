@@ -49,4 +49,16 @@ public class QueueAction extends BaseAction implements ModelDriven<QueueForm>{
 		return home();
 	}
 	
+	/**
+	 * 导出队列数据
+	 * kind 0：标准，
+	 * 		1：回访1，
+	 * 		2：回访2，
+	 * 		3：回访3
+	 */
+	public String export(){
+		queueService.exportData(queueForm, response);
+		return null;
+	}
+	
 }

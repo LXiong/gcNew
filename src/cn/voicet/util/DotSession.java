@@ -1,5 +1,10 @@
 package cn.voicet.util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -10,8 +15,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
 
 @SuppressWarnings("unchecked")
 public class DotSession {
@@ -32,7 +45,6 @@ public class DotSession {
 	public int workyear;	//工作�?
 	public int yearlock;	//年锁�?
 	public int curGolbalPage;//全局当前�?
-	
 	//private List stackList;
 	public Map map;
 	public List list;
@@ -240,4 +252,99 @@ public class DotSession {
 			}
 		}
 	}
+	
+	public static HSSFWorkbook fromRStoExcel(String tempFile, int headlinenum, boolean isDrawBoard, ResultSet rs, int columnCount)
+	{
+		String dataType[]=new String[60];//Data type
+		String FieldName[]=new String[60];//Data type
+		HSSFWorkbook workBook;
+		
+		try {
+			File file = new File(tempFile);
+			if(file.exists() && file.isFile())
+			{
+				workBook = new HSSFWorkbook(new FileInputStream(tempFile));
+				HSSFSheet sheet = workBook.getSheetAt(0);
+		        HSSFCell cell;
+		        HSSFRow row1 = sheet.getRow(headlinenum);//HeadRowNum  
+		        HSSFRow row2 = sheet.getRow(headlinenum+1);//HeadRowNum  
+				for(int i=0;i<columnCount;i++)
+		        {
+					if(null!=row1) 
+						{
+						cell=row1.getCell(i);
+						if (null!=cell)
+						{
+							FieldName[i]=cell.getStringCellValue();
+							cell.setCellValue("");
+						}
+						else
+						{
+							FieldName[i]="^";
+						}
+					}
+					if (null!=row2)
+						{
+						cell=row1.getCell(i);
+						if (null!=cell)
+						{
+							dataType[i]=cell.getStringCellValue();
+							cell.setCellValue("");
+						}
+					}
+		        }
+				//
+				HSSFCellStyle style = workBook.createCellStyle();
+				 if(isDrawBoard)
+		        {
+			        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+			        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+			        style.setBorderRight(HSSFCellStyle.BORDER_THIN);
+			        style.setBorderTop(HSSFCellStyle.BORDER_THIN);
+		        }
+				//add line data ;
+				 int i=0;
+				 while (rs.next()) 
+				 {
+					 row1 = sheet.getRow(i+headlinenum);
+					 if(null==row1) row1=sheet.createRow(i+headlinenum);
+					 for(int j=0;j<columnCount;j++)
+					 {
+						 cell = row1.getCell(j);
+						 if (null==cell) row1.createCell(j);
+						 if(isDrawBoard) cell.setCellStyle(style);
+						 if(FieldName[j]!="^")
+						 {
+							 if(null!=dataType[j] && dataType[j].equals("N"))
+							 {
+									String excelData = (String)rs.getString(FieldName[j]); 
+									if(null!=excelData && excelData.length()>0)
+									{
+										cell.setCellValue(Double.parseDouble(excelData));
+									}
+							 }
+							else
+							{
+								
+								cell.setCellValue((String)rs.getString(FieldName[j]));
+							}	 
+						 }
+						 i++;
+					 }//end for
+				 }//end while
+				 return workBook;
+			}//end temp
+			else
+			{
+				return null;
+			}
+		}//end try
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 }
+
