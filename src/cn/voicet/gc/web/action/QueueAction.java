@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.voicet.gc.service.QueueService;
+import cn.voicet.gc.dao.QueueDao;
 import cn.voicet.gc.web.form.QueueForm;
 import cn.voicet.util.DotSession;
 
@@ -16,8 +16,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("serial")
 public class QueueAction extends BaseAction implements ModelDriven<QueueForm>{
 	private static Logger log = Logger.getLogger(QueueAction.class);
-	@Resource(name=QueueService.SERVICE_NAME)
-	private QueueService queueService;
+	@Resource(name=QueueDao.SERVICE_NAME)
+	private QueueDao queueDao;
 	private QueueForm queueForm = new QueueForm();
 	
 	public QueueForm getModel() {
@@ -26,14 +26,14 @@ public class QueueAction extends BaseAction implements ModelDriven<QueueForm>{
 	
 	public String home(){
 		DotSession ds = DotSession.getVTSession(request);
-		queueService.queryQueueList(ds, queueForm);
+		queueDao.queryQueueList(ds, queueForm);
 		return "show_queuelist";
 	}
 	
 	
 	public String saveQueue(){
 		log.info("tid:"+queueForm.getTid()+", name:"+queueForm.getName()+", ani:"+queueForm.getAni()+" kind:"+queueForm.getKind()+", maxline:"+queueForm.getMaxline()+", overflowto:"+queueForm.getOverflowto());
-		queueService.saveQueue(queueForm);
+		queueDao.saveQueue(queueForm);
 		log.info("---------- save queue success ----------");
 		return home();
 	}
@@ -47,7 +47,7 @@ public class QueueAction extends BaseAction implements ModelDriven<QueueForm>{
 	 */
 	public String deleteQueue(){
 		log.info("tid:"+queueForm.getTid());
-		queueService.deleteQueueByTid(queueForm);
+		queueDao.deleteQueueByTid(queueForm);
 		log.info("---------- delete queue success ----------");
 		return home();
 	}
@@ -60,7 +60,7 @@ public class QueueAction extends BaseAction implements ModelDriven<QueueForm>{
 	 * 		3：回访3
 	 */
 	public String export(){
-		queueService.exportData(queueForm, response);
+		queueDao.exportData(queueForm, response);
 		return null;
 	}
 	

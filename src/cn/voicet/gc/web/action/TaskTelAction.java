@@ -1,26 +1,16 @@
 package cn.voicet.gc.web.action;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.voicet.gc.service.QueueService;
+import cn.voicet.gc.dao.QueueDao;
 import cn.voicet.gc.web.form.QueueForm;
 import cn.voicet.util.DotSession;
-import cn.voicet.util.VTJime;
 
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -29,8 +19,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("serial")
 public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	private static Logger log = Logger.getLogger(TaskTelAction.class);
-	@Resource(name=QueueService.SERVICE_NAME)
-	private QueueService queueService;
+	@Resource(name=QueueDao.SERVICE_NAME)
+	private QueueDao queueDao;
 	private QueueForm queueForm = new QueueForm();
 	
 	public QueueForm getModel() {
@@ -39,7 +29,7 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	
 	public String home(){
 		DotSession ds = DotSession.getVTSession(request);
-		queueService.queryTaskTelList(ds, queueForm);
+		queueDao.queryTaskTelList(ds, queueForm);
 		return "show_tasktel";
 	}
 	
@@ -49,7 +39,7 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	 */
 	public String numberManager(){
 		DotSession ds = DotSession.getVTSession(request);
-		queueService.queryTelListByTid(ds, queueForm);
+		queueDao.queryTelListByTid(ds, queueForm);
 		return "show_telnumber";
 	}
 	
@@ -61,7 +51,7 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	 * 		3：回访3
 	 */
 	public String export(){
-		queueService.exportData(queueForm, response);
+		queueDao.exportData(queueForm, response);
 		return null;
 	}
 	
@@ -73,7 +63,7 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	public String importTaskTel() throws IOException
 	{
 		log.info("tid:"+queueForm.getTid()+", kind:"+queueForm.getKind()+", uploadExcel file:"+uploadExcel);
-		queueService.batchImportData(uploadExcel, queueForm.getTid(), queueForm.getKind());	
+		queueDao.batchImportData(uploadExcel, queueForm.getTid(), queueForm.getKind());	
 		
 		//response.getWriter().print(true);
 		

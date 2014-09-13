@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.voicet.gc.service.UserService;
+import cn.voicet.gc.dao.UserDao;
 import cn.voicet.gc.web.form.UserForm;
 import cn.voicet.util.DotSession;
 
@@ -21,8 +21,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("serial")
 public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 	private static Logger log = Logger.getLogger(UserAction.class);
-	@Resource(name=UserService.SERVICE_NAME)
-	private UserService userService;
+	@Resource(name=UserDao.SERVICE_NAME)
+	private UserDao userDao;
 	private UserForm userForm = new UserForm();
 	
 	public UserForm getModel() {
@@ -39,7 +39,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		}
 		DotSession ds=DotSession.getVTSession(request);
 		
-		Map<String, Object> map = userService.userLogin(userForm);
+		Map<String, Object> map = userDao.userLogin(userForm);
 		log.info("user login: "+map);
 		ds.map.put("name", map.get("username"));
 		ds.username=(String) map.get("username");
@@ -90,7 +90,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		JSONObject jsonObj = new JSONObject();
 		log.info("oldPwd:"+userForm.getOldpwd());
 		log.info("newPwd:"+userForm.getNewpwd());
-		Integer res = userService.updateUserPassword(ds, userForm);
+		Integer res = userDao.updateUserPassword(ds, userForm);
 		log.info("update pwd code:"+res);
 		if(res==1){
 			jsonObj.put("status", "1");

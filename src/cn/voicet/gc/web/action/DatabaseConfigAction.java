@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.voicet.gc.service.DatabaseConfigService;
+import cn.voicet.gc.dao.DatabaseConfigDao;
 import cn.voicet.util.DotSession;
 
 @Controller("databaseConfigAction")
@@ -12,26 +12,26 @@ import cn.voicet.util.DotSession;
 @SuppressWarnings({"serial","unchecked"})
 public class DatabaseConfigAction extends BaseAction{
 
-	@Resource(name=DatabaseConfigService.SERVICE_NAME)
-	private DatabaseConfigService databaseConfigService;
+	@Resource(name=DatabaseConfigDao.SERVICE_NAME)
+	private DatabaseConfigDao databaseConfigDao;
 	
 	public String home() {
 		DotSession ds = DotSession.getVTSession(request);
-		databaseConfigService.databaseInfo(ds);
+		databaseConfigDao.databaseInfo(ds);
 		return "show_database";
 	}
 	
 	/** 清空日志 */
 	public String empty() {
 		DotSession ds = DotSession.getVTSession(request);
-		databaseConfigService.emptyDatabase(ds);
+		databaseConfigDao.emptyDatabase(ds);
 		return null;
 	}
 	
 	/** 备份数据库 */
 	public String backup() {
 		DotSession ds = DotSession.getVTSession(request);
-		databaseConfigService.backupDatabase(ds, defbackupfilename);
+		databaseConfigDao.backupDatabase(ds, defbackupfilename);
 		return null;
 	}
 
@@ -39,7 +39,7 @@ public class DatabaseConfigAction extends BaseAction{
 		DotSession ds = DotSession.getVTSession(request);
 		if(null!=ds.map.get("dbindex")){
 			ds.map.put("dbindex", dbindex);
-			databaseConfigService.databaseIndexManage(ds);
+			databaseConfigDao.databaseIndexManage(ds);
 		}
 		return null;
 	}

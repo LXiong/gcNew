@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.voicet.gc.service.SystemLogService;
+import cn.voicet.gc.dao.SystemLogDao;
 import cn.voicet.gc.web.form.SystemLogForm;
 import cn.voicet.util.DotSession;
 
@@ -16,8 +16,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("serial")
 public class SystemLogAction extends BaseAction implements ModelDriven<SystemLogForm>{
 	private static Logger log = Logger.getLogger(SystemLogAction.class);
-	@Resource(name=SystemLogService.SERVICE_NAME)
-	private SystemLogService systemLogService;
+	@Resource(name=SystemLogDao.SERVICE_NAME)
+	private SystemLogDao systemLogDao;
 	private SystemLogForm systemLogForm = new SystemLogForm();
 	
 	public SystemLogForm getModel() {
@@ -36,14 +36,14 @@ public class SystemLogAction extends BaseAction implements ModelDriven<SystemLog
 		if(systemLogForm.getCurPage()<1){
 			systemLogForm.setCurPage(1);
 		}
-		int totalP = systemLogService.findLogTotalPage(ds, systemLogForm);
+		int totalP = systemLogDao.findLogTotalPage(ds, systemLogForm);
 		log.info("totalP:"+totalP);
 		systemLogForm.setTotalPage(totalP);
 		//判断,下一页大于总页数时, 下一页等于最后一页
 		if(systemLogForm.getCurPage()>systemLogForm.getTotalPage()){
 			systemLogForm.setCurPage(systemLogForm.getTotalPage());
 		}
-		systemLogService.findLogInfoList(ds, systemLogForm);
+		systemLogDao.findLogInfoList(ds, systemLogForm);
 		log.info("ds.list:"+ds.list);
 		return "show_log";
 	}
