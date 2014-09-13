@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
@@ -64,6 +65,37 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 		        		 ds.list.add(map);
 					}
 				}
+				return null;
+			}
+		});
+	}
+
+	public void saveAcd(final AcdForm acdForm) {
+		String sp_acd_update = "{call web_acd_update(?,?,?,?,?,?,?,?)}";
+		this.getJdbcTemplate().execute(sp_acd_update, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, acdForm.getAcdtxt()[0]);
+				cs.setString(2, acdForm.getAcdtxt()[1]);	//为空或不存在,添加; 存在,更新
+				cs.setString(3, acdForm.getAcdtxt()[2]);
+				cs.setString(4, acdForm.getAcdtxt()[3]);
+				cs.setString(5, acdForm.getAcdtxt()[4]);
+				cs.setString(6, acdForm.getAcdtxt()[5]);
+				cs.setString(7, acdForm.getAcdtxt()[6]);
+				cs.setString(8, acdForm.getAcdtxt()[7]);
+				cs.execute();
+				return null;
+			}
+		});
+	}
+	
+	public void deleteAcdByGrpid(final AcdForm acdForm) {
+		String sp_acd_delete = "{call web_acd_remove(?)}";
+		this.getJdbcTemplate().execute(sp_acd_delete, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, acdForm.getGrpid());
+				cs.execute();
 				return null;
 			}
 		});

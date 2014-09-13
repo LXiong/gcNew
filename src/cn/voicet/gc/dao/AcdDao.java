@@ -7,4 +7,6 @@ public interface AcdDao{
 	public final static String SERVICE_NAME = "cn.voicet.gc.dao.impl.AcdDaoImpl";
 	void queryAcdList(DotSession ds);
 	void queryAcdAnalyList(DotSession ds, AcdForm acdForm);
+	void saveAcd(AcdForm acdForm);
+	void deleteAcdByGrpid(AcdForm acdForm);
 }

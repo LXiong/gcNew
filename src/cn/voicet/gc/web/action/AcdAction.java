@@ -31,4 +31,29 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 		return "show_acd";
 	}
 	
+	/**
+	 * 添加或更新业务组
+	 * @return
+	 */
+	public String saveAcd()
+	{
+		log.info("acdtxt[] length:"+acdForm.getAcdtxt().length);
+		acdDao.saveAcd(acdForm);
+		log.info("save acd ["+acdForm.getAcdtxt()[2]+"] success");
+		return home();
+	}
+	
+	/**
+	 * 删除业务组
+	 * @return
+	 */
+	public String deleteAcd()
+	{
+		log.info("grpid:"+acdForm.getGrpid());
+		acdDao.deleteAcdByGrpid(acdForm);
+		log.info("delete acd ["+acdForm.getGrpid()+"] success");
+		return home();
+	}
+	
+	
 }

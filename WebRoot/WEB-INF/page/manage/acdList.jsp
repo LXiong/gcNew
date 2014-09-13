@@ -28,7 +28,7 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">业务组档案管理</h3>
-   	<form action="<c:url value='/acdAnalyAction_home.action'/>" method="post">
+   	<form action="<c:url value='/acdAction_home.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
 	   		<li><label>服务器别名：</label><input type="text" name="cts" class="ipt100" value="<s:property value="cts"/>"/></li>
@@ -37,7 +37,7 @@
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
+	        <li><input type="button" class="btn4" onclick="saveAcd('add','','','','','','','','')" value="添加"/></li>
 		</ul>
 	</div>
     </form>
@@ -50,10 +50,10 @@
                      <th width="10%">业务名称</th>
                      <th width="10%">电话号码</th>
                      <th width="10%">主叫号码</th>
-                     <th width="10%">acw</th>
+                     <th width="10%">结束等待</th>
                      <th width="10%">等待时长</th>
                      <th width="10%">等待数量</th>
-                     <th width="10%">超时</th>
+                     <th width="10%">溢出数</th>
                      <th width="10%">操作</th>
                  </tr>
              </thead>
@@ -70,7 +70,8 @@
 					<td>${acd.maxwaitnum }</td>
 					<td>${acd.overflowto }</td>
 					<td>
-						<a href="#">操作</a>&nbsp;&nbsp;
+						<a href="javascript:saveAcd('edit','${acd.grpid }','${acd.cts }','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
+						<a href="<c:url value='acdAction_deleteAcd.action?grpid=${acd.grpid }'/>">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -87,8 +88,105 @@
  		<button id="tiaozhuan" class="btn btn-primary">跳转</button>
 	</div>
     <!-- jPage end -->
+    
+    <!--POP LAYER START-->
+	<div id="popDiv" style="display:none;"> 
+		<form name="form1" action="<c:url value='/acdAction_saveAcd.action'/>" method="post">
+	    <input type="hidden" id="grpidx" name="acdtxt"/>
+	    <div class="lab_ipt_item">
+	    	<span class="lab150">服务器别名：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="ctsx" name="acdtxt" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
+	    	<span class="lab150">业务名称：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="grpnamex" name="acdtxt" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item" id="whnum">
+	    	<span class="lab150">电话号码：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="telnumx" name="acdtxt" value="0" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk"></span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
+	    	<span class="lab150">电话结束等待：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="acwx" name="acdtxt" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
+	    	<span class="lab150">最大排队等待时长(秒)：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="maxwaittimex" name="acdtxt" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
+	    	<span class="lab150">最大等待线数：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="maxwaitnumx" name="acdtxt" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
+	    	<span class="lab150">队列溢出去向：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="overflowtox" name="acdtxt" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+		<div class="lab_ipt_item">
+			<span class="lab120"></span>
+			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
+			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
+		</div>	
+		</form>
+	</div>
+	<!--POP LAYER END-->
 	
 </div>
+<script type="text/javascript">
+	function saveAcd(t,grpid,cts,grpname,telnum,acw,maxwaittime,maxwaitnum,overflowto)
+	{
+		var tit;
+		if(t=="add")
+		{
+			tit="添加业务组";
+		}
+		else
+		{
+			tit="修改业务组信息";
+		}
+		//
+		$("#grpidx").val(grpid);
+		$("#ctsx").val(cts);
+		$("#grpnamex").val(grpname);
+		$("#telnumx").val(telnum);
+		$("#acwx").val(acw);
+		$("#maxwaittimex").val(maxwaittime);
+		$("#maxwaitnumx").val(maxwaitnum);
+		$("#overflowtox").val(overflowto);
+		
+		
+		$.layer({
+			type: 1,
+	        title: tit,
+	        offset: [($(window).height() - 290)/2+'px', ''],
+	        border : [5, 0.5, '#666'],
+	        area: ['450px','340px'],
+	        shadeClose: false,
+			bgcolor: '#fff',
+			page:{dom:'#popDiv'}
+		});
+	}
+</script>
 <script type="text/javascript">
 	$(function(){
 		$("div.holder").jPages({

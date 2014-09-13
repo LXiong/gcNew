@@ -28,7 +28,7 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">话务员档案管理</h3>
-   	<form action="<c:url value='/acdAnalyAction_home.action'/>" method="post">
+   	<form action="<c:url value='/agentAction_home.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
 			<li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="sdt"/>"/></li>
