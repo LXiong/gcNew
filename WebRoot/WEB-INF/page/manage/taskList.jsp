@@ -72,8 +72,7 @@
 					<td>${queue.drn }</td>
 					<td>${queue.frn }</td>
 					<td>
-						<a href="javascript:showSelFile('${queue.tid }','${queue.tname }','${queue.kind }')">导入</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/taskTelAction_export.action?tid=${queue.tid }&kind=${queue.kind }">导出</a>
+						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action">号码管理</a>&nbsp;&nbsp;
 					</td>
 				</tr>
 				</s:iterator>

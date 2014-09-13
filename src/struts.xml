@@ -25,6 +25,37 @@
 			<result name="show_error">/WEB-INF/page/admin/login.jsp</result>
 		</action>
 		
+		<!-- 外呼任务管理 -->
+		<action name="taskAction_*" class="taskAction" method="{1}">
+			<result name="show_task">/WEB-INF/page/manage/taskList.jsp</result>
+		</action>
+		
+		<!-- 业务组调度统计 -->
+		<action name="acdAnalyAction_*" class="acdAnalyAction" method="{1}">
+			<result name="show_acd_analy">/WEB-INF/page/manage/acdAnalyList.jsp</result>
+		</action>
+		
+		<!-- 业务组档案管理 -->
+		<action name="acdAction_*" class="acdAction" method="{1}">
+			<result name="show_acd">/WEB-INF/page/manage/acdList.jsp</result>
+		</action>
+		
+		<!-- 话务员技能统计 -->
+		<action name="agentAnalyAction_*" class="agentAnalyAction" method="{1}">
+			<result name="show_agent_analy">/WEB-INF/page/manage/agentAnalyList.jsp</result>
+		</action>
+		
+		<!-- 话务员档案管理 -->
+		<action name="agentAction_*" class="agentAction" method="{1}">
+			<result name="show_agent">/WEB-INF/page/manage/agentList.jsp</result>
+		</action>
+		
+		<!-- 通话记录查询 -->
+		<action name="callRecordAction_*" class="callRecordAction" method="{1}">
+			<result name="show_call">/WEB-INF/page/manage/callRecordList.jsp</result>
+		</action>
+		
+		
 		<!-- 号码 -->
 		<action name="taskTelAction_*" class="taskTelAction" method="{1}">
 			<result name="show_tasktel">/WEB-INF/page/manage/taskTelList.jsp</result>

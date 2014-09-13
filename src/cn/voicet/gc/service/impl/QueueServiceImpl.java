@@ -35,13 +35,11 @@ public class QueueServiceImpl implements QueueService{
 	public void exportData(QueueForm queueForm, HttpServletResponse response) {
 		queueDao.exportData(queueForm, response);
 	}
-	
-	
-	/**
-	 * import
-	 */
 	public void batchImportData(File uploadExcel, int iTid, int iKind) {
 		queueDao.batchImportData(uploadExcel, iTid, iKind);
+	}
+	public void queryTelListByTid(DotSession ds, QueueForm queueForm) {
+		queueDao.queryTelListByTid(ds, queueForm);
 	}
 	
 }

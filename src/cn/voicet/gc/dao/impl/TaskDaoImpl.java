@@ -30,18 +30,18 @@ import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
-import cn.voicet.gc.dao.QueueDao;
+import cn.voicet.gc.dao.TaskDao;
 import cn.voicet.gc.web.form.QueueForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
 
-@Repository(QueueDao.SERVICE_NAME)
+@Repository(TaskDao.SERVICE_NAME)
 @SuppressWarnings("unchecked")
-public class QueueDaoImpl extends BaseDaoImpl implements QueueDao {
+public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 
-	private static Logger log = Logger.getLogger(QueueDaoImpl.class);
-	
-	public void queryTaskTelList(final DotSession ds, final QueueForm queueForm) {
+	private static Logger log = Logger.getLogger(TaskDaoImpl.class);
+
+	public void queryTaskList(final DotSession ds) {
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {

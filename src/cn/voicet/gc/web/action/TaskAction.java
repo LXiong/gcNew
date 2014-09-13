@@ -1,47 +1,45 @@
 package cn.voicet.gc.web.action;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.voicet.gc.service.QueueService;
-import cn.voicet.gc.web.form.QueueForm;
+import cn.voicet.gc.dao.TaskDao;
+import cn.voicet.gc.web.form.TaskForm;
 import cn.voicet.util.DotSession;
-import cn.voicet.util.VTJime;
 
 import com.opensymphony.xwork2.ModelDriven;
 
-@Controller("taskTelAction")
+@Controller("taskAction")
 @Scope(value="prototype")
 @SuppressWarnings("serial")
-public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
-	private static Logger log = Logger.getLogger(TaskTelAction.class);
-	@Resource(name=QueueService.SERVICE_NAME)
-	private QueueService queueService;
-	private QueueForm queueForm = new QueueForm();
+public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
+	private static Logger log = Logger.getLogger(TaskAction.class);
+	@Resource(name=TaskDao.SERVICE_NAME)
+	private TaskDao taskDao;
+	private TaskForm taskForm = new TaskForm();
 	
-	public QueueForm getModel() {
-		return queueForm;
+	public TaskForm getModel() {
+		return taskForm;
 	}
 	
-	public String home(){
+	public String home()
+	{
 		DotSession ds = DotSession.getVTSession(request);
-		queueService.queryTaskTelList(ds, queueForm);
-		return "show_tasktel";
+		taskDao.queryTaskList(ds);
+		return "show_task";
 	}
+	
+	public String telmanage()
+	{
+		//taskDao.queryTelByTid(taskForm);
+		return "show_telmanage";
+	}
+	
 	
 	/**
 	 * 号码管理
@@ -49,7 +47,7 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	 */
 	public String numberManager(){
 		DotSession ds = DotSession.getVTSession(request);
-		queueService.queryTelListByTid(ds, queueForm);
+		//queueService.queryTelListByTid(ds, queueForm);
 		return "show_telnumber";
 	}
 	
@@ -61,7 +59,7 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	 * 		3：回访3
 	 */
 	public String export(){
-		queueService.exportData(queueForm, response);
+		//queueService.exportData(queueForm, response);
 		return null;
 	}
 	
@@ -72,8 +70,8 @@ public class TaskTelAction extends BaseAction implements ModelDriven<QueueForm>{
 	 */
 	public String importTaskTel() throws IOException
 	{
-		log.info("tid:"+queueForm.getTid()+", kind:"+queueForm.getKind()+", uploadExcel file:"+uploadExcel);
-		queueService.batchImportData(uploadExcel, queueForm.getTid(), queueForm.getKind());	
+		//log.info("tid:"+queueForm.getTid()+", kind:"+queueForm.getKind()+", uploadExcel file:"+uploadExcel);
+		//queueService.batchImportData(uploadExcel, queueForm.getTid(), queueForm.getKind());	
 		
 		//response.getWriter().print(true);
 		

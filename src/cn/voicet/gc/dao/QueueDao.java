@@ -15,4 +15,5 @@ public interface QueueDao{
 	void deleteQueueByTid(QueueForm queueForm);
 	void exportData(QueueForm queueForm, HttpServletResponse response);
 	void batchImportData(File uploadExcel, int iTid, int iKind);
+	void queryTelListByTid(DotSession ds, QueueForm queueForm);
 }
