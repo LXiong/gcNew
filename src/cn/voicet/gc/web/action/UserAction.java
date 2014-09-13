@@ -84,13 +84,29 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		return "show_home";
 	}
 	
-	/** �޸�����*/
+	/**
+	 * update password
+	 * @return
+	 * @throws IOException
+	 */
+	public String updatePwd() throws IOException
+	{
+		DotSession ds=DotSession.getVTSession(request);
+		log.info("oldpwd:"+userForm.getOldpwd()+", newpwd:"+userForm.getNewpwd());
+		
+		boolean bool = userDao.updateUserPassword(ds, userForm);
+		log.info("bool:"+bool);
+		response.getWriter().print(bool);
+		return null;
+	}
+	
+	
 	public String updatePassword() {
 		DotSession ds=DotSession.getVTSession(request);
 		JSONObject jsonObj = new JSONObject();
 		log.info("oldPwd:"+userForm.getOldpwd());
 		log.info("newPwd:"+userForm.getNewpwd());
-		Integer res = userDao.updateUserPassword(ds, userForm);
+		Integer res = 1;
 		log.info("update pwd code:"+res);
 		if(res==1){
 			jsonObj.put("status", "1");

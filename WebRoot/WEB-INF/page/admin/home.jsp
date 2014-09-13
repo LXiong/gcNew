@@ -15,12 +15,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/js/menu.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/js/updatepwd.js'/>"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			confPass.init();
-		});
-	</script>
+	<script type="text/javascript" src="<c:url value='/js/updatepwd.js?v=3'/>"></script>
+	
+	<!-- layer 弹出插件 start -->
+	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+	<!-- layer 弹出插件 end -->
+ 	<!-- ajax file upload -->
+ 	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 	<style type="text/css">
 		#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win{position:absolute;top:50%;left:50%;width:500px;height:240px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;} 
@@ -45,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<div id="navigate" class="nav_left_path"></div>
         </div>
         <div class="nav_right">
-            <span><a href="javascript:popDivOpen()" id="bt">修改密码</a></span>
+            <span><a href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
             <span><a href="${pageContext.request.contextPath }/userAction_logout.action" onclick="return confirm('你确定要注销吗?')" target="_top">[&nbsp;注销&nbsp;]</a></span>
         </div>
     </div>
@@ -81,41 +82,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<iframe id="printFrame" name="printFrame" scrolling="no" width="1024" height="0" marginwidth="0" marginheight="0" frameborder="0" ></iframe>
 	</div>
 </div>
-<!-- update password start -->
-<div id="overlay"></div> 
-<div id="win" style="line-height: 30px">
-	<h2 style="line-height:20px; text-align:left"><span><font color="#fff">修改密码</font></span></h2>
-	<form name="passForm" action="" method="post">
-	<div class="safe-list">
-		<table width="450px" cellpadding="0" cellspacing="0">
-			<tr>
-				<td width="30%" align="right">账号:&nbsp;&nbsp;</td>
-				<td width="35%" align="left"><s:property value="#session.vts.account"/></td>
-				<td width="35%" align="left"></td>
-			</tr>
-			<tr>
-				<td width="30%" align="right">原密码:&nbsp;&nbsp;</td>
-				<td width="35%" align="left"><input id="oldpwd" name="oldpwd" class="inpasstxt" type="password" onfocus="this.className='inpasstxt_on'" onblur="this.className='inpasstxt_off'"/></td>
-				<td width="35%" align="left"><span id="oldpwdtips" class="ptips"></span></td>
-			</tr>
-			<tr>
-				<td width="30%" align="right">新密码:&nbsp;&nbsp;</td>
-				<td width="35%" align="left"><input id="newpwd" name="newpwd" class="inpasstxt" type="password" onfocus="this.className='inpasstxt_on'" onblur="this.className='inpasstxt_off'"/></td>
-				<td width="35%" align="left"><span id="newpwdtips" class="ptips"></span></td>
-			</tr>
-			<tr>
-				<td width="30%" align="right">确认密码:&nbsp;&nbsp;</td>
-				<td width="35%" align="left"><input id="repwd" name="repwd" class="inpasstxt" type="password" onfocus="this.className='inpasstxt_on'" onblur="this.className='inpasstxt_off'"/></td>
-				<td width="35%" align="left"><span id="repwdtips" class="ptips"></span></td>
-			</tr>
-		</table>
-	</div>
-	<div style="margin-top:5px;">
-		<input id="submitButton" type="button" value="确定" class="button4"/>&nbsp;&nbsp;&nbsp;&nbsp;
-		<input id="close" type="button" value="取消" class="button4"/>
-	</div>
+
+<!--POP LAYER START-->
+<div id="popDiv" style="display:none;"> 
+	<form id="form1" action="<c:url value='/userAction_updatePwd.action'/>" method="post" onsubmit="return validatePwdinput(this)">
+    <div class="lab_ipt_item">
+    	<span class="lab120">账号：</span>
+        <div class="ipt-box">
+        	<label><s:property value="#session.vts.account"/></label>
+        </div>
+    </div>
+    <div class="lab_ipt_item">
+    	<span class="lab120">原密码：</span>
+        <div class="ipt-box">
+        	<input type="text" id="oldpwdx" name="oldpwd" class="ipt_text_w150 inputDefault" />
+            <span class="asterisk">*</span>
+        </div>
+    </div>
+    <div class="lab_ipt_item" id="ywtype">
+    	<span class="lab120">新密码：</span>
+        <div class="ipt-box">
+        	<input type="text" id="newpwdx" name="newpwd" class="ipt_text_w150 inputDefault" />
+            <span class="asterisk">*</span>
+        </div>
+    </div>
+    <div class="lab_ipt_item" id="whnum">
+    	<span class="lab120">确认密码：</span>
+        <div class="ipt-box">
+        	<input type="text" id="repwdx" class="ipt_text_w150 inputDefault" />
+            <span class="asterisk">*</span>
+        </div>
+    </div>
+	<div class="lab_ipt_item">
+		<span class="lab120"></span>
+		<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
+		<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
+	</div>	
 	</form>
-</div> 
-<!-- update password end -->
+</div>
+<!--POP LAYER END-->
+<script type="text/javascript">
+	
+</script>
 </body>
 </html>

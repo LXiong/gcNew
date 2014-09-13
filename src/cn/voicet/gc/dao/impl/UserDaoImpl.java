@@ -4,10 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
@@ -52,27 +54,26 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		return map;
 	}
 
-	public Integer updateUserPassword(final DotSession ds, final UserForm userForm) {
-		Integer res = (Integer) this.getJdbcTemplate().execute(
-				new ConnectionCallback() {
-					public Object doInConnection(Connection conn)
-							throws SQLException, DataAccessException {
-						CallableStatement cs = conn.prepareCall("{call ybh_accountchgpwd(?,?,?,?)}");
-						cs.setString(1, ds.account);
-						cs.setString(2, ds.roleID);
-						cs.setString(3, userForm.getOldpwd());
-						cs.setString(4, userForm.getNewpwd());
-						cs.execute();
-						ResultSet rs = cs.getResultSet();
-						Integer result = 0;
-						if(null!=rs){
-							while(rs.next()){
-								result = rs.getInt(1);
-							}
-						}
-						return result;
-					}
-				});
-		return res;
+	public boolean updateUserPassword(final DotSession ds, final UserForm userForm) {
+		String sp = "{call web_userchgpwd(?,?,?,?)}";
+		boolean boo = (Boolean)this.getJdbcTemplate().execute(sp, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.account);
+				cs.setString(2, userForm.getOldpwd());
+				cs.setString(3, userForm.getNewpwd());
+				cs.registerOutParameter(4, Types.VARCHAR);
+				cs.execute();
+				if(cs.getString(4).equals("ok"))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		});
+		return boo;
 	}
 }

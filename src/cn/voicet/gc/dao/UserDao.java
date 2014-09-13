@@ -8,5 +8,5 @@ import cn.voicet.util.DotSession;
 public interface UserDao{
 	public final static String SERVICE_NAME = "cn.voicet.gc.dao.impl.UserDaoImpl";
 	Map<String, Object> userLogin(UserForm userForm);
-	Integer updateUserPassword(DotSession ds, UserForm userForm);
+	boolean updateUserPassword(DotSession ds, UserForm userForm);
 }
