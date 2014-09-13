@@ -29,16 +29,26 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">外呼任务管理</h3>
-   	<form action="<c:url value='/taskTelAction_home.action'/>" method="post" id="searchForm" name="searchForm">
+	<h3 class="h3_title">${tname }&nbsp;号码管理</h3>
+   	<form name="form1" action="<c:url value='/taskAction_telmanage.action'/>" method="post">
+   	<input type="hidden" name="tid" value="${tid }"/>
+   	<input type="hidden" name="tname" value="${tname }"/>
+   	
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-			<li><label>开始日期：</label><input type="text" id="startdate" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'enddate\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="startdate"/>"/></li>
-	        <li><label>结束日期：</label><input type="text" id="enddate" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'startdate\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value="enddate"/>"/></li>
+			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
-		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
+		<ul class="queryWrap_ul_w234 right">
+	        <li>
+	        	<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>
+	        </li>
+	        <li>
+	        	<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/taskAction_export.action?tid=${tid }&kind=${kind }'" value="导出"/>
+	        </li>
+	        <li>
+	        	<input type="button" class="btn4" onclick="location.href='<c:url value='/taskAction_home.action'/>'" value="返回"/>
+	        </li>
 		</ul>
 	</div>
     </form>
@@ -46,35 +56,22 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="10%">任务编号</th>
-                     <th width="10%">任务名称</th>
-                     <th width="10%">任务类型</th>
-                     <th width="10%">号码总数</th>
-                     <th width="10%">新建数</th>
-                     <th width="10%">执行中</th>
-                     <th width="10%">执行完成</th>
+                     <th width="20%">电话编号</th>
+                     <th width="20%">电话号码</th>
+                     <th width="20%">状态</th>
+                     <th width="20%">呼叫结果</th>
                      <th width="20%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
-               	<s:iterator id="task" value="#session.vts.list">
+               	<s:iterator id="tel" value="#session.vts.list">
 				<tr align="center">
-					<td>${task.tid }</td>
-					<td>${task.tname }</td>
+					<td>${tel.ttid }</td>
+					<td>${tel.telnum }</td>
+					<td>${tel.state }</td>
+					<td>${tel.callret }</td>
 					<td>
-						<c:if test="${task.kind eq 0 }">标准</c:if>
-						<c:if test="${task.kind eq 1 }">回访1</c:if>
-						<c:if test="${task.kind eq 2 }">回访2</c:if>
-						<c:if test="${task.kind eq 3 }">回访3</c:if>
-					</td>
-					<td>${task.trn }</td>
-					<td>${task.nrn }</td>
-					<td>${task.drn }</td>
-					<td>${task.frn }</td>
-					<td>
-						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
-						<a href="javascript:saveTask('edit','${queue.tid }','${queue.tname }','${queue.ani }','${queue.overflowto }')">修改</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/taskAction_deleteTask.action?tid=${task.tid }&tname=${task.tname}">删除</a>
+						<a href="#">操作</a>&nbsp;&nbsp;
 					</td>
 				</tr>
 				</s:iterator>
@@ -96,7 +93,7 @@
 	<div id="popDiv" style="display:none;"> 
 		<iframe name="importFrame" style="display:none;"></iframe>
 		<form id="form2" name="form2" 
-			action="${pageContext.request.contextPath }/taskTelAction_importTaskTel.action" 
+			action="${pageContext.request.contextPath }/taskAction_importTaskTel.action" 
 			method="post" 
 			enctype="multipart/form-data"
 			onsubmit="return validateuploadInforFile(this)">
@@ -148,8 +145,9 @@
 		$("#form2").ajaxSubmit({ 
             success:function(data){ //提交成功的回调函数
     			layer.closeAll(); 
-    				layer.msg("数据导入成功",2,1);
-    				//layer.msg("数据导入失败，请重新导入 ",2,5);
+   				layer.msg("数据导入成功",2,1);
+   				//layer.msg("数据导入失败，请重新导入 ",2,5);
+   				document.form1.submit();
             }  
 		}); 
         return false;	//not refresh page

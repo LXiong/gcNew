@@ -31,4 +31,27 @@ public class AgentAction extends BaseAction implements ModelDriven<AgentForm>{
 		return "show_agent";
 	}
 	
+	/**
+	 * 添加或更新话务员
+	 * @return
+	 */
+	public String saveAgent()
+	{
+		log.info("agttxt[] length:"+agentForm.getAgttxt().length);
+		agentDao.saveAgent(agentForm);
+		log.info("save agent ["+agentForm.getAgttxt()[3]+"] success");
+		return home();
+	}
+	
+	/**
+	 * 删除话务员
+	 * @return
+	 */
+	public String deleteAgent()
+	{
+		log.info("account:"+agentForm.getAccount());
+		agentDao.deleteAgentByAccount(agentForm);
+		log.info("delete agent ["+agentForm.getAccount()+"] success");
+		return home();
+	}
 }

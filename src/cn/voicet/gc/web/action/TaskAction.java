@@ -38,6 +38,29 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	}
 	
 	/**
+	 * 保存或更新任务
+	 * @return
+	 */
+	public String saveQueue(){
+		log.info("tid:"+taskForm.getTid()+", name:"+taskForm.getTname()+", ani:"+taskForm.getAni()+" kind:"+taskForm.getKind()+", maxline:"+taskForm.getMaxline()+", overflowto:"+taskForm.getOverflowto());
+		taskDao.saveTask(taskForm);
+		log.info("save task ["+taskForm.getTelnum()+"] success");
+		return home();
+	}
+	
+	/**
+	 * 删除任务
+	 * @return
+	 */
+	public String deleteTask()
+	{
+		log.info("tid:"+taskForm.getTid());
+		taskDao.deleteTaskByTid(taskForm);
+		log.info("delete task ["+taskForm.getTelnum()+"] success");
+		return home();
+	}
+	
+	/**
 	 * 号码管理
 	 * @return
 	 */
@@ -56,7 +79,8 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 * 		2：回访2，
 	 * 		3：回访3
 	 */
-	public String export(){
+	public String export()
+	{
 		log.info("tid:"+taskForm.getTid()+", kind:"+taskForm.getKind());
 		taskDao.exportData(taskForm, response);
 		return null;
@@ -69,8 +93,8 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 */
 	public String importTaskTel() throws IOException
 	{
-		//log.info("tid:"+queueForm.getTid()+", kind:"+queueForm.getKind()+", uploadExcel file:"+uploadExcel);
-		//queueService.batchImportData(uploadExcel, queueForm.getTid(), queueForm.getKind());	
+		log.info("tid:"+taskForm.getTid()+", kind:"+taskForm.getKind()+", uploadExcel file:"+uploadExcel);
+		taskDao.batchImportData(uploadExcel, taskForm.getTid(), taskForm.getKind());	
 		
 		//response.getWriter().print(true);
 		
@@ -86,14 +110,6 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
     private String uploadExcelFileName;
     //控制文件类型
     private static String[] allowFileType = { "xls", "XLS", "xlsx", "XLSX" };
-    //excel文件行数 
-    private int totalRowNum;
-    //操作消耗时间
-    private double opTime;
-    
-    private String responseMessage;
-    
-    private int tid;
 
 	public File getUploadExcel() {
 		return uploadExcel;
@@ -114,19 +130,4 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	public void setUploadExcelFileName(String uploadExcelFileName) {
 		this.uploadExcelFileName = uploadExcelFileName;
 	}
-	public double getOpTime() {
-		return opTime;
-	}
-	public void setOpTime(double opTime) {
-		this.opTime = opTime;
-	}
-
-	public int getTid() {
-		return tid;
-	}
-
-	public void setTid(int tid) {
-		this.tid = tid;
-	}
-	
 }

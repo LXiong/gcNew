@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
@@ -63,6 +64,37 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		        		 ds.list.add(map);
 					}
 				}
+				return null;
+			}
+		});
+	}
+
+	
+	public void saveAgent(final AgentForm agentForm) {
+		String[] sp_agents = {"{call web_agent_add(?,?,?,?,?)}","{call web_agent_update(?,?,?,?,?)}"};
+		String n = agentForm.getAgttxt()[0];
+		this.getJdbcTemplate().execute(sp_agents[Integer.parseInt(n)], new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, agentForm.getAgttxt()[1]);
+				cs.setString(2, agentForm.getAgttxt()[2]);
+				cs.setString(3, agentForm.getAgttxt()[3]);
+				cs.setString(4, agentForm.getAgttxt()[4]);
+				cs.setString(5, null);
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	
+	public void deleteAgentByAccount(final AgentForm agentForm) {
+		String sp_agent_delete = "{call web_agent_delete(?)}";
+		this.getJdbcTemplate().execute(sp_agent_delete, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, agentForm.getAccount());
+				cs.execute();
 				return null;
 			}
 		});

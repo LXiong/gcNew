@@ -1,5 +1,7 @@
 package cn.voicet.gc.dao;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletResponse;
 
 import cn.voicet.gc.web.form.TaskForm;
@@ -10,4 +12,7 @@ public interface TaskDao{
 	void queryTaskList(DotSession ds);
 	void queryTelByTid(DotSession ds, TaskForm taskForm);
 	void exportData(TaskForm taskForm, HttpServletResponse response);
+	void batchImportData(File uploadExcel, int tid, int kind);
+	void deleteTaskByTid(TaskForm taskForm);
+	void saveTask(TaskForm taskForm);
 }
