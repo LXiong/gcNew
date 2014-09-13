@@ -27,6 +27,9 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		return taskForm;
 	}
 	
+	/**
+	 * 任务列表
+	 */
 	public String home()
 	{
 		DotSession ds = DotSession.getVTSession(request);
@@ -34,21 +37,16 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		return "show_task";
 	}
 	
-	public String telmanage()
-	{
-		//taskDao.queryTelByTid(taskForm);
-		return "show_telmanage";
-	}
-	
-	
 	/**
 	 * 号码管理
 	 * @return
 	 */
-	public String numberManager(){
+	public String telmanage()
+	{
 		DotSession ds = DotSession.getVTSession(request);
-		//queueService.queryTelListByTid(ds, queueForm);
-		return "show_telnumber";
+		log.info("tid:"+taskForm.getTid()+", telnum:"+taskForm.getTelnum());
+		taskDao.queryTelByTid(ds, taskForm);
+		return "show_telmanage";
 	}
 	
 	/**
@@ -59,7 +57,8 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 * 		3：回访3
 	 */
 	public String export(){
-		//queueService.exportData(queueForm, response);
+		log.info("tid:"+taskForm.getTid()+", kind:"+taskForm.getKind());
+		taskDao.exportData(taskForm, response);
 		return null;
 	}
 	

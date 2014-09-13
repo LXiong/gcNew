@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">呼叫队列管理</h3>
+	<h3 class="h3_title">外呼任务管理</h3>
    	<form action="<c:url value='/taskTelAction_home.action'/>" method="post" id="searchForm" name="searchForm">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
@@ -57,22 +57,22 @@
                  </tr>
              </thead>
              <tbody id="movies">
-               	<s:iterator id="queue" value="#session.vts.list">
+               	<s:iterator id="task" value="#session.vts.list">
 				<tr align="center">
-					<td>${queue.tid }</td>
-					<td>${queue.tname }</td>
+					<td>${task.tid }</td>
+					<td>${task.tname }</td>
 					<td>
-						<c:if test="${queue.kind eq 0 }">标准</c:if>
-						<c:if test="${queue.kind eq 1 }">回访1</c:if>
-						<c:if test="${queue.kind eq 2 }">回访2</c:if>
-						<c:if test="${queue.kind eq 3 }">回访3</c:if>
+						<c:if test="${task.kind eq 0 }">标准</c:if>
+						<c:if test="${task.kind eq 1 }">回访1</c:if>
+						<c:if test="${task.kind eq 2 }">回访2</c:if>
+						<c:if test="${task.kind eq 3 }">回访3</c:if>
 					</td>
-					<td>${queue.trn }</td>
-					<td>${queue.nrn }</td>
-					<td>${queue.drn }</td>
-					<td>${queue.frn }</td>
+					<td>${task.trn }</td>
+					<td>${task.nrn }</td>
+					<td>${task.drn }</td>
+					<td>${task.frn }</td>
 					<td>
-						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action">号码管理</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
 					</td>
 				</tr>
 				</s:iterator>

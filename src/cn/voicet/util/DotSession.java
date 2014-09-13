@@ -295,7 +295,7 @@ public class DotSession {
 		        }
 				//
 				HSSFCellStyle style = workBook.createCellStyle();
-				 if(isDrawBoard)
+				if(isDrawBoard)
 		        {
 			        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
 			        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
@@ -311,9 +311,9 @@ public class DotSession {
 					 for(int j=0;j<columnCount;j++)
 					 {
 						 cell = row1.getCell(j);
-						 if (null==cell) row1.createCell(j);
-						 if(isDrawBoard) cell.setCellStyle(style);
-						 if(FieldName[j]!="^")
+						 if (null==cell) cell = row1.createCell(j);
+						 if(null!=cell && isDrawBoard) cell.setCellStyle(style);
+						 if(null!= cell && null!=FieldName[j] && FieldName[j]!="^")
 						 {
 							 if(null!=dataType[j] && dataType[j].equals("N"))
 							 {
@@ -322,15 +322,15 @@ public class DotSession {
 									{
 										cell.setCellValue(Double.parseDouble(excelData));
 									}
-							 }
+							}
 							else
 							{
 								
 								cell.setCellValue((String)rs.getString(FieldName[j]));
 							}	 
 						 }
-						 i++;
 					 }//end for
+					 i++;
 				 }//end while
 				 return workBook;
 			}//end temp

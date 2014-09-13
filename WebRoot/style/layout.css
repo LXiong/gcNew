@@ -47,8 +47,13 @@
 .queryDiv{width:856px; height:40px; border:1px solid #3B9FFF;}
 .queryWrap_ul_w600{width:600px; height:40px; padding-left:10px;margin-top:1px;}
 .queryWrap_ul_w600 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
+.queryWrap_ul_w234{width:234px; height:40px; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_w234 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
 .queryWrap_ul_w100{width:100px; height:40px; padding-left:10px;margin-top:1px;}
 .queryWrap_ul_w100 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
 
 
 /* data list */

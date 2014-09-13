@@ -28,6 +28,7 @@
 		<!-- 外呼任务管理 -->
 		<action name="taskAction_*" class="taskAction" method="{1}">
 			<result name="show_task">/WEB-INF/page/manage/taskList.jsp</result>
+			<result name="show_telmanage">/WEB-INF/page/manage/telManage.jsp</result>
 		</action>
 		
 		<!-- 业务组调度统计 -->
