@@ -102,14 +102,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="lab_ipt_item" id="ywtype">
     	<span class="lab120">新密码：</span>
         <div class="ipt-box">
-        	<input type="text" id="newpwdx" name="newpwd" class="ipt_text_w150 inputDefault" />
+        	<input type="password" id="newpwdx" name="newpwd" class="ipt_text_w150 inputDefault" />
             <span class="asterisk">*</span>
         </div>
     </div>
     <div class="lab_ipt_item" id="whnum">
     	<span class="lab120">确认密码：</span>
         <div class="ipt-box">
-        	<input type="text" id="repwdx" class="ipt_text_w150 inputDefault" />
+        	<input type="password" id="repwdx" class="ipt_text_w150 inputDefault" />
             <span class="asterisk">*</span>
         </div>
     </div>

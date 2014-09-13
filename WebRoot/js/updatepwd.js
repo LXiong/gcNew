@@ -85,7 +85,7 @@ function validatePwdinput(form)
 	$("#form1").ajaxSubmit({ 
         success:function(data){ //提交成功的回调函数
 			layer.closeAll(); 
-			if(!data)
+			if(data=="true")
 			{
 				layer.msg("密码修改成功",2,1);
 			}
