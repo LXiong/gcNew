@@ -9,16 +9,12 @@
 			<fun name="业务组调度统计" action="acdAnalyAction_home.action" />
 			<fun name="话务员技能统计" action="agentAnalyAction_home.action" />
 			<fun name="通话记录查询" action="callRecordAction_home.action" />
-			
-			<fun name="外呼号码管理" action="taskTelAction_home.action" />
 		</grp>
 	    <grp name="维护管理">
 	      <fun name="话务员档案" action="agentAction_home.action" />
 	      <fun name="业务组档案" action="acdAction_home.action" />
 	      <fun name="座席分机管理" action="subTelAction_home.action" />
 	      <fun name="呼叫黑名单" action="blackAction_home.action" />
-	      
-	      <fun name="呼叫队列管理" action="queueAction_home.action" />
 	    </grp>
 	    <grp name="数据库">
 	      	<fun name="数据库维护" action="databaseConfigAction_home.action" />
