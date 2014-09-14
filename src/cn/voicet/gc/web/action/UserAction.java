@@ -100,29 +100,6 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		return null;
 	}
 	
-	
-	public String updatePassword() {
-		DotSession ds=DotSession.getVTSession(request);
-		JSONObject jsonObj = new JSONObject();
-		log.info("oldPwd:"+userForm.getOldpwd());
-		log.info("newPwd:"+userForm.getNewpwd());
-		Integer res = 1;
-		log.info("update pwd code:"+res);
-		if(res==1){
-			jsonObj.put("status", "1");
-			ds.password = userForm.getNewpwd();
-		}else if(res==0){
-			jsonObj.put("status", "0");
-		}
-		try {
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().print(jsonObj.toString());
-			response.getWriter().flush();
-		} catch (IOException e) {
-		}
-		return null;
-	}
-	
 	/**  */
 	public String logout() {
 		DotSession ds=DotSession.getVTSession(request);

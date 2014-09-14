@@ -88,10 +88,6 @@
 		<action name="ajaxlogin" class="userAction" method="ajaxlogin">
 			<result type="json"></result>
 		</action>
-		<!-- 修改密码 -->
-		<action name="updatepwd" class="userAction" method="updatePassword">
-			<result type="json"></result>
-		</action>
 		<!-- 清空数据库日志 -->
 		<action name="databaseConfigAction_empty" class="databaseConfigAction" method="empty">
 			<result type="json"></result>
