@@ -29,7 +29,6 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		return userForm;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public String ajaxlogin(){
 		log.info("account:"+userForm.getAccount()+", password:"+userForm.getPassword()+", vercode:"+userForm.getVercode());
 		JSONObject json = new JSONObject();
@@ -41,15 +40,16 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		
 		Map<String, Object> map = userDao.userLogin(userForm);
 		log.info("user login: "+map);
-		ds.map.put("name", map.get("username"));
 		ds.username=(String) map.get("username");
-		ds.password = userForm.getPassword();
-		ds.account=userForm.getAccount();
 		ds.roleName = (String) map.get("rolename");
 		ds.roleID=(String) map.get("roleid");
-		
+		//
+		ds.password = userForm.getPassword();
+		ds.account=userForm.getAccount();
+		//
 		log.info("rand:"+request.getSession().getAttribute("rand"));
 		log.info("roleID:"+ds.roleID);
+		//
 		if(null!=ds.roleID && !ds.roleID.equals("0"))
 		{
 			json.put("status", "ok");
@@ -86,6 +86,11 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		
 		boolean bool = userDao.updateUserPassword(ds, userForm);
 		log.info("bool:"+bool);
+		if(bool)
+		{
+			ds.password = userForm.getNewpwd();
+			log.info("update after password:"+ds.password);
+		}
 		response.getWriter().print(bool);
 		return null;
 	}

@@ -25,7 +25,7 @@
  	<!-- jPage 分页插件  end -->
  	<!-- ajax file upload -->
  	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
- 	<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=1'/>"></script>
+ 	<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=4'/>"></script>
 </head>
 <body>
 <div id="contentWrap">
@@ -111,7 +111,10 @@
 	    <input type="hidden" id="kindx" name="kind"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">您当前导入的文件：</span>
-	        <div class="ipt-box"><label id="curFile"></label></div>
+	        <div class="ipt-box">
+	        	<label id="curFile"></label>&nbsp;&nbsp;
+	        	<span class="asterisk"></span>
+	        </div>
 	    </div>
 	    <input type="file" id="uploadExcel" name="uploadExcel" style="display:none;" onchange="showPopDiv()"/>
 		<div class="lab_ipt_item">
@@ -130,6 +133,7 @@
 		<input type="hidden" name="tname" value="${tname }"/>
 	</form>
 	
+	<!-- delete tel -->
 	<form name="form4" action="<c:url value='/taskAction_deleteTaskTel.action'/>" method="post">
 		<input type="hidden" id="del_tid" name="tid"/>
 		<input type="hidden" id="del_ttid" name="ttid"/>
@@ -137,74 +141,6 @@
 	
 </div>
 
-<script>
-	//
-	function showSelFile(tid,tname,kind)
-	{
-		$("#uploadExcel").click();
-		$("#tidx").val(tid);
-		$("#kindx").val(kind);
-	}
-	//
-	function showPopDiv()
-	{
-		$("#curFile")[0].innerHTML=$("#uploadExcel").val();
-		$.layer({
-			type: 1,
-	        title: '导入 数据',
-	        offset: [($(window).height() - 290)/2+'px', ''],
-	        border : [5, 0.5, '#666'],
-	        area: ['450px','200px'],
-	        shadeClose: false,
-			bgcolor: '#fff',
-			page:{dom:'#popDiv'}
-		});
-	}
-
-	function validateuploadInforFile(form)
-	{
-		if(!validateExcelUpLoadFile(form)) return false;
-		$("#form2").ajaxSubmit({ 
-            success:function(data){ //提交成功的回调函数
-    			layer.closeAll(); 
-   				layer.msg("数据导入成功",2,1);
-   				//layer.msg("数据导入失败，请重新导入 ",2,5);
-   				document.form1.submit();
-            }  
-		}); 
-        return false;	//not refresh page
-	}
-
-	//导入Excel文件时进行文件格式校验 
-	function validateExcelUpLoadFile(form)
-	{
-		var fileName = form2.uploadExcel.value;
-	    if (fileName != "" ) {
-	        var fileType = (fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)).toLowerCase();
-	        var suppotFile = ["xls", "XLS", "xlsx", "XLSX"];
-	        for (var i = 0; i < suppotFile.length; i++) {
-	            if (suppotFile[i] == fileType) {
-	                return true;
-	            } else {
-	                continue;
-	            }
-	        }
-	        alert("文件格式不正确！");
-	        return false;
-	    } else {
-	        alert("请选择你需要导入的文件");
-	        return false;
-	    }	
-	}
-
-	//empty
-	function emptyTasktel(tname)
-	{
-		layer.confirm("确定要清空 【"+tname+"】中所有号码吗？",function(){
-			document.form3.submit();
-		});
-	}
-</script>
 <script type="text/javascript">
 	$(function(){
 		$("div.holder").jPages({
