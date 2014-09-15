@@ -29,18 +29,33 @@
 <div id="contentWrap">
 	<h3 class="h3_title">通话记录详情</h3>
    	<form action="<c:url value='/callRecordAction_home.action'/>" method="post">
-	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w600 left">
-			<li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="sdt"/>"/></li>
-	        <li><label>结束日期：</label><input type="text" id="edt" name="edt" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value="edt"/>"/></li>
+	<div class="queryDiv_h80">
+	   	<ul class="queryWrap_ul">
+	   		<li><label>服务器别名：</label><input type="text" name="calltxt" class="ipt70" value="${calltxt[0] }"/></li>
+			<li><label>开始日期：</label><input type="text" id="sdt" name="calltxt" class="Wdate" style="width:90px; height:20px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="${calltxt[1] }"/></li>
+	        <li><label>结束日期：</label><input type="text" id="edt" name="calltxt" class="Wdate" style="width:90px; height:20px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="${calltxt[2] }"/></li>
+	        <li><label>主叫：</label><input type="text" name="calltxt" class="ipt100" value="${calltxt[3] }"/></li>
+	        <li><label>被叫：</label><input type="text" name="calltxt" class="ipt100" value="${calltxt[4] }"/></li>
+	        <li>
+	        	<label>呼叫方向：</label>
+	        	<s:select name="calltxt" list="#{1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{calltxt[5]}"></s:select>
+			</li>
+	        <li>
+	        	<label>等待时长：</label>
+	        	<s:select name="calltxt" list="#{'>':'>','<':'<'}" listKey="key" listValue="value" value="%{calltxt[6]}"></s:select>
+	        	<input type="text" name="calltxt" class="ipt50" value="${calltxt[7] }"/></li>
+	        <li>
+	        	<label>通话时长：</label>
+	        	<s:select name="calltxt" list="#{'>':'>','<':'<'}" listKey="key" listValue="value" value="%{calltxt[8]}"></s:select>
+	        	<input type="text" name="calltxt" class="ipt50" value="${calltxt[9] }"/>
+	        </li>
+	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt50" value="${calltxt[10] }"/></li>
+	        <li><label>提取记录数：</label><input type="text" name="calltxt" class="ipt50" value="${calltxt[11] }"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
-		</ul>
-		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
 		</ul>
 	</div>
     </form>
-	<div class="content_List568">
+	<div class="content_List528">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>

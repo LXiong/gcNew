@@ -30,16 +30,18 @@ public class CallRecordDaoImpl extends BaseDaoImpl implements CallRecordDao {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
 				CallableStatement cs = conn.prepareCall("{call web_session_talk_query(?,?,?,?,?,?,?,?,?,?)}");
-				cs.setString(1, "cts100");
-				cs.setString(2, "2014-09-10");
-				cs.setString(3, "2014-09-10");
-				cs.setString(4, "8");
-				cs.setString(5, "6");
-				cs.setString(6, "1");
-				cs.setString(7, ">0");
-				cs.setString(8, ">0");
-				cs.setString(9, "8");
-				cs.setString(10, "3");
+				cs.setString(1, callRecordForm.getCalltxt()[0]);
+				cs.setString(2, callRecordForm.getCalltxt()[1]);
+				cs.setString(3, callRecordForm.getCalltxt()[2]);
+				cs.setString(4, callRecordForm.getCalltxt()[3]);
+				cs.setString(5, callRecordForm.getCalltxt()[4]);
+				cs.setString(6, callRecordForm.getCalltxt()[5]);
+				//
+				cs.setString(7, callRecordForm.getCalltxt()[6]+callRecordForm.getCalltxt()[7]);
+				cs.setString(8, callRecordForm.getCalltxt()[8]+callRecordForm.getCalltxt()[9]);
+				//
+				cs.setString(9, callRecordForm.getCalltxt()[10]);
+				cs.setString(10, callRecordForm.getCalltxt()[11]);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
