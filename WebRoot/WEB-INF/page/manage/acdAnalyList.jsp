@@ -54,7 +54,6 @@
                      <th width="10%">溢出数</th>
                      <th width="10%">超时数</th>
                      <th width="10%">分配错误</th>
-                     <th width="10%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -69,9 +68,6 @@
 					<td>${acd.at2 }</td>
 					<td>${acd.at3 }</td>
 					<td>${acd.at4 }</td>
-					<td>
-						<a href="#">操作</a>&nbsp;&nbsp;
-					</td>
 				</tr>
 				</s:iterator>
 			</tbody>
@@ -99,7 +95,7 @@
 	        last : "尾页",
 	        perPage : 26,
 	        keyBrowse:true,
-	        delay : 5,
+	        delay : 0,
 	        callback : function( pages, items ){
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");

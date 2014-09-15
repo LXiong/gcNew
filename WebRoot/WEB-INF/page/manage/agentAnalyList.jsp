@@ -55,7 +55,6 @@
                      <th width="8%">平均<br/>通话时长</th>
                      <th width="8%">接听<br/>超时次数</th>
                      <th width="8%">接听本方<br/>挂机次数</th>
-                     <th width="8%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -72,9 +71,6 @@
 					<td>${agent.talk_a }</td>
 					<td>${agent.dl }</td>
 					<td>${agent.el }</td>
-					<td>
-						<a href="#">操作</a>&nbsp;&nbsp;
-					</td>
 				</tr>
 				</s:iterator>
 			</tbody>
@@ -102,7 +98,7 @@
 	        last : "尾页",
 	        perPage : 26,
 	        keyBrowse:true,
-	        delay : 5,
+	        delay : 0,
 	        callback : function( pages, items ){
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
