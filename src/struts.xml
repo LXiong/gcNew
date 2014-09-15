@@ -56,10 +56,9 @@
 			<result name="show_call">/WEB-INF/page/manage/callRecordList.jsp</result>
 		</action>
 		
-		
-		<!-- 号码 -->
-		<action name="taskTelAction_*" class="taskTelAction" method="{1}">
-			<result name="show_tasktel">/WEB-INF/page/manage/taskTelList.jsp</result>
+		<!-- 座席分机管理 -->
+		<action name="subTelAction_*" class="subTelAction" method="{1}">
+			<result name="show_subtel">/WEB-INF/page/manage/subTelList.jsp</result>
 		</action>
 		
 		<!-- 呼叫队列 -->
