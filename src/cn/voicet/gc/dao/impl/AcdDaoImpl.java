@@ -91,11 +91,12 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 	}
 	
 	public void deleteAcdByGrpid(final AcdForm acdForm) {
-		String sp_acd_delete = "{call web_acd_remove(?)}";
+		String sp_acd_delete = "{call web_acd_remove(?,?)}";
 		this.getJdbcTemplate().execute(sp_acd_delete, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, acdForm.getGrpid());
+				cs.setString(1, acdForm.getCts());
+				cs.setString(2, acdForm.getGrpid());
 				cs.execute();
 				return null;
 			}

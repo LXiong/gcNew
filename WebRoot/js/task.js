@@ -87,9 +87,7 @@ function saveTaskBtn()
 			layer.closeAll();
 			if(data=="updateok")
 			{
-				layer.msg("修改任务成功",2,1,function(){
-					location.href="${pageContext.request.contextPath}/taskAction_home.action";
-				});
+				location.href="${pageContext.request.contextPath}/taskAction_home.action";
 			}
 			else if(data=="updateerr")
 			{
@@ -97,9 +95,9 @@ function saveTaskBtn()
 			}
 			else if(data=="insertok")
 			{
-				layer.msg("添加任务成功",2,1,function(){
-					location.href="${pageContext.request.contextPath}/taskAction_home.action";
-				});
+				
+				location.href="${pageContext.request.contextPath}/taskAction_home.action";
+				
 			}
         }  
 	}); 
@@ -108,9 +106,18 @@ function saveTaskBtn()
 
 
 //a->button
-function deleteTaskPre(tid,tname)
+function deleteTaskPre(tid,tname,trn)
 {
-	deleteTask(tid,tname);
+	if(trn>0)
+	{
+		layer.alert("请先清空任务中的号码，再删除该任务",111);
+	}
+	else
+	{
+		layer.confirm("确定要删除【"+tname+"】吗？",function(){
+			deleteTask(tid,tname);
+		});
+	}
 }
 
 //delete task
@@ -122,13 +129,11 @@ function deleteTask(tid,tname)
 		success:function(data){ //提交成功的回调函数
 			if(data=="ok")
 			{
-				layer.msg("删除任务成功",2,1,function(){
-					location.href="${pageContext.request.contextPath}/taskAction_home.action";
-				});
+				location.href="${pageContext.request.contextPath}/taskAction_home.action";
 			}
 			else
 			{
-				layer.msg("删除任务失败,["+tname+"]中还有号码存在",2,5);
+				layer.msg("删除任务前请清空任务队列中存在的号码",2,5);
 			}
         }  
 	}); 

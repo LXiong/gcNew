@@ -28,7 +28,7 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">业务组档案管理</h3>
-	<form action="<c:url value='/acdAction_home.action'/>" method="post">
+	<form name="form1" action="<c:url value='/acdAction_home.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
 	   		<li><label>服务器别名：</label><input type="text" name="cts" class="ipt100" value="<s:property value="cts"/>"/></li>
@@ -64,8 +64,9 @@
 					<td>${acd.maxwaitnum }</td>
 					<td>${acd.overflowto }</td>
 					<td>
-						<a href="javascript:saveAcd('edit','${acd.grpid }','${acd.cts }','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
-						<a href="<c:url value='acdAction_deleteAcd.action?grpid=${acd.grpid }'/>">删除</a>
+						<a href="javascript:saveAcd('edit','${acd.grpid }','${cts }','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:deleteAcdPre('${acd.grpid }')">删除</a>
+						<input type="button" class="hide" onclick="deleteAcd()" value="删除"/>
 					</td>
 				</tr>
 				</s:iterator>
@@ -85,8 +86,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form1" action="<c:url value='/acdAction_saveAcd.action'/>" method="post">
-	    <input type="hidden" id="grpidx" name="acdtxt"/>
+		<form name="form2" action="<c:url value='/acdAction_saveAcd.action'/>" method="post">
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">服务器别名：</span>
 	        <div class="ipt-box">
@@ -94,6 +94,7 @@
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
+	    <input type="hidden" id="grpidx" name="acdtxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">组名称：</span>
 	        <div class="ipt-box">
@@ -145,6 +146,12 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<!-- delete acd form -->
+	<form name="form3" action="<c:url value='acdAction_deleteAcd.action'/>" method="post">
+		<input type="hidden" name="cts" value="${cts }"/>
+		<input type="hidden" id="del_grpid" name="grpid"/>
+	</form>
+	
 </div>
 <script type="text/javascript">
 	function saveAcd(t,grpid,cts,grpname,telnum,acw,maxwaittime,maxwaitnum,overflowto)
@@ -180,6 +187,19 @@
 			page:{dom:'#popDiv'}
 		});
 	}
+
+	function deleteAcdPre(grpid)
+	{
+		$("#del_grpid").val(grpid)
+		layer.confirm("确定要删除吗？",function(){
+			deleteAcd();
+		});
+	}
+	function deleteAcd()
+	{
+		document.form3.submit();
+	}
+	
 </script>
 <script type="text/javascript">
 	$(function(){

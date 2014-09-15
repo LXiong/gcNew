@@ -56,7 +56,8 @@
 					<td>${agent.email }</td>
 					<td>
 						<a href="javascript:saveAgent('edit','${agent.account }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;
-						<a href="<c:url value='agentAction_deleteAgent.action?account=${agent.account }'/>">删除</a>
+						<a href="javascript:deleteAgentPre()">删除</a>
+						<input type="button" class="hide" onclick="deleteAgent()" value="删除"/>
 					</td>
 				</tr>
 				</s:iterator>
@@ -76,7 +77,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form1" action="<c:url value='/agentAction_saveAgent.action'/>" method="post">
+		<form name="form2" action="<c:url value='/agentAction_saveAgent.action'/>" method="post">
 	    <input type="hidden" id="addeditx" name="agttxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">登录账号：</span>
@@ -115,6 +116,10 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<form name="form3" action="<c:url value='/agentAction_deleteAgent.action'/>" method="post">
+		<input type="hidden" name="account" value="${agent.account }"/>
+	</form>
+	
 </div>
 
 <script type="text/javascript">
@@ -148,6 +153,19 @@
 			page:{dom:'#popDiv'}
 		});
 	}
+
+	//
+	function deleteAgentPre()
+	{
+		layer.confirm("确定要删除吗？",function(){
+			deleteAgent();
+		});
+	}
+	function deleteAgent()
+	{
+		document.form3.submit();
+	}
+	
 </script>
 <script type="text/javascript">
 	$(function(){

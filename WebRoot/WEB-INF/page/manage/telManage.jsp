@@ -39,12 +39,12 @@
 			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
-		<ul class="queryWrap_ul_w400 right">
+		<ul class="queryWrap_ul_w420 right">
 			<li>
 	        	<label>点击<a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板文件</label>
 	        </li>
 			<li>
-	        	<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="添空"/>
+	        	<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="清空"/>
 	        </li>
 	        <li>
 	        	<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>

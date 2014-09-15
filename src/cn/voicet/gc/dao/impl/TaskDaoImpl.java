@@ -356,12 +356,12 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	}
 
 	public void emptyTaskTel(final TaskForm taskForm) {
-		String sp_empty_task = "{call web_huifang_empty(?,?)}";
+		String sp_empty_task = "{call web_tasktel_empty(?)}";
 		this.getJdbcTemplate().execute(sp_empty_task, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
-				cs.setInt(2, taskForm.getKind());
+				cs.execute();
 				return null;
 			}
 		});

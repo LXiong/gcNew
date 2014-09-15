@@ -19,7 +19,7 @@
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
- 	<script type="text/javascript" src="<c:url value='/js/task.js?v=5'/>"></script>
+ 	<script type="text/javascript" src="<c:url value='/js/task.js?v=6'/>"></script>
  	<!-- ajax file upload -->
  	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
  	
@@ -69,7 +69,7 @@
 					<td>
 						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
 						<a href="javascript:saveTask('edit','${task.tid }','${task.tname }','${task.kind }','${task.taskinfo }')">修改</a>&nbsp;&nbsp;
-						<a href="javascript:deleteTaskPre('${task.tid }','${task.tname }')">删除</a>
+						<a href="javascript:deleteTaskPre('${task.tid }','${task.tname }','${task.trn }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTask('${task.tid }','${task.tname }')" value="删除"/>
 					</td>
 				</tr>
