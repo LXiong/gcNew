@@ -31,7 +31,7 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 					DataAccessException {
 				CallableStatement cs = conn.prepareCall("{call web_black_query(?,?,?,?)}");
 				cs.setString(1, blackForm.getTelnum());
-				cs.setString(2, blackForm.getPeeknum());
+				cs.setInt(2, 500);
 				cs.registerOutParameter(3, Types.INTEGER);
 				cs.registerOutParameter(4, Types.INTEGER);
 				cs.execute();

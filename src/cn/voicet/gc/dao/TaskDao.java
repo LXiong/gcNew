@@ -16,4 +16,6 @@ public interface TaskDao{
 	String deleteTaskByTid(TaskForm taskForm);
 	String saveTask(TaskForm taskForm);
 	void emptyTaskTel(TaskForm taskForm);
+	void deleteTaskTelByTtid(TaskForm taskForm);
+	void recallTel(TaskForm taskForm);
 }

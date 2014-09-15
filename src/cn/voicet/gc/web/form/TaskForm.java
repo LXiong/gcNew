@@ -7,6 +7,7 @@ public class TaskForm {
 	private String taskinfo;
 	
 	private String telnum;
+	private int ttid;
 	
 	public int getTid() {
 		return tid;
@@ -37,5 +38,11 @@ public class TaskForm {
 	}
 	public void setTaskinfo(String taskinfo) {
 		this.taskinfo = taskinfo;
+	}
+	public int getTtid() {
+		return ttid;
+	}
+	public void setTtid(int ttid) {
+		this.ttid = ttid;
 	}
 }

@@ -11,7 +11,7 @@ public class AgentForm {
 	 */
 	private String[] agttxt;	
 	
-	private String account;
+	private int agtid;
 	
 	public String getSdt() {
 		return sdt;
@@ -31,10 +31,10 @@ public class AgentForm {
 	public void setAgttxt(String[] agttxt) {
 		this.agttxt = agttxt;
 	}
-	public String getAccount() {
-		return account;
+	public int getAgtid() {
+		return agtid;
 	}
-	public void setAccount(String account) {
-		this.account = account;
+	public void setAgtid(int agtid) {
+		this.agtid = agtid;
 	}
 }

@@ -56,7 +56,7 @@
 					<td align="left" class="tabtd1">&nbsp;&nbsp;<s:property value="#black.noteinfo"/></td>
 					<td>
 						<a href="javascript:saveBlackNumber('edit','<s:property value="#black.bid"/>','<s:property value="#black.telnum"/>','<s:property value="#black.noteinfo"/>')">修改</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/blackAction_deleteTelnum.action?bid=<s:property value='#black.bid'/>">删除</a>
+						<a href="javascript:deleteBlackPre('${black.bid }')">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -103,6 +103,11 @@
 	<!--POP LAYER END-->
 	
 	<form name="form3" action="<c:url value='/blackAction_emptyBlack.action'/>" method="post"></form>
+	
+	<form name="form4" action="<c:url value='/blackAction_deleteTelnum.action'/>" method="post">
+		<input type="hidden" id="del_bid" name="bid"/>
+	</form>
+	
 </div>
 
 <script type="text/javascript">

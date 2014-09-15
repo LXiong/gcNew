@@ -30,7 +30,7 @@ public class VTJime {
 	 * @param map 	存放数据
 	 * @param rs	结果集
 	 */
-	public static void putMapDataByColName(Map<String, String> map,ResultSet rs) {
+	public static void putMapDataByColName(Map<String, Object> map,ResultSet rs) {
 		String colName;
 		try {
 			//从元数据中获得列数 

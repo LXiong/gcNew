@@ -367,5 +367,31 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		});
 	}
 
+	public void deleteTaskTelByTtid(final TaskForm taskForm) {
+		String sp_delete_task = "{call web_tasktel_delete(?,?)}";
+		this.getJdbcTemplate().execute(sp_delete_task, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, taskForm.getTid());
+				cs.setInt(2, taskForm.getTtid());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	public void recallTel(final TaskForm taskForm) {
+		String sp_recall_task = "{call web_tasktel_recall(?,?)}";
+		this.getJdbcTemplate().execute(sp_recall_task, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, taskForm.getTid());
+				cs.setInt(2, taskForm.getTtid());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
 	
 }

@@ -58,12 +58,12 @@
 			<thead class="tab_head">
                  <tr>
                      <th width="4%">编号</th>
-                     <th width="6%">平台名称</th>
-                     <th width="8%">主叫号码</th>
+                     <th width="10%">平台名称</th>
+                     <th width="10%">主叫号码</th>
                      <th width="8%">被叫号码</th>
                      <th width="12%">振铃/摘机</th>
-                     <th width="12%">应答</th>
-                     <th width="12%">挂机</th>
+                     <th width="8%">应答</th>
+                     <th width="8%">挂机</th>
                      <th width="4%">等待</th>
                      <th width="4%">通话</th>
                      <th width="6%">结束方式</th>
@@ -78,9 +78,9 @@
 					<td>${call.cts }</td>
 					<td>${call.ani }</td>
 					<td>${call.dnis }</td>
-					<td>${fn:substring(call.callin,2,19) }</td>
-					<td>${fn:substring(call.answer,2,19) }</td>
-					<td>${fn:substring(call.onhook,2,19) }</td>
+					<td>${fn:substring(call.callin,5,19) }</td>
+					<td>${fn:substring(call.answer,10,19) }</td>
+					<td>${fn:substring(call.onhook,10,19) }</td>
 					<td>${call.wait }</td>
 					<td>${call.talk }</td>
 					<td>${call.endcode }</td>

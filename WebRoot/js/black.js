@@ -71,3 +71,17 @@ function emptyBlack()
 		document.form3.submit();
 	});
 }
+
+//delete
+function deleteBlackPre(bid)
+{
+	$("#del_bid").val(bid);
+	layer.confirm("确定要删除吗？",function(){
+		deleteBlack();
+	});
+}
+function deleteBlack()
+{
+	document.form4.submit();
+}
+

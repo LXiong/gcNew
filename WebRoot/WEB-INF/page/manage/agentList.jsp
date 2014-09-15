@@ -17,20 +17,21 @@
  	<meta http-equiv="expires" content="0"/>
  	<!-- layer 弹出插件 start -->
 	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/layer/extend/layer.ext.js'/>"></script>
 	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
- 	
+	<script type="text/javascript" src="<c:url value='/js/agent.js?v=1'/>"></script>
+ 	<!-- ajax file upload -->
+ 	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </head>
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">话务员档案管理</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-	        <li><input type="button" class="btn4" onclick="saveAgent('add','','','','','')" value="添加"/></li>
+	        <li><input type="button" class="btn4" onclick="saveAgent('add','','','','','','')" value="添加"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
 	        <li></li>
@@ -55,8 +56,8 @@
 					<td>${agent.agtname }</td>
 					<td>${agent.email }</td>
 					<td>
-						<a href="javascript:saveAgent('edit','${agent.account }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;
-						<a href="javascript:deleteAgentPre()">删除</a>
+						<a href="javascript:saveAgent('edit','${agent.agtid }','${agent.account }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:deleteAgentPre('${agent.agtid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteAgent()" value="删除"/>
 					</td>
 				</tr>
@@ -77,8 +78,8 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form2" action="<c:url value='/agentAction_saveAgent.action'/>" method="post">
-	    <input type="hidden" id="addeditx" name="agttxt"/>
+		<form id="form2" action="<c:url value='/agentAction_saveAgent.action'/>" method="post">
+	    <input type="hidden" id="agtidx" name="agttxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">登录账号：</span>
 	        <div class="ipt-box">
@@ -109,7 +110,7 @@
 	    </div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
-			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
+			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="saveAgentBtn()"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
 		</div>	
 		</form>
@@ -117,83 +118,10 @@
 	<!--POP LAYER END-->
 	
 	<form name="form3" action="<c:url value='/agentAction_deleteAgent.action'/>" method="post">
-		<input type="hidden" name="account" value="${agent.account }"/>
+		<input type="hidden" id="del_agtid" name="agtid"/>
 	</form>
 	
 </div>
-
-<script type="text/javascript">
-	function saveAgent(t,account,telnum,agtname,email)
-	{
-		var tit;
-		if(t=="add")
-		{
-			tit="添加话务员";
-			$("#addeditx").val(0);
-		}
-		else
-		{
-			tit="修改话务员信息";
-			$("#addeditx").val(1);
-		}
-		//
-		$("#accountx").val(account);
-		$("#telnumx").val(telnum);
-		$("#agtnamex").val(agtname);
-		$("#emailx").val(email);
-		
-		$.layer({
-			type: 1,
-	        title: tit,
-	        offset: [($(window).height() - 290)/2+'px', ''],
-	        border : [5, 0.5, '#666'],
-	        area: ['450px','300px'],
-	        shadeClose: false,
-			bgcolor: '#fff',
-			page:{dom:'#popDiv'}
-		});
-	}
-
-	//
-	function deleteAgentPre()
-	{
-		layer.confirm("确定要删除吗？",function(){
-			deleteAgent();
-		});
-	}
-	function deleteAgent()
-	{
-		document.form3.submit();
-	}
-	
-</script>
-<script type="text/javascript">
-	$(function(){
-		$("div.holder").jPages({
-			containerID : "movies",
-	        first : "首页",
-	        previous : "上一页",
-	        next : "下一页",
-	        last : "尾页",
-	        perPage : 26,
-	        keyBrowse:true,
-	        delay : 5,
-	        callback : function( pages, items ){
-		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
-		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
-		    }
-		});
-	      /* when button is clicked */
-    	$("#tiaozhuan").click(function(){
-      		/* get given page */
-			var page = parseInt( $("#tzval").val() );
-
-      		/* jump to that page */
-      		$("div.holder").jPages( page );
-
-    	});
-	});
-</script>
 
 </body>
 </html>

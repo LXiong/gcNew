@@ -1,4 +1,6 @@
 package cn.voicet.gc.web.action;
+import java.io.IOException;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -34,13 +36,29 @@ public class AgentAction extends BaseAction implements ModelDriven<AgentForm>{
 	/**
 	 * 添加或更新话务员
 	 * @return
+	 * @throws IOException 
 	 */
-	public String saveAgent()
+	public String saveAgent() throws IOException
 	{
 		log.info("agttxt[] length:"+agentForm.getAgttxt().length);
-		agentDao.saveAgent(agentForm);
-		log.info("save agent ["+agentForm.getAgttxt()[3]+"] success");
-		return home();
+		String ret = agentDao.saveAgent(agentForm);
+		if(ret.equals("ok")){
+			log.info("save agent ["+agentForm.getAgttxt()[2]+"] success");
+		}
+		else if(ret.equals("err_telexists"))
+		{
+			log.info("save agent ["+agentForm.getAgttxt()[2]+"] fail");
+		}
+		else if(ret.equals("err_teloraccountexists"))
+		{
+			log.info("save agent ["+agentForm.getAgttxt()[2]+"] fail");
+		}
+		else
+		{
+			log.info("save agent error");
+		}
+		response.getWriter().print(ret);
+		return null;
 	}
 	
 	/**
@@ -49,9 +67,9 @@ public class AgentAction extends BaseAction implements ModelDriven<AgentForm>{
 	 */
 	public String deleteAgent()
 	{
-		log.info("account:"+agentForm.getAccount());
+		log.info("account:"+agentForm.getAgtid());
 		agentDao.deleteAgentByAccount(agentForm);
-		log.info("delete agent ["+agentForm.getAccount()+"] success");
+		log.info("delete agent ["+agentForm.getAgtid()+"] success");
 		return home();
 	}
 }

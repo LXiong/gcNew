@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import cn.voicet.gc.dao.UserDao;
 import cn.voicet.gc.web.form.UserForm;
 import cn.voicet.util.DotSession;
+import cn.voicet.util.VTJime;
 
 @Repository(UserDao.SERVICE_NAME)
 @SuppressWarnings("unchecked")
@@ -35,17 +36,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 						if (rs != null) {
 							while (rs.next()) {
 								map = new HashMap<String, Object>();
-								int i = 1;
-								map.put("roleid", rs.getString(i++));
-								map.put("username", rs.getString(i++));
-								map.put("rolename", rs.getString(i++));
-								/*
-								map.put("isedit", rs.getString(i++));
-								map.put("rbm", rs.getString(i++));
-								map.put("rbn", rs.getString(i++));
-								map.put("workyear", rs.getString(i++));
-								map.put("yearlock", rs.getString(i++));
-								*/
+								VTJime.putMapDataByColName(map, rs);
 							}
 						}
 						return map;

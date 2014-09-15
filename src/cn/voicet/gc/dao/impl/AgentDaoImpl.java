@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -70,19 +71,20 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 	}
 
 	
-	public void saveAgent(final AgentForm agentForm) {
-		String[] sp_agents = {"{call web_agent_add(?,?,?,?,?)}","{call web_agent_update(?,?,?,?,?)}"};
-		String n = agentForm.getAgttxt()[0];
-		this.getJdbcTemplate().execute(sp_agents[Integer.parseInt(n)], new CallableStatementCallback() {
+	public String saveAgent(final AgentForm agentForm) {
+		String sp_agent_update = "{call web_agent_update(?,?,?,?,?,?)}";
+		return (String)this.getJdbcTemplate().execute(sp_agent_update, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, agentForm.getAgttxt()[1]);
-				cs.setString(2, agentForm.getAgttxt()[2]);
-				cs.setString(3, agentForm.getAgttxt()[3]);
-				cs.setString(4, agentForm.getAgttxt()[4]);
-				cs.setString(5, null);
+				cs.setString(1, agentForm.getAgttxt()[0]);
+				cs.setString(2, agentForm.getAgttxt()[1]);
+				cs.setString(3, agentForm.getAgttxt()[2]);
+				cs.setString(4, agentForm.getAgttxt()[3]);
+				cs.setString(5, agentForm.getAgttxt()[4]);
+				cs.registerOutParameter(6, Types.VARCHAR);
 				cs.execute();
-				return null;
+				log.info("ret:"+cs.getString(6));
+				return cs.getString(6);
 			}
 		});
 	}
@@ -93,7 +95,7 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		this.getJdbcTemplate().execute(sp_agent_delete, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, agentForm.getAccount());
+				cs.setInt(1, agentForm.getAgtid());
 				cs.execute();
 				return null;
 			}

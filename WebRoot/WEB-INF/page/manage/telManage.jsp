@@ -25,7 +25,7 @@
  	<!-- jPage 分页插件  end -->
  	<!-- ajax file upload -->
  	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
- 	
+ 	<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=1'/>"></script>
 </head>
 <body>
 <div id="contentWrap">
@@ -35,22 +35,25 @@
    	<input type="hidden" name="tname" value="${tname }"/>
    	
 	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w400 left">
+	   	<ul class="queryWrap_ul_w300 left">
 			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
-		<ul class="queryWrap_ul_w420 right">
+		<ul class="queryWrap_ul_w500 right">
 			<li>
-	        	<label>点击<a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板文件</label>
+	        	<label><input type="button" onclick="location.href='<c:url value="/taskAction_recall.action?tid=${tid }&tname=${tname }"/>'" class="btn4" value="重呼所有" /></label>
 	        </li>
 			<li>
-	        	<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="清空"/>
+	        	<label>点击<a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板文件</label>
 	        </li>
 	        <li>
 	        	<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>
 	        </li>
 	        <li>
 	        	<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/taskAction_export.action?tid=${tid }&kind=${kind }'" value="导出"/>
+	        </li>
+			<li>
+	        	<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="清空"/>
 	        </li>
 	        <li>
 	        	<input type="button" class="btn4" onclick="location.href='<c:url value='/taskAction_home.action'/>'" value="返回"/>
@@ -77,7 +80,9 @@
 					<td>${tel.state }</td>
 					<td>${tel.callret }</td>
 					<td>
-						<a href="#">操作</a>&nbsp;&nbsp;
+						<a href="<c:url value='/taskAction_recall.action?tid=${tid }&ttid=${tel.ttid }'/>">重呼</a>&nbsp;&nbsp;
+						<a href="javascript:deleteTaskTelPre('${tid }','${tel.ttid }')">删除</a>
+						<input type="button" class="hide" onclick="deleteTaskTel()" value="删除"/>
 					</td>
 				</tr>
 				</s:iterator>
@@ -123,6 +128,11 @@
 		<input type="hidden" name="tid" value="${tid }"/>
 		<input type="hidden" name="kind" value="${kind }"/>
 		<input type="hidden" name="tname" value="${tname }"/>
+	</form>
+	
+	<form name="form4" action="<c:url value='/taskAction_deleteTaskTel.action'/>" method="post">
+		<input type="hidden" id="del_tid" name="tid"/>
+		<input type="hidden" id="del_ttid" name="ttid"/>
 	</form>
 	
 </div>

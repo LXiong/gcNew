@@ -103,11 +103,38 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		return "show_telmanage";
 	}
 	
+	/**
+	 * 清空任务中的所有号码
+	 * @return
+	 */
 	public String emptyTaskTel()
 	{
 		log.info("tid:"+taskForm.getTid()+", kind:"+taskForm.getKind()+", tname:"+taskForm.getTname());
 		taskDao.emptyTaskTel(taskForm);
 		log.info("empty ["+taskForm.getTname()+"] success");
+		return telmanage();
+	}
+	
+	/**
+	 * 删除任务中的号码
+	 * @return
+	 */
+	public String deleteTaskTel()
+	{
+		log.info("tid:"+taskForm.getTid()+"ttid:"+taskForm.getTtid());
+		taskDao.deleteTaskTelByTtid(taskForm);
+		return telmanage();
+	}
+	
+	/**
+	 * 重呼
+	 * @return
+	 */
+	public String recall()
+	{
+		log.info("tid:"+taskForm.getTid()+"ttid:"+taskForm.getTtid());
+		taskDao.recallTel(taskForm);
+		log.info("recall complete");
 		return telmanage();
 	}
 	
