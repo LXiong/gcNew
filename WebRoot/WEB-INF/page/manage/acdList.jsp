@@ -28,20 +28,22 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">业务组档案管理</h3>
+	<form action="<c:url value='/acdAction_home.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-	   		<li><input type="button" class="btn4" onclick="saveAcd('add','','','','','','','','')" value="添加"/></li>
+	   		<li><label>服务器别名：</label><input type="text" name="cts" class="ipt100" value="<s:property value="cts"/>"/></li>
+	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
+	        <li><input type="button" class="btn4" onclick="saveAcd('add','','','','','','','','')" value="添加"/></li>
 		</ul>
 	</div>
+	</form>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
                      <th width="10%">业务编号</th>
-                     <th width="10%">服务器别名</th>
                      <th width="10%">业务名称</th>
                      <th width="10%">电话号码</th>
                      <th width="10%">主叫号码</th>
@@ -56,7 +58,6 @@
                	<s:iterator id="acd" value="#session.vts.list">
 				<tr align="center">
 					<td>${acd.grpid }</td>
-					<td>${acd.cts }</td>
 					<td>${acd.grpname }</td>
 					<td>${acd.telnum }</td>
 					<td>${acd.ani }</td>

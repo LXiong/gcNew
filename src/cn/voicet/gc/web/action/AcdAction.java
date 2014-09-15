@@ -27,7 +27,7 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 	public String home()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		acdDao.queryAcdList(ds);
+		acdDao.queryAcdList(ds,acdForm);
 		return "show_acd";
 	}
 	

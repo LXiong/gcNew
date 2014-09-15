@@ -25,11 +25,12 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 
 	private static Logger log = Logger.getLogger(AcdDaoImpl.class);
 
-	public void queryAcdList(final DotSession ds) {
+	public void queryAcdList(final DotSession ds, final AcdForm acdForm) {
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_acd_list()}");
+				CallableStatement cs = conn.prepareCall("{call web_acd_list(?)}");
+				cs.setString(1, acdForm.getCts());
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
