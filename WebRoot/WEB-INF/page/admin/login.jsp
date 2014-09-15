@@ -13,11 +13,10 @@
 	$(function(){
 		//账号输入框获取焦点 
  		document.all.account.focus();
-
  		//记住密码 
 		var account = Cookie.getCookie("accountgcnew");
 		var password =  Cookie.getCookie("passwordgcnew");
-		if(account!="" && account!=null){
+		if(account){
 			$("#account").val(account);
 			$("#password").val(password);
 			$("#rememberPass").attr("checked", true); 
