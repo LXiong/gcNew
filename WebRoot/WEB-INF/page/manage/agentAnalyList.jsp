@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  	<title>电话自动外呼系统</title>
-	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/common_cn.css?v=1'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
@@ -42,19 +42,19 @@
     </form>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
-			<thead class="tab_head">
+			<thead class="tab_head2">
                  <tr>
                      <th width="8%">账号</th>
                      <th width="8%">分机号码</th>
                      <th width="8%">姓名</th>
                      <th width="8%">请求次数</th>
                      <th width="8%">接听次数</th>
-                     <th width="8%">总等待时长</th>
-                     <th width="8%">平均等待时长</th>
-                     <th width="8%">通话总时长</th>
-                     <th width="8%">平均通话时长</th>
-                     <th width="8%">接听超时次数</th>
-                     <th width="8%">接听本方挂机次数</th>
+                     <th width="8%">总等待<br/>时长</th>
+                     <th width="8%">平均等待<br/>时长</th>
+                     <th width="8%">通话<br/>总时长</th>
+                     <th width="8%">平均<br/>通话时长</th>
+                     <th width="8%">接听<br/>超时次数</th>
+                     <th width="8%">接听本方<br/>挂机次数</th>
                      <th width="8%">操作</th>
                  </tr>
              </thead>
