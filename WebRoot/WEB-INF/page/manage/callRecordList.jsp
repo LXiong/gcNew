@@ -43,15 +43,12 @@
 			</li>
 	        <li>
 	        	<label>等待时长：</label>
-	        	<s:select name="calltxt" list="#{'>':'>','<':'<'}" listKey="key" listValue="value" value="%{calltxt[6]}"></s:select>
-	        	<input type="text" name="calltxt" class="ipt50" value="${calltxt[7] }"/></li>
+	        	<input type="text" name="calltxt" class="ipt50" value="${calltxt[6] }"/></li>
 	        <li>
 	        	<label>通话时长：</label>
-	        	<s:select name="calltxt" list="#{'>':'>','<':'<'}" listKey="key" listValue="value" value="%{calltxt[8]}"></s:select>
-	        	<input type="text" name="calltxt" class="ipt50" value="${calltxt[9] }"/>
+	        	<input type="text" name="calltxt" class="ipt50" value="${calltxt[7] }"/>
 	        </li>
-	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt50" value="${calltxt[10] }"/></li>
-	        <li><label>提取记录数：</label><input type="text" name="calltxt" class="ipt50" value="${calltxt[11] }"/></li>
+	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt50" value="${calltxt[8] }"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 	</div>

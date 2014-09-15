@@ -51,4 +51,14 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
 		return home();
 	}
 	
+	/**
+	 * 清空黑名单 
+	 * @return
+	 */
+	public String emptyBlack()
+	{
+		blackDao.emptyBlack();
+		log.info("---------- empte black telnum success ----------");
+		return home();
+	}
 }

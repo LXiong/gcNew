@@ -40,24 +40,55 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	/**
 	 * 保存或更新任务
 	 * @return
+	 * @throws IOException 
 	 */
-	public String saveTask(){
+	public String saveTask() throws IOException{
 		log.info("tid:"+taskForm.getTid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind()+", taskinfo:"+taskForm.getTaskinfo());
-		taskDao.saveTask(taskForm);
-		log.info("save task ["+taskForm.getTname()+"] success");
-		return home();
+		String ret = taskDao.saveTask(taskForm);
+		//task update
+		if(ret.equals("ok"))
+		{
+			ret = "updateok";
+			log.info("update task ["+taskForm.getTname()+"] success");
+		}
+		else if(ret.equals("err"))
+		{
+			ret = "updateerr";
+			log.info("update task ["+taskForm.getTname()+"] fail");
+		}
+		else
+		{
+			ret = "insertok";
+			log.info("add task ["+taskForm.getTname()+"] success");
+		}
+		log.info("rets:"+ret);
+		response.getWriter().print(ret);
+		return null;
 	}
 	
 	/**
 	 * 删除任务
 	 * @return
+	 * @throws IOException 
 	 */
-	public String deleteTask()
+	public String deleteTask() throws IOException
 	{
-		log.info("tid:"+taskForm.getTid());
-		taskDao.deleteTaskByTid(taskForm);
-		log.info("delete task ["+taskForm.getTelnum()+"] success");
-		return home();
+		log.info("tid:"+taskForm.getTid()+"tname:"+taskForm.getTname());
+		String ret = taskDao.deleteTaskByTid(taskForm);
+		if(ret.equals("ok"))
+		{
+			log.info("delete task ["+taskForm.getTname()+"] success");	
+		}
+		else if(ret.equals("err_haveteldata"))
+		{
+			log.info("delete task ["+taskForm.getTname()+"] fail");	
+		}
+		else
+		{
+			log.info("delete task error");
+		}
+		response.getWriter().print(ret);
+		return null;
 	}
 	
 	/**
@@ -70,6 +101,14 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		log.info("tid:"+taskForm.getTid()+", telnum:"+taskForm.getTelnum());
 		taskDao.queryTelByTid(ds, taskForm);
 		return "show_telmanage";
+	}
+	
+	public String emptyTaskTel()
+	{
+		log.info("tid:"+taskForm.getTid()+", kind:"+taskForm.getKind()+", tname:"+taskForm.getTname());
+		taskDao.emptyTaskTel(taskForm);
+		log.info("empty ["+taskForm.getTname()+"] success");
+		return telmanage();
 	}
 	
 	/**

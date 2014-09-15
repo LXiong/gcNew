@@ -31,7 +31,6 @@ import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.TaskDao;
-import cn.voicet.gc.web.form.QueueForm;
 import cn.voicet.gc.web.form.TaskForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
@@ -63,8 +62,8 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		});
 	}
 	
-	public void saveTask(final TaskForm taskForm) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
+	public String saveTask(final TaskForm taskForm) {
+		return (String)this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
 				String task_insert = "{call web_task_insert(?,?,?,?)}";
@@ -73,6 +72,7 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				if(taskForm.getTid()!=0)
 				{
 					cs = conn.prepareCall(task_update);
+					cs.clearParameters();
 					cs.setInt(1, taskForm.getTid());
 					cs.setString(2, taskForm.getTname());
 					cs.setInt(3, taskForm.getKind());
@@ -85,27 +85,30 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				else
 				{
 					cs = conn.prepareCall(task_insert);
+					cs.clearParameters();
 					cs.setString(1, taskForm.getTname());
 					cs.setInt(2, taskForm.getKind());
 					cs.setString(3, taskForm.getTaskinfo());
 					cs.registerOutParameter(4, Types.INTEGER);
 					cs.execute();
-					log.info("tid:"+cs.getInt(4));
-					return cs.getInt(4);
+					log.info("tid:"+cs.getString(4));
+					return cs.getString(4);
 				}
 			}
 		});
 	}
 
-	public void deleteTaskByTid(final TaskForm taskForm) {
+	public String deleteTaskByTid(final TaskForm taskForm) {
 		String procedureSql = "{call web_task_delete(?,?)}";
-		this.getJdbcTemplate().execute(procedureSql, new CallableStatementCallback() {
+		return (String)this.getJdbcTemplate().execute(procedureSql, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
-				cs.setString(2, null);
+				cs.registerOutParameter(2, Types.VARCHAR);
 				cs.execute();
-				return null;
+				cs.getString(2);
+				log.info("ret:"+cs.getString(2));
+				return cs.getString(2);
 			}
 		});
 	}
@@ -350,6 +353,18 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 			break;
 		}
 		return true;
+	}
+
+	public void emptyTaskTel(final TaskForm taskForm) {
+		String sp_empty_task = "{call web_huifang_empty(?,?)}";
+		this.getJdbcTemplate().execute(sp_empty_task, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, taskForm.getTid());
+				cs.setInt(2, taskForm.getKind());
+				return null;
+			}
+		});
 	}
 
 	

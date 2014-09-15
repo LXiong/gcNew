@@ -14,12 +14,12 @@
  	<meta http-equiv="expires" content="0"/>
  	<!-- layer 弹出插件 start -->
 	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/layer/extend/layer.ext.js'/>"></script>
 	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
+ 	<script type="text/javascript" src="<c:url value='/js/task.js?v=5'/>"></script>
  	<!-- ajax file upload -->
  	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
  	
@@ -39,13 +39,13 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="10%">任务编号</th>
-                     <th width="10%">任务名称</th>
-                     <th width="10%">任务类型</th>
-                     <th width="10%">号码总数</th>
-                     <th width="10%">新建数</th>
-                     <th width="10%">执行中</th>
-                     <th width="10%">执行完成</th>
+                     <th width="8%">任务编号</th>
+                     <th width="20%">任务名称</th>
+                     <th width="8%">任务类型</th>
+                     <th width="8%">号码总数</th>
+                     <th width="8%">新建数</th>
+                     <th width="8%">执行中</th>
+                     <th width="8%">执行完成</th>
                      <th width="10%">呼叫接通数</th>
                      <th width="20%">操作</th>
                  </tr>
@@ -54,7 +54,7 @@
                	<s:iterator id="task" value="#session.vts.list">
 				<tr align="center">
 					<td>${task.tid }</td>
-					<td>${task.tname }</td>
+					<td align="left">&nbsp;${task.tname }</td>
 					<td>
 						<c:if test="${task.kind eq 0 }">标准</c:if>
 						<c:if test="${task.kind eq 1 }">回访1</c:if>
@@ -69,7 +69,8 @@
 					<td>
 						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
 						<a href="javascript:saveTask('edit','${task.tid }','${task.tname }','${task.kind }','${task.taskinfo }')">修改</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/taskAction_deleteTask.action?tid=${task.tid }&tname=${task.tname}">删除</a>
+						<a href="javascript:deleteTaskPre('${task.tid }','${task.tname }')">删除</a>
+						<input type="button" class="hide" onclick="deleteTask('${task.tid }','${task.tname }')" value="删除"/>
 					</td>
 				</tr>
 				</s:iterator>
@@ -89,7 +90,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form1" action="<c:url value='/taskAction_saveTask.action'/>" method="post">
+		<form id="form1" action="<c:url value='/taskAction_saveTask.action'/>" method="post">
 	    <input type="hidden" id="tidx" name="tid"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">任务名称：</span>
@@ -114,78 +115,19 @@
 	    </div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
-			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="submitSaveTaskBtn()"/></div>
+			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="saveTaskBtn()"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
 		</div>	
 		</form>
 	</div>
 	<!--POP LAYER END-->
 	
+	<!-- delete task -->
+	<form id="form2" name="form2" action="<c:url value='/taskAction_deleteTask.action'/>" method="post">
+		<input type="hidden" id="del_tid" name="tid"/>
+		<input type="hidden" id="del_tname" name="tname"/>
+	</form>
+	
 </div>
-
-<script type="text/javascript">
-	function saveTask(t,tid,tname,kind,taskinfo)
-	{
-		var tit;
-		if(t=="add")
-		{
-			tit="添加任务";
-			$("#tidx").val(0);
-			$("#kindx").val(0);
-		}
-		else
-		{
-			tit="修改任务";
-			$("#tidx").val(tid);
-			$("#kindx").val(kind);
-		}
-		//
-		$("#tnamex").val(tname);
-		$("#taskinfox").val(taskinfo);
-		$.layer({
-			type: 1,
-	        title: tit,
-	        offset: [($(window).height() - 290)/2+'px', ''],
-	        border : [5, 0.5, '#666'],
-	        area: ['450px','300px'],
-	        shadeClose: false,
-			bgcolor: '#fff',
-			page:{dom:'#popDiv'}
-		});
-	}
-	//提交按钮 
-	function submitSaveTaskBtn()
-	{
-		document.form1.submit();
-	}
-</script>
-<script type="text/javascript">
-	$(function(){
-		$("div.holder").jPages({
-			containerID : "movies",
-	        first : "首页",
-	        previous : "上一页",
-	        next : "下一页",
-	        last : "尾页",
-	        perPage : 26,
-	        keyBrowse:true,
-	        delay : 5,
-	        callback : function( pages, items ){
-		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
-		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
-		    }
-		});
-	      /* when button is clicked */
-    	$("#tiaozhuan").click(function(){
-      		/* get given page */
-			var page = parseInt( $("#tzval").val() );
-
-      		/* jump to that page */
-      		$("div.holder").jPages( page );
-
-    	});
-	});
-</script>
-
 </body>
 </html>

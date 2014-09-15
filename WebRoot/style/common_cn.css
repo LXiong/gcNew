@@ -27,6 +27,7 @@ table {border-collapse:collapse;border-spacing:0; width:100%; line-height:20px;}
 .cursor_p{cursor:pointer;}
 
 .clear{clear:both;}
+.hide{display:none;}
 
 /* height */
 .h132{height:132px;}

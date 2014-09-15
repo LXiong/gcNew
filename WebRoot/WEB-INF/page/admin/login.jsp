@@ -8,7 +8,12 @@
 	<link type="text/css" href="<c:url value='/style/layout.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/js/cookie.js'/>"></script>
- 	<script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
+ 	<script type="text/javascript" src="<c:url value='/js/login.js?v=2'/>"></script>
+ 	
+ 	<!-- layer 弹出插件 start -->
+	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+	<!-- layer 弹出插件 end -->
+	
  	<script type="text/javascript">
 	$(function(){
 		//账号输入框获取焦点 

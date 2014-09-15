@@ -40,8 +40,8 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="20%">登录账号</th>
                      <th width="20%">话务员号码</th>
+                     <th width="20%">登录账号</th>
                      <th width="20%">姓名</th>
                      <th width="20%">电子邮箱</th>
                      <th width="20%">操作</th>
@@ -50,8 +50,8 @@
              <tbody id="movies">
                	<s:iterator id="agent" value="#session.vts.list">
 				<tr align="center">
-					<td>${agent.account }</td>
 					<td>${agent.telnum }</td>
+					<td>${agent.account }</td>
 					<td>${agent.agtname }</td>
 					<td>${agent.email }</td>
 					<td>

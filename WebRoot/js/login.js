@@ -4,19 +4,19 @@ function login(){
 	var vercode = $("#vercode").val();
 	if(!account)
 	{
-		alert("账号不能为空");
+		layer.alert("账号不能为空",111);
 		Form1.account.focus();
 		return false;
 	}
 	if(!password)
 	{
-		alert("密码不能为空");
+		layer.alert("密码不能为空",111);
 		Form1.password.focus();
 		return false;
 	}
 	if(!vercode)
 	{
-		alert("请输入验证码");
+		layer.alert("请输入验证码",111);
 		Form1.vercode.focus();
 		return false;
 	}
@@ -52,12 +52,12 @@ var responseLogin = function(data, textStatus, jqXHR)
 	}
 	else if(data.status=="vercodeerror")
 	{
-		alert("验证码错误,请重新输入!");
+		layer.alert("验证码错误,请重新输入!",111);
 		Form1.vercode.focus();
 	}
 	else
 	{
-		alert("账号或密码错误");
+		layer.alert("账号或密码错误",111);
 	}
 	verImg.src = "verCode?"+Math.random();
 }

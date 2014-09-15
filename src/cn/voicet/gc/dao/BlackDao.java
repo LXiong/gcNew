@@ -8,4 +8,5 @@ public interface BlackDao{
 	void queryBlackList(DotSession ds, BlackForm blackForm);
 	void saveTelnum(BlackForm blackForm);
 	void deleteTelnumByBid(BlackForm blackForm);
+	void emptyBlack();
 }

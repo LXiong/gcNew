@@ -91,4 +91,15 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 			}
 		});
 	}
+
+	public void emptyBlack() {
+		String procedureSql = "{call web_black_empty()}";
+		this.getJdbcTemplate().execute(procedureSql, new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.execute();
+				return null;
+			}
+		});
+	}
 }

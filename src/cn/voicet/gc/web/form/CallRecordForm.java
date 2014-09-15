@@ -9,8 +9,8 @@ public class CallRecordForm {
 	private String sdt = curDate;	//统计开始日期
 	private String edt = curDate;	//统计结束日期
 
-	//calltxt size:11
-	private String[] calltxt={cts,sdt,edt,"","","1",">","0",">","0","",""};
+	//calltxt size:9
+	private String[] calltxt={cts,sdt,edt,"","","1","0","0",""};
 	
 	public String getCts() {
 		return cts;

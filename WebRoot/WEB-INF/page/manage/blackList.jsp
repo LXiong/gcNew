@@ -25,13 +25,14 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">呼叫黑名单</h3>
-   	<form action="<c:url value='/blackAction_home.action'/>" method="post" id="searchForm" name="searchForm">
+   	<form id="form1" name="form1" action="<c:url value='/blackAction_home.action'/>" method="post">
    	<div class="queryDiv">
-   		<ul class="queryWrap_ul_w600 left">
+   		<ul class="queryWrap_ul_w500 left">
 	        <li><label>电话号码：</label><input type="text" class="ipt155" name="telnum" id="telnum" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" id="searchImg" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
-		<ul class="queryWrap_ul_w100 right">
+		<ul class="queryWrap_ul_w200 right">
+			<li><input type="button" class="btn4" onclick="emptyBlack()" value="清空"/></li>
 	        <li><input type="button" class="btn4" onclick="saveBlackNumber('add','','','')" value="添加"/></li>
 		</ul>
    	</div>
@@ -76,7 +77,7 @@
 	
 	<!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form1" action="<c:url value='/blackAction_saveTelnum.action'/>" method="post">
+		<form name="form2" action="<c:url value='/blackAction_saveTelnum.action'/>" method="post">
 	    <input type="hidden" id="bidx" name="bid"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab100">电话号码：</span>
@@ -101,7 +102,9 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<form name="form3" action="<c:url value='/blackAction_emptyBlack.action'/>" method="post"></form>
 </div>
+
 <script type="text/javascript">
 	
 	//jPage分页 

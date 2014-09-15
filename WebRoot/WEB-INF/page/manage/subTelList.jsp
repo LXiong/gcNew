@@ -28,30 +28,28 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">座席分机管理</h3>
+	<form action="<c:url value='/subTelAction_home.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-	        <li><input type="button" class="btn4" onclick="saveSubTel('add','','','','','','','')" value="添加"/></li>
+	        <li><label>服务器别名：</label><input type="text" name="cts" class="ipt100" value="<s:property value="cts"/>"/></li>
+	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
+	        <li><input type="button" class="btn4" onclick="saveSubTel('add','','','','','','','')" value="添加"/></li>
 		</ul>
 	</div>
+	</form>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="8%">tel_id</th>
-                     <th width="8%">tel_num</th>
-                     <th width="8%">fn_m</th>
-                     <th width="8%">fn_n</th>
-                     <th width="8%">fn_d</th>
-                     <th width="8%">fn_t</th>
-                     <th width="8%">fn_i</th>
-                     <th width="8%">def_agent</th>
-                     <th width="8%">def_acd</th>
-                     <th width="8%">def_cmd</th>
-                     <th width="8%">client_name</th>
-                     <th width="8%">操作</th>
+                     <th width="12%">分机编号</th>
+                     <th width="12%">分机号码</th>
+                     <th width="12%">默认话务员帐号</th>
+                     <th width="12%">默认业务组号码</th>
+                     <th width="12%">默认##命令</th>
+                     <th width="15%">绑定座席客户端名称</th>
+                     <th width="12%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -59,11 +57,6 @@
 				<tr align="center">
 					<td>${sub.telid }</td>
 					<td>${sub.telnum }</td>
-					<td>${sub.fn_m }</td>
-					<td>${sub.fn_n }</td>
-					<td>${sub.fn_d }</td>
-					<td>${sub.fn_t }</td>
-					<td>${sub.fn_i }</td>
 					<td>${sub.def_agent }</td>
 					<td>${sub.def_acd }</td>
 					<td>${sub.def_cmd }</td>

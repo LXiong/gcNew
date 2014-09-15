@@ -60,5 +60,14 @@ function checkTelNumber(o)
 function submitSaveNumberBtn()
 {
 	if(!checkTelNumber(document.all.telnumx)) return;
-	document.form1.submit();
+	document.form2.submit();
+}
+
+//clear
+//empty
+function emptyBlack()
+{
+	layer.confirm("确定要清空黑名单中的所有号码吗？",function(){
+		document.form3.submit();
+	});
 }

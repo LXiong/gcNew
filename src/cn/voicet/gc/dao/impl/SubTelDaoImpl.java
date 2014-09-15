@@ -23,12 +23,12 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 
 	private static Logger log = Logger.getLogger(SubTelDaoImpl.class);
 
-	public void querySubTelList(final DotSession ds) {
-		//String sp_subtel = "{call web_subtel_list()}";
-		String sp_subtel = "select * from cti_subtel";
+	public void querySubTelList(final DotSession ds, final SubTelForm subTelForm) {
+		String sp_subtel = "{call web_subtel_list(?)}";
 		this.getJdbcTemplate().execute(sp_subtel, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
+				cs.setString(1, subTelForm.getCts());
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();

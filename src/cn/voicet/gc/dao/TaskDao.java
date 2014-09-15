@@ -13,6 +13,7 @@ public interface TaskDao{
 	void queryTelByTid(DotSession ds, TaskForm taskForm);
 	void exportData(TaskForm taskForm, HttpServletResponse response);
 	void batchImportData(File uploadExcel, int tid, int kind);
-	void deleteTaskByTid(TaskForm taskForm);
-	void saveTask(TaskForm taskForm);
+	String deleteTaskByTid(TaskForm taskForm);
+	String saveTask(TaskForm taskForm);
+	void emptyTaskTel(TaskForm taskForm);
 }

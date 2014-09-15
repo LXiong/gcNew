@@ -48,19 +48,9 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		ds.roleName = (String) map.get("rolename");
 		ds.roleID=(String) map.get("roleid");
 		
-		/*
-			ds.rbn = (String) map.get("rbn");
-			ds.rbm = (String) map.get("rbm");
-			ds.isedit = Integer.valueOf((String) map.get("isedit"));
-			ds.workyear=Integer.valueOf((String) map.get("workyear"));
-			ds.yearlock=Integer.valueOf((String) map.get("yearlock"));
-			ds.curBM = ds.rbm;
-			ds.subPathTitle.initPath();
-		*/
 		log.info("rand:"+request.getSession().getAttribute("rand"));
-		
-		ds.roleID ="1";
-		if(!ds.roleID.equals("0"))
+		log.info("roleID:"+ds.roleID);
+		if(null!=ds.roleID && !ds.roleID.equals("0"))
 		{
 			json.put("status", "ok");
 		}

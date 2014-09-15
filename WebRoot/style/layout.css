@@ -46,6 +46,19 @@
 
 .queryDiv{width:866px; height:40px; border:1px solid #3B9FFF;}
 .queryDiv_h80{width:866px; height:80px; border:1px solid #3B9FFF;}
+
+.queryWrap_ul_w200{width:200px; height:40px; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_w200 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
+.queryWrap_ul_w300{width:300px; height:40px; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_w300 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
+.queryWrap_ul_w400{width:400px; height:40px; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_w400 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
+.queryWrap_ul_w500{width:500px; height:40px; padding-left:10px;margin-top:1px;}
+.queryWrap_ul_w500 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
+
 .queryWrap_ul_w600{width:600px; height:40px; padding-left:10px;margin-top:1px;}
 .queryWrap_ul_w600 li{float:left; margin-right:10px; display:inline; padding:10px 0px 0px;}
 

@@ -35,11 +35,17 @@
    	<input type="hidden" name="tname" value="${tname }"/>
    	
 	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w600 left">
+	   	<ul class="queryWrap_ul_w400 left">
 			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
-		<ul class="queryWrap_ul_w234 right">
+		<ul class="queryWrap_ul_w400 right">
+			<li>
+	        	<label>点击<a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板文件</label>
+	        </li>
+			<li>
+	        	<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="添空"/>
+	        </li>
 	        <li>
 	        	<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>
 	        </li>
@@ -91,7 +97,6 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<iframe name="importFrame" style="display:none;"></iframe>
 		<form id="form2" name="form2" 
 			action="${pageContext.request.contextPath }/taskAction_importTaskTel.action" 
 			method="post" 
@@ -112,6 +117,13 @@
 		</form>
 	</div>
 	<!--POP LAYER END-->
+	
+	<!-- empty form3 -->
+	<form id="form3" name="form3" action="<c:url value='/taskAction_emptyTaskTel.action'/>" method="post">
+		<input type="hidden" name="tid" value="${tid }"/>
+		<input type="hidden" name="kind" value="${kind }"/>
+		<input type="hidden" name="tname" value="${tname }"/>
+	</form>
 	
 </div>
 
@@ -174,7 +186,14 @@
 	        return false;
 	    }	
 	}
-	
+
+	//empty
+	function emptyTasktel(tname)
+	{
+		layer.confirm("确定要清空 ["+tname+"]中所有号码吗？",function(){
+			document.form3.submit();
+		});
+	}
 </script>
 <script type="text/javascript">
 	$(function(){

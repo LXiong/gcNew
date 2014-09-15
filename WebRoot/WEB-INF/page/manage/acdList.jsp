@@ -43,14 +43,13 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="10%">业务编号</th>
-                     <th width="10%">业务名称</th>
-                     <th width="10%">电话号码</th>
-                     <th width="10%">主叫号码</th>
-                     <th width="10%">结束等待</th>
-                     <th width="10%">等待时长</th>
-                     <th width="10%">等待数量</th>
-                     <th width="10%">溢出数</th>
+                     <th width="10%">组编号</th>
+                     <th width="10%">组名称</th>
+                     <th width="10%">组号码</th>
+                     <th width="10%">ACW</th>
+                     <th width="10%">最大等待时长(秒)</th>
+                     <th width="10%">最大排队数目</th>
+                     <th width="10%">溢出去向</th>
                      <th width="10%">操作</th>
                  </tr>
              </thead>
@@ -60,7 +59,6 @@
 					<td>${acd.grpid }</td>
 					<td>${acd.grpname }</td>
 					<td>${acd.telnum }</td>
-					<td>${acd.ani }</td>
 					<td>${acd.acw }</td>
 					<td>${acd.maxwaittime }</td>
 					<td>${acd.maxwaitnum }</td>
@@ -97,14 +95,14 @@
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
-	    	<span class="lab150">业务名称：</span>
+	    	<span class="lab150">组名称：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="grpnamex" name="acdtxt" class="ipt_text_w150 inputDefault" />
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item" id="whnum">
-	    	<span class="lab150">电话号码：</span>
+	    	<span class="lab150">组号码：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="telnumx" name="acdtxt" value="0" class="ipt_text_w150 inputDefault" />
 	            <span class="asterisk"></span>
