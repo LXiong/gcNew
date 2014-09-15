@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,17 +60,17 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="8%">编号</th>
-                     <th width="8%">平台名称</th>
+                     <th width="4%">编号</th>
+                     <th width="6%">平台名称</th>
                      <th width="8%">主叫号码</th>
                      <th width="8%">被叫号码</th>
-                     <th width="8%">振铃/摘机</th>
-                     <th width="8%">应答</th>
-                     <th width="8%">挂机</th>
-                     <th width="8%">等待</th>
-                     <th width="8%">通话</th>
-                     <th width="8%">结束方式</th>
-                     <th width="8%">话务员</th>
+                     <th width="12%">振铃/摘机</th>
+                     <th width="12%">应答</th>
+                     <th width="12%">挂机</th>
+                     <th width="4%">等待</th>
+                     <th width="4%">通话</th>
+                     <th width="6%">结束方式</th>
+                     <th width="6%">话务员</th>
                      <th width="8%">操作</th>
                  </tr>
              </thead>
@@ -80,9 +81,9 @@
 					<td>${call.cts }</td>
 					<td>${call.ani }</td>
 					<td>${call.dnis }</td>
-					<td>${call.callin }</td>
-					<td>${call.answer }</td>
-					<td>${call.onhook }</td>
+					<td>${fn:substring(call.callin,2,19) }</td>
+					<td>${fn:substring(call.answer,2,19) }</td>
+					<td>${fn:substring(call.onhook,2,19) }</td>
 					<td>${call.wait }</td>
 					<td>${call.talk }</td>
 					<td>${call.endcode }</td>
