@@ -41,10 +41,10 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 * 保存或更新任务
 	 * @return
 	 */
-	public String saveQueue(){
-		log.info("tid:"+taskForm.getTid()+", name:"+taskForm.getTname()+", ani:"+taskForm.getAni()+" kind:"+taskForm.getKind()+", maxline:"+taskForm.getMaxline()+", overflowto:"+taskForm.getOverflowto());
+	public String saveTask(){
+		log.info("tid:"+taskForm.getTid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind()+", taskinfo:"+taskForm.getTaskinfo());
 		taskDao.saveTask(taskForm);
-		log.info("save task ["+taskForm.getTelnum()+"] success");
+		log.info("save task ["+taskForm.getTname()+"] success");
 		return home();
 	}
 	

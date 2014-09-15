@@ -38,7 +38,7 @@
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
+	        <li><input type="button" class="btn4" onclick="saveTask('add','','','','')" value="添加"/></li>
 		</ul>
 	</div>
     </form>
@@ -53,6 +53,7 @@
                      <th width="10%">新建数</th>
                      <th width="10%">执行中</th>
                      <th width="10%">执行完成</th>
+                     <th width="10%">呼叫接通数</th>
                      <th width="20%">操作</th>
                  </tr>
              </thead>
@@ -71,9 +72,10 @@
 					<td>${task.nrn }</td>
 					<td>${task.drn }</td>
 					<td>${task.frn }</td>
+					<td>${task.ans }</td>
 					<td>
 						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
-						<a href="javascript:saveTask('edit','${queue.tid }','${queue.tname }','${queue.ani }','${queue.overflowto }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:saveTask('edit','${task.tid }','${task.tname }','${task.kind }','${task.taskinfo }')">修改</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/taskAction_deleteTask.action?tid=${task.tid }&tname=${task.tname}">删除</a>
 					</td>
 				</tr>
@@ -94,22 +96,32 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<iframe name="importFrame" style="display:none;"></iframe>
-		<form id="form2" name="form2" 
-			action="${pageContext.request.contextPath }/taskTelAction_importTaskTel.action" 
-			method="post" 
-			enctype="multipart/form-data"
-			onsubmit="return validateuploadInforFile(this)">
+		<form name="form1" action="<c:url value='/taskAction_saveTask.action'/>" method="post">
 	    <input type="hidden" id="tidx" name="tid"/>
-	    <input type="hidden" id="kindx" name="kind"/>
 	    <div class="lab_ipt_item">
-	    	<span class="lab120">您当前导入的文件：</span>
-	        <div class="ipt-box"><label id="curFile"></label></div>
+	    	<span class="lab120">任务名称：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="tnamex" name="tname" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
 	    </div>
-	    <input type="file" id="uploadExcel" name="uploadExcel" style="display:none;" onchange="showPopDiv()"/>
+	    <div class="lab_ipt_item" id="ywtype">
+	    	<span class="lab120">任务类型：</span>
+	        <div class="ipt-box">
+	        	<s:select id="kindx" name="kind" list="#application.vta.GetList('taskkind')" listKey="id" listValue="str" cssStyle="height:28px;"></s:select>
+	            <span class="asterisk"></span>
+	        </div>
+	    </div>
+	    <div class="h132">
+	    	<span class="lab120">任务信息：</span>
+	        <div class="h132 ipt-box">
+	        	<textarea id="taskinfox" name="taskinfo" class="ipt_textarea_w300 inputDefault" style="font-size:12px;"></textarea>
+	            <span></span>
+	        </div>
+	    </div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
-			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
+			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="submitSaveTaskBtn()"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
 		</div>	
 		</form>
@@ -118,65 +130,41 @@
 	
 </div>
 
-<script>
-	//
-	function showSelFile(tid,tname,kind)
+<script type="text/javascript">
+	function saveTask(t,tid,tname,kind,taskinfo)
 	{
-		$("#uploadExcel").click();
-		$("#tidx").val(tid);
-		$("#kindx").val(kind);
-	}
-	//
-	function showPopDiv()
-	{
-		$("#curFile")[0].innerHTML=$("#uploadExcel").val();
+		var tit;
+		if(t=="add")
+		{
+			tit="添加任务";
+			$("#tidx").val(0);
+			$("#kindx").val(0);
+		}
+		else
+		{
+			tit="修改任务";
+			$("#tidx").val(tid);
+			$("#kindx").val(kind);
+		}
+		//
+		$("#tnamex").val(tname);
+		$("#taskinfox").val(taskinfo);
 		$.layer({
 			type: 1,
-	        title: '导入 数据',
+	        title: tit,
 	        offset: [($(window).height() - 290)/2+'px', ''],
 	        border : [5, 0.5, '#666'],
-	        area: ['450px','200px'],
+	        area: ['450px','300px'],
 	        shadeClose: false,
 			bgcolor: '#fff',
 			page:{dom:'#popDiv'}
 		});
 	}
-
-	function validateuploadInforFile(form)
+	//提交按钮 
+	function submitSaveTaskBtn()
 	{
-		if(!validateExcelUpLoadFile(form)) return false;
-		$("#form2").ajaxSubmit({ 
-            success:function(data){ //提交成功的回调函数
-    			layer.closeAll(); 
-    				layer.msg("数据导入成功",2,1);
-    				//layer.msg("数据导入失败，请重新导入 ",2,5);
-            }  
-		}); 
-        return false;	//not refresh page
+		document.form1.submit();
 	}
-
-	//导入Excel文件时进行文件格式校验 
-	function validateExcelUpLoadFile(form)
-	{
-		var fileName = form2.uploadExcel.value;
-	    if (fileName != "" ) {
-	        var fileType = (fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)).toLowerCase();
-	        var suppotFile = ["xls", "XLS", "xlsx", "XLSX"];
-	        for (var i = 0; i < suppotFile.length; i++) {
-	            if (suppotFile[i] == fileType) {
-	                return true;
-	            } else {
-	                continue;
-	            }
-	        }
-	        alert("文件格式不正确！");
-	        return false;
-	    } else {
-	        alert("请选择你需要导入的文件");
-	        return false;
-	    }	
-	}
-	
 </script>
 <script type="text/javascript">
 	$(function(){

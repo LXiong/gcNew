@@ -67,31 +67,31 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
-				String task_insert = "{call web_task_insert(?,?,?,?,?,?)}";
-				String task_update = "{call web_task_update(?,?,?,?)}";
+				String task_insert = "{call web_task_insert(?,?,?,?)}";
+				String task_update = "{call web_task_update(?,?,?,?,?)}";
 				CallableStatement cs = null;
 				if(taskForm.getTid()!=0)
 				{
 					cs = conn.prepareCall(task_update);
 					cs.setInt(1, taskForm.getTid());
 					cs.setString(2, taskForm.getTname());
-					cs.setString(3, taskForm.getAni());
-					cs.setString(4, taskForm.getOverflowto());
+					cs.setInt(3, taskForm.getKind());
+					cs.setString(4, taskForm.getTaskinfo());
+					cs.registerOutParameter(5, Types.VARCHAR);
 					cs.execute();
-					return null;
+					log.info("ret:"+cs.getString(5));
+					return cs.getString(5);
 				}
 				else
 				{
 					cs = conn.prepareCall(task_insert);
 					cs.setString(1, taskForm.getTname());
-					cs.setString(2, taskForm.getAni());
-					cs.setInt(3, taskForm.getKind());
-					cs.setInt(4, taskForm.getMaxline());
-					cs.setString(5, taskForm.getOverflowto());
-					cs.registerOutParameter(6, Types.INTEGER);
+					cs.setInt(2, taskForm.getKind());
+					cs.setString(3, taskForm.getTaskinfo());
+					cs.registerOutParameter(4, Types.INTEGER);
 					cs.execute();
-					log.info("tid:"+cs.getInt(6));
-					return cs.getInt(6);
+					log.info("tid:"+cs.getInt(4));
+					return cs.getInt(4);
 				}
 			}
 		});
