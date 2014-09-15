@@ -8,10 +8,7 @@
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
-	<!-- 日期控件开始 -->
-    <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/datePicker/WdatePicker.js'/>"></script>
-    <!-- 日期控件结束 -->
+	
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
@@ -30,18 +27,14 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">外呼任务管理</h3>
-   	<form action="<c:url value='/taskAction_home.action'/>" method="post" id="searchForm" name="searchForm">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-			<li><label>开始日期：</label><input type="text" id="startdate" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'enddate\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="startdate"/>"/></li>
-	        <li><label>结束日期：</label><input type="text" id="enddate" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'startdate\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value="enddate"/>"/></li>
-	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+			<li><input type="button" class="btn4" onclick="saveTask('add','','','','')" value="添加"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveTask('add','','','','')" value="添加"/></li>
+	        <li></li>
 		</ul>
 	</div>
-    </form>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
