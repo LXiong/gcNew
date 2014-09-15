@@ -80,7 +80,7 @@
 					<td>${tel.state }</td>
 					<td>${tel.callret }</td>
 					<td>
-						<a href="<c:url value='/taskAction_recall.action?tid=${tid }&ttid=${tel.ttid }'/>">重呼</a>&nbsp;&nbsp;
+						<a href="<c:url value='/taskAction_recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskTelPre('${tid }','${tel.ttid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTaskTel()" value="删除"/>
 					</td>
@@ -200,7 +200,7 @@
 	//empty
 	function emptyTasktel(tname)
 	{
-		layer.confirm("确定要清空 ["+tname+"]中所有号码吗？",function(){
+		layer.confirm("确定要清空 【"+tname+"】中所有号码吗？",function(){
 			document.form3.submit();
 		});
 	}
