@@ -28,18 +28,14 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">话务员档案管理</h3>
-   	<form action="<c:url value='/agentAction_home.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-			<li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="sdt"/>"/></li>
-	        <li><label>结束日期：</label><input type="text" id="edt" name="edt" class="Wdate" style="width:90px; height:18px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value="edt"/>"/></li>
-	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
-		</ul>
-		<ul class="queryWrap_ul_w100 right">
 	        <li><input type="button" class="btn4" onclick="saveAgent('add','','','','','')" value="添加"/></li>
 		</ul>
+		<ul class="queryWrap_ul_w100 right">
+	        <li></li>
+		</ul>
 	</div>
-    </form>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
