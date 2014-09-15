@@ -15,19 +15,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/js/menu.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/js/updatepwd.js?v=3'/>"></script>
-	
-	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<!-- layer 弹出插件 end -->
- 	<!-- ajax file upload -->
- 	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-	<style type="text/css">
-		#overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
-		#win{position:absolute;top:50%;left:50%;width:500px;height:240px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;} 
-		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
-		h2 span{border:0px solid #f90;padding:0 2px;} 
-	</style>
 </head>
 <body>
 <div id="container">
@@ -121,8 +108,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 </div>
 <!--POP LAYER END-->
-<script type="text/javascript">
-	
-</script>
+<script type="text/javascript" src="<c:url value='/js/updatepwd.js?v=3'/>"></script>
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
+
 </body>
 </html>
