@@ -44,11 +44,11 @@ a:hover, a:active{text-decoration: underline;color: #BD0A01;border: none;}
 .h3_title{width:100%; height:26px; line-height:26px; text-align:center; color:#8F2629; font-size:14px; font-weight:bold;}
 
 /* input */
-.ipt20{width:20px;height:12px; padding:2px 5px; border:1px solid #CCC; color:#666;}
-.ipt70{width:70px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#666;}
-.ipt90{width:70px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#666;}
-.ipt100{width:100px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#666;}
-.ipt155{width:155px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#666;}
+.ipt20{width:20px;height:12px; padding:2px 5px; border:1px solid #CCC; color:#000;}
+.ipt70{width:70px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}
+.ipt90{width:70px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}
+.ipt100{width:100px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}
+.ipt155{width:155px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}
 
 
 /* button */
