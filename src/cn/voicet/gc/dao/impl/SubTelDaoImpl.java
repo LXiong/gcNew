@@ -51,7 +51,14 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
-				cs.setString(2, subTelForm.getSubteltxt()[0]);	//为空或不存在,添加; 存在,更新
+				if(""==subTelForm.getSubteltxt()[0] || null==subTelForm.getSubteltxt()[0])
+				{
+					cs.setString(2, null);
+				}
+				else
+				{
+					cs.setString(2, subTelForm.getSubteltxt()[0]);	//为空或不存在,添加; 存在,更新
+				}
 				cs.setString(3, subTelForm.getSubteltxt()[1]);
 				cs.setString(4, subTelForm.getSubteltxt()[2]);
 				cs.setString(5, subTelForm.getSubteltxt()[3]);
@@ -63,12 +70,12 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 		});
 	}
 
-	public void deleteSubTelByTelid(final SubTelForm subTelForm) {
+	public void deleteSubTelByTelid(final DotSession ds, final SubTelForm subTelForm) {
 		String sp_subtel_delete = "{call web_subtel_remove(?,?)}";
 		this.getJdbcTemplate().execute(sp_subtel_delete, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, subTelForm.getCts());
+				cs.setString(1, ds.curCTS);
 				cs.setInt(2, subTelForm.getTelid());
 				cs.execute();
 				return null;

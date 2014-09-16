@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  	<title>扶贫观察点管理系统</title>
-	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
-	<link type="text/css" href="<c:url value='/style/layout.css?v=2'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/common_cn.css?v=1'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/layout.css?v=3'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
     <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />

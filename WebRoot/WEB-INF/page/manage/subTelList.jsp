@@ -15,10 +15,6 @@
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/layer/extend/layer.ext.js'/>"></script>
-	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
@@ -60,7 +56,7 @@
 					<td>${sub.clientname }</td>
 					<td>
 						<a href="javascript:saveSubTel('edit','<s:property value="#session.vts.curCTS"/>','${sub.telid }','${sub.telnum }','${sub.def_agent }','${sub.def_acd }','${sub.def_cmd }','${sub.clientname }')">修改</a>&nbsp;&nbsp;
-						<a href="<c:url value='subTelAction_deleteSubTel.action?cts=${sub.cts }&telid=${sub.telid }'/>">删除</a>
+						<a href="<c:url value='subTelAction_deleteSubTel.action?telid=${sub.telid }'/>">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -80,7 +76,7 @@
     
      <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form1" action="<c:url value='/subTelAction_saveSubTel.action'/>" method="post">
+		<form id="form2" action="<c:url value='/subTelAction_saveSubTel.action'/>" method="post">
 	    <input type="hidden" id="telidx" name="subteltxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">分机号码：</span>
@@ -119,7 +115,7 @@
 	    </div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
-			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
+			<div class="ipt-box"><input type="button" onclick="saveSubTelBtn()" class="btn4" value="确定"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
 		</div>	
 		</form>
@@ -127,38 +123,6 @@
 	<!--POP LAYER END-->
 	
 </div>
-<script type="text/javascript">
-	function saveSubTel(t,cts,telid,telnum,defagent,defacd,defcmd,clientname)
-	{
-		var tit;
-		if(t=="add")
-		{
-			tit="为【"+cts+"】添加座席分机";
-		}
-		else
-		{
-			tit="修改【"+cts+"】座席分机";
-		}
-		//
-		$("#telidx").val(telid);
-		$("#telnumx").val(telnum);
-		$("#defagentx").val(defagent);
-		$("#defacdx").val(defacd);
-		$("#defcmdx").val(defcmd);
-		$("#clientnamex").val(clientname);
-		
-		$.layer({
-			type: 1,
-	        title: tit,
-	        offset: [($(window).height() - 290)/2+'px', ''],
-	        border : [5, 0.5, '#666'],
-	        area: ['450px','340px'],
-	        shadeClose: false,
-			bgcolor: '#fff',
-			page:{dom:'#popDiv'}
-		});
-	}
-</script>
 
 <script type="text/javascript">
 	$(function(){
@@ -188,5 +152,11 @@
 	});
 </script>
 
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<script type="text/javascript" src="<c:url value='/js/subtel.js'/>"></script>
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>
 </html>
