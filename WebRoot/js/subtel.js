@@ -146,5 +146,15 @@ function saveSubTelBtn()
     return false;	//not refresh page
 }
 
-
+function deleteSubtelPre(telid)
+{
+	$("#del_telid").val(telid);
+	layer.confirm("确定要删除吗？",function(){
+		deleteSubtel();
+	});
+}
+function deleteSubtel()
+{
+	document.form3.submit();
+}
 

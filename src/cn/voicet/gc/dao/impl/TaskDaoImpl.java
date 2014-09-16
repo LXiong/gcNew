@@ -421,4 +421,17 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		});
 	}
 
+	public int blackFilter(final TaskForm taskForm) {
+		return (Integer)this.getJdbcTemplate().execute("{call web_task_checkblack(?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, taskForm.getTid());
+				cs.registerOutParameter(2, Types.INTEGER);
+				cs.execute();
+				log.info("rn:"+cs.getInt(2));
+				return cs.getInt(2);
+			}
+		});
+	}
+
 }

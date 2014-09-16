@@ -143,7 +143,7 @@ $(function(){
 function checkWaittime()
 {
 	var waittime = $("#waittimex").val();
-	var regexp = /^[0-9>=<]+$/;
+	var regexp = /^[0-9]*$/;
 	if(!waittime)
 	{
 		$(".asterisk")[0].innerHTML="等待时长不能为空";

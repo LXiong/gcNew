@@ -61,11 +61,6 @@
 			<result name="show_subtel">/WEB-INF/page/manage/subTelList.jsp</result>
 		</action>
 		
-		<!-- 呼叫队列 -->
-		<action name="queueAction_*" class="queueAction" method="{1}">
-			<result name="show_queuelist">/WEB-INF/page/manage/queueList.jsp</result>
-		</action>
-		
 		<!-- 呼叫黑名单 -->
 		<action name="blackAction_*" class="blackAction" method="{1}">
 			<result name="show_blacklist">/WEB-INF/page/manage/blackList.jsp</result>

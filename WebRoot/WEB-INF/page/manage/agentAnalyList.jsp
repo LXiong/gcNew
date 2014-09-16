@@ -49,10 +49,10 @@
                      <th width="8%">姓名</th>
                      <th width="8%">请求次数</th>
                      <th width="8%">接听次数</th>
-                     <th width="8%">总等待<br/>时长</th>
-                     <th width="8%">平均等待<br/>时长</th>
-                     <th width="8%">通话<br/>总时长</th>
-                     <th width="8%">平均<br/>通话时长</th>
+                     <th width="8%">总等待<br/>时长(秒)</th>
+                     <th width="8%">平均等待<br/>时长(秒)</th>
+                     <th width="8%">总通话<br/>时长(秒)</th>
+                     <th width="8%">平均通话<br/>时长(秒)</th>
                      <th width="8%">接听<br/>超时次数</th>
                      <th width="8%">接听本方<br/>挂机次数</th>
                  </tr>

@@ -35,19 +35,20 @@
    	<input type="hidden" name="tname" value="${tname }"/>
    	
 	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w265 left">
+	   	<ul class="queryWrap_ul left">
 			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100 inputDefault" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
-		</ul>
-		<ul class="queryWrap_ul_w558 right">
 			<li>
-	        	<input type="button" onclick="saveTaskTel('add','${tid }','','')" class="btn4" value="添加" />
+	        	<input type="button" onclick="filterBlack()" class="btn4" value="号码过滤" />
 	        </li>
 			<li>
 	        	<label><input type="button" onclick="recall('${tid }','${tname }')" class="btn4" value="重呼所有" /></label>
 	        </li>
 			<li>
-	        	<label>点击<a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板文件</label>
+	        	<input type="button" onclick="saveTaskTel('add','${tid }','','')" class="btn4" value="添加" />
+	        </li>
+			<li>
+	        	<label><a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板</label>
 	        </li>
 	        <li>
 	        	<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>
@@ -166,6 +167,11 @@
 		</form>
 	</div>
 	<!--POP LAYER END-->
+	
+	<form id="form6" action="<c:url value='taskAction_blackFilter.action?tid=${tid }'/>" method="post">
+		
+	</form>
+	
 	
 </div>
 

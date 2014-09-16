@@ -60,7 +60,7 @@ a:hover, a:active{text-decoration: underline;color: #BD0A01;border: none;}
 .tab_head{background: url('../images/tab-head.jpg') repeat-x scroll 0% 0% transparent; color:#2284E1;}
 .tab_head2{background: url('../images/tab-head2.png') repeat-x scroll 0% 0% transparent; color:#2284E1;}
 
-.seldefault{width:66px; height:20px;}
+.seldefault_w85{width:85px; height:20px;}
 
 
 

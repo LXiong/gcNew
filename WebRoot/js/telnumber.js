@@ -159,3 +159,16 @@ function saveTaskTelBtn()
 	}); 
     return false;	//not refresh page
 }
+
+//black filter
+function filterBlack()
+{
+	$("#form6").ajaxSubmit({ 
+		success:function(data){ //提交成功的回调函数
+			layer.msg("过滤黑名单数："+data, 2, 111, function(){
+				document.form1.submit();
+			});
+        }  
+	}); 
+    return false;	//not refresh page
+}

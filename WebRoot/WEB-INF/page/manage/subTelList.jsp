@@ -56,7 +56,7 @@
 					<td>${sub.clientname }</td>
 					<td>
 						<a href="javascript:saveSubTel('edit','<s:property value="#session.vts.curCTS"/>','${sub.telid }','${sub.telnum }','${sub.def_agent }','${sub.def_acd }','${sub.def_cmd }','${sub.clientname }')">修改</a>&nbsp;&nbsp;
-						<a href="<c:url value='subTelAction_deleteSubTel.action?telid=${sub.telid }'/>">删除</a>
+						<a href="javascript:deleteSubtelPre('${sub.telid }')">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -122,6 +122,11 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<!-- delete form -->
+	<form name="form3" action="<c:url value='subTelAction_deleteSubTel.action'/>" method="post">
+		<input type="hidden" id="del_telid" name="telid"/>
+	</form>
+	
 </div>
 
 <script type="text/javascript">
@@ -155,7 +160,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/subtel.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/subtel.js?v=1'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

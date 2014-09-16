@@ -22,7 +22,7 @@
 	</role>
 	<role roleid="2" describle="管理员">
 	    <grp name="日常工作">
-        <fun name="任务管理" action="taskManageAction_home.action" />
+	      	<fun name="通话记录查询" action="callRecordAction_home.action" />
 	    </grp>
 	</role>
 	<role roleid="3" describle="话务员">

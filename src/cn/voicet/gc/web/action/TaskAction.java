@@ -151,6 +151,17 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	}
 	
 	/**
+	 * 黑名单过滤
+	 * @throws IOException 
+	 */
+	public String blackFilter() throws IOException
+	{
+		int rn = taskDao.blackFilter(taskForm);
+		response.getWriter().print(rn);
+		return null;
+	}
+	
+	/**
 	 * 导出队列数据
 	 * kind 0：标准，
 	 * 		1：回访1，
