@@ -154,7 +154,7 @@ function saveTaskTelBtn()
 	$("#form5").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.reload();
+			document.form1.submit();
         }  
 	}); 
     return false;	//not refresh page
