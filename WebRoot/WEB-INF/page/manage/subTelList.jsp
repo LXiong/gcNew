@@ -102,7 +102,7 @@
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">默认命令：</span>
 	        <div class="ipt-box">
-	        	<input type="text" id="defcmdx" name="subteltxt" class="ipt_text_w150 inputDefault" />
+	        	<input type="text" id="defcmdx" name="subteltxt" placeholder="如：#0#" class="ipt_text_w150 inputDefault" />
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
@@ -160,7 +160,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/subtel.js?v=1'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/subtel.js?v=2'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

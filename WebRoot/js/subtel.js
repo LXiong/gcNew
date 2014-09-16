@@ -1,5 +1,8 @@
 function saveSubTel(t,cts,telid,telnum,defagent,defacd,defcmd,clientname)
 {
+	$(".asterisk").each(function(){
+		this.innerHTML="*";
+	});
 	var tit;
 	if(t=="add")
 	{
