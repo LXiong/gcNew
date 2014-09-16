@@ -103,4 +103,24 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		return "show_logout";
 	}
 	
+	/**
+	 * save global cts
+	 * @return
+	 */
+	public String saveCTS()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("cts:"+cts);
+		ds.curCTS = cts;
+		return null;
+	}
+	public String cts;
+
+	public String getCts() {
+		return cts;
+	}
+	public void setCts(String cts) {
+		this.cts = cts;
+	}
+	
 }

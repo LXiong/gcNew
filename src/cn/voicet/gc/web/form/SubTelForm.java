@@ -4,7 +4,7 @@ public class SubTelForm {
 	private String[] subteltxt;
 
 	//delete
-	private String cts="cts100";
+	private String cts;
 	private int telid;
 
 	public String[] getSubteltxt() {

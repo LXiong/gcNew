@@ -139,6 +139,18 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	}
 	
 	/**
+	 * 添加一个电话号码
+	 */
+	public String saveTaskTel()
+	{
+		log.info("tid:"+taskForm.getTid()+"ttid:"+taskForm.getTtid()+"telnum:"+taskForm.getTelnum());
+		taskDao.saveTaskTel(taskForm);
+		log.info("add telnum "+taskForm.getTelnum()+" complete");
+		taskForm.setTelnum(null);
+		return null;
+	}
+	
+	/**
 	 * 导出队列数据
 	 * kind 0：标准，
 	 * 		1：回访1，

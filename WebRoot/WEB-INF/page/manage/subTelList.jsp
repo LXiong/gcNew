@@ -27,18 +27,15 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">座席分机管理</h3>
-	<form action="<c:url value='/subTelAction_home.action'/>" method="post">
+	<h3 class="h3_title">座席分机管理&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-	        <li><label>服务器别名：</label><input type="text" name="cts" class="ipt100" value="<s:property value="cts"/>"/></li>
-	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+	        <li></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveSubTel('add','','','','','','','')" value="添加"/></li>
+	        <li><input type="button" class="btn4" onclick="saveSubTel('add','<s:property value="#session.vts.curCTS"/>','','','','','','')" value="添加"/></li>
 		</ul>
 	</div>
-	</form>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
@@ -62,7 +59,7 @@
 					<td>${sub.def_cmd }</td>
 					<td>${sub.clientname }</td>
 					<td>
-						<a href="javascript:saveSubTel('edit','${sub.cts }','${sub.telid }','${sub.telnum }','${sub.def_agent }','${sub.def_acd }','${sub.def_cmd }','${sub.clientname }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:saveSubTel('edit','<s:property value="#session.vts.curCTS"/>','${sub.telid }','${sub.telnum }','${sub.def_agent }','${sub.def_acd }','${sub.def_cmd }','${sub.clientname }')">修改</a>&nbsp;&nbsp;
 						<a href="<c:url value='subTelAction_deleteSubTel.action?cts=${sub.cts }&telid=${sub.telid }'/>">删除</a>
 					</td>
 				</tr>
@@ -84,13 +81,6 @@
      <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
 		<form name="form1" action="<c:url value='/subTelAction_saveSubTel.action'/>" method="post">
-	    <div class="lab_ipt_item">
-	    	<span class="lab150">语音服务器别名：</span>
-	        <div class="ipt-box">
-	        	<input type="text" id="ctsx" name="subteltxt" class="ipt_text_w150 inputDefault" />
-	            <span class="asterisk">*</span>
-	        </div>
-	    </div>
 	    <input type="hidden" id="telidx" name="subteltxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">分机号码：</span>
@@ -110,7 +100,7 @@
 	    	<span class="lab150">默认业务组号码：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="defacdx" name="subteltxt" value="0" class="ipt_text_w150 inputDefault" />
-	            <span class="asterisk"></span>
+	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
@@ -143,14 +133,13 @@
 		var tit;
 		if(t=="add")
 		{
-			tit="添加座席分机";
+			tit="为【"+cts+"】添加座席分机";
 		}
 		else
 		{
-			tit="修改座席分机";
+			tit="修改【"+cts+"】座席分机";
 		}
 		//
-		$("#ctsx").val(cts);
 		$("#telidx").val(telid);
 		$("#telnumx").val(telnum);
 		$("#defagentx").val(defagent);

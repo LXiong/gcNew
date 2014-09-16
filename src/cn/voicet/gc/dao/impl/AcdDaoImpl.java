@@ -65,7 +65,7 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
 				CallableStatement cs = conn.prepareCall("{call web_acd_analy(?,?,?)}");
-				cs.setString(1, acdForm.getCts());
+				cs.setString(1, ds.curCTS);
 				cs.setString(2, acdForm.getSdt());
 				cs.setString(3, acdForm.getEdt());
 				cs.execute();
@@ -84,19 +84,19 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 		});
 	}
 
-	public void saveAcd(final AcdForm acdForm) {
+	public void saveAcd(final DotSession ds, final AcdForm acdForm) {
 		String sp_acd_update = "{call web_acd_update(?,?,?,?,?,?,?,?)}";
 		this.getJdbcTemplate().execute(sp_acd_update, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, acdForm.getAcdtxt()[0]);
-				cs.setString(2, acdForm.getAcdtxt()[1]);	//为空或不存在,添加; 存在,更新
-				cs.setString(3, acdForm.getAcdtxt()[2]);
-				cs.setString(4, acdForm.getAcdtxt()[3]);
-				cs.setString(5, acdForm.getAcdtxt()[4]);
-				cs.setString(6, acdForm.getAcdtxt()[5]);
-				cs.setString(7, acdForm.getAcdtxt()[6]);
-				cs.setString(8, acdForm.getAcdtxt()[7]);
+				cs.setString(1, ds.curCTS);
+				cs.setString(2, acdForm.getAcdtxt()[0]);	//为空或不存在,添加; 存在,更新
+				cs.setString(3, acdForm.getAcdtxt()[1]);
+				cs.setString(4, acdForm.getAcdtxt()[2]);
+				cs.setString(5, acdForm.getAcdtxt()[3]);
+				cs.setString(6, acdForm.getAcdtxt()[4]);
+				cs.setString(7, acdForm.getAcdtxt()[5]);
+				cs.setString(8, acdForm.getAcdtxt()[6]);
 				cs.execute();
 				return null;
 			}

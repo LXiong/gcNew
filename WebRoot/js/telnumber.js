@@ -91,3 +91,71 @@ function recall(tid,tname)
 		location.href="taskAction_recall.action?tid="+tid+"&tname="+tname;
 	});
 }
+
+//save tel
+//show pop div
+function saveTaskTel(t,tid,ttid,telnum)
+{
+	var tit;
+	if(t=="add")
+	{
+		tit="添加电话号码";
+	}
+	else
+	{
+		tit="修改电话号码";
+	}
+	$("#save_tidx").val(tid);
+	$("#save_ttidx").val(ttid);
+	$("#save_telnumx").val(telnum);
+	$.layer({
+		type: 1,
+        title: '导入 数据',
+        offset: [($(window).height() - 290)/2+'px', ''],
+        border : [5, 0.5, '#666'],
+        area: ['400px','150px'],
+        shadeClose: false,
+		bgcolor: '#fff',
+		page:{dom:'#popSaveTaskTelDiv'}
+	});
+}
+
+$(function(){
+	$("#save_telnumx").bind("blur",checkTelnum);
+});
+
+function checkTelnum()
+{
+	var telnum = $("#save_telnumx").val();
+	var regexp=/^([0-9]|[-])+$/g;
+	
+	if(!telnum)
+	{
+		$(".asterisk")[1].innerHTML="电话号码不能为空";
+		return false;
+	}
+	else if(!regexp.exec(telnum))
+	{
+		$(".asterisk")[1].innerHTML="请输入合理的电话号码";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[1].innerHTML="";
+		return true;
+	}
+}
+
+
+function saveTaskTelBtn()
+{
+	if(!checkTelnum()) return false;
+	
+	$("#form5").ajaxSubmit({ 
+		success:function(data){ //提交成功的回调函数
+			layer.closeAll();
+			location.reload();
+        }  
+	}); 
+    return false;	//not refresh page
+}

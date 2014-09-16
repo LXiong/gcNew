@@ -27,9 +27,9 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 	public String home()
 	{
 		DotSession ds = DotSession.getVTSession(request);
+		acdForm.setCts(ds.curCTS);
 		acdDao.queryAcdList(ds,acdForm);
 		log.info("list2 size:"+ds.list2.size());
-		log.info("list2:"+ds.list2);
 		return "show_acd";
 	}
 	
@@ -40,8 +40,9 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 	public String saveAcd()
 	{
 		log.info("acdtxt[] length:"+acdForm.getAcdtxt().length);
-		acdDao.saveAcd(acdForm);
-		log.info("save acd ["+acdForm.getAcdtxt()[2]+"] success");
+		DotSession ds = DotSession.getVTSession(request);
+		acdDao.saveAcd(ds, acdForm);
+		log.info("save acd ["+acdForm.getAcdtxt()[1]+"] success");
 		return home();
 	}
 	

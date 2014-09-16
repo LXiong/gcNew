@@ -23,18 +23,15 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">业务组档案管理</h3>
-	<form name="form1" action="<c:url value='/acdAction_home.action'/>" method="post">
+	<h3 class="h3_title">业务组档案管理&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-	   		<li><label>服务器别名：</label><input type="text" name="cts" class="ipt100" value="<s:property value="cts"/>"/></li>
-	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+	        <li></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveAcd('add','0','','','','','','','')" value="添加"/></li>
+	        <li><input type="button" class="btn4" onclick="saveAcd('add','0','<s:property value="#session.vts.curCTS"/>','','','','','','')" value="添加"/></li>
 		</ul>
 	</div>
-	</form>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
@@ -42,7 +39,7 @@
                      <th width="6%">组编号</th>
                      <th width="10%">组名称</th>
                      <th width="10%">组号码</th>
-                     <th width="4%">ACW</th>
+                     <th width="6%">ACW(秒)</th>
                      <th width="12%">最大等待时长(秒)</th>
                      <th width="10%">最大排队数目</th>
                      <th width="10%">溢出去向</th>
@@ -64,7 +61,7 @@
 						<s:select list="#session.vts.list2" onchange="popSetTask('%{grpid}','%{grpname}',this)" listKey="tid" listValue="tname" value="taskid"></s:select>
 					</td>
 					<td>
-						<a href="javascript:saveAcd('edit','${acd.grpid }','${cts }','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:saveAcd('edit','${acd.grpid }','<s:property value="#session.vts.curCTS"/>','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteAcdPre('${acd.grpid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteAcd()" value="删除"/>
 					</td>
@@ -87,13 +84,6 @@
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
 		<form id="form2" action="<c:url value='/acdAction_saveAcd.action'/>" method="post">
-	    <div class="lab_ipt_item">
-	    	<span class="lab150">服务器别名：</span>
-	        <div class="ipt-box">
-	        	<input type="text" id="ctsx" name="acdtxt" class="ipt_text_w150 inputDefault" />
-	            <span class="asterisk">*</span>
-	        </div>
-	    </div>
 	    <input type="hidden" id="grpidx" name="acdtxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">组名称：</span>
@@ -134,7 +124,7 @@
 	    	<span class="lab150">队列溢出去向：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="overflowtox" name="acdtxt" class="ipt_text_w150 inputDefault" />
-	            <span class="asterisk">*</span>
+	            <span class="asterisk"></span>
 	        </div>
 	    </div>
 		<div class="lab_ipt_item">

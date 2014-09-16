@@ -27,7 +27,7 @@ public class SubTelAction extends BaseAction implements ModelDriven<SubTelForm>{
 	public String home()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		subTelDao.querySubTelList(ds, subTelForm);
+		subTelDao.querySubTelList(ds);
 		return "show_subtel";
 	}
 	
@@ -37,7 +37,8 @@ public class SubTelAction extends BaseAction implements ModelDriven<SubTelForm>{
 	 */
 	public String saveSubTel()
 	{
-		subTelDao.saveSubTel(subTelForm);
+		DotSession ds = DotSession.getVTSession(request);
+		subTelDao.saveSubTel(ds, subTelForm);
 		return home();
 	}
 	

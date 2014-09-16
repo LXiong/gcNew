@@ -6,7 +6,7 @@
 <head>
  	<title>扶贫观察点管理系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
-	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/layout.css?v=2'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
     <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
@@ -25,7 +25,7 @@
  	<!-- jPage 分页插件  end -->
  	<!-- ajax file upload -->
  	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
- 	<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=4'/>"></script>
+ 	<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=5'/>"></script>
 </head>
 <body>
 <div id="contentWrap">
@@ -35,11 +35,14 @@
    	<input type="hidden" name="tname" value="${tname }"/>
    	
 	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w300 left">
+	   	<ul class="queryWrap_ul_w265 left">
 			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
-		<ul class="queryWrap_ul_w500 right">
+		<ul class="queryWrap_ul_w558 right">
+			<li>
+	        	<input type="button" onclick="saveTaskTel('add','${tid }','','')" class="btn4" value="添加" />
+	        </li>
 			<li>
 	        	<label><input type="button" onclick="recall('${tid }','${tname }')" class="btn4" value="重呼所有" /></label>
 	        </li>
@@ -80,6 +83,7 @@
 					<td>${tel.state }</td>
 					<td>${tel.callret }</td>
 					<td>
+						<a href="javascript:saveTaskTel('edit','${tid }','${tel.ttid }','${telnum }')">修改</a>&nbsp;&nbsp;
 						<a href="<c:url value='/taskAction_recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskTelPre('${tid }','${tel.ttid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTaskTel()" value="删除"/>
@@ -138,6 +142,27 @@
 		<input type="hidden" id="del_tid" name="tid"/>
 		<input type="hidden" id="del_ttid" name="ttid"/>
 	</form>
+	
+	<!--POP LAYER START-->
+	<div id="popSaveTaskTelDiv" style="display:none;"> 
+		<form id="form5" action="${pageContext.request.contextPath }/taskAction_saveTaskTel.action" method="post">
+	    <input type="hidden" id="save_tidx" name="tid"/>
+	    <input type="hidden" id="save_ttidx" name="ttid"/>
+	    <div class="lab_ipt_item">
+	    	<span class="lab120">电话号码：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="save_telnumx" name="telnum" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+		<div class="lab_ipt_item">
+			<span class="lab120"></span>
+			<div class="ipt-box"><input type="button" onclick="saveTaskTelBtn()" class="btn4" value="确定"/></div>
+			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
+		</div>	
+		</form>
+	</div>
+	<!--POP LAYER END-->
 	
 </div>
 

@@ -30,7 +30,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<div class="nav_left_wel">
     		<span>欢迎：&nbsp;<s:property value="#session.vts.roleName"/></span><span><s:property value="#session.vts.username"/></span>
     		</div>
-    		<div id="navigate" class="nav_left_path"></div>
+    		<div id="navigate" class="nav_left_path">
+    			<script type="text/javascript">
+    				function changeServer(obj)
+    				{
+        				var ctsVal = obj.options[obj.selectedIndex].text;
+    					$.ajax({
+    						cache: false,
+    						async: false,
+    						type: "POST",
+    						dataType: "json",
+    						data: {cts: ctsVal},
+    						url: "saveCTS.action",
+    						success: function(flag) {
+    							
+    						}
+    					});
+    				}
+    			</script>
+    			<label>当前服务器：</label><s:select list="#{'cts100':'cts100','cts101':'cts101'}" onchange="changeServer(this)" listKey="key" listValue="value" value="#session.vts.curCTS" cssStyle="height:25px; margin:2px;"></s:select>
+    		</div>
         </div>
         <div class="nav_right">
             <span><a href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>

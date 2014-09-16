@@ -23,12 +23,12 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 
 	private static Logger log = Logger.getLogger(SubTelDaoImpl.class);
 
-	public void querySubTelList(final DotSession ds, final SubTelForm subTelForm) {
+	public void querySubTelList(final DotSession ds) {
 		String sp_subtel = "{call web_subtel_list(?)}";
 		this.getJdbcTemplate().execute(sp_subtel, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, subTelForm.getCts());
+				cs.setString(1, ds.curCTS);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -45,18 +45,18 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 		});
 	}
 
-	public void saveSubTel(final SubTelForm subTelForm) {
+	public void saveSubTel(final DotSession ds, final SubTelForm subTelForm) {
 		String sp_acd_update = "{call web_subtel_update(?,?,?,?,?,?,?)}";
 		this.getJdbcTemplate().execute(sp_acd_update, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, subTelForm.getSubteltxt()[0]);
-				cs.setString(2, subTelForm.getSubteltxt()[1]);	//为空或不存在,添加; 存在,更新
-				cs.setString(3, subTelForm.getSubteltxt()[2]);
-				cs.setString(4, subTelForm.getSubteltxt()[3]);
-				cs.setString(5, subTelForm.getSubteltxt()[4]);
-				cs.setString(6, subTelForm.getSubteltxt()[5]);
-				cs.setString(7, subTelForm.getSubteltxt()[6]);
+				cs.setString(1, ds.curCTS);
+				cs.setString(2, subTelForm.getSubteltxt()[0]);	//为空或不存在,添加; 存在,更新
+				cs.setString(3, subTelForm.getSubteltxt()[1]);
+				cs.setString(4, subTelForm.getSubteltxt()[2]);
+				cs.setString(5, subTelForm.getSubteltxt()[3]);
+				cs.setString(6, subTelForm.getSubteltxt()[4]);
+				cs.setString(7, subTelForm.getSubteltxt()[5]);
 				cs.execute();
 				return null;
 			}

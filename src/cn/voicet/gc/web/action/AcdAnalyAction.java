@@ -27,7 +27,7 @@ public class AcdAnalyAction extends BaseAction implements ModelDriven<AcdForm>{
 	public String home()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("cts:"+acdForm.getCts()+", sdt:"+acdForm.getSdt()+", edt:"+acdForm.getEdt());
+		log.info("cts:"+ds.curCTS+", sdt:"+acdForm.getSdt()+", edt:"+acdForm.getEdt());
 		acdDao.queryAcdAnalyList(ds, acdForm);
 		return "show_acd_analy";
 	}

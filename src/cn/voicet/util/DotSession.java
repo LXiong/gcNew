@@ -55,6 +55,7 @@ public class DotSession {
 	public int curYear;	//当前年份
 	private int stackPos=0;
 	private StackInfo[] arrayStackInfo;
+	public String curCTS = "cts100";
 	
 	public String bmhm;
 	

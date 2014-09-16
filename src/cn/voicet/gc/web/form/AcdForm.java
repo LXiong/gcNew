@@ -3,7 +3,7 @@ package cn.voicet.gc.web.form;
 import java.util.Date;
 
 public class AcdForm {
-	private String cts = "cts100";	//统计服务器别名
+	private String cts;	//统计服务器别名
 	
 	String curDate = String.format("%tF", new Date());
 	private String sdt=curDate;	//统计开始日期

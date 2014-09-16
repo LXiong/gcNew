@@ -18,4 +18,5 @@ public interface TaskDao{
 	void emptyTaskTel(TaskForm taskForm);
 	void deleteTaskTelByTtid(TaskForm taskForm);
 	void recallTel(TaskForm taskForm);
+	void saveTaskTel(TaskForm taskForm);
 }

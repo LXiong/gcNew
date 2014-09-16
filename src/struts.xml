@@ -87,6 +87,9 @@
 		<action name="ajaxlogin" class="userAction" method="ajaxlogin">
 			<result type="json"></result>
 		</action>
+		<action name="saveCTS" class="userAction" method="saveCTS">
+			<result type="json"></result>
+		</action>
 		<!-- 清空数据库日志 -->
 		<action name="databaseConfigAction_empty" class="databaseConfigAction" method="empty">
 			<result type="json"></result>

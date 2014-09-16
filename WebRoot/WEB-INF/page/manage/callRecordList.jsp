@@ -24,11 +24,10 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">通话记录详情</h3>
+	<h3 class="h3_title">通话记录详情&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
    	<form action="<c:url value='/callRecordAction_home.action'/>" method="post">
 	<div class="queryDiv_h80">
 	   	<ul class="queryWrap_ul">
-	   		<li><label>服务器别名：</label><input type="text" name="calltxt" class="ipt70" value="${calltxt[0] }"/></li>
 			<li><label>开始日期：</label><input type="text" id="sdt" name="calltxt" class="Wdate" style="width:90px; height:20px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="${calltxt[1] }"/></li>
 	        <li><label>结束日期：</label><input type="text" id="edt" name="calltxt" class="Wdate" style="width:90px; height:20px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="${calltxt[2] }"/></li>
 	        <li><label>主叫：</label><input type="text" name="calltxt" class="ipt100" value="${calltxt[3] }"/></li>

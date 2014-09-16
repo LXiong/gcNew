@@ -25,10 +25,10 @@
 	<h3 class="h3_title">话务员档案管理</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-	        <li><input type="button" class="btn4" onclick="saveAgent('add','0','','','','','')" value="添加"/></li>
+	        <li></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
+	        <li><input type="button" class="btn4" onclick="saveAgent('add','0','','','','','')" value="添加"/></li>
 		</ul>
 	</div>
 	<div class="content_List568">
