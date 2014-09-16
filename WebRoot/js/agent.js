@@ -28,6 +28,10 @@ $(function(){
 //pop save agent
 function saveAgent(t,agtid,account,telnum,agtname,email)
 {
+	$(".asterisk").each(function(){
+		this.innerHTML="*";
+	});
+	
 	var tit;
 	if(t=="add")
 	{
@@ -56,9 +60,69 @@ function saveAgent(t,agtid,account,telnum,agtname,email)
 	});
 }
 
+
+$(function(){
+	$("#accountx").bind("blur",checkAccount);
+	$("#telnumx").bind("blur",checkTelnum);
+	$("#agtnamex").bind("blur",checkAgtname);
+});
+
+function checkAccount()
+{
+	var acc = $("#accountx").val();
+	if(!acc)
+	{
+		$(".asterisk")[0].innerHTML="登录账号不能为空";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[0].innerHTML="";
+		return true;
+	}
+}
+function checkTelnum()
+{
+	var tel = $("#telnumx").val();
+	var regexp=/^([0-9]|[-])+$/g;
+	if(!tel)
+	{
+		$(".asterisk")[1].innerHTML="话务员号码不能为空";
+		return false;
+	}
+	else if(!regexp.exec(tel))
+	{
+		$(".asterisk")[1].innerHTML="请输入合理的电话号码";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[1].innerHTML="";
+		return true;
+	}
+}
+function checkAgtname()
+{
+	var agt = $("#agtnamex").val();
+	if(!agt)
+	{
+		$(".asterisk")[2].innerHTML="姓名不能为空";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[2].innerHTML="";
+		return true;
+	}
+}
+
 //save agent
 function saveAgentBtn()
 {
+	if(!checkAccount()) return false;
+	if(!checkTelnum()) return false;
+	if(!checkAgtname()) return false;
+	
 	$("#form2").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();

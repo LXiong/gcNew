@@ -15,23 +15,17 @@
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
-	<script type="text/javascript" src="<c:url value='/js/agent.js?v=1'/>"></script>
- 	<!-- ajax file upload -->
- 	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </head>
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">话务员档案管理</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-	        <li><input type="button" class="btn4" onclick="saveAgent('add','','','','','','')" value="添加"/></li>
+	        <li><input type="button" class="btn4" onclick="saveAgent('add','0','','','','','')" value="添加"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
 	        <li></li>
@@ -98,14 +92,14 @@
 	    	<span class="lab120">姓名：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="agtnamex" name="agttxt" value="0" class="ipt_text_w150 inputDefault" />
-	            <span class="asterisk"></span>
+	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">电子邮箱：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="emailx" name="agttxt" class="ipt_text_w150 inputDefault" />
-	            <span class="asterisk">*</span>
+	            <span></span>
 	        </div>
 	    </div>
 		<div class="lab_ipt_item">
@@ -122,6 +116,11 @@
 	</form>
 	
 </div>
-
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<script type="text/javascript" src="<c:url value='/js/agent.js?v=1'/>"></script>
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>
 </html>

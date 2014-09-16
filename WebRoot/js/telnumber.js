@@ -82,3 +82,12 @@ function deleteTaskTel()
 {
 	document.form4.submit();
 }
+
+
+//recall
+function recall(tid,tname)
+{
+	layer.confirm("确定要重呼所有号码吗？",function(){
+		location.href="taskAction_recall.action?tid="+tid+"&tname="+tname;
+	});
+}

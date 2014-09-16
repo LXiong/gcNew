@@ -8,18 +8,14 @@
  	<title>电话自动外呼系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
-	<!-- 日期控件开始 -->
-    <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/datePicker/WdatePicker.js'/>"></script>
-    <!-- 日期控件结束 -->
- 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/layer/extend/layer.ext.js'/>"></script>
-	<!-- layer 弹出插件 end -->
+	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
+	<!-- 日期控件 start -->
+    <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
+	<script type="text/javascript" src="<c:url value='/datePicker/WdatePicker.js'/>"></script>
+    <!-- 日期控件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
@@ -86,7 +82,7 @@
 					<td>${call.endcode }</td>
 					<td>${call.agent }</td>
 					<td>
-						<a href="#">操作</a>&nbsp;&nbsp;
+						<a href="#">播放</a>&nbsp;&nbsp;
 					</td>
 				</tr>
 				</s:iterator>
@@ -115,7 +111,7 @@
 	        last : "尾页",
 	        perPage : 26,
 	        keyBrowse:true,
-	        delay : 5,
+	        delay : 0,
 	        callback : function( pages, items ){
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
@@ -132,6 +128,10 @@
     	});
 	});
 </script>
+
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
 
 </body>
 </html>

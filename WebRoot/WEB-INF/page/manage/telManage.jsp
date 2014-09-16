@@ -41,7 +41,7 @@
 		</ul>
 		<ul class="queryWrap_ul_w500 right">
 			<li>
-	        	<label><input type="button" onclick="location.href='<c:url value="/taskAction_recall.action?tid=${tid }&tname=${tname }"/>'" class="btn4" value="重呼所有" /></label>
+	        	<label><input type="button" onclick="recall('${tid }','${tname }')" class="btn4" value="重呼所有" /></label>
 	        </li>
 			<li>
 	        	<label>点击<a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板文件</label>

@@ -15,10 +15,6 @@
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/layer/extend/layer.ext.js'/>"></script>
-	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
@@ -35,7 +31,7 @@
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveAcd('add','','','','','','','','')" value="添加"/></li>
+	        <li><input type="button" class="btn4" onclick="saveAcd('add','0','','','','','','','')" value="添加"/></li>
 		</ul>
 	</div>
 	</form>
@@ -43,13 +39,14 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="10%">组编号</th>
+                     <th width="6%">组编号</th>
                      <th width="10%">组名称</th>
                      <th width="10%">组号码</th>
                      <th width="10%">ACW</th>
-                     <th width="10%">最大等待时长(秒)</th>
+                     <th width="12%">最大等待时长(秒)</th>
                      <th width="10%">最大排队数目</th>
                      <th width="10%">溢出去向</th>
+                     <th width="8%">任务名称</th>
                      <th width="10%">操作</th>
                  </tr>
              </thead>
@@ -63,6 +60,7 @@
 					<td>${acd.maxwaittime }</td>
 					<td>${acd.maxwaitnum }</td>
 					<td>${acd.overflowto }</td>
+					<td>${acd.tname }</td>
 					<td>
 						<a href="javascript:saveAcd('edit','${acd.grpid }','${cts }','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteAcdPre('${acd.grpid }')">删除</a>
@@ -86,7 +84,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form2" action="<c:url value='/acdAction_saveAcd.action'/>" method="post">
+		<form id="form2" action="<c:url value='/acdAction_saveAcd.action'/>" method="post">
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">服务器别名：</span>
 	        <div class="ipt-box">
@@ -106,7 +104,7 @@
 	    	<span class="lab150">组号码：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="telnumx" name="acdtxt" value="0" class="ipt_text_w150 inputDefault" />
-	            <span class="asterisk"></span>
+	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
@@ -139,7 +137,7 @@
 	    </div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
-			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
+			<div class="ipt-box"><input type="button" onclick="saveAcdBtn()" class="btn4" value="确定"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
 		</div>	
 		</form>
@@ -154,54 +152,6 @@
 	
 </div>
 <script type="text/javascript">
-	function saveAcd(t,grpid,cts,grpname,telnum,acw,maxwaittime,maxwaitnum,overflowto)
-	{
-		var tit;
-		if(t=="add")
-		{
-			tit="添加业务组";
-		}
-		else
-		{
-			tit="修改业务组信息";
-		}
-		//
-		$("#grpidx").val(grpid);
-		$("#ctsx").val(cts);
-		$("#grpnamex").val(grpname);
-		$("#telnumx").val(telnum);
-		$("#acwx").val(acw);
-		$("#maxwaittimex").val(maxwaittime);
-		$("#maxwaitnumx").val(maxwaitnum);
-		$("#overflowtox").val(overflowto);
-		
-		
-		$.layer({
-			type: 1,
-	        title: tit,
-	        offset: [($(window).height() - 290)/2+'px', ''],
-	        border : [5, 0.5, '#666'],
-	        area: ['450px','340px'],
-	        shadeClose: false,
-			bgcolor: '#fff',
-			page:{dom:'#popDiv'}
-		});
-	}
-
-	function deleteAcdPre(grpid)
-	{
-		$("#del_grpid").val(grpid)
-		layer.confirm("确定要删除吗？",function(){
-			deleteAcd();
-		});
-	}
-	function deleteAcd()
-	{
-		document.form3.submit();
-	}
-	
-</script>
-<script type="text/javascript">
 	$(function(){
 		$("div.holder").jPages({
 			containerID : "movies",
@@ -211,7 +161,7 @@
 	        last : "尾页",
 	        perPage : 26,
 	        keyBrowse:true,
-	        delay : 5,
+	        delay : 0,
 	        callback : function( pages, items ){
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
@@ -229,5 +179,11 @@
 	});
 </script>
 
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<script type="text/javascript" src="<c:url value='/js/acd.js?v=1'/>"></script>
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>
 </html>
