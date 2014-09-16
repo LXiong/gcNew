@@ -28,7 +28,7 @@
    	<form id="form1" name="form1" action="<c:url value='/blackAction_home.action'/>" method="post">
    	<div class="queryDiv">
    		<ul class="queryWrap_ul_w500 left">
-	        <li><label>电话号码：</label><input type="text" class="ipt155 inputDefault" name="telnum" id="telnum" value="<s:property value="telnum"/>"/></li>
+	        <li><label>电话号码：</label><input type="text" class="ipt100 inputDefault" name="telnum" id="telnum" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" id="searchImg" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w200 right">
