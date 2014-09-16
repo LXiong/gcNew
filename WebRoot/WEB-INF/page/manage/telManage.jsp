@@ -68,7 +68,7 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="20%">电话编号</th>
+                     <th width="10%">电话编号</th>
                      <th width="20%">电话号码</th>
                      <th width="20%">状态</th>
                      <th width="20%">呼叫结果</th>
@@ -83,8 +83,11 @@
 					<td>${tel.state }</td>
 					<td>${tel.callret }</td>
 					<td>
-						<a href="javascript:saveTaskTel('edit','${tid }','${tel.ttid }','${telnum }')">修改</a>&nbsp;&nbsp;
+						<c:if test="${tel.stateid ne 1 }">
 						<a href="<c:url value='/taskAction_recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
+						</c:if>
+
+						<a href="javascript:saveTaskTel('edit','${tid }','${tel.ttid }','${telnum }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskTelPre('${tid }','${tel.ttid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTaskTel()" value="删除"/>
 					</td>

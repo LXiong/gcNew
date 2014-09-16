@@ -82,29 +82,29 @@
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">登录账号：</span>
 	        <div class="ipt-box">
-	        	<input type="text" id="accountx" name="agttxt" class="ipt_text_w150 inputDefault" />
+	        	<input type="text" id="accountx" name="agttxt" class="ipt_text_w150 inputDefault" maxlength="15"/>
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">话务员号码：</span>
 	        <div class="ipt-box">
-	        	<input type="text" id="telnumx" name="agttxt" class="ipt_text_w150 inputDefault" />
+	        	<input type="text" id="telnumx" name="agttxt" class="ipt_text_w150 inputDefault"  maxlength="15"/>
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item" id="whnum">
 	    	<span class="lab120">姓名：</span>
 	        <div class="ipt-box">
-	        	<input type="text" id="agtnamex" name="agttxt" value="0" class="ipt_text_w150 inputDefault" />
+	        	<input type="text" id="agtnamex" name="agttxt" value="0" class="ipt_text_w150 inputDefault"  maxlength="20"/>
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">电子邮箱：</span>
 	        <div class="ipt-box">
-	        	<input type="text" id="emailx" name="agttxt" class="ipt_text_w150 inputDefault" />
-	            <span></span>
+	        	<input type="text" id="emailx" name="agttxt" class="ipt_text_w150 inputDefault"  maxlength="20"/>
+	            <span class="asterisk"></span>
 	        </div>
 	    </div>
 		<div class="lab_ipt_item">

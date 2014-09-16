@@ -25,26 +25,29 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">通话记录详情&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
-   	<form action="<c:url value='/callRecordAction_home.action'/>" method="post">
+   	<form name="form1" action="<c:url value='/callRecordAction_home.action'/>" method="post">
 	<div class="queryDiv_h80">
 	   	<ul class="queryWrap_ul">
 			<li><label>开始日期：</label><input type="text" id="sdt" name="calltxt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="${calltxt[0] }"/></li>
 	        <li><label>结束日期：</label><input type="text" id="edt" name="calltxt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="${calltxt[1] }"/></li>
-	        <li><label>主叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[2] }"/></li>
-	        <li><label>被叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[3] }"/></li>
+	        <li><label>主叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[2] }" maxlength="12"/></li>
+	        <li><label>被叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[3] }" maxlength="12"/></li>
 	        <li>
 	        	<label>呼叫方向：</label>
 	        	<s:select name="calltxt" list="#{1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{calltxt[4]}" cssClass="inputDefault"></s:select>
 			</li>
 	        <li>
 	        	<label>等待时长：</label>
-	        	<input type="text" name="calltxt" class="ipt50 inputDefault" value="${calltxt[5] }"/></li>
+	        	<input type="text" id="waittimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[5] }"/>
+	        	<span class="asterisk"></span>
+	        </li>
 	        <li>
 	        	<label>通话时长：</label>
-	        	<input type="text" name="calltxt" class="ipt50 inputDefault" value="${calltxt[6] }"/>
+	        	<input type="text" id="calltimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[6] }"/>
+	        	<span class="asterisk"></span>
 	        </li>
 	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt50 inputDefault" value="${calltxt[7] }"/></li>
-	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+	        <li><input type="button" onclick="queryCall()" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 	</div>
     </form>
@@ -131,6 +134,61 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
+<script type="text/javascript">
+$(function(){
+	$("#waittimex").bind("blur",checkWaittime);
+	$("#calltimex").bind("blur",checkCalltime);
+});
 
+function checkWaittime()
+{
+	var waittime = $("#waittimex").val();
+	var regexp = /^[0-9>=<]+$/;
+	if(!waittime)
+	{
+		$(".asterisk")[0].innerHTML="等待时长不能为空";
+		return false;
+	}
+	else if(!regexp.exec(waittime))
+	{
+		$(".asterisk")[0].innerHTML="等待时长只能是数字";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[0].innerHTML="";
+		return true;
+	}
+}
+function checkCalltime()
+{
+	var calltime = $("#calltimex").val();
+	var regexp = /^[0-9>=<]+$/;
+	if(!calltime)
+	{
+		$(".asterisk")[1].innerHTML="通话时长不能为空";
+		return false;
+	}
+	else if(!regexp.exec(calltime))
+	{
+		$(".asterisk")[1].innerHTML="通话时长只能是数字";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[1].innerHTML="";
+		return true;
+	}
+}
+
+function queryCall()
+{
+	if(!checkWaittime()) return false;
+	if(!checkCalltime()) return false;
+	document.form1.submit();
+
+}
+
+</script>
 </body>
 </html>

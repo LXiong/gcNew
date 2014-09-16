@@ -65,6 +65,7 @@ $(function(){
 	$("#accountx").bind("blur",checkAccount);
 	$("#telnumx").bind("blur",checkTelnum);
 	$("#agtnamex").bind("blur",checkAgtname);
+	$("#emailx").bind("blur",checkEmail);
 });
 
 function checkAccount()
@@ -115,6 +116,21 @@ function checkAgtname()
 		return true;
 	}
 }
+function checkEmail()
+{
+	var email = $("#emailx").val();
+	var regexp=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+	if(email!="" && !regexp.exec(email))
+	{
+		$(".asterisk")[3].innerHTML="请输入合法的邮箱";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[3].innerHTML="";
+		return true;
+	}
+}
 
 //save agent
 function saveAgentBtn()
@@ -122,6 +138,7 @@ function saveAgentBtn()
 	if(!checkAccount()) return false;
 	if(!checkTelnum()) return false;
 	if(!checkAgtname()) return false;
+	if(!checkEmail()) return false;
 	
 	$("#form2").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
