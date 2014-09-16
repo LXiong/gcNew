@@ -10,7 +10,8 @@ public class AcdForm {
 	private String edt=curDate;	//统计结束日期
 	
 	private String[] acdtxt;
-	private String grpid;
+	private int grpid;
+	private int taskid;
 	
 	public String getCts() {
 		return cts;
@@ -36,10 +37,16 @@ public class AcdForm {
 	public void setAcdtxt(String[] acdtxt) {
 		this.acdtxt = acdtxt;
 	}
-	public String getGrpid() {
+	public int getGrpid() {
 		return grpid;
 	}
-	public void setGrpid(String grpid) {
+	public void setGrpid(int grpid) {
 		this.grpid = grpid;
+	}
+	public int getTaskid() {
+		return taskid;
+	}
+	public void setTaskid(int taskid) {
+		this.taskid = taskid;
 	}
 }

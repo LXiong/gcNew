@@ -72,4 +72,16 @@ public class AgentAction extends BaseAction implements ModelDriven<AgentForm>{
 		log.info("delete agent ["+agentForm.getAgtid()+"] success");
 		return home();
 	}
+	
+	/**
+	 * 密码初始化
+	 * @return
+	 */
+	public String initAgentpwd()
+	{
+		log.info("agtid:"+agentForm.getAgtid());
+		agentDao.initAgentpwdByAgtid(agentForm);
+		log.info("init agent password ["+agentForm.getAgtid()+"] success");
+		return null;
+	}
 }

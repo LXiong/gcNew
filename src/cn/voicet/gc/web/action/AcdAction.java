@@ -28,6 +28,8 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		acdDao.queryAcdList(ds,acdForm);
+		log.info("list2 size:"+ds.list2.size());
+		log.info("list2:"+ds.list2);
 		return "show_acd";
 	}
 	
@@ -55,5 +57,16 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 		return home();
 	}
 	
+	/**
+	 * 指派任务
+	 * @return
+	 */
+	public String setTask()
+	{
+		log.info("cts:"+acdForm.getCts()+", grpid:"+acdForm.getGrpid()+", taskid:"+acdForm.getTaskid());
+		acdDao.setTaskForAcd(acdForm);
+		log.info("set acd task["+acdForm.getTaskid()+"] success");
+		return home();
+	}
 	
 }

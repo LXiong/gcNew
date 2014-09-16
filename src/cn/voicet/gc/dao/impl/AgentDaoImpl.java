@@ -102,4 +102,15 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		});
 	}
 
+	public void initAgentpwdByAgtid(final AgentForm agentForm) {
+		this.getJdbcTemplate().execute("{call web_agent_initpwd(?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, agentForm.getAgtid());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
 }

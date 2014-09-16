@@ -9,4 +9,5 @@ public interface AgentDao{
 	void queryAgentAnalyList(DotSession ds, AgentForm agentForm);
 	String saveAgent(AgentForm agentForm);
 	void deleteAgentByAccount(AgentForm agentForm);
+	void initAgentpwdByAgtid(AgentForm agentForm);
 }

@@ -50,7 +50,12 @@
 					<td>${agent.agtname }</td>
 					<td>${agent.email }</td>
 					<td>
+						<!-- a to button 解决ajax submit提交问题 -->
+						<a href="javascript:initAgentpwdPre('${agent.agtid }')">密码初始化</a>
+						<input type="button" class="hide" onclick="initAgentpwd()" value="密码初始化"/>
+						
 						<a href="javascript:saveAgent('edit','${agent.agtid }','${agent.account }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;
+						
 						<a href="javascript:deleteAgentPre('${agent.agtid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteAgent()" value="删除"/>
 					</td>
@@ -111,8 +116,14 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<!-- delete agent form -->
 	<form name="form3" action="<c:url value='/agentAction_deleteAgent.action'/>" method="post">
 		<input type="hidden" id="del_agtid" name="agtid"/>
+	</form>
+	
+	<!-- init agentpwd form -->
+	<form id="form4" action="<c:url value='/agentAction_initAgentpwd.action'/>" method="post">
+		<input type="hidden" id="init_agtid" name="agtid"/>
 	</form>
 	
 </div>

@@ -160,3 +160,19 @@ function deleteAgent()
 	document.form3.submit();
 }
 
+//init agent password
+function initAgentpwdPre(agtid)
+{
+	$("#init_agtid").val(agtid);
+	initAgentpwd();
+}
+function initAgentpwd()
+{
+	$("#form4").ajaxSubmit({ 
+		success:function(data){ //提交成功的回调函数
+			layer.msg("密码初始化成功",1,111);
+        }  
+	}); 
+    return false;
+}
+

@@ -9,4 +9,5 @@ public interface AcdDao{
 	void queryAcdAnalyList(DotSession ds, AcdForm acdForm);
 	void saveAcd(AcdForm acdForm);
 	void deleteAcdByGrpid(AcdForm acdForm);
+	void setTaskForAcd(AcdForm acdForm);
 }

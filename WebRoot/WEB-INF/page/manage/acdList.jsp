@@ -42,12 +42,12 @@
                      <th width="6%">组编号</th>
                      <th width="10%">组名称</th>
                      <th width="10%">组号码</th>
-                     <th width="10%">ACW</th>
+                     <th width="4%">ACW</th>
                      <th width="12%">最大等待时长(秒)</th>
                      <th width="10%">最大排队数目</th>
                      <th width="10%">溢出去向</th>
                      <th width="8%">任务名称</th>
-                     <th width="10%">操作</th>
+                     <th width="16%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -60,7 +60,9 @@
 					<td>${acd.maxwaittime }</td>
 					<td>${acd.maxwaitnum }</td>
 					<td>${acd.overflowto }</td>
-					<td>${acd.tname }</td>
+					<td>
+						<s:select list="#session.vts.list2" onchange="popSetTask('%{grpid}','%{grpname}',this)" listKey="tid" listValue="tname" value="taskid"></s:select>
+					</td>
 					<td>
 						<a href="javascript:saveAcd('edit','${acd.grpid }','${cts }','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteAcdPre('${acd.grpid }')">删除</a>
@@ -148,6 +150,13 @@
 	<form name="form3" action="<c:url value='acdAction_deleteAcd.action'/>" method="post">
 		<input type="hidden" name="cts" value="${cts }"/>
 		<input type="hidden" id="del_grpid" name="grpid"/>
+	</form>
+	
+	<!-- set acd task form -->
+	<form name="form4" action="<c:url value='acdAction_setTask.action'/>" method="post">
+		<input type="hidden" name="cts" value="${cts }"/>
+		<input type="hidden" id="st_grpid" name="grpid"/>
+		<input type="hidden" id="st_taskid" name="taskid"/>
 	</form>
 	
 </div>

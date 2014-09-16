@@ -42,6 +42,19 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 		        		 ds.list.add(map);
 					}
 				}
+				//get selected task for acd
+				cs.clearParameters();
+				cs = conn.prepareCall("{call web_task_select()}");
+				cs.execute();
+				rs = cs.getResultSet();
+				ds.list2 = new ArrayList();
+				if(rs!=null){
+					while (rs.next()) {
+						 Map map = new HashMap();
+						 VTJime.putMapDataByColName(map, rs);
+		        		 ds.list2.add(map);
+					}
+				}
 				return null;
 			}
 		});
@@ -96,7 +109,20 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, acdForm.getCts());
-				cs.setString(2, acdForm.getGrpid());
+				cs.setInt(2, acdForm.getGrpid());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	public void setTaskForAcd(final AcdForm acdForm) {
+		this.getJdbcTemplate().execute("{call web_acd_settask(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, acdForm.getCts());
+				cs.setInt(2, acdForm.getGrpid());
+				cs.setInt(3, acdForm.getTaskid());
 				cs.execute();
 				return null;
 			}
