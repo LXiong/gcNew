@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						dataType: "json",
     						data: {cts: ctsVal},
     						url: "saveCTS.action",
-    						success: function(flag) {
-    							
+    						success: function() {
+        						
     						}
     					});
     				}
@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="nav_right">
             <span><a href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
-            <span><a href="${pageContext.request.contextPath }/userAction_logout.action" onclick="return confirm('你确定要注销吗?')" target="_top">[&nbsp;注销&nbsp;]</a></span>
+            <span><a href="javascript:popLogoutDiv()" target="_top">[&nbsp;注销&nbsp;]</a></span>
         </div>
     </div>
     <!-- main -->
@@ -133,6 +133,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
+<script type="text/javascript">
 
+	//logout
+	function popLogoutDiv()
+	{
+		layer.confirm("确定要注销吗？",function(){
+			location.href="userAction_logout.action";
+		});
+	}
+</script>
 </body>
 </html>

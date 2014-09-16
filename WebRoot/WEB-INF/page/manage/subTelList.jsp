@@ -40,7 +40,7 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="12%">分机编号</th>
+                     <th width="8%">分机编号</th>
                      <th width="12%">分机号码</th>
                      <th width="12%">默认话务员帐号</th>
                      <th width="12%">默认业务组号码</th>

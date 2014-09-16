@@ -51,7 +51,7 @@
 					<td>${agent.email }</td>
 					<td>
 						<!-- a to button 解决ajax submit提交问题 -->
-						<a href="javascript:initAgentpwdPre('${agent.agtid }')">密码初始化</a>
+						<a href="javascript:initAgentpwdPre('${agent.agtid }')">密码初始化</a>&nbsp;&nbsp;
 						<input type="button" class="hide" onclick="initAgentpwd()" value="密码初始化"/>
 						
 						<a href="javascript:saveAgent('edit','${agent.agtid }','${agent.account }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;

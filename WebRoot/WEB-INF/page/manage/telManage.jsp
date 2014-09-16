@@ -36,7 +36,7 @@
    	
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w265 left">
-			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100" value="<s:property value="telnum"/>"/></li>
+			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100 inputDefault" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w558 right">

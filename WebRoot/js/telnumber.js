@@ -136,7 +136,7 @@ function checkTelnum()
 	}
 	else if(!regexp.exec(telnum))
 	{
-		$(".asterisk")[1].innerHTML="请输入合理的电话号码";
+		$(".asterisk")[1].innerHTML="电话号码不合理";
 		return false;
 	}
 	else

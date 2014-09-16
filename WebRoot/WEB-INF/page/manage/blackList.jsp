@@ -28,7 +28,7 @@
    	<form id="form1" name="form1" action="<c:url value='/blackAction_home.action'/>" method="post">
    	<div class="queryDiv">
    		<ul class="queryWrap_ul_w500 left">
-	        <li><label>电话号码：</label><input type="text" class="ipt155" name="telnum" id="telnum" value="<s:property value="telnum"/>"/></li>
+	        <li><label>电话号码：</label><input type="text" class="ipt155 inputDefault" name="telnum" id="telnum" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" id="searchImg" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul_w200 right">
@@ -42,9 +42,9 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="10%">记录编号</th>
+                     <th width="8%">记录编号</th>
                      <th width="10%">电话号码</th>
-                     <th width="30%">备注信息</th>
+                     <th width="50%">备注信息</th>
                      <th width="20%">操作</th>
                  </tr>
              </thead>

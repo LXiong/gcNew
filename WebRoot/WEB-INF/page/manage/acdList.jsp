@@ -58,7 +58,7 @@
 					<td>${acd.maxwaitnum }</td>
 					<td>${acd.overflowto }</td>
 					<td>
-						<s:select list="#session.vts.list2" onchange="popSetTask('%{grpid}','%{grpname}',this)" listKey="tid" listValue="tname" value="taskid"></s:select>
+						<s:select list="#session.vts.list2" onchange="popSetTask('%{grpid}','%{grpname}',this)" listKey="tid" listValue="tname" value="taskid" cssClass="seldefault"></s:select>
 					</td>
 					<td>
 						<a href="javascript:saveAcd('edit','${acd.grpid }','<s:property value="#session.vts.curCTS"/>','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
