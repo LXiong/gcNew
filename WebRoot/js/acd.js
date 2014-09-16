@@ -201,10 +201,28 @@ function popSetTask(grpid,grpname,obj)
 	$("#st_grpid").val(grpid);
 	$("#st_taskid").val(tid);
 	//
+	/*
 	layer.confirm("是否将【"+tname+"】指派到【"+grpname+"】",function(){
 		document.form4.submit();
 	},function(){
 		history.go(0);
+	});
+	*/
+	
+	$.layer({
+	    shade: [0.2,'#000'],
+	    area: ['auto','auto'],
+	    dialog: {
+	        msg: "是否将【"+tname+"】指派到【"+grpname+"】",
+	        btns: 2,                    
+	        type: 4,
+	        btn: ['确定','取消'],
+	        yes: function(){
+				document.form4.submit();
+	        }, no: function(){
+	        	history.go(0);
+	        }
+	    }
 	});
 }
 
