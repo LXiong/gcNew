@@ -52,6 +52,7 @@ public class DotSession {
 	public List list3;
 	public List list4;
 	public List list5;
+	public List ctsList;
 	public int curYear;	//当前年份
 	private int stackPos=0;
 	private StackInfo[] arrayStackInfo;

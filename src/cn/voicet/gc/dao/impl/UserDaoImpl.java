@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +46,27 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 				}
 			});
 	}
+	
+
+	public void queryCTSList(final DotSession ds) {
+		this.getJdbcTemplate().execute("{call web_cts_list()}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.ctsList = new ArrayList();
+				if(rs!=null){
+					while (rs.next()) {
+						 Map map = new HashMap();
+						 VTJime.putMapDataByColName(map, rs);
+		        		 ds.ctsList.add(map);
+					}
+				}
+				return null;
+			}
+		});
+	}
 
 	public boolean updateUserPassword(final DotSession ds, final UserForm userForm) {
 		String sp = "{call web_userchgpwd(?,?,?,?)}";
@@ -68,4 +90,5 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			}
 		});
 	}
+
 }

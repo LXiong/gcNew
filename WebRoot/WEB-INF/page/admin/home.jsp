@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="nav_right">
         	<span>
-        		<label>当前服务器：</label><s:select list="#{'cts100':'cts100','cts101':'cts101'}" onchange="changeServer(this)" listKey="key" listValue="value" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
+        		<label>当前服务器：</label><s:select list="#session.vts.ctsList" onchange="changeServer(this)" listKey="ctsinfo" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
         	</span>
             <span><a href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
             <span><a href="javascript:popLogoutDiv()" target="_top">[&nbsp;注销&nbsp;]</a></span>

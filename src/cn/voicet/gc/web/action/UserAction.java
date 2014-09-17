@@ -39,6 +39,9 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		DotSession ds=DotSession.getVTSession(request);
 		
 		Map<String, Object> map = userDao.userLogin(userForm);
+		//
+		userDao.queryCTSList(ds);
+		log.info("curCTS:"+ds.ctsList);
 		log.info("user login: "+map);
 		ds.username=(String) map.get("username");
 		ds.roleName = (String) map.get("rolename");
