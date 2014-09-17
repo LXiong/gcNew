@@ -61,10 +61,10 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 				bHaveColumn=false;
 				bHaveLine=false;
 				bHaveGrp=true;
-				html+="<div class='lab_ipt_item'>";
-				html+="<span class='lab120'>"+map.get("name")+"</span>";
+				html+="<div class='lab_ipt_item' style='font-size:16px; font-weight:bold'>";
+				html+="<span class='lab120'>"+map.get("name")+"：</span>";
 				html+="<input type='hidden' name='cts' value=';"+map.get("name")+"='/>";
-				html+="<div class='ipt-box'>";
+				html+="<div class='ipt-box-hei'>";
 				html+="<label>"+map.get("info")+"</label>";
 				html+="</div>";
 				html+="</div>";
@@ -98,9 +98,9 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	
 				if(!bHaveLine)
 				{
-					html+="<div class='ipt-box'>";
+					html+="<div class='ipt-box-hei'>";
 				}
-				html+="<input type='checkbox' value='"+map.get("grpid")+",' name='cts' onclick='checkCTSGRP(this)'/><label for='group"+map.get("id")+"'>"+map.get("name")+"</label>&nbsp;&nbsp;";
+				html+="<input type='checkbox' id='group"+map.get("id")+"' value='"+map.get("grpid")+",' name='cts' onclick='checkCTSGRP(this)'/><label for='group"+map.get("id")+"'>"+map.get("name")+"</label>&nbsp;&nbsp;";
 				bHaveLine= true;
 				
 			}

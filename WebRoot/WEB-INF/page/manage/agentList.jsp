@@ -35,9 +35,9 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="15%">话务员号码</th>
                      <th width="15%">登录账号</th>
-                     <th width="15%">是否为"管理员"</th>
+                     <th width="15%">话务员号码</th>
+                     <th width="15%">管理员</th>
                      <th width="15%">姓名</th>
                      <th width="15%">电子邮箱</th>
                      <th width="20%">操作</th>
@@ -46,8 +46,8 @@
              <tbody id="movies">
                	<s:iterator id="agent" value="#session.vts.list">
 				<tr align="center">
-					<td>${agent.telnum }</td>
 					<td>${agent.account }</td>
+					<td>${agent.telnum }</td>
 					<td>
 						<c:if test="${agent.ismaster eq 1}">√</c:if>
 					</td>
@@ -93,9 +93,7 @@
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">是否为管理员：</span>
 	        <div class="ipt-box">
-	        	<label>
-	        	<input type="checkbox" id="ismasterchk" onclick="checkMaster(this)"/>
-	        	</label>
+	        	<input type="checkbox" id="ismasterchk" onclick="checkMaster(this)" style="margin-top:6px;"/>
 	        	<input type="hidden" id="ismasterx" name="agttxt" value="0"/>
 	            <span class=""></span>
 	        </div>
