@@ -69,7 +69,7 @@
     <!-- Item oriented legend -->
     <div id="legend2" class="holder left"></div>
     <div class="left">
-	    <input type="text" id="tzval" value="5" class="ipt20 inputDefault"/>
+	    <input type="text" id="tzval" value="1" class="ipt20 inputDefault"/>
  		<button id="tiaozhuan" class="btn btn-primary">跳转</button>
 	</div>
     <!-- jPage end -->
