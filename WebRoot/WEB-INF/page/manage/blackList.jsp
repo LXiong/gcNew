@@ -135,6 +135,6 @@ $(function(){
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/black.js?v=1'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/black.js?v=2'/>"></script>
 </body>
 </html>

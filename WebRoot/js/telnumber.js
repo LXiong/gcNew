@@ -21,7 +21,7 @@ function showPopDiv()
 	        border : [5, 0.5, '#666'],
 	        area: ['400px','150px'],
 	        shadeClose: false,
-			bgcolor: '#fff',
+			bgcolor: '#EEF1F8',
 			page:{dom:'#popDiv'}
 		});
 	}
@@ -115,7 +115,7 @@ function saveTaskTel(t,tid,ttid,telnum)
         border : [5, 0.5, '#666'],
         area: ['400px','150px'],
         shadeClose: false,
-		bgcolor: '#fff',
+		bgcolor: '#EEF1F8',
 		page:{dom:'#popSaveTaskTelDiv'}
 	});
 }

@@ -21,7 +21,7 @@ function saveBlackNumber(t,bid,tnum,ninfo)
         border : [5, 0.5, '#666'],
         area: ['450px','300px'],
         shadeClose: false,
-		bgcolor: '#fff',
+		bgcolor: '#EEF1F8',
 		page:{dom:'#popDiv'}
 	}); 
 }

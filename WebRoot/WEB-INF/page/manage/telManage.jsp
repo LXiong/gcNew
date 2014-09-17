@@ -7,25 +7,18 @@
  	<title>扶贫观察点管理系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css?v=1'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=3'/>" rel="stylesheet" />
+ 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ 	<meta http-equiv="cache-control" content="no-cache"/>
+ 	<meta http-equiv="expires" content="0"/>
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
     <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/datePicker/WdatePicker.js'/>"></script>
     <!-- 日期控件结束 -->
- 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- 	<meta http-equiv="cache-control" content="no-cache"/>
- 	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/layer/extend/layer.ext.js'/>"></script>
-	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
- 	<!-- ajax file upload -->
- 	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
- 	<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=5'/>"></script>
 </head>
 <body>
 <div id="contentWrap">
@@ -203,5 +196,11 @@
 	});
 </script>
 
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=7'/>"></script>
 </body>
 </html>

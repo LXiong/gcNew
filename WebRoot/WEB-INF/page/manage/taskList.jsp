@@ -7,22 +7,14 @@
  	<title>扶贫观察点管理系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
-	
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<!-- layer 弹出插件 end -->
+ 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
- 	<script type="text/javascript" src="<c:url value='/js/task.js?v=6'/>"></script>
- 	<!-- ajax file upload -->
- 	<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
- 	
 </head>
 <body>
 <div id="contentWrap">
@@ -129,5 +121,40 @@
 	</form>
 	
 </div>
+
+<script type="text/javascript">
+//split page task
+$(function(){
+	$("div.holder").jPages({
+		containerID : "movies",
+        first : "首页",
+        previous : "上一页",
+        next : "下一页",
+        last : "尾页",
+        perPage : 26,
+        keyBrowse:true,
+        delay : 0,
+        callback : function( pages, items ){
+	        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
+	        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
+	    }
+	});
+      /* when button is clicked */
+	$("#tiaozhuan").click(function(){
+  		/* get given page */
+		var page = parseInt( $("#tzval").val() );
+
+  		/* jump to that page */
+  		$("div.holder").jPages( page );
+	});
+});
+</script>
+
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=7'/>"></script>
 </body>
 </html>

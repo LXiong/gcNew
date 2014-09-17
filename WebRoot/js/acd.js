@@ -33,7 +33,7 @@ function saveAcd(t,grpid,cts,grpname,telnum,acw,maxwaittime,maxwaitnum,overflowt
         border : [5, 0.5, '#666'],
         area: ['450px','340px'],
         shadeClose: false,
-		bgcolor: '#fff',
+		bgcolor: '#EEF1F8',
 		page:{dom:'#popDiv'}
 	});
 }
