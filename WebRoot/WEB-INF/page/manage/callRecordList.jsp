@@ -59,14 +59,15 @@
                      <th width="10%">平台名称</th>
                      <th width="10%">主叫号码</th>
                      <th width="8%">被叫号码</th>
-                     <th width="12%">振铃/摘机</th>
-                     <th width="8%">应答</th>
-                     <th width="8%">挂机</th>
+                     <th width="6%">呼叫方向</th>
+                     <th width="10%">振铃/摘机</th>
+                     <th width="6%">应答</th>
+                     <th width="6%">挂机</th>
                      <th width="4%">等待</th>
                      <th width="4%">通话</th>
                      <th width="6%">结束方式</th>
                      <th width="6%">话务员</th>
-                     <th width="8%">操作</th>
+                     <th width="4%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -76,6 +77,7 @@
 					<td>${call.cts }</td>
 					<td>${call.ani }</td>
 					<td>${call.dnis }</td>
+					<td>${call.callio}</td>
 					<td>${fn:substring(call.callin,5,19) }</td>
 					<td>${fn:substring(call.answer,10,19) }</td>
 					<td>${fn:substring(call.onhook,10,19) }</td>

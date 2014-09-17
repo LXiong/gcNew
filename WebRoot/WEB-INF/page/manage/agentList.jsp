@@ -108,7 +108,7 @@
 	    <div class="lab_ipt_item" id="whnum">
 	    	<span class="lab120">姓名：</span>
 	        <div class="ipt-box">
-	        	<input type="text" id="agtnamex" name="agttxt" value="0" class="ipt_text_w150 inputDefault"  maxlength="20"/>
+	        	<input type="text" id="agtnamex" name="agttxt" value="0" class="ipt_text_w150 inputDefault"  maxlength="10"/>
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>

@@ -44,8 +44,8 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head2">
                  <tr>
-                     <th width="8%">账号</th>
                      <th width="8%">分机号码</th>
+                     <th width="8%">账号</th>
                      <th width="8%">姓名</th>
                      <th width="8%">请求次数</th>
                      <th width="8%">接听次数</th>
@@ -60,8 +60,8 @@
              <tbody id="movies">
                	<s:iterator id="agent" value="#session.vts.list">
 				<tr align="center">
-					<td>${agent.account }</td>
 					<td>${agent.telnum }</td>
+					<td>${agent.account }</td>
 					<td>${agent.agtname }</td>
 					<td>${agent.cn }</td>
 					<td>${agent.ans }</td>
