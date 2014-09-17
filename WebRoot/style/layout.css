@@ -3,17 +3,17 @@
 /* container */
 #container{width:1024px; margin:0 auto;}
 /* header */
-#header{height:85px; padding:15px 0 0 80px; background:url(../images/logo.png) no-repeat;}
-.tit1{height:25px; font-size:20px; font-weight:bold; color:#0E72C7; text-align:left;}
-.tit2{height:35px; font-size:35px; font-weight:bold; color:#0E72C7; text-align:left;}
-.tit3{float:right; width:240px; color:#9CCFFF;}
+#header{height:85px; padding:10px 0 0 0px; background:url(../images/logo.png) no-repeat;}
+.tit1{height:30px; text-indent:80px; font-size:20px; font-weight:bold; color:#0E72C7; text-align:left;}
+.tit2{height:35px; text-indent:80px; font-size:35px; font-weight:bold; color:#0E72C7; text-align:left;}
+.tit3{height:22px; padding-right:10px; text-align:right; color:#9CCFFF;}
 /* nav */
-#nav{height:30px; line-height:30px; padding-left:20px; color:#FFF; background:url(../images/nav-bg0.png) repeat-x;}
-.nav_left{width:750px; float:left; text-align:left;}
+#nav{height:30px; line-height:29px; text-indent:20px; color:#FFF; background:url(../images/nav-bg0.png) repeat-x;}
+.nav_left{width:640px; float:left; text-align:left;}
 .nav_left_wel{float:left;}
 .nav_left_wel span{margin-right:40px;}
 .nav_left_path{float:left;}
-.nav_right{width:200px; float:left; color:#FFF;}
+.nav_right{width:360px; float:left; color:#FFF;}
 .nav_right span{margin-left:30px;}
 /* main */
 #main{width:1024px; height:672px; overflow:hidden;}

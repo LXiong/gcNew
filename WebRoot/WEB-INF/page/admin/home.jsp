@@ -31,27 +31,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<span>欢迎：&nbsp;<s:property value="#session.vts.roleName"/></span><span><s:property value="#session.vts.username"/></span>
     		</div>
     		<div id="navigate" class="nav_left_path">
-    			<script type="text/javascript">
-    				function changeServer(obj)
-    				{
-        				var ctsVal = obj.options[obj.selectedIndex].text;
-    					$.ajax({
-    						cache: false,
-    						async: false,
-    						type: "POST",
-    						dataType: "json",
-    						data: {cts: ctsVal},
-    						url: "saveCTS.action",
-    						success: function() {
-        						
-    						}
-    					});
-    				}
-    			</script>
-    			<label>当前服务器：</label><s:select list="#{'cts100':'cts100','cts101':'cts101'}" onchange="changeServer(this)" listKey="key" listValue="value" value="#session.vts.curCTS" cssStyle="height:25px; margin:2px;"></s:select>
+    			
     		</div>
         </div>
         <div class="nav_right">
+        	<span>
+        		<label>当前服务器：</label><s:select list="#{'cts100':'cts100','cts101':'cts101'}" onchange="changeServer(this)" listKey="key" listValue="value" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
+        	</span>
             <span><a href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
             <span><a href="javascript:popLogoutDiv()" target="_top">[&nbsp;注销&nbsp;]</a></span>
         </div>
@@ -78,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="#">联系我们</a>&nbsp;|&nbsp;
         <a href="#">帮助中心</a>&nbsp;|&nbsp;
         <a href="#">常见问题</a>
-        <!-- 记录js分页当前页码 -->
+        <!-- 记录js分页当前页码 start -->
         <input type="hidden" id="curTaskPage" value="1"/>
         <input type="hidden" id="curTelnumPage" value="1"/>
         <input type="hidden" id="curAcdAnalyPage" value="1"/>
@@ -88,8 +74,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input type="hidden" id="curCallRecordPage" value="1"/>
         <input type="hidden" id="curSubtelPage" value="1"/>
         <input type="hidden" id="curBlackPage" value="1"/>
+        <!-- 记录js分页当前页码 end -->
         </p>
-        <span>Copyright @ 2005-2014 All Rights Reserved 版权所有 · 南京威帝通讯科技有限公司&nbsp;&nbsp;V140701</span>
+        <span>Copyright @ 2005-2014 All Rights Reserved 版权所有 · 南京威帝通讯科技有限公司&nbsp;&nbsp;V140901</span>
     </div>
     <!-- print window -->
 	<div style="height:0px;">
@@ -148,6 +135,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	{
 		layer.confirm("确定要注销吗？",function(){
 			location.href="userAction_logout.action";
+		});
+	}
+	//change cts server
+	function changeServer(obj)
+	{
+		var ctsVal = obj.options[obj.selectedIndex].text;
+		$.ajax({
+			cache: false,
+			async: false,
+			type: "POST",
+			dataType: "json",
+			data: {cts: ctsVal},
+			url: "saveCTS.action",
+			success: function() {
+				
+			}
 		});
 	}
 </script>
