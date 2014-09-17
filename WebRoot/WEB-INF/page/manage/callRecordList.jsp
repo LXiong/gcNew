@@ -172,6 +172,7 @@ function queryCall()
 	        previous : "上一页",
 	        next : "下一页",
 	        last : "尾页",
+	       	startPage : nowPage,
 	        perPage : 24,
 	        keyBrowse:true,
 	        delay : 0,
