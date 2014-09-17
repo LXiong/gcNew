@@ -24,21 +24,23 @@
 			<li></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveTask('add','','','','')" value="添加"/></li>
+	        <li><input type="button" class="btn4" onclick="saveTask('add','0','','0','0','')" value="添加"/></li>
 		</ul>
 	</div>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="8%">任务编号</th>
-                     <th width="20%">任务名称</th>
-                     <th width="8%">任务类型</th>
-                     <th width="8%">号码总数</th>
-                     <th width="8%">新建数</th>
-                     <th width="8%">执行中</th>
-                     <th width="8%">执行完成</th>
-                     <th width="10%">呼叫接通数</th>
+                     <th width="6%">任务编号</th>
+                     <th width="10%">任务名称</th>
+                     <th width="6%">任务类型</th>
+                     <th width="6%">任务状态</th>
+                     <th width="8%">业务组(个)</th>
+                     <th width="6%">号码总数</th>
+                     <th width="6%">新建数</th>
+                     <th width="6%">执行中</th>
+                     <th width="6%">执行完成</th>
+                     <th width="8%">呼叫接通数</th>
                      <th width="20%">操作</th>
                  </tr>
              </thead>
@@ -53,14 +55,22 @@
 						<c:if test="${task.kind eq 2 }">回访2</c:if>
 						<c:if test="${task.kind eq 3 }">回访3</c:if>
 					</td>
+					<td>
+						<c:if test="${task.state eq 0 }">新建</c:if>
+						<c:if test="${task.state eq 1 }">激活</c:if>
+						<c:if test="${task.state eq 9 }">停止</c:if>
+						<c:if test="${task.state eq 10 }">呼叫完成</c:if>
+					</td>
+					<td>${task.acdnum }</td>
 					<td>${task.trn }</td>
 					<td>${task.nrn }</td>
 					<td>${task.drn }</td>
 					<td>${task.frn }</td>
 					<td>${task.ans }</td>
 					<td>
+						<a href="javascript:setAcd('${task.tid }')">指派业务组</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
-						<a href="javascript:saveTask('edit','${task.tid }','${task.tname }','${task.kind }','${task.taskinfo }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:saveTask('edit','${task.tid }','${task.tname }','${task.kind }','${task.state }','${task.taskinfo }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskPre('${task.tid }','${task.tname }','${task.trn }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTask('${task.tid }','${task.tname }')" value="删除"/>
 					</td>
@@ -98,6 +108,13 @@
 	            <span class="asterisk"></span>
 	        </div>
 	    </div>
+	    <div class="lab_ipt_item" id="tstate_add_hide">
+	    	<span class="lab120">任务状态：</span>
+	        <div class="ipt-box">
+	        	<s:select id="statex" name="state" list="#application.vta.GetList('taskstate')" listKey="id" listValue="str" cssStyle="height:28px;"></s:select>
+	            <span class="asterisk"></span>
+	        </div>
+	    </div>
 	    <div class="h132">
 	    	<span class="lab120">任务信息：</span>
 	        <div class="h132 ipt-box">
@@ -119,6 +136,22 @@
 		<input type="hidden" id="del_tid" name="tid"/>
 		<input type="hidden" id="del_tname" name="tname"/>
 	</form>
+	
+	<!--POP LAYER START-->
+	<div id="popSetAcdDiv" style="display:none;"> 
+		<form name="form3" action="<c:url value='/taskAction_setAcd.action'/>" method="post">
+	    <input type="hidden" id="setacd_tidx" name="tid"/>
+	    
+	    ${html }
+	    
+		<div class="lab_ipt_item">
+			<span class="lab120"></span>
+			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="saveSetAcdBtn()"/></div>
+			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
+		</div>	
+		</form>
+	</div>
+	<!--POP LAYER END-->
 	
 </div>
 
@@ -158,6 +191,6 @@ $(function(){
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/task.js?v=7'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=8'/>"></script>
 </body>
 </html>

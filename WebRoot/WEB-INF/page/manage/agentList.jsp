@@ -28,17 +28,18 @@
 	        <li></li>
 		</ul>
 		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveAgent('add','0','','','','','')" value="添加"/></li>
+	        <li><input type="button" class="btn4" onclick="saveAgent('add','0','','0','','','','')" value="添加"/></li>
 		</ul>
 	</div>
 	<div class="content_List568">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="20%">话务员号码</th>
-                     <th width="20%">登录账号</th>
-                     <th width="20%">姓名</th>
-                     <th width="20%">电子邮箱</th>
+                     <th width="15%">话务员号码</th>
+                     <th width="15%">登录账号</th>
+                     <th width="15%">是否为"管理员"</th>
+                     <th width="15%">姓名</th>
+                     <th width="15%">电子邮箱</th>
                      <th width="20%">操作</th>
                  </tr>
              </thead>
@@ -47,6 +48,9 @@
 				<tr align="center">
 					<td>${agent.telnum }</td>
 					<td>${agent.account }</td>
+					<td>
+						<c:if test="${agent.ismaster eq 1}">√</c:if>
+					</td>
 					<td>${agent.agtname }</td>
 					<td>${agent.email }</td>
 					<td>
@@ -54,7 +58,7 @@
 						<a href="javascript:initAgentpwdPre('${agent.agtid }')">密码初始化</a>&nbsp;&nbsp;
 						<input type="button" class="hide" onclick="initAgentpwd()" value="密码初始化"/>
 						
-						<a href="javascript:saveAgent('edit','${agent.agtid }','${agent.account }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:saveAgent('edit','${agent.agtid }','${agent.account }','${agent.ismaster }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;
 						
 						<a href="javascript:deleteAgentPre('${agent.agtid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteAgent()" value="删除"/>
@@ -84,6 +88,16 @@
 	        <div class="ipt-box">
 	        	<input type="text" id="accountx" name="agttxt" class="ipt_text_w150 inputDefault" maxlength="15"/>
 	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
+	    	<span class="lab120">是否为管理员：</span>
+	        <div class="ipt-box">
+	        	<label>
+	        	<input type="checkbox" id="ismasterchk" onclick="checkMaster(this)"/>
+	        	</label>
+	        	<input type="hidden" id="ismasterx" name="agttxt" value="0"/>
+	            <span class=""></span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
@@ -161,7 +175,7 @@ $(function(){
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/agent.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/agent.js?v=5'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

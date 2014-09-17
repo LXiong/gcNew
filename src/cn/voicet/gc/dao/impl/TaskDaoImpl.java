@@ -57,6 +57,19 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		        		 ds.list.add(map);
 					}
 				}
+				//get selected task for acd
+				cs.clearParameters();
+				cs = conn.prepareCall("{call web_ctsgrp_list()}");
+				cs.execute();
+				rs = cs.getResultSet();
+				ds.list2 = new ArrayList();
+				if(rs!=null){
+					while (rs.next()) {
+						 Map map = new HashMap();
+						 VTJime.putMapDataByColName(map, rs);
+		        		 ds.list2.add(map);
+					}
+				}
 				return null;
 			}
 		});
@@ -67,7 +80,7 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
 				String task_insert = "{call web_task_insert(?,?,?,?)}";
-				String task_update = "{call web_task_update(?,?,?,?,?)}";
+				String task_update = "{call web_task_update(?,?,?,?,?,?)}";
 				CallableStatement cs = null;
 				if(taskForm.getTid()!=0)
 				{
@@ -76,11 +89,12 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 					cs.setInt(1, taskForm.getTid());
 					cs.setString(2, taskForm.getTname());
 					cs.setInt(3, taskForm.getKind());
-					cs.setString(4, taskForm.getTaskinfo());
-					cs.registerOutParameter(5, Types.VARCHAR);
+					cs.setInt(4, taskForm.getState());
+					cs.setString(5, taskForm.getTaskinfo());
+					cs.registerOutParameter(6, Types.VARCHAR);
 					cs.execute();
-					log.info("ret:"+cs.getString(5));
-					return cs.getString(5);
+					log.info("ret:"+cs.getString(6));
+					return cs.getString(6);
 				}
 				else
 				{
@@ -430,6 +444,25 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				cs.execute();
 				log.info("rn:"+cs.getInt(2));
 				return cs.getInt(2);
+			}
+		});
+	}
+
+	public void setAcdByTid(final TaskForm taskForm) {
+		this.getJdbcTemplate().execute("{call web_task_setacd(?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, taskForm.getTid());
+				String s = "";
+				for(int i=0; i<taskForm.getCts().length; i++)
+				{
+					s+=taskForm.getCts()[i];
+				}
+				s = s.substring(1,s.length());
+				log.info("s:"+s);
+				cs.setString(2, s);
+				cs.execute();
+				return null;
 			}
 		});
 	}

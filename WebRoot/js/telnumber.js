@@ -85,10 +85,10 @@ function deleteTaskTel()
 
 
 //recall
-function recall(tid,tname)
+function recall(tid,tname,kind)
 {
 	layer.confirm("确定要重呼所有号码吗？",function(){
-		location.href="taskAction_recall.action?tid="+tid+"&tname="+tname;
+		location.href="taskAction_recall.action?tid="+tid+"&tname="+tname+"&kind="+kind;
 	});
 }
 

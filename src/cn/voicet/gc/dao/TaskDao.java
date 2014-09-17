@@ -20,4 +20,5 @@ public interface TaskDao{
 	void recallTel(TaskForm taskForm);
 	void saveTaskTel(TaskForm taskForm);
 	int blackFilter(TaskForm taskForm);
+	void setAcdByTid(TaskForm taskForm);
 }

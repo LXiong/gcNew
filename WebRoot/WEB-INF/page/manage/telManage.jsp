@@ -22,10 +22,16 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">${tname }&nbsp;号码管理</h3>
+	<h3 class="h3_title">${tname }&nbsp;(
+	<c:if test="${kind eq 0 }">标准</c:if>
+	<c:if test="${kind eq 1 }">回访1</c:if>
+	<c:if test="${kind eq 2 }">回访2</c:if>
+	<c:if test="${kind eq 3 }">回访3</c:if>
+	)&nbsp;&nbsp;号码管理</h3>
    	<form name="form1" action="<c:url value='/taskAction_telmanage.action'/>" method="post">
    	<input type="hidden" name="tid" value="${tid }"/>
    	<input type="hidden" name="tname" value="${tname }"/>
+   	<input type="hidden" name="kind" value="${kind }"/>
    	
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul left">
@@ -35,7 +41,7 @@
 	        	<input type="button" onclick="filterBlack()" class="btn4" value="号码过滤" />
 	        </li>
 			<li>
-	        	<label><input type="button" onclick="recall('${tid }','${tname }')" class="btn4" value="重呼所有" /></label>
+	        	<label><input type="button" onclick="recall('${tid }','${tname }','${kind }')" class="btn4" value="重呼所有" /></label>
 	        </li>
 			<li>
 	        	<input type="button" onclick="saveTaskTel('add','${tid }','','')" class="btn4" value="添加" />
@@ -128,7 +134,7 @@
 	<!--POP LAYER END-->
 	
 	<!-- empty form3 -->
-	<form id="form3" name="form3" action="<c:url value='/taskAction_emptyTaskTel.action'/>" method="post">
+	<form name="form3" action="<c:url value='/taskAction_emptyTaskTel.action'/>" method="post">
 		<input type="hidden" name="tid" value="${tid }"/>
 		<input type="hidden" name="kind" value="${kind }"/>
 		<input type="hidden" name="tname" value="${tname }"/>
@@ -161,6 +167,7 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<!-- 号码过滤 -->
 	<form id="form6" action="<c:url value='taskAction_blackFilter.action?tid=${tid }'/>" method="post">
 		
 	</form>

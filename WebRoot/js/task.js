@@ -1,21 +1,22 @@
 //save task
-function saveTask(t,tid,tname,kind,taskinfo)
+function saveTask(t,tid,tname,kind,state,taskinfo)
 {
 	$(".asterisk")[0].innerHTML="";
 	var tit;
 	if(t=="add")
 	{
 		tit="添加任务";
-		$("#tidx").val(0);
-		$("#kindx").val(0);
+		$("#tstate_add_hide").hide();
 	}
 	else
 	{
+		$("#tstate_add_hide").show();
 		tit="修改任务";
-		$("#tidx").val(tid);
-		$("#kindx").val(kind);
 	}
 	//
+	$("#tidx").val(tid);
+	$("#kindx").val(kind);
+	$("#statex").val(state);
 	$("#tnamex").val(tname);
 	$("#taskinfox").val(taskinfo);
 	$.layer({
@@ -23,7 +24,7 @@ function saveTask(t,tid,tname,kind,taskinfo)
         title: tit,
         offset: [($(window).height() - 290)/2+'px', ''],
         border : [5, 0.5, '#666'],
-        area: ['450px','300px'],
+        area: ['450px','350px'],
         shadeClose: false,
 		bgcolor: '#EEF1F8',
 		page:{dom:'#popDiv'}
@@ -113,3 +114,52 @@ function deleteTask(tid,tname)
 	}); 
     return false;	//not refresh page
 }
+
+//set acd for task
+function setAcd(tid)
+{
+	$("#setacd_tidx").val(tid);
+	$.layer({
+		type: 1,
+        title: '指派业务组',
+        offset: [($(window).height() - 290)/2+'px', ''],
+        border : [5, 0.5, '#666'],
+        area: ['450px','300px'],
+        shadeClose: false,
+		bgcolor: '#EEF1F8',
+		page:{dom:'#popSetAcdDiv'}
+	});
+}
+
+function saveSetAcdBtn()
+{
+	document.form3.submit();
+}
+
+function checkCTSGRP(obj)
+{
+	if(obj.checked)
+	{
+	}
+	else
+	{
+	}
+	/*
+	var chkjb = document.getElementsByName("ctsgrpchk");
+	var s='';
+	for(var i=0;i<chkjb.length;i++){
+		if(chkjb[i].checked){
+			s+='1';
+		}else{
+			s+='0';
+		}
+	}
+	*/
+}
+
+$(function(){
+	$("input[name='ctsgrpchk']").each(function(){
+		
+	});
+});
+

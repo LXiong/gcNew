@@ -4,10 +4,14 @@ public class TaskForm {
 	private int tid;		//任务ID
 	private String tname;	//任务名称
 	private int kind;		//队列业务类型(0:标准，1:回访1，2:回访2，3:回访3)
+	private int state;		//任务状态
 	private String taskinfo;
 	
 	private String telnum;
 	private int ttid;
+	
+	
+	private String[] cts;
 	
 	public int getTid() {
 		return tid;
@@ -45,4 +49,17 @@ public class TaskForm {
 	public void setTtid(int ttid) {
 		this.ttid = ttid;
 	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	public String[] getCts() {
+		return cts;
+	}
+	public void setCts(String[] cts) {
+		this.cts = cts;
+	}
+	
 }

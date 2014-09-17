@@ -1,6 +1,7 @@
 package cn.voicet.gc.web.action;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -34,6 +35,86 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		taskDao.queryTaskList(ds);
+		
+		String html="";
+		boolean bHaveGrp=false;
+		boolean bHaveLine=false;
+		boolean bHaveColumn=false;
+		int iColNum=0;
+		Map map;
+		String ctsID = "";
+		for (int i = 0; i < ds.list2.size(); i++) 
+		{
+			map = (Map) ds.list2.get(i);
+			if(map.get("grpid").equals("0"))
+			{
+				
+				if(bHaveLine)
+				{
+					if(bHaveColumn)
+					{
+						html+="</div>";
+					}
+					html+="</div>";
+				}
+				iColNum=0;
+				bHaveColumn=false;
+				bHaveLine=false;
+				bHaveGrp=true;
+				html+="<div class='lab_ipt_item'>";
+				html+="<span class='lab120'>"+map.get("name")+"</span>";
+				html+="<input type='hidden' name='cts' value=';"+map.get("name")+"='/>";
+				html+="<div class='ipt-box'>";
+				html+="<label>"+map.get("info")+"</label>";
+				html+="</div>";
+				html+="</div>";
+			}
+			else
+			{
+				if(!bHaveLine)
+				{
+					html+="<div class='lab_ipt_item'>";
+				}
+				if(!bHaveColumn)
+				{
+					html+="<span class='lab120'></span>";
+				}
+				iColNum++;
+				if(iColNum%4==0)
+				{
+					if(bHaveColumn)
+					{
+						html+="</div>";	
+					}
+					//
+					bHaveColumn=false;
+					
+				}
+				else
+				{
+					bHaveColumn = true;
+				}
+				
+	
+				if(!bHaveLine)
+				{
+					html+="<div class='ipt-box'>";
+				}
+				html+="<input type='checkbox' value='"+map.get("grpid")+",' name='cts' onclick='checkCTSGRP(this)'/><label for='group"+map.get("id")+"'>"+map.get("name")+"</label>&nbsp;&nbsp;";
+				bHaveLine= true;
+				
+			}
+		}
+		//
+		if(bHaveLine)
+		{
+			if(bHaveColumn)
+			{
+				html+="</div>";
+			}
+			html+="</div>";
+		}
+		request.setAttribute("html", html);
 		return "show_task";
 	}
 	
@@ -43,7 +124,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 * @throws IOException 
 	 */
 	public String saveTask() throws IOException{
-		log.info("tid:"+taskForm.getTid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind()+", taskinfo:"+taskForm.getTaskinfo());
+		log.info("tid:"+taskForm.getTid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind()+", state:"+taskForm.getState()+", taskinfo:"+taskForm.getTaskinfo());
 		String ret = taskDao.saveTask(taskForm);
 		//task update
 		if(ret.equals("ok"))
@@ -92,6 +173,17 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	}
 	
 	/**
+	 * 为任务设置业务组
+	 * @return
+	 */
+	public String setAcd()
+	{
+		log.info("tid:"+taskForm.getTid());
+		taskDao.setAcdByTid(taskForm);
+		return home();
+	}
+	
+	/**
 	 * 号码管理
 	 * @return
 	 */
@@ -132,7 +224,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 */
 	public String recall()
 	{
-		log.info("tid:"+taskForm.getTid()+"ttid:"+taskForm.getTtid());
+		log.info("tid:"+taskForm.getTid()+", ttid:"+taskForm.getTtid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind());
 		taskDao.recallTel(taskForm);
 		log.info("recall complete");
 		return telmanage();

@@ -72,7 +72,7 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 
 	
 	public String saveAgent(final AgentForm agentForm) {
-		String sp_agent_update = "{call web_agent_update(?,?,?,?,?,?)}";
+		String sp_agent_update = "{call web_agent_update(?,?,?,?,?,?,?)}";
 		return (String)this.getJdbcTemplate().execute(sp_agent_update, new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -81,10 +81,11 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 				cs.setString(3, agentForm.getAgttxt()[2]);
 				cs.setString(4, agentForm.getAgttxt()[3]);
 				cs.setString(5, agentForm.getAgttxt()[4]);
-				cs.registerOutParameter(6, Types.VARCHAR);
+				cs.setString(6, agentForm.getAgttxt()[5]);
+				cs.registerOutParameter(7, Types.VARCHAR);
 				cs.execute();
-				log.info("ret:"+cs.getString(6));
-				return cs.getString(6);
+				log.info("ret:"+cs.getString(7));
+				return cs.getString(7);
 			}
 		});
 	}

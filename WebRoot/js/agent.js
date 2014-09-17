@@ -1,10 +1,11 @@
 //pop save agent
-function saveAgent(t,agtid,account,telnum,agtname,email)
+function saveAgent(t,agtid,account,master,telnum,agtname,email)
 {
 	$(".asterisk").each(function(){
 		this.innerHTML="*";
 	});
-	
+	$("#ismasterchk")[0].checked=false;
+	//
 	var tit;
 	if(t=="add")
 	{
@@ -15,8 +16,19 @@ function saveAgent(t,agtid,account,telnum,agtname,email)
 		tit="修改话务员信息";
 	}
 	//
+	if(master==1)
+	{
+		$("#ismasterchk")[0].checked=true;
+	}
+	else
+	{
+		$("#ismasterchk")[0].checked=false;
+	}	
+	
+	//
 	$("#agtidx").val(agtid);
 	$("#accountx").val(account);
+	$("#ismasterx").val(master);
 	$("#telnumx").val(telnum);
 	$("#agtnamex").val(agtname);
 	$("#emailx").val(email);
@@ -102,6 +114,19 @@ function checkEmail()
 	{
 		$(".asterisk")[3].innerHTML="";
 		return true;
+	}
+}
+
+// is master
+function checkMaster(obj)
+{
+	if(obj.checked)
+	{
+		$("#ismasterx").val(1);
+	}
+	else
+	{
+		$("#ismasterx").val(0);
 	}
 }
 
