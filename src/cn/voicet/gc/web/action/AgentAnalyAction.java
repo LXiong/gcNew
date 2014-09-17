@@ -32,4 +32,15 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 		return "show_agent_analy";
 	}
 	
+	/**
+	 * 导出数据
+	 * @return
+	 */
+	public String export()
+	{
+		log.info("sdt:"+agentForm.getSdt()+", edt:"+agentForm.getEdt());
+		agentDao.exportAgentAnalyData(agentForm, response);
+		return null;
+	}
+	
 }

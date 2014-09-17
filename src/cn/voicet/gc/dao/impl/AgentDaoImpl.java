@@ -1,15 +1,21 @@
 package cn.voicet.gc.dao.impl;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.ConnectionCallback;
@@ -64,6 +70,36 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 						 VTJime.putMapDataByColName(map, rs);
 		        		 ds.list.add(map);
 					}
+				}
+				return null;
+			}
+		});
+	}
+	
+	public void exportAgentAnalyData(final AgentForm agentForm, final HttpServletResponse response) {
+		final String excelExportFile = "agt_analy_export.xls";
+		final String outputFileName="agent_analy.xls";
+		//
+		this.getJdbcTemplate().execute("{call web_agent_analy(?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, agentForm.getSdt());
+				cs.setString(2, agentForm.getEdt());
+				cs.execute();
+				//
+				ResultSet rs = cs.getResultSet();
+				ResultSetMetaData rsm =rs.getMetaData();
+				int columnCount = rsm.getColumnCount();
+				//
+				String filePath = ServletActionContext.getServletContext().getRealPath("excelTemplate")+"/"+excelExportFile;
+				HSSFWorkbook wb=DotSession.fromRStoExcel(filePath, 1, true, rs, columnCount);
+				try {
+					response.reset();
+					response.setHeader("Content-Disposition", "attachment;filename=" + outputFileName);
+					response.setContentType("application/vnd.ms-excel;charset=UTF-8");	
+					wb.write(response.getOutputStream());
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 				return null;
 			}
