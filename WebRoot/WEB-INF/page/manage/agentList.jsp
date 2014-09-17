@@ -22,7 +22,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">话务员档案管理</h3>
+	<h3 class="h3_title">话务员资料维护</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
 	        <li></li>

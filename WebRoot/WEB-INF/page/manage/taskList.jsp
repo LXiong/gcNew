@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">外呼任务管理</h3>
+	<h3 class="h3_title">任务及号码管理</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
 			<li></li>

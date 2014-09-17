@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">话务员技能统计</h3>
+	<h3 class="h3_title">接听情况统计</h3>
    	<form action="<c:url value='/agentAnalyAction_home.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">

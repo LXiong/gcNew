@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">业务组档案管理&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">业务组资料维护&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
 	        <li></li>

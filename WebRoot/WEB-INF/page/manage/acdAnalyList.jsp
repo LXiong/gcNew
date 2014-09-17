@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">业务组调度统计&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">业务组分配统计&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
    	<form action="<c:url value='/acdAnalyAction_home.action'/>" method="post">
    	<input type="hidden" name="cts" value="<s:property value="#session.vts.curCTS"/>"/>
 	<div class="queryDiv">

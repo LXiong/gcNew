@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">通话记录详情&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">通话及录音查询&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
    	<form name="form1" action="<c:url value='/callRecordAction_home.action'/>" method="post">
 	<div class="queryDiv_h80">
 	   	<ul class="queryWrap_ul">
@@ -135,7 +135,7 @@ function checkWaittime()
 function checkCalltime()
 {
 	var calltime = $("#calltimex").val();
-	var regexp = /^[0-9>=<]+$/;
+	var regexp = /^[0-9]*$/;
 	if(!calltime)
 	{
 		$(".asterisk")[1].innerHTML="通话时长不能为空";
