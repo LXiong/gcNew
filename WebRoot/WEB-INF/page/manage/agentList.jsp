@@ -130,6 +130,7 @@
 <script type="text/javascript">
 //split agent page
 $(function(){
+	var nowPage = parent.document.getElementById("curAgentPage").value;
 	$("div.holder").jPages({
 		containerID : "movies",
         first : "首页",
@@ -140,6 +141,7 @@ $(function(){
         keyBrowse:true,
         delay : 0,
         callback : function( pages, items ){
+			parent.document.getElementById("curAgentPage").value = pages.current;
 	        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 	        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 	    }

@@ -90,16 +90,18 @@
 </div>
 <script type="text/javascript">
 	$(function(){
+		var nowPage = parent.document.getElementById("curAgentAnalyPage").value;
 		$("div.holder").jPages({
 			containerID : "movies",
 	        first : "首页",
 	        previous : "上一页",
 	        next : "下一页",
 	        last : "尾页",
-	        perPage : 26,
+	        perPage : 25,
 	        keyBrowse:true,
 	        delay : 0,
 	        callback : function( pages, items ){
+				parent.document.getElementById("curAgentAnalyPage").value = pages.current;
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 		    }

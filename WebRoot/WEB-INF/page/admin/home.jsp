@@ -79,7 +79,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="#">帮助中心</a>&nbsp;|&nbsp;
         <a href="#">常见问题</a>
         <!-- 记录js分页当前页码 -->
-        <input type="hidden" id="globalCurPage"/>
+        <input type="hidden" id="curTaskPage" value="1"/>
+        <input type="hidden" id="curTelnumPage" value="1"/>
+        <input type="hidden" id="curAcdAnalyPage" value="1"/>
+        <input type="hidden" id="curAcdPage" value="1"/>
+        <input type="hidden" id="curAgentAnalyPage" value="1"/>
+        <input type="hidden" id="curAgentPage" value="1"/>
+        <input type="hidden" id="curCallRecordPage" value="1"/>
+        <input type="hidden" id="curSubtelPage" value="1"/>
+        <input type="hidden" id="curBlackPage" value="1"/>
         </p>
         <span>Copyright @ 2005-2014 All Rights Reserved 版权所有 · 南京威帝通讯科技有限公司&nbsp;&nbsp;V140701</span>
     </div>

@@ -101,35 +101,7 @@
  		<button id="tiaozhuan" class="btn btn-primary">跳转</button>
 	</div>
     <!-- jPage end -->
-	
 </div>
-<script type="text/javascript">
-	$(function(){
-		$("div.holder").jPages({
-			containerID : "movies",
-	        first : "首页",
-	        previous : "上一页",
-	        next : "下一页",
-	        last : "尾页",
-	        perPage : 24,
-	        keyBrowse:true,
-	        delay : 0,
-	        callback : function( pages, items ){
-		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
-		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
-		    }
-		});
-	      /* when button is clicked */
-    	$("#tiaozhuan").click(function(){
-      		/* get given page */
-			var page = parseInt( $("#tzval").val() );
-
-      		/* jump to that page */
-      		$("div.holder").jPages( page );
-
-    	});
-	});
-</script>
 
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
@@ -189,6 +161,36 @@ function queryCall()
 
 }
 
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		var nowPage = parent.document.getElementById("curCallRecordPage").value;
+		$("div.holder").jPages({
+			containerID : "movies",
+	        first : "首页",
+	        previous : "上一页",
+	        next : "下一页",
+	        last : "尾页",
+	        perPage : 24,
+	        keyBrowse:true,
+	        delay : 0,
+	        callback : function( pages, items ){
+				parent.document.getElementById("curCallRecordPage").value = pages.current;
+		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
+		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
+		    }
+		});
+	      /* when button is clicked */
+    	$("#tiaozhuan").click(function(){
+      		/* get given page */
+			var page = parseInt( $("#tzval").val() );
+
+      		/* jump to that page */
+      		$("div.holder").jPages( page );
+
+    	});
+	});
 </script>
 </body>
 </html>

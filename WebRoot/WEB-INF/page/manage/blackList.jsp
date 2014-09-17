@@ -103,20 +103,23 @@
 	</form>
 	
 </div>
-
+<input type="hidden" id="curPageNum" value="1"/>
 <script type="text/javascript">
 //jPage分页 
 $(function(){
+	var nowPage = parent.document.getElementById("curBlackPage").value;
 	$("div.holder").jPages({
 		containerID : "movies",
         first : "首页",
         previous : "上一页",
         next : "下一页",
         last : "尾页",
+        startPage : nowPage,
         perPage : 26,
         keyBrowse:true,
         delay : 0,
         callback : function( pages, items ){
+			parent.document.getElementById("curBlackPage").value = pages.current;
 	        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 	        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 	    }
