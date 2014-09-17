@@ -139,7 +139,7 @@
 	        last : "尾页",
 	        perPage : 26,
 	        keyBrowse:true,
-	        delay : 5,
+	        delay : 0,
 	        callback : function( pages, items ){
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
