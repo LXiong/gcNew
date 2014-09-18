@@ -38,7 +38,7 @@ table {border-collapse:collapse;border-spacing:0; width:100%; line-height:20px;}
 
 /* 超链接(定义了"链接、已访问过的链接、鼠标停在上方时、点下鼠标时"的样式,注意，必须按以上顺序写，否则显示可能和你预想的不一样。记住它们的顺序是'LVHA') */
 a:link, a:visited{text-decoration: none;color: #1F376D;}
-a:hover, a:active{text-decoration: underline;color: #BD0A01;border: none;}
+a:hover, a:active{text-decoration: underline;color: #2284E1;border: none;}
 
 
 /* h */
