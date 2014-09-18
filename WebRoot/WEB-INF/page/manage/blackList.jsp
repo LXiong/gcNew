@@ -103,7 +103,6 @@
 	</form>
 	
 </div>
-<input type="hidden" id="curPageNum" value="1"/>
 <script type="text/javascript">
 //jPage分页 
 $(function(){
@@ -124,14 +123,12 @@ $(function(){
 	        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 	    }
 	});
-      /* when button is clicked */
+    /* when button is clicked */
    	$("#tiaozhuan").click(function(){
-     		/* get given page */
+     	/* get given page */
 		var page = parseInt( $("#tzval").val() );
-
-     		/* jump to that page */
-     		$("div.holder").jPages( page );
-
+		/* jump to that page */
+     	$("div.holder").jPages( page );
    	});
 });
 </script>
