@@ -10,6 +10,7 @@
 </head>
 <body style="background:#E0EEFB;">
 <div id="dbCon">
+	<h3 class="h3_title">数据库维护</h3>
 	<div class="db-info">
     	<p>数据库版本：<s:property value="#session.vts.map.serverinfo"/></p>
         <p>数据库名称：<s:property value="#session.vts.map.databasename"/></p>

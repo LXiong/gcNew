@@ -113,7 +113,7 @@
 
 
 /* db */
-#dbCon{width:866px; height:669px; border:1px solid #3B9FFF; margin-top:1px;}
+#dbCon{width:866px; height:669px; border:0px solid #3B9FFF; margin-top:1px;}
 .db-info{width:500px; height:400px; margin:80px 0 0 260px;; line-height:30px; padding:10px 0 0 10px;}
 .db-info table{width:360px; line-height:20px; text-align:center; border-right:1px solid #3B9FFF; border-bottom:1px solid #3B9FFF;}
 .db-info table td{border-left:1px solid #3B9FFF; border-top:1px solid #3B9FFF;}
