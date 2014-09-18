@@ -123,6 +123,7 @@ $(function(){
 	        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 	    }
 	});
+
     /* when button is clicked */
    	$("#tiaozhuan").click(function(){
      	/* get given page */

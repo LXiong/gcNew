@@ -111,7 +111,6 @@
       "</style>";
 
       $(requiredStyles).appendTo("head");
-
       if (this._cssAnimSupport && this.options.animation.length)
         this._items.addClass("animated jp-hidden");
       else this._items.hide();

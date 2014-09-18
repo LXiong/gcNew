@@ -106,11 +106,22 @@
 .ipt-box{color: #878787; height: 28px; float:left;}
 .ipt-box-hei{color:#000; width:260px; overflow-y:auto; max-height:80px; float:left;}
 .ipt_text_w150{padding:4px 2px; width:150px; height:18px; line-height:18px;border: 1px solid #B8B8B8; background: none repeat scroll 0% 0% #FFF;  color:#000; font-size:12px; margin-right:10px;}
+.ipt_text_w180{padding:4px 2px; width:180px; height:18px; line-height:18px;border: 1px solid #B8B8B8; background: none repeat scroll 0% 0% #FFF;  color:#000; font-size:12px; margin-right:10px;}
 .asterisk{color:#F00;}
 .ipt_textarea_w300{width:300px; height:122px; overflow:hidden; resize:none;}
 
 
 
+/* db */
+#dbCon{width:866px; height:669px; border:1px solid #3B9FFF; margin-top:1px;}
+.db-info{width:500px; height:400px; margin:80px 0 0 260px;; line-height:30px; padding:10px 0 0 10px;}
+.db-info table{width:360px; line-height:20px; text-align:center; border-right:1px solid #3B9FFF; border-bottom:1px solid #3B9FFF;}
+.db-info table td{border-left:1px solid #3B9FFF; border-top:1px solid #3B9FFF;}
+.db-info .tabtr1{background:url(../images/tab-head.jpg) repeat-x; height:20px;}
+.db-info .tabtd1{border-right:0px solid red;}
+
+.db-index{width:400px; height:40px; line-height:40px;}
+.db-index li{float:left; margin-right:5px;}
 
 
 

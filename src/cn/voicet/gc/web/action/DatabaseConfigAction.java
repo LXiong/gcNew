@@ -1,6 +1,7 @@
 package cn.voicet.gc.web.action;
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -12,6 +13,7 @@ import cn.voicet.util.DotSession;
 @SuppressWarnings({"serial","unchecked"})
 public class DatabaseConfigAction extends BaseAction{
 
+	private static Logger log = Logger.getLogger(DatabaseConfigAction.class);
 	@Resource(name=DatabaseConfigDao.SERVICE_NAME)
 	private DatabaseConfigDao databaseConfigDao;
 	
@@ -24,6 +26,7 @@ public class DatabaseConfigAction extends BaseAction{
 	/** 清空日志 */
 	public String empty() {
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("account:"+ds.account+", roleid:"+ds.roleID);
 		databaseConfigDao.emptyDatabase(ds);
 		return null;
 	}
@@ -31,6 +34,7 @@ public class DatabaseConfigAction extends BaseAction{
 	/** 备份数据库 */
 	public String backup() {
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("account:"+ds.account+", roleid:"+ds.roleID+", defbackupfilename:"+defbackupfilename);
 		databaseConfigDao.backupDatabase(ds, defbackupfilename);
 		return null;
 	}

@@ -66,7 +66,7 @@ public class DatabaseConfigDaoImpl extends BaseDaoImpl implements
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
 				CallableStatement cs = conn.prepareCall("{call sys_database_truncatelog(?,?)}");
-				cs.setString(1, ds.rbm);
+				cs.setString(1, ds.account);
 				cs.setString(2, ds.roleID);
 				cs.execute();
 				return null;
@@ -79,7 +79,7 @@ public class DatabaseConfigDaoImpl extends BaseDaoImpl implements
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
 				CallableStatement cs = conn.prepareCall("{call sys_database_backup(?,?,?)}");
-				cs.setString(1, ds.rbm);
+				cs.setString(1, ds.account);
 				cs.setString(2, ds.roleID);
 				cs.setString(3, defbackupfilename);
 				cs.execute();
