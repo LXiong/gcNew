@@ -15,6 +15,7 @@
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
+ 	<script type="text/javascript" src="<c:url value='/js/changeTabColor.js'/>"></script>
 </head>
 <body>
 <div id="contentWrap">
