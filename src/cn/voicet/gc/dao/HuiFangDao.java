@@ -2,6 +2,8 @@ package cn.voicet.gc.dao;
 
 import java.util.Map;
 
+import cn.voicet.gc.web.form.HuiFangForm;
+
 public interface HuiFangDao{
 	public final static String SERVICE_NAME = "cn.voicet.gc.dao.impl.HuiFangDaoImpl";
 	Map<String,Object> getHuiFang1Info();
@@ -12,4 +14,8 @@ public interface HuiFangDao{
 	
 	Map<String, Object> getHuiFang3Info();
 	void saveHuiFangThreeInfo(String[] hf);
+	
+	//
+	Map<String, Object> getHuiFangInfo(int flag);
+	void saveHuiFangInfo(int flag, HuiFangForm huiFangForm);
 }

@@ -36,6 +36,11 @@
 			<result name="show_acd_analy">/WEB-INF/page/manage/acdAnalyList.jsp</result>
 		</action>
 		
+		<!-- 业务组监控 -->
+		<action name="acdMonitorAction_*" class="acdMonitorAction" method="{1}">
+			<result name="show_acd_monitor">/WEB-INF/page/manage/acdMonitorList.jsp</result>
+		</action>
+		
 		<!-- 业务组档案管理 -->
 		<action name="acdAction_*" class="acdAction" method="{1}">
 			<result name="show_acd">/WEB-INF/page/manage/acdList.jsp</result>
@@ -66,6 +71,11 @@
 			<result name="show_blacklist">/WEB-INF/page/manage/blackList.jsp</result>
 		</action>
 		
+		<!-- NTS -->
+		<action name="ntsAction_*" class="ntsAction" method="{1}">
+			<result name="show_nts">/WEB-INF/page/manage/ntsList.jsp</result>
+		</action>
+		
 		<!-- 数据库维护 -->
 		<action name="databaseConfigAction_*" class="databaseConfigAction" method="{1}">
 			<result name="show_database">/WEB-INF/page/admin/databaseConfig.jsp</result>
@@ -74,6 +84,12 @@
 		<!-- 系统日志查看 -->
 		<action name="systemLogAction_*" class="systemLogAction" method="{1}">
 			<result name="show_log">/WEB-INF/page/admin/systemLog.jsp</result>
+		</action>
+		
+		<action name="huiFangAction_*" class="huiFangAction" method="{1}">
+			<result name="show_huifang1">/huifang1.jsp</result>
+			<result name="show_huifang2">/huifang2.jsp</result>
+			<result name="show_huifang3">/huifang3.jsp</result>
 		</action>
 		
 	</package>  

@@ -7,6 +7,7 @@
 		<grp name="日常工作">
 			<fun name="任务及号码管理" action="taskAction_home.action" />
       		<fun name="任务完成情况查看" action="taskAction_home.action" />
+	        <fun name="业务组监控" action="acdMonitorAction_home.action" />
 			<fun name="业务组分配统计" action="acdAnalyAction_home.action" />
 			<fun name="接听情况统计" action="agentAnalyAction_home.action" />
 			<fun name="通话及录音查询" action="callRecordAction_home.action" />
@@ -16,15 +17,20 @@
 	      	<fun name="业务组资料维护" action="acdAction_home.action" />
 	      	<fun name="座席分机资料维护" action="subTelAction_home.action" />
 	      	<fun name="系统黑名单维护" action="blackAction_home.action" />
+	      	<fun name="NTS服务器维护" action="ntsAction_home.action" />
 		</grp>
 	    <grp name="数据库">
 	      	<fun name="数据库维护" action="databaseConfigAction_home.action" />
+	      	<fun name="回访一" action="huiFangAction_home.action?flag=1" />
+	      	<fun name="回访二" action="huiFangAction_home.action?flag=2" />
+	      	<fun name="回访三" action="huiFangAction_home.action?flag=3" />
 	    </grp>
 	</role>
 	<role roleid="2" describle="业务管理员">
 	    <grp name="日常工作">
 	        <fun name="任务及号码管理" action="taskAction_home.action" />
 	        <fun name="任务完成情况查看" action="taskAction_home.action" />
+	        <fun name="业务组监控" action="acdMonitorAction_home.action" />
 	        <fun name="业务组分配统计" action="acdAnalyAction_home.action" />
 	        <fun name="接听情况统计" action="agentAnalyAction_home.action" />
 	        <fun name="通话及录音查询" action="callRecordAction_home.action" />
@@ -40,7 +46,7 @@
       		<fun name="接听情况统计" action="agentAnalyAction_home.action" />
 	    </grp>
 	</role>
-	<list name="callresult" describle="呼叫状态">
+	<list name="callstate" describle="呼叫状态">
 		<item id="0" name="未呼叫" />
 		<item id="1" name="呼叫成功" />
 		<item id="2" name="呼叫失败" />
@@ -61,5 +67,28 @@
 		<item id="1" name="1:激活" />
 		<item id="9" name="9:停止" />
 		<item id="10" name="10:呼叫完成" />
+	</list>
+	<!--  -->
+	<list name="sex" describle="性别">
+		<item id="1" name="男" />
+		<item id="0" name="女" />
+	</list>
+	<list name="manyi" describle="满意">
+		<item id="1" name="满意" />
+		<item id="0" name="不满意" />
+	</list>
+	<list name="jffs" describle="缴费方式">
+		<item id="1" name="1:营业厅" />
+		<item id="2" name="2:网上营业厅" />
+		<item id="3" name="3:手机营业厅" />
+	</list>
+	<list name="hfqk" describle="回访情况">
+		<item id="1" name="1:情况一" />
+		<item id="2" name="2:情况二" />
+		<item id="3" name="3:情况三" />
+	</list>
+	<list name="succfail" describle="外呼结果">
+		<item id="1" name="成功" />
+		<item id="0" name="失败" />
 	</list>
 </dot2014>
