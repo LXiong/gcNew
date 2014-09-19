@@ -6,7 +6,7 @@
 <head>
  	<title>扶贫观察点管理系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
-	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/layout.css?v=2'/>" rel="stylesheet" />
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
@@ -19,30 +19,24 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">任务及号码管理</h3>
-	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w600 left">
-			<li></li>
-		</ul>
-		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveTask('add','0','','0','0','')" value="添加"/></li>
-		</ul>
-	</div>
-	<div class="content_List568">
+	<div class="content_List615">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
-                 <tr>
-                     <th width="6%">任务编号</th>
-                     <th width="10%">任务名称</th>
-                     <th width="6%">任务类型</th>
-                     <th width="6%">任务状态</th>
-                     <th width="8%">业务组(个)</th>
-                     <th width="6%">号码总数</th>
-                     <th width="6%">新建数</th>
-                     <th width="6%">执行中</th>
-                     <th width="6%">执行完成</th>
-                     <th width="8%">呼叫接通数</th>
-                     <th width="20%">操作</th>
-                 </tr>
+				<tr>
+					<th width="6%">任务编号</th>
+                    <th width="10%">任务名称</th>
+                    <th width="6%">任务类型</th>
+                    <th width="6%">任务状态</th>
+                    <th width="8%">业务组(个)</th>
+                    <th width="6%">号码总数</th>
+                    <th width="6%">新建数</th>
+                    <th width="6%">执行中</th>
+                    <th width="6%">执行完成</th>
+                    <th width="8%">呼叫接通数</th>
+                    <th width="20%">
+                    	<input type="button" class="btn btn-primary" onclick="saveTask('add','0','','0','0','')" value="添加"/>
+					</th>
+				</tr>
              </thead>
              <tbody id="movies">
                	<s:iterator id="task" value="#session.vts.list">
@@ -166,7 +160,7 @@ $(function(){
         next : "下一页",
         last : "尾页",
         startPage : nowPage,
-        perPage : 26,
+        perPage : 28,
         keyBrowse:true,
         delay : 0,
         callback : function( pages, items ){

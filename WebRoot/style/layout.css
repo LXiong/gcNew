@@ -85,7 +85,9 @@
 .content_List528{width:868px; height:528px; border-bottom:0px solid #3B9FFF; margin-top:10px;}
 .content_List548{width:868px; height:548px; border-bottom:0px solid #3B9FFF; margin-top:10px;}
 .content_List568{width:868px; height:568px; border-bottom:0px solid #3B9FFF; margin-top:10px;}
-.content_List620{width:868px; height:620px; text-align:center;}
+.content_List615{width:868px; height:615px; text-align:center; margin-top:5px;}
+
+.content_List622{width:868px; height:622px;}
 
 /* split page */
 .split_page_wrap{width:100%; height:26px; line-height:26px; text-align:center;}

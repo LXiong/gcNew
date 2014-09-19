@@ -6,7 +6,7 @@
 <head>
  	<title>电话自动外呼系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
-	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/layout.css?v=3'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
     <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
@@ -23,15 +23,7 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">话务员资料维护</h3>
-	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w600 left">
-	        <li></li>
-		</ul>
-		<ul class="queryWrap_ul_w100 right">
-	        <li><input type="button" class="btn4" onclick="saveAgent('add','0','','0','','','','')" value="添加"/></li>
-		</ul>
-	</div>
-	<div class="content_List568">
+	<div class="content_List615">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
@@ -40,7 +32,9 @@
                      <th width="15%">管理员</th>
                      <th width="15%">姓名</th>
                      <th width="15%">电子邮箱</th>
-                     <th width="20%">操作</th>
+                     <th width="20%">
+                     	<input type="button" class="btn btn-primary" onclick="saveAgent('add','0','','0','','','','')" value="添加"/>
+                     </th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -150,7 +144,7 @@ $(function(){
         next : "下一页",
         last : "尾页",
         startPage : nowPage,
-        perPage : 26,
+        perPage : 28,
         keyBrowse:true,
         delay : 0,
         callback : function( pages, items ){
