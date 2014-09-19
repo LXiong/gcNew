@@ -7,7 +7,9 @@
 <head>
  	<title>电话自动外呼系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
-	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/layout.css?v=2'/>" rel="stylesheet" />
+	
+	<link type="text/css" href="<c:url value='/music-player/css/style.css'/>" rel="stylesheet" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
@@ -36,6 +38,8 @@
 	        	<label>呼叫方向：</label>
 	        	<s:select name="calltxt" list="#{1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{calltxt[4]}" cssClass="inputDefault"></s:select>
 			</li>
+		</ul>
+		<ul class="queryWrap_ul">
 	        <li>
 	        	<label>等待时长：</label>
 	        	<input type="text" id="waittimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[5] }"/>
@@ -86,7 +90,7 @@
 					<td>${call.endcode }</td>
 					<td>${call.agent }</td>
 					<td>
-						<a href="#">播放</a>&nbsp;&nbsp;
+						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','/music/mogu.wav')">播放</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -104,67 +108,6 @@
 	</div>
     <!-- jPage end -->
 </div>
-
-<!-- layer 弹出插件 start -->
-<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-<!-- layer 弹出插件 end -->
-<script type="text/javascript">
-$(function(){
-	$("#waittimex").bind("blur",checkWaittime);
-	$("#calltimex").bind("blur",checkCalltime);
-});
-
-function checkWaittime()
-{
-	var waittime = $("#waittimex").val();
-	var regexp = /^[0-9]*$/;
-	if(!waittime)
-	{
-		$(".asterisk")[0].innerHTML="等待时长不能为空";
-		return false;
-	}
-	else if(!regexp.exec(waittime))
-	{
-		$(".asterisk")[0].innerHTML="等待时长只能是数字";
-		return false;
-	}
-	else
-	{
-		$(".asterisk")[0].innerHTML="";
-		return true;
-	}
-}
-function checkCalltime()
-{
-	var calltime = $("#calltimex").val();
-	var regexp = /^[0-9]*$/;
-	if(!calltime)
-	{
-		$(".asterisk")[1].innerHTML="通话时长不能为空";
-		return false;
-	}
-	else if(!regexp.exec(calltime))
-	{
-		$(".asterisk")[1].innerHTML="通话时长只能是数字";
-		return false;
-	}
-	else
-	{
-		$(".asterisk")[1].innerHTML="";
-		return true;
-	}
-}
-
-function queryCall()
-{
-	if(!checkWaittime()) return false;
-	if(!checkCalltime()) return false;
-	document.form1.submit();
-
-}
-
-</script>
-
 <script type="text/javascript">
 	$(function(){
 		var nowPage = parent.document.getElementById("curCallRecordPage").value;
@@ -195,5 +138,41 @@ function queryCall()
     	});
 	});
 </script>
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<script type="text/javascript" src="<c:url value='/music-player/js/jquery.jplayer-2.6.4.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/music-player/js/jplayer.playlist-2.6.4.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/music-player/js/index.js?v=1'/>"></script>
+<!--POP PLAYER START-->
+<div id="popMusicDiv" style="display:none;"> 
+	<div class="music-player">
+	    <div class="info">
+			<div class="center">
+	      		<div class="jp-playlist">
+	        		<ul><li></li></ul>
+	      		</div>
+	      	</div>
+	      	<div class="progress jp-seek-bar">
+	        	<span class="jp-play-bar" style="width: 0%"></span>
+	      	</div>
+		</div>
+	    <div class="controls">
+	      	<div class="current jp-current-time left">00:00</div>
+	      	<div class="play-controls left">
+	        	<a href="javascript:;" class="icon-play jp-play" title="play"></a>
+	        	<a href="javascript:;" class="icon-pause jp-pause" title="pause"></a>
+	      	</div>
+	      	<div class="volume-level jp-volume-bar left ">
+	        	<span class="jp-volume-bar-value" style="width: 0%"></span>
+	        	<a href="javascript:;" class="icon-volume-up jp-volume-max" title="max volume"></a>
+	        	<a href="javascript:;" class="icon-volume-down jp-mute" title="mute"></a>
+	      	</div>
+		</div>
+		<div id="jquery_jplayer" class="jp-jplayer"></div>
+	</div>
+</div>
+<!--POP PLAYER END-->
+<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=1'/>"></script>
 </body>
 </html>

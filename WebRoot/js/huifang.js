@@ -28,9 +28,21 @@ function checkHfname()
 	}
 }
 
-function saveHuifangOneBtn()
+function saveHuifangBtn(flag)
 {
-	if(!checkHfname()) return false;
+	if(flag==1 || flag==2)
+	{
+		if(!checkHfname()) return false;
+	}
+	else if(flag==3)
+	{
+		
+	}
+	else
+	{
+		layer.alert("flag error",111);
+		return false;
+	}
 	document.form1.submit();
 	layer.msg("保存成功!",4);
 }

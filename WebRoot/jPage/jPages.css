@@ -33,20 +33,3 @@
 }
 
 .holder span { margin: 0 5px; }
-
-.btn{display: inline-block; padding:1px 2px;
-    margin-bottom:0px;
-    font-size:12px;
-    font-weight:200;
-    line-height:1.02857;
-    text-align:center;
-    white-space:nowrap;
-    vertical-align: middle;
-    cursor:pointer;
-    -moz-user-select: none;
-    background-image: none;
-    border:1px solid transparent;
-    border-radius: 4px;
-}
-.btn-primary{color:#fff; background:#428BCA; border-color:#357EBD;}
-

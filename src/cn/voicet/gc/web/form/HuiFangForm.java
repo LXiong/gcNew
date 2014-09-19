@@ -6,9 +6,9 @@ public class HuiFangForm {
 	private int ttid;
 	private int hfqk;		//回访情况
 	private String hfname;	//回访姓名	
-	private int sex;		//性别
+	private int sex = 1;	//性别,默认1:男
 	private int ywbwdc;		//异网本网调查
-	private int manyid;		//满意度
+	private int manyid = 1;		//满意度,默认1:满意
 	private String phonemodel;	//手机品牌型号
 	private int jkfl;			//机卡分离
 	private String gkd;			//购卡点
@@ -16,7 +16,7 @@ public class HuiFangForm {
 	//
 	private int jffs;			//缴费方式
 	private String customjy;	//客户建议
-	private int succfail;		//呼叫结果
+	private int succfail = 1;	//呼叫结果,默认1:成功
 	private String hfzjh;		//回访证件号
 	private String hfstel;		//回访二次电话
 	private String address;		//回访联系地址，客户联系地址
@@ -25,7 +25,7 @@ public class HuiFangForm {
 	private String tccon;		//套餐内容
 	private String qxtccon;		//需取消套餐内容
 	private String yxfaildecause;	//营销失败原因
-	private int yxsuccfail; 		//是否营销成功	
+	private int yxsuccfail = 1; 	//是否营销成功,默认1:成功	
 	public int getTid() {
 		return tid;
 	}
