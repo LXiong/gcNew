@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  	<title>电话自动外呼系统</title>
-	<link type="text/css" href="<c:url value='/style/common_cn.css?v=1'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/common_cn.css?v=2'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
