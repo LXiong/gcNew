@@ -4,7 +4,7 @@
 	mail="jime6688@163.com" version="1.0">
 	<role roleid="0" describle="未登录"></role>
 	<role roleid="1" describle="系统管理员">
-		<grp name="日常工作">
+		<grp name="日常管理">
 			<fun name="任务及号码管理" action="taskAction_home.action" />
       		<fun name="任务完成情况查看" action="taskAction_home.action" />
 	        <fun name="业务组监控" action="acdMonitorAction_home.action" />
@@ -26,8 +26,11 @@
 	      	<fun name="回访三" action="huiFangAction_home.action?flag=3" />
 	    </grp>
 	</role>
-	<role roleid="2" describle="业务管理员">
-	    <grp name="日常工作">
+	<role roleid="2" describle="管理员">
+    <grp name="日常工作">
+        <fun name="接听查询" action="callinQuery_home.action" />
+    </grp>
+	    <grp name="日常管理">
 	        <fun name="任务及号码管理" action="taskAction_home.action" />
 	        <fun name="任务完成情况查看" action="taskAction_home.action" />
 	        <fun name="业务组监控" action="acdMonitorAction_home.action" />
@@ -41,11 +44,12 @@
 	</role>
 	<role roleid="3" describle="话务员">
 		<grp name="日常工作">
-      		<fun name="任务完成情况查看" action="taskAction_home.action" />
+      	<fun name="任务完成情况查看" action="taskAction_home.action" />
 	    	<fun name="通话记录查询" action="callRecordAction_home.action" />
       		<fun name="接听情况统计" action="agentAnalyAction_home.action" />
 	    </grp>
 	</role>
+	
 	<list name="callstate" describle="呼叫状态">
 		<item id="0" name="未呼叫" />
 		<item id="1" name="呼叫成功" />

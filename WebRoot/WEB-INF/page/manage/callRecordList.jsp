@@ -160,8 +160,8 @@
 	    <div class="controls">
 	      	<div class="current jp-current-time left">00:00</div>
 	      	<div class="play-controls left">
-	        	<a href="javascript:;" class="icon-play jp-play" title="play"></a>
-	        	<a href="javascript:;" class="icon-pause jp-pause" title="pause"></a>
+	        	<a href="javascript:;" class="icon-play jp-play" title="播放"></a>
+	        	<a href="javascript:;" class="icon-pause jp-pause" title="暂停"></a>
 	      	</div>
 	      	<div class="volume-level jp-volume-bar left ">
 	        	<span class="jp-volume-bar-value" style="width: 0%"></span>

@@ -1,4 +1,5 @@
 package cn.voicet.gc.web.action;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -28,8 +29,8 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 	public String home()
 	{
 		flag = (String)request.getParameter("flag");
-		log.info("flag:"+flag);
-		Map<String, Object> hfMap = huiFangDao.getHuiFangInfo(Integer.parseInt(flag));
+		log.info("flag:"+flag+", tid:"+huiFangForm.getTid()+", ttid:"+huiFangForm.getTtid());
+		Map<String, Object> hfMap = huiFangDao.getHuiFangInfo(Integer.parseInt(flag), huiFangForm);
 		log.info("hfMap:"+hfMap);
 		request.setAttribute("hfMap", hfMap);
 		if(flag.equals("1"))
@@ -61,5 +62,19 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 	}
 	public void setFlag(String flag) {
 		this.flag = flag;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public String getHuiFangType() throws IOException
+	{
+		log.info("tid:"+huiFangForm.getTid());
+		int type = huiFangDao.getHuiFangType(huiFangForm);
+		log.info("type:"+type);
+		response.getWriter().write(String.valueOf(type));
+		return null;
 	}
 }

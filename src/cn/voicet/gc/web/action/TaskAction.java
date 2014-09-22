@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -35,7 +37,14 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		taskDao.queryTaskList(ds);
-		
+		return "show_task";
+	}
+	
+	public String getAcdSelectByTid() throws IOException
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("tid:"+taskForm.getTid());
+		taskDao.queryAcdSelectedByTid(ds, taskForm);
 		String html="";
 		boolean bHaveLine=false;
 		Map map;
@@ -66,7 +75,15 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 					html+="<span class='lab120'></span>";
 					html+="<div class='ipt-box-hei'>";
 				}
-				html+="<input type='checkbox' id='group"+map.get("id")+"' value='"+map.get("grpid")+",' name='cts'/><label for='group"+map.get("id")+"'>"+map.get("name")+"</label>&nbsp;&nbsp;";
+				html+="<span style='display:inline-block'><input type='checkbox' id='group"+map.get("id")+"' value='"+map.get("grpid")+",' name='cts' #CHK#/><label for='group"+map.get("id")+"'>"+map.get("name")+"</label></span>&nbsp;&nbsp;";
+				if(map.get("its").equals("1"))
+				{
+					html = html.replace("#CHK#", "checked='checked'");
+				}
+				else
+				{
+					html = html.replace("#CHK#", "");
+				}
 				bHaveLine= true;
 			}
 		}
@@ -76,8 +93,12 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 			html+="</div>";
 			html+="</div>";
 		}
-		request.setAttribute("html", html);
-		return "show_task";
+		JSONObject json = new JSONObject();
+		json.put("html", html);
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(json.toString());
+		response.getWriter().flush();
+		return null;
 	}
 	
 	/**

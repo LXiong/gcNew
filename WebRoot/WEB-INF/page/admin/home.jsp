@@ -15,13 +15,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/js/menu.js'/>"></script>
+	<script type="text/javascript">
+		function js_detectcall(call,param)
+		{
+			var tid = param.substring(param.length-2, param.length-1);
+			var ttid = param.substring(param.length-4, param.length-3);
+			//获取回访类型
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				data: {tid: tid},
+				url: "huifangType.action",
+				success: function(data) {
+					$("#test")[0].href="huiFangAction_home.action?flag="+data+"&tid="+tid+"&ttid="+ttid;
+					$("#test")[0].click();
+				}
+			});
+			
+		}
+	</script>
 </head>
 <body>
 <div id="container">
+<a id="test" target="mainFrame"></a>
 	<!-- header -->
   	<div id="header">
   		<div class="tit1"><s:property value="#application.vta.product"/></div>
-  		<div class="tit2"><s:property value="#application.vta.customer"/></div>
+  		<div class="tit2"><s:property value="#application.vta.customer"/>
+  			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试"/>
+  		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
     </div>
     <!-- nav -->

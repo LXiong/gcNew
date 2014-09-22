@@ -113,5 +113,14 @@
 		<action name="databaseConfigAction_index" class="databaseConfigAction" method="dbIndex">
 			<result type="json"></result>
 		</action>
+		
+		<action name="getAcdSelect" class="taskAction" method="getAcdSelectByTid">
+			<result type="json"></result>
+		</action>
+		
+		<!--  -->
+		<action name="huifangType" class="huiFangAction" method="getHuiFangType">
+			<result type="json"></result>
+		</action>
 	</package>
 </struts>

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 	private static Logger log = Logger.getLogger(HuiFangDaoImpl.class);
 	
 
-	public Map<String, Object> getHuiFangInfo(final int flag) {
+	public Map<String, Object> getHuiFangInfo(final int flag, final HuiFangForm huiFangForm) {
 		String sp_huifangs[] = {"{call web_huifang_org1(?,?)}","{call web_huifang_org2(?,?)}","{call web_huifang_org3(?,?)}"};
 		if(flag>0 && flag<4)
 		{
@@ -32,8 +33,8 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 			return (Map<String, Object>)this.getJdbcTemplate().execute(sp_huifangs[flag-1], new CallableStatementCallback() {
 				public Object doInCallableStatement(CallableStatement cs)
 						throws SQLException, DataAccessException {
-					cs.setInt(1, 1);
-					cs.setInt(2, 1);
+					cs.setInt(1, huiFangForm.getTid());
+					cs.setInt(2, huiFangForm.getTtid());
 					cs.execute();
 					ResultSet rs = cs.getResultSet();
 					Map<String, Object> map = null;
@@ -288,6 +289,16 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 		});
 	}
 
-
+	public int getHuiFangType(final HuiFangForm huiFangForm) {
+		return (Integer)this.getJdbcTemplate().execute("{call web_task_querykind(?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, huiFangForm.getTid());
+				cs.registerOutParameter(2, Types.INTEGER);
+				cs.execute();
+				return cs.getObject(2);
+			}
+		});
+	}
 
 }

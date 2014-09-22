@@ -119,6 +119,20 @@ function deleteTask(tid,tname)
 function setAcd(tid)
 {
 	$("#setacd_tidx").val(tid);
+	//
+	//获取回访类型
+	$.ajax({
+		type: "POST",
+		dataType: "json",
+		data: {tid: tid},
+		url: "getAcdSelect.action",
+		success: function(data) {
+			var acdHTML=JSON.stringify(data.html);
+			acdHTML = acdHTML.substring(1,acdHTML.length-1);
+			$("#acdHTML").html(acdHTML);
+		} 
+	});
+	//
 	$.layer({
 		type: 1,
         title: '指派业务组',
@@ -135,31 +149,4 @@ function saveSetAcdBtn()
 {
 	document.form3.submit();
 }
-
-function checkCTSGRP(obj)
-{
-	if(obj.checked)
-	{
-	}
-	else
-	{
-	}
-	/*
-	var chkjb = document.getElementsByName("ctsgrpchk");
-	var s='';
-	for(var i=0;i<chkjb.length;i++){
-		if(chkjb[i].checked){
-			s+='1';
-		}else{
-			s+='0';
-		}
-	}
-	*/
-}
-
-$(function(){
-	$("input[name='ctsgrpchk']").each(function(){
-		
-	});
-});
 

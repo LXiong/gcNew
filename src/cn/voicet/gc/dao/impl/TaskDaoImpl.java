@@ -57,10 +57,21 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		        		 ds.list.add(map);
 					}
 				}
-				//get selected task for acd
-				cs.clearParameters();
-				cs = conn.prepareCall("{call web_ctsgrp_list()}");
+				return null;
+			}
+		});
+	}
+	
+
+	public void queryAcdSelectedByTid(final DotSession ds, final TaskForm taskForm) {
+		
+		this.getJdbcTemplate().execute(new ConnectionCallback() {
+			public Object doInConnection(Connection conn) throws SQLException,
+					DataAccessException {
+				CallableStatement cs = conn.prepareCall("{call web_ctsgrp_list(?)}");
+				cs.setInt(1, taskForm.getTid());
 				cs.execute();
+				ResultSet rs = cs.getResultSet();
 				rs = cs.getResultSet();
 				ds.list2 = new ArrayList();
 				if(rs!=null){
@@ -69,11 +80,13 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 						 VTJime.putMapDataByColName(map, rs);
 		        		 ds.list2.add(map);
 					}
-				}
+				}		
 				return null;
 			}
-		});
+		});//get selected task for acd
+		
 	}
+
 	
 	public String saveTask(final TaskForm taskForm) {
 		return (String)this.getJdbcTemplate().execute(new ConnectionCallback() {

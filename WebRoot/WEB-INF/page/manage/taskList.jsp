@@ -137,7 +137,7 @@
 		<form name="form3" action="<c:url value='/taskAction_setAcd.action'/>" method="post">
 	    <input type="hidden" id="setacd_tidx" name="tid"/>
 	    
-	   ${html }
+	   	<div id="acdHTML"></div>
 	    <div style="height:10px;"></div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
@@ -186,6 +186,7 @@ $(function(){
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/task.js?v=8'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/json_ie.js?v=1'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=9'/>"></script>
 </body>
 </html>

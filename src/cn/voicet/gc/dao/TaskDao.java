@@ -21,4 +21,5 @@ public interface TaskDao{
 	void saveTaskTel(TaskForm taskForm);
 	int blackFilter(TaskForm taskForm);
 	void setAcdByTid(TaskForm taskForm);
+	void queryAcdSelectedByTid(DotSession ds, TaskForm taskForm);
 }

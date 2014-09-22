@@ -16,6 +16,7 @@ public interface HuiFangDao{
 	void saveHuiFangThreeInfo(String[] hf);
 	
 	//
-	Map<String, Object> getHuiFangInfo(int flag);
+	Map<String, Object> getHuiFangInfo(int flag,HuiFangForm huiFangForm);
 	void saveHuiFangInfo(int flag, HuiFangForm huiFangForm);
+	int getHuiFangType(HuiFangForm huiFangForm);
 }
