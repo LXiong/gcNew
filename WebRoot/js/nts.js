@@ -17,6 +17,7 @@ function saveNts(t,account,pwd,ipallow,anyonemsg,content)
 	else
 	{
 		tit="修改NTS";
+		$(".asterisk")[0].innerHTML="";
 		$("#accountx").attr("readonly","readonly");
 		$("#accountx").removeClass("inputDefault");
 		$("#addup").val(1);
