@@ -43,4 +43,12 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 		return null;
 	}
 	
+	public String answer()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("agent:"+agentForm.getAgent()+", callio:"+agentForm.getCallio()+", telnum:"+agentForm.getTelnum());
+		agentDao.queryAgentAnserList(ds, agentForm);
+		return "show_agent_answer";
+	}
+	
 }

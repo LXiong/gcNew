@@ -13,6 +13,11 @@ public class AgentForm {
 	
 	private int agtid;
 	
+	//agent answer query
+	private String agent;
+	private int callio=1;
+	private String telnum;
+	
 	public String getSdt() {
 		return sdt;
 	}
@@ -36,5 +41,23 @@ public class AgentForm {
 	}
 	public void setAgtid(int agtid) {
 		this.agtid = agtid;
+	}
+	public String getAgent() {
+		return agent;
+	}
+	public void setAgent(String agent) {
+		this.agent = agent;
+	}
+	public int getCallio() {
+		return callio;
+	}
+	public void setCallio(int callio) {
+		this.callio = callio;
+	}
+	public String getTelnum() {
+		return telnum;
+	}
+	public void setTelnum(String telnum) {
+		this.telnum = telnum;
 	}
 }

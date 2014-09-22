@@ -26,9 +26,9 @@
 	      	<fun name="回访三" action="huiFangAction_home.action?flag=3" />
 	    </grp>
 	</role>
-	<role roleid="2" describle="管理员">
+	<role roleid="2" describle="业务管理员">
     <grp name="日常工作">
-        <fun name="接听查询" action="callinQuery_home.action" />
+        <fun name="接听查询" action="agentAnalyAction_answer.action" />
     </grp>
 	    <grp name="日常管理">
 	        <fun name="任务及号码管理" action="taskAction_home.action" />
