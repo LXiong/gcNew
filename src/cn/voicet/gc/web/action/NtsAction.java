@@ -26,7 +26,7 @@ public class NtsAction extends BaseAction implements ModelDriven<NtsForm>{
 	
 	public String home(){
 		DotSession ds = DotSession.getVTSession(request);
-		//ntsDao.queryNtsList(ds, ntsForm);
+		ntsDao.queryNtsList(ds, ntsForm);
 		return "show_nts";
 	}
 	
@@ -37,7 +37,8 @@ public class NtsAction extends BaseAction implements ModelDriven<NtsForm>{
 	public String saveNts()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		//ntsDao.saveNts(ds, ntsForm);
+		log.info("ntstxt length:"+ntsForm.getNtstxt().length);
+		ntsDao.saveNts(ds, ntsForm);
 		return null;
 	}
 	
@@ -47,7 +48,8 @@ public class NtsAction extends BaseAction implements ModelDriven<NtsForm>{
 	 */
 	public String deleteNts()
 	{
-		//ntsDao.deleteNts(ntsForm);
+		log.info("account:"+ntsForm.getAccount());
+		ntsDao.deleteNts(ntsForm);
 		return home();
 	}
 	

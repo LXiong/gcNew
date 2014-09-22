@@ -28,10 +28,9 @@ public class NtsDaoImpl extends BaseDaoImpl implements NtsDao {
 
 	public void queryNtsList(final DotSession ds, final NtsForm ntsForm) {
 		
-		this.getJdbcTemplate().execute("{call }", new CallableStatementCallback() {
+		this.getJdbcTemplate().execute("{call nts_client_query()}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curCTS);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -50,11 +49,17 @@ public class NtsDaoImpl extends BaseDaoImpl implements NtsDao {
 	
 	
 	public void saveNts(final DotSession ds, final NtsForm ntsForm) {
-		String sp_nts_update = "{call web_acd_update(?,?,?,?,?,?,?,?)}";
-		this.getJdbcTemplate().execute(sp_nts_update, new CallableStatementCallback() {
+		String[] sp_nts = {"{call nts_client_add(?,?,?,?,?)}","{call nts_client_update(?,?,?,?,?)}"};
+		int au = Integer.parseInt(ntsForm.getNtstxt()[0]);
+		log.info("sp_nts"+sp_nts[au]);
+		this.getJdbcTemplate().execute(sp_nts[au], new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curCTS);
+				cs.setString(1, ntsForm.getNtstxt()[1]);
+				cs.setString(2, ntsForm.getNtstxt()[2]);
+				cs.setString(3, ntsForm.getNtstxt()[3]);
+				cs.setString(4, ntsForm.getNtstxt()[4]);
+				cs.setString(5, ntsForm.getNtstxt()[5]);
 				cs.execute();
 				return null;
 			}
@@ -62,10 +67,10 @@ public class NtsDaoImpl extends BaseDaoImpl implements NtsDao {
 	}
 	
 	public void deleteNts(final NtsForm ntsForm) {
-		String sp_nts_delete = "{call web_acd_remove(?,?)}";
-		this.getJdbcTemplate().execute(sp_nts_delete, new CallableStatementCallback() {
+		this.getJdbcTemplate().execute("{call nts_client_remove(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
+				cs.setString(1, ntsForm.getAccount());
 				cs.execute();
 				return null;
 			}
