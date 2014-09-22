@@ -29,8 +29,8 @@
 .login_wrap{width:1024px; height:528px; margin:0 auto; padding-top:240px; background:url(../images/vt_rec_loginback3.jpg) repeat-x;}
 .login_main{width:566px; height:251px; background:#91C4EF; margin:0 auto;}
 .login_main_up{height:75px; background:url(../images/login_up.jpg) repeat-x;}
-.login_product{font-size:20px; color:#447DB4; text-align:right; width:546px; padding:10px 20px 0 0;}
-.login_company{font-size:32px; color:#447DB4; text-align:left; font-weight:bold; width:200px; padding-left:80px;}
+.login_product{font-size:20px; color:#447DB4; text-align:center; text-indent:380px; padding-top:10px;}
+.login_company{font-size:32px; color:#447DB4; text-align:left; font-weight:bold;text-indent:80px; line-height:40px;}
 .login_main_down{height:186px; background:url(../images/login_down.jpg) repeat-x;}
 .login_content{float:right; width:240px; padding-left:80px;}
 .login_label{font:14px Microsoft YaHei; text-align:right; color:#111;}
