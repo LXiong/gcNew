@@ -1,6 +1,6 @@
 package cn.voicet.gc.dao;
 
-import cn.voicet.gc.web.form.SubTelForm;
+import cn.voicet.gc.form.SubTelForm;
 import cn.voicet.util.DotSession;
 
 public interface SubTelDao{

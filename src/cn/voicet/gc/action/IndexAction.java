@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.action;
+package cn.voicet.gc.action;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;

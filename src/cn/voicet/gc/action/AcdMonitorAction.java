@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.action;
+package cn.voicet.gc.action;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.voicet.gc.dao.AcdDao;
-import cn.voicet.gc.web.form.AcdForm;
+import cn.voicet.gc.form.AcdForm;
 import cn.voicet.util.DotSession;
 
 import com.opensymphony.xwork2.ModelDriven;

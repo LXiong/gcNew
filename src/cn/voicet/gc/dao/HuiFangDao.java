@@ -2,7 +2,7 @@ package cn.voicet.gc.dao;
 
 import java.util.Map;
 
-import cn.voicet.gc.web.form.HuiFangForm;
+import cn.voicet.gc.form.HuiFangForm;
 
 public interface HuiFangDao{
 	public final static String SERVICE_NAME = "cn.voicet.gc.dao.impl.HuiFangDaoImpl";

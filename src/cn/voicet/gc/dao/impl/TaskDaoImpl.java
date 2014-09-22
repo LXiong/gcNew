@@ -31,7 +31,7 @@ import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.TaskDao;
-import cn.voicet.gc.web.form.TaskForm;
+import cn.voicet.gc.form.TaskForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
 

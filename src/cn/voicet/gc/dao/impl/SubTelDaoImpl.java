@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.SubTelDao;
-import cn.voicet.gc.web.form.SubTelForm;
+import cn.voicet.gc.form.SubTelForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
 

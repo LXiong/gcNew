@@ -1,6 +1,6 @@
 package cn.voicet.gc.dao;
 
-import cn.voicet.gc.web.form.SystemLogForm;
+import cn.voicet.gc.form.SystemLogForm;
 import cn.voicet.util.DotSession;
 
 public interface SystemLogDao{

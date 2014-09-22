@@ -1,6 +1,6 @@
 package cn.voicet.gc.dao;
 
-import cn.voicet.gc.web.form.CallRecordForm;
+import cn.voicet.gc.form.CallRecordForm;
 import cn.voicet.util.DotSession;
 
 public interface CallRecordDao{

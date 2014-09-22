@@ -2,7 +2,7 @@ package cn.voicet.gc.dao;
 
 import java.util.Map;
 
-import cn.voicet.gc.web.form.UserForm;
+import cn.voicet.gc.form.UserForm;
 import cn.voicet.util.DotSession;
 
 public interface UserDao{

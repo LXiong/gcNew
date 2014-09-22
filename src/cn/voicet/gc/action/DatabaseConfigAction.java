@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.action;
+package cn.voicet.gc.action;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;

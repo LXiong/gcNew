@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.UserDao;
-import cn.voicet.gc.web.form.UserForm;
+import cn.voicet.gc.form.UserForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
 

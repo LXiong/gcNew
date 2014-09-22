@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.SystemLogDao;
-import cn.voicet.gc.web.form.SystemLogForm;
+import cn.voicet.gc.form.SystemLogForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
 

@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.HuiFangDao;
-import cn.voicet.gc.web.form.HuiFangForm;
+import cn.voicet.gc.form.HuiFangForm;
 import cn.voicet.util.VTJime;
 @Repository(HuiFangDao.SERVICE_NAME)
 @SuppressWarnings("unchecked")

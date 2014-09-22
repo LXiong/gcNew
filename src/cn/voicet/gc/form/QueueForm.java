@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.form;
+package cn.voicet.gc.form;
 
 public class QueueForm {
 	private int tid;		//任务ID

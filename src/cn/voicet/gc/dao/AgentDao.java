@@ -2,7 +2,7 @@ package cn.voicet.gc.dao;
 
 import javax.servlet.http.HttpServletResponse;
 
-import cn.voicet.gc.web.form.AgentForm;
+import cn.voicet.gc.form.AgentForm;
 import cn.voicet.util.DotSession;
 
 public interface AgentDao{

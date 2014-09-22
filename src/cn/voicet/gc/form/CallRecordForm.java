@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.form;
+package cn.voicet.gc.form;
 
 import java.util.Date;
 

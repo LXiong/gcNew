@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.action;
+package cn.voicet.gc.action;
 import java.io.IOException;
 import java.util.Map;
 
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.voicet.gc.dao.UserDao;
-import cn.voicet.gc.web.form.UserForm;
+import cn.voicet.gc.form.UserForm;
 import cn.voicet.util.DotSession;
 
 import com.opensymphony.xwork2.ModelDriven;

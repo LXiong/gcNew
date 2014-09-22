@@ -1,6 +1,6 @@
 package cn.voicet.gc.dao;
 
-import cn.voicet.gc.web.form.BlackForm;
+import cn.voicet.gc.form.BlackForm;
 import cn.voicet.util.DotSession;
 
 public interface BlackDao{

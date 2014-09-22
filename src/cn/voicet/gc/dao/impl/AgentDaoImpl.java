@@ -22,7 +22,7 @@ import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.AgentDao;
-import cn.voicet.gc.web.form.AgentForm;
+import cn.voicet.gc.form.AgentForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
 

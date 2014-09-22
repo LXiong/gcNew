@@ -1,6 +1,6 @@
 package cn.voicet.gc.dao;
 
-import cn.voicet.gc.web.form.AcdForm;
+import cn.voicet.gc.form.AcdForm;
 import cn.voicet.util.DotSession;
 
 public interface AcdDao{

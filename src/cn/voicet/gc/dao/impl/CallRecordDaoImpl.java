@@ -14,8 +14,8 @@ import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.CallRecordDao;
-import cn.voicet.gc.web.form.AcdForm;
-import cn.voicet.gc.web.form.CallRecordForm;
+import cn.voicet.gc.form.AcdForm;
+import cn.voicet.gc.form.CallRecordForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
 

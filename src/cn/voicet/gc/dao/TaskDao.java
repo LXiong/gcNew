@@ -4,7 +4,7 @@ import java.io.File;
 
 import javax.servlet.http.HttpServletResponse;
 
-import cn.voicet.gc.web.form.TaskForm;
+import cn.voicet.gc.form.TaskForm;
 import cn.voicet.util.DotSession;
 
 public interface TaskDao{

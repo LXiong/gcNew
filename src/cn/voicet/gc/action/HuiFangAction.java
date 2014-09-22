@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.action;
+package cn.voicet.gc.action;
 import java.io.IOException;
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.voicet.gc.dao.HuiFangDao;
-import cn.voicet.gc.web.form.HuiFangForm;
+import cn.voicet.gc.form.HuiFangForm;
 
 import com.opensymphony.xwork2.ModelDriven;
 

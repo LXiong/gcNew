@@ -1,4 +1,4 @@
-package cn.voicet.gc.web.action;
+package cn.voicet.gc.action;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
