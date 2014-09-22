@@ -88,7 +88,7 @@
 	    	<span class="lab120">限制IP：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="ipallowx" name="ntstxt" class="ipt_text_w150 inputDefault" />
-	            <span class=""></span>
+	            <span class="asterisk"></span>
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item">
