@@ -31,13 +31,14 @@
                      <th width="6%">组编号</th>
                      <th width="10%">组名称</th>
                      <th width="10%">组号码</th>
-                     <th width="6%">ACW(秒)</th>
+                     <th width="10%">ACW(秒)</th>
+                     <th width="10%">主叫号码</th>
                      <th width="12%">最大等待时长(秒)</th>
                      <th width="10%">最大排队数目</th>
                      <th width="8%">溢出去向</th>
                      <th width="10%">任务名称</th>
-                     <th width="16%">
-                     	<input type="button" class="btn btn-primary" onclick="saveAcd('add','0','<s:property value="#session.vts.curCTS"/>','','','','','','')" value="添加"/>
+                     <th width="10%">
+                     	<input type="button" class="btn btn-primary" onclick="saveAcd('add','0','<s:property value="#session.vts.curCTS"/>','','','','','','','')" value="添加"/>
                      </th>
                  </tr>
              </thead>
@@ -48,6 +49,7 @@
 					<td>${acd.grpname }</td>
 					<td>${acd.telnum }</td>
 					<td>${acd.acw }</td>
+					<td>${acd.ani }</td>
 					<td>${acd.maxwaittime }</td>
 					<td>${acd.maxwaitnum }</td>
 					<td>${acd.overflowto }</td>
@@ -55,7 +57,7 @@
 						<s:select list="#session.vts.list2" onchange="popSetTask('%{grpid}','%{grpname}',this)" listKey="tid" listValue="tname" value="taskid" cssClass="seldefault_w85"></s:select>
 					</td>
 					<td>
-						<a href="javascript:saveAcd('edit','${acd.grpid }','<s:property value="#session.vts.curCTS"/>','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:saveAcd('edit','${acd.grpid }','<s:property value="#session.vts.curCTS"/>','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.ani }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteAcdPre('${acd.grpid }')">删除</a>
 						<input type="button" class="hide" onclick="deleteAcd()" value="删除"/>
 					</td>
@@ -90,6 +92,13 @@
 	    	<span class="lab150">组号码：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="telnumx" name="acdtxt" value="0" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item" id="whnum">
+	    	<span class="lab150">主叫号码：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="anix" name="acdtxt" value="" class="ipt_text_w150 inputDefault" />
 	            <span class="asterisk">*</span>
 	        </div>
 	    </div>
@@ -178,7 +187,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd.js?v=2'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd.js?v=3'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

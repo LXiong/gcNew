@@ -44,5 +44,5 @@ function saveHuifangBtn(flag)
 		return false;
 	}
 	document.form1.submit();
-	layer.msg("保存成功!",4);
+	layer.msg("保存成功!",1,111);
 }

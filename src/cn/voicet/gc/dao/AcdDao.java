@@ -10,4 +10,6 @@ public interface AcdDao{
 	void saveAcd(DotSession ds, AcdForm acdForm);
 	void deleteAcdByGrpid(AcdForm acdForm);
 	void setTaskForAcd(AcdForm acdForm);
+	void getAcdMonitorList(DotSession ds);
+	void setCaller(DotSession ds, AcdForm acdForm);
 }

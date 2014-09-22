@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,30 +31,12 @@
    	<form action="<c:url value='/agentAnalyAction_answer.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
-			
-			<li><label>话务员号码：</label><input type="text" name="agent" class="ipt100 inputDefault" value="${agent }" maxlength="12"/></li>
 	        <li>
 	        	<label>呼叫方向：</label>
-	        	<s:select name="callio" list="#{1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{callio}" onchange="callioChange(this)" cssClass="inputDefault"></s:select>
-	        	<script type="text/javascript">
-	        	function callioChange(obj)
-	        	{
-					if(obj.value==1)
-					{
-						$("#telnumLabx")[0].innerHTML="主叫号码：";
-						$("#telnumHidx").val('主叫号码：');
-					}
-					else if(obj.value==2)
-					{
-						$("#telnumLabx")[0].innerHTML="被叫号码：";
-						$("#telnumHidx").val('被叫号码：');
-					}
-	        	}
-	        	</script>
+	        	<s:select name="callio" list="#{0:'不限',1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{callio}" cssClass="inputDefault"></s:select>
 			</li>
 			<li>
-				<label id="telnumLabx">${telnumLab }</label>
-				<input type="hidden" id="telnumHidx" name="telnumLab" value="${telnumLab }"/>
+				<label id="telnumLabx">对方号码：</label>
 				<input type="text" name="telnum" class="ipt100 inputDefault" value="${telnum }" maxlength="12"/>
 			</li>
 	        <li>
@@ -69,15 +52,14 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head2">
                  <tr>
-                     <th width="8%">编号</th>
+                     <th width="4%">编号</th>
                      <th width="8%">主叫号码</th>
                      <th width="8%">被叫号码</th>
-                     <th width="8%">呼叫日期</th>
-                     <th width="8%">任务编号</th>
-                     <th width="8%">电话编号</th>
-                     <th width="8%">等待时长</th>
-                     <th width="8%">通话时长</th>
-                     <th width="8%">录音标识</th>
+                     <th width="6%">呼叫方向</th>
+                     <th width="10%">呼叫日期</th>
+                     <th width="8%">等待时长(秒)</th>
+                     <th width="8%">通话时长(秒)</th>
+                     <th width="10%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -86,13 +68,14 @@
 					<td>${cid }</td>
 					<td>${ani }</td>
 					<td>${dnis }</td>
-					<td>${callio }</td>
-					<td>${calldt }</td>
-					<td>${tid }</td>
-					<td>${ttid }</td>
+					<td>
+						<c:if test="${callio eq 1 }">呼入</c:if>
+						<c:if test="${callio eq 2 }">呼出</c:if>
+					</td>
+					<td>${fn:substring(calldt,2,19) }</td>
 					<td>${wait }</td>
 					<td>${talk }</td>
-					<td>${rectag }</td>
+					<td><a href="<c:url value='/agentAnalyAction_detail.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a></td>
 				</tr>
 				</s:iterator>
 			</tbody>

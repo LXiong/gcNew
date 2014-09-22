@@ -154,7 +154,7 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		this.getJdbcTemplate().execute("{call web_agent_callquery(?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, agentForm.getAgent());
+				cs.setString(1, ds.account);
 				cs.setInt(2, agentForm.getCallio());
 				cs.setString(3, agentForm.getTelnum());
 				cs.execute();
@@ -169,6 +169,30 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 					}
 				}
 				return null;
+			}
+		});
+	}
+
+	public int queryAgentAnserDetailList(final DotSession ds, final AgentForm agentForm) {
+		return (Integer)this.getJdbcTemplate().execute("{call web_tasktel_info(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, agentForm.getTid());
+				cs.setInt(2, agentForm.getTtid());
+				cs.registerOutParameter(3, Types.INTEGER);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();
+				if(rs!=null){
+					while (rs.next()) {
+						 Map map = new HashMap();
+						 VTJime.putMapDataByColName(map, rs);
+		        		 ds.list.add(map);
+					}
+				}
+				log.info("out param kind:"+cs.getInt(3));
+				return cs.getInt(3);
 			}
 		});
 	}

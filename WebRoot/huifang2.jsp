@@ -131,6 +131,6 @@
 	</form>
 </div>
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/huifang.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/huifang.js?v=1'/>"></script>
 </body>
 </html>

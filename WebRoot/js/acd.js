@@ -1,11 +1,11 @@
 
 //save acd
-function saveAcd(t,grpid,cts,grpname,telnum,acw,maxwaittime,maxwaitnum,overflowto)
+function saveAcd(t,grpid,cts,grpname,telnum,acw,ani,maxwaittime,maxwaitnum,overflowto)
 {
 	$(".asterisk").each(function(){
 		this.innerHTML="*";
 	});
-	$(".asterisk")[5].innerHTML="";
+	$(".asterisk")[6].innerHTML="";
 	//
 	var tit;
 	if(t=="add")
@@ -22,6 +22,7 @@ function saveAcd(t,grpid,cts,grpname,telnum,acw,maxwaittime,maxwaitnum,overflowt
 	$("#grpnamex").val(grpname);
 	$("#telnumx").val(telnum);
 	$("#acwx").val(acw);
+	$("#anix").val(ani);
 	$("#maxwaittimex").val(maxwaittime);
 	$("#maxwaitnumx").val(maxwaitnum);
 	$("#overflowtox").val(overflowto);
@@ -43,6 +44,7 @@ $(function(){
 	$("#grpnamex").bind("blur",checkGrpname);
 	$("#telnumx").bind("blur",checkTelnum);
 	$("#acwx").bind("blur",checkAcw);
+	$("#anix").bind("blur",checkAni);
 	$("#maxwaittimex").bind("blur",checkMaxwaittime);
 	$("#maxwaitnumx").bind("blur",checkMaxwatinum);
 	$("#overflowtox").bind("blur",checkOverflowto);
@@ -84,19 +86,18 @@ function checkTelnum()
 		return true;
 	}
 }
-
-function checkAcw()
+function checkAni()
 {
-	var acw = $("#acwx").val();
-	var regexp= /^\d+$/;
-	if(!acw)
+	var ani = $("#anix").val();
+	var regexp=/^([0-9]|[-])+$/g;
+	if(!ani)
 	{
-		$(".asterisk")[2].innerHTML="结束等待不能为空";
+		$(".asterisk")[2].innerHTML="主叫号码不能为空";
 		return false;
 	}
-	else if(!regexp.exec(acw))
+	else if(!regexp.exec(ani))
 	{
-		$(".asterisk")[2].innerHTML="请输入合理的数字";
+		$(".asterisk")[2].innerHTML="号码不合理";
 		return false;
 	}
 	else
@@ -105,16 +106,16 @@ function checkAcw()
 		return true;
 	}
 }
-function checkMaxwaittime()
+function checkAcw()
 {
-	var maxwtime = $("#maxwaittimex").val();
+	var acw = $("#acwx").val();
 	var regexp= /^\d+$/;
-	if(!maxwtime)
+	if(!acw)
 	{
-		$(".asterisk")[3].innerHTML="等待时长不能为空";
+		$(".asterisk")[3].innerHTML="结束等待不能为空";
 		return false;
 	}
-	else if(!regexp.exec(maxwtime))
+	else if(!regexp.exec(acw))
 	{
 		$(".asterisk")[3].innerHTML="请输入合理的数字";
 		return false;
@@ -125,16 +126,16 @@ function checkMaxwaittime()
 		return true;
 	}
 }
-function checkMaxwatinum()
+function checkMaxwaittime()
 {
-	var maxwnum = $("#maxwaitnumx").val();
+	var maxwtime = $("#maxwaittimex").val();
 	var regexp= /^\d+$/;
-	if(!maxwnum)
+	if(!maxwtime)
 	{
-		$(".asterisk")[4].innerHTML="等待线数不能为空";
+		$(".asterisk")[4].innerHTML="等待时长不能为空";
 		return false;
 	}
-	else if(!regexp.exec(maxwnum))
+	else if(!regexp.exec(maxwtime))
 	{
 		$(".asterisk")[4].innerHTML="请输入合理的数字";
 		return false;
@@ -145,11 +146,16 @@ function checkMaxwatinum()
 		return true;
 	}
 }
-function checkOverflowto()
+function checkMaxwatinum()
 {
-	var overto = $("#overflowtox").val()
+	var maxwnum = $("#maxwaitnumx").val();
 	var regexp= /^\d+$/;
-	if(overto!="" && !regexp.exec(overto))
+	if(!maxwnum)
+	{
+		$(".asterisk")[5].innerHTML="等待线数不能为空";
+		return false;
+	}
+	else if(!regexp.exec(maxwnum))
 	{
 		$(".asterisk")[5].innerHTML="请输入合理的数字";
 		return false;
@@ -160,11 +166,27 @@ function checkOverflowto()
 		return true;
 	}
 }
+function checkOverflowto()
+{
+	var overto = $("#overflowtox").val()
+	var regexp= /^\d+$/;
+	if(overto!="" && !regexp.exec(overto))
+	{
+		$(".asterisk")[6].innerHTML="请输入合理的数字";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[6].innerHTML="";
+		return true;
+	}
+}
 
 function saveAcdBtn()
 {
 	if(!checkGrpname()) return false;
 	if(!checkTelnum()) return false;
+	if(!checkAni()) return false;
 	if(!checkAcw()) return false;
 	if(!checkMaxwaittime()) return false;
 	if(!checkMaxwatinum()) return false;

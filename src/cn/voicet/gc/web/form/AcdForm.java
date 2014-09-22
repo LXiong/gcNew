@@ -12,6 +12,7 @@ public class AcdForm {
 	private String[] acdtxt;
 	private int grpid;
 	private int taskid;
+	private String ani;
 	
 	public String getCts() {
 		return cts;
@@ -48,5 +49,11 @@ public class AcdForm {
 	}
 	public void setTaskid(int taskid) {
 		this.taskid = taskid;
+	}
+	public String getAni() {
+		return ani;
+	}
+	public void setAni(String ani) {
+		this.ani = ani;
 	}
 }

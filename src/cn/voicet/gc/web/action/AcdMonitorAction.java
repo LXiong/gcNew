@@ -24,9 +24,25 @@ public class AcdMonitorAction extends BaseAction implements ModelDriven<AcdForm>
 		return acdForm;
 	}
 	
+	/**
+	 * 业务监控状态列表
+	 * @return
+	 */
 	public String home()
 	{
 		DotSession ds = DotSession.getVTSession(request);
+		acdDao.getAcdMonitorList(ds);
 		return "show_acd_monitor";
+	}
+	
+	/**
+	 * 设置外呼主叫
+	 */
+	public String setCaller()
+	{
+		DotSession ds = DotSession.getVTSession(request);		
+		log.info("cts:"+ds.curCTS+", grpid:"+acdForm.getGrpid()+", ani:"+acdForm.getAni());
+		acdDao.setCaller(ds,acdForm);
+		return null;
 	}
 }

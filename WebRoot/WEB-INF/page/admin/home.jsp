@@ -33,6 +33,75 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 			
 		}
+
+
+		/*************** 实时刷新   ***************/ 
+		function js_monitor_acdgrp(str){
+			str = str.split(",");
+			//获取表格对象
+		    var tableObj = window.frames["mainFrame"].document.getElementById("monitorTab");
+		    var start = window.frames["mainFrame"].document.getElementById("start"+str[0]);
+			var stop = window.frames["mainFrame"].document.getElementById("stop"+str[0]);
+		    if (tableObj == null)
+			    return false;
+		    if(str[1]=='停止'){
+				tableObj.rows[str[0]].cells[0].innerHTML='<img src="images/uncall.gif"/>';
+				start.disabled=false;
+				stop.disabled=true;
+				stop.removeAttribute("href"); 
+				start.setAttribute("href","javascript:startQueue('"+str[0]+"')");
+			}else{
+				tableObj.rows[str[0]].cells[0].innerHTML='<img src="images/call.gif"/>';
+				start.disabled=true;
+				stop.disabled=false;
+				start.removeAttribute("href"); 
+				stop.setAttribute("href","javascript:stopQueue('"+str[0]+"')");
+			}
+			//获取表格总行数
+			var tabrowlen = tableObj.rows.length;
+			//获取表格总列数
+			var tabcollen = tableObj.rows[0].cells.length;
+			//将字符串转化成整型变量
+			var i = parseInt(str[0]);
+			
+			tableObj.rows[i].cells[3].innerText=str[1];
+			tableObj.rows[i].cells[4].innerText=str[2];
+			tableObj.rows[i].cells[5].innerText=str[3];
+			tableObj.rows[i].cells[6].innerText=str[4];
+			tableObj.rows[i].cells[7].innerText=str[5];
+			tableObj.rows[i].cells[8].innerText=str[6];
+		}
+
+		/*************** 座席分机监控  ***************/
+		function js_seat_minitor(str){
+			str = str.split(",");
+			//获取表格对象
+			var tableObj = window.frames["mainFrame"].document.getElementById("monitorTab");
+			if (tableObj == null)
+			    return false;
+			var tabrowlen = tableObj.rows.length;
+			var tabcolnum = tableObj.rows[0].cells.length-1;
+			var i = parseInt(str[0])+1;
+			tableObj.rows[i].cells[1].innerText=str[0];
+			tableObj.rows[i].cells[2].innerText=str[1];
+			tableObj.rows[i].cells[3].innerText=str[2];
+			tableObj.rows[i].cells[4].innerText=str[3];
+			tableObj.rows[i].cells[5].innerText=str[4];
+			tableObj.rows[i].cells[6].innerText=str[5];	
+			
+		}
+
+
+		function js_getcts()
+		{
+			return "<s:property value='#session.vts.curCTS'/>";
+		}
+
+		function js_getcts1()
+		{
+			alert(js_getcts());
+		}
+		
 	</script>
 </head>
 <body>
@@ -42,7 +111,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div id="header">
   		<div class="tit1"><s:property value="#application.vta.product"/></div>
   		<div class="tit2"><s:property value="#application.vta.customer"/>
-  			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试"/>
+  			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试一"/>
+  			<input type="button" onclick="js_monitor_acdgrp('1,2,2,2,2,2,2')" value="测试二"/>
+  			
+  			<input type="button" onclick="js_getcts()" value="测试三"/>
+  			<input type="button" onclick="js_getcts1()" value="测试四"/>
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
     </div>

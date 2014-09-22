@@ -15,10 +15,6 @@
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/layer/extend/layer.ext.js'/>"></script>
-	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
@@ -28,54 +24,45 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">业务组监控&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
-   	<form action="<c:url value='/acdAnalyAction_home.action'/>" method="post">
-   	<input type="hidden" name="cts" value="<s:property value="#session.vts.curCTS"/>"/>
-	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w600 left">
-			<li></li>
-		</ul>
-		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
-		</ul>
-	</div>
-    </form>
-	<div class="content_List568">
-		<table cellpadding="0" cellspacing="0" class="tab_border">
+	<div class="content_List615">
+		<table id="monitorTab" cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="4%">编号</th>
-                     <th width="10%">名称</th>
+                     <th width="4%">组编号</th>
+                     <th width="8%">组号码</th>
+                     <th width="8%">组名称</th>
+                     <th width="6%">外呼主叫</th>
                      <th width="4%">状态</th>
-                     <th width="4%">T+</th>
-                     <th width="8%">号码总数</th>
-                     <th width="8%">完成数</th>
-                     <th width="8%">百分比</th>
-                     <th width="8%">外呼数</th>
-                     <th width="8%">应答数</th>
-                     <th width="8%">在线客服</th>
-                     <th width="20%">操作</th>
+                     <th width="6%">添加中继数</th>
+                     <th width="4%">外呼数</th>
+                     <th width="4%">应答数</th>
+                     <th width="4%">应答率</th>
+                     <th width="6%">在线客服</th>
+                     <th width="6%">空闲座席数</th>
+                     <th width="14%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
+             	<s:iterator id="monitor" value="#session.vts.list">
 				<tr align="center">
-					<td>1</td>
-					<td>业务1</td>
-					<td>呼叫</td>
-					<td>23</td>
-					<td>20</td>
-					<td>10</td>
-					<td>50%</td>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
+					<td>${grpid }</td>
+					<td>${telnum }</td>
+					<td>${grpname }</td>
+					<td>${ani }</td>
+					<td>${curstate }</td>
+					<td>${addtrk }</td>
+					<td>${obt_num }</td>
+					<td>${ans_num }</td>
+					<td>${agt_num }</td>
+					<td>${ans_rate }</td>
+					<td>${agt_free }</td>
 					<td>
-						<a href="#">启动</a>&nbsp;
-						<a href="#">暂停</a>&nbsp;
-						<a href="#">++</a>&nbsp;
-						<a href="#">--</a>&nbsp;
-						<a href="#">设置</a>&nbsp;
+						<a id="start1" href="javascript:setCaller('${grpid }','${ani }')">设置主叫</a>&nbsp;
+						<a id="start1" href="javascript:startQueue('1')">启动</a>&nbsp;
+						<a id="stop1" href="javascript:stopQueue('1')">暂停</a>&nbsp;
 					</td>
 				</tr>
+				</s:iterator>
 			</tbody>
 		</table>
 	</div>
@@ -89,6 +76,25 @@
  		<button id="tiaozhuan" class="btn btn-primary">跳转</button>
 	</div>
     <!-- jPage end -->
+    <!--POP LAYER START-->
+	<div id="popDiv" style="display:none;"> 
+		<form id="form1" action="<c:url value='/acdMonitorAction_setCaller.action'/>" method="post">
+	    <input type="hidden" id="grpidx" name="grpid"/>
+	    <div class="lab_ipt_item" id="whnum">
+	    	<span class="lab150">主叫号码：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="anix" name="ani" value="" class="ipt_text_w150 inputDefault" />
+	            <span class="asterisk">*</span>
+	        </div>
+	    </div>
+		<div class="lab_ipt_item">
+			<span class="lab120"></span>
+			<div class="ipt-box"><input type="button" onclick="setCallerBtn()" class="btn4" value="确定"/></div>
+			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
+		</div>	
+		</form>
+	</div>
+	<!--POP LAYER END-->
 	
 </div>
 <script type="text/javascript">
@@ -101,7 +107,7 @@
 	        next : "下一页",
 	        last : "尾页",
 	        startPage : nowPage,
-	        perPage : 26,
+	        perPage : 28,
 	        keyBrowse:true,
 	        delay : 0,
 	        callback : function( pages, items ){
@@ -121,6 +127,11 @@
     	});
 	});
 </script>
-
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=1'/>"></script>
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>
 </html>
