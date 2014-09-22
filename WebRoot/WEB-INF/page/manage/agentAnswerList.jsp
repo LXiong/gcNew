@@ -34,9 +34,28 @@
 			<li><label>话务员号码：</label><input type="text" name="agent" class="ipt100 inputDefault" value="${agent }" maxlength="12"/></li>
 	        <li>
 	        	<label>呼叫方向：</label>
-	        	<s:select name="callio" list="#{1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{callio}" cssClass="inputDefault"></s:select>
+	        	<s:select name="callio" list="#{1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{callio}" onchange="callioChange(this)" cssClass="inputDefault"></s:select>
+	        	<script type="text/javascript">
+	        	function callioChange(obj)
+	        	{
+					if(obj.value==1)
+					{
+						$("#telnumLabx")[0].innerHTML="主叫号码：";
+						$("#telnumHidx").val('主叫号码：');
+					}
+					else if(obj.value==2)
+					{
+						$("#telnumLabx")[0].innerHTML="被叫号码：";
+						$("#telnumHidx").val('被叫号码：');
+					}
+	        	}
+	        	</script>
 			</li>
-			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100 inputDefault" value="${telnum }" maxlength="12"/></li>
+			<li>
+				<label id="telnumLabx">${telnumLab }</label>
+				<input type="hidden" id="telnumHidx" name="telnumLab" value="${telnumLab }"/>
+				<input type="text" name="telnum" class="ipt100 inputDefault" value="${telnum }" maxlength="12"/>
+			</li>
 	        <li>
 	        	<input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/>
 	        </li>

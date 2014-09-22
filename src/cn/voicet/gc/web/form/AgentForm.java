@@ -17,6 +17,7 @@ public class AgentForm {
 	private String agent;
 	private int callio=1;
 	private String telnum;
+	private String telnumLab="主叫号码：";
 	
 	public String getSdt() {
 		return sdt;
@@ -59,5 +60,11 @@ public class AgentForm {
 	}
 	public void setTelnum(String telnum) {
 		this.telnum = telnum;
+	}
+	public String getTelnumLab() {
+		return telnumLab;
+	}
+	public void setTelnumLab(String telnumLab) {
+		this.telnumLab = telnumLab;
 	}
 }
