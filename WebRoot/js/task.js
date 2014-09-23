@@ -62,7 +62,7 @@ function saveTaskBtn()
 			layer.closeAll();
 			if(data=="updateok")
 			{
-				location.href="${pageContext.request.contextPath}/taskAction_home.action";
+				location.href="${pageContext.request.contextPath}/task-list.action";
 			}
 			else if(data=="updateerr")
 			{
@@ -71,7 +71,7 @@ function saveTaskBtn()
 			else if(data=="insertok")
 			{
 				
-				location.href="${pageContext.request.contextPath}/taskAction_home.action";
+				location.href="${pageContext.request.contextPath}/task-list.action";
 				
 			}
         }  
@@ -104,7 +104,7 @@ function deleteTask(tid,tname)
 		success:function(data){ //提交成功的回调函数
 			if(data=="ok")
 			{
-				location.href="${pageContext.request.contextPath}/taskAction_home.action";
+				location.href="${pageContext.request.contextPath}/task-list.action";
 			}
 			else
 			{

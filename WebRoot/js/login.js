@@ -48,7 +48,7 @@ var responseLogin = function(data, textStatus, jqXHR)
 			Cookie.clearCookie("accountgcnew");	
 			Cookie.clearCookie("passwordgcnew");
 		}
-		window.location.href="userAction_home.action";
+		window.location.href="user-home.action";
 	}
 	else if(data.status=="vercodeerror")
 	{

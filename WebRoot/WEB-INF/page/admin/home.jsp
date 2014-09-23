@@ -27,15 +27,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				data: {tid: tid},
 				url: "huifangType.action",
 				success: function(data) {
-					$("#test")[0].href="huiFangAction_home.action?flag="+data+"&tid="+tid+"&ttid="+ttid;
+					$("#test")[0].href="huifang-list.action?flag="+data+"&tid="+tid+"&ttid="+ttid;
 					$("#test")[0].click();
 				}
 			});
 			
 		}
 
-
 		/*************** 实时刷新   ***************/ 
+		/*
 		function js_monitor_acdgrp(str){
 			str = str.split(",");
 			//获取表格对象
@@ -71,8 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			tableObj.rows[i].cells[7].innerText=str[5];
 			tableObj.rows[i].cells[8].innerText=str[6];
 		}
+		*/
 
 		/*************** 座席分机监控  ***************/
+		/*
 		function js_seat_minitor(str){
 			str = str.split(",");
 			//获取表格对象
@@ -90,18 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			tableObj.rows[i].cells[6].innerText=str[5];	
 			
 		}
-
-
-		function js_getcts()
-		{
-			return "<s:property value='#session.vts.curCTS'/>";
-		}
-
-		function js_getcts1()
-		{
-			alert(js_getcts());
-		}
-		
+		*/
 	</script>
 </head>
 <body>
@@ -113,9 +104,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<div class="tit2"><s:property value="#application.vta.customer"/>
   			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试一"/>
   			<input type="button" onclick="js_monitor_acdgrp('1,2,2,2,2,2,2')" value="测试二"/>
-  			
-  			<input type="button" onclick="js_getcts()" value="测试三"/>
-  			<input type="button" onclick="js_getcts1()" value="测试四"/>
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
     </div>
@@ -181,7 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!--POP LAYER START-->
 <div id="popDiv" style="display:none;"> 
-	<form id="form1" action="<c:url value='/userAction_updatePwd.action'/>" method="post" onsubmit="return validatePwdinput(this)">
+	<form id="form1" action="<c:url value='/user-updatePwd.action'/>" method="post" onsubmit="return validatePwdinput(this)">
     <div class="lab_ipt_item">
     	<span class="lab120">账号：</span>
         <div class="ipt-box">
@@ -229,7 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function popLogoutDiv()
 	{
 		layer.confirm("确定要注销吗？",function(){
-			location.href="userAction_logout.action";
+			location.href="user-logout.action";
 		});
 	}
 	//change cts server

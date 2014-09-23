@@ -24,7 +24,7 @@ public class SubTelAction extends BaseAction implements ModelDriven<SubTelForm>{
 		return subTelForm;
 	}
 	
-	public String home()
+	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		subTelDao.querySubTelList(ds);
@@ -39,7 +39,7 @@ public class SubTelAction extends BaseAction implements ModelDriven<SubTelForm>{
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		subTelDao.saveSubTel(ds, subTelForm);
-		return home();
+		return list();
 	}
 	
 	/**
@@ -51,6 +51,6 @@ public class SubTelAction extends BaseAction implements ModelDriven<SubTelForm>{
 		log.info("cts:"+ds.curCTS+", telid:"+subTelForm.getTelid());
 		subTelDao.deleteSubTelByTelid(ds, subTelForm);
 		log.info("delete subtel ["+subTelForm.getTelid()+"] success!");
-		return home();
+		return list();
 	}
 }

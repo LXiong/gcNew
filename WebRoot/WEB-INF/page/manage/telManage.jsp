@@ -29,7 +29,7 @@
 	<c:if test="${kind eq 2 }">回访2</c:if>
 	<c:if test="${kind eq 3 }">回访3</c:if>
 	)&nbsp;&nbsp;号码管理</h3>
-   	<form name="form1" action="<c:url value='/taskAction_telmanage.action'/>" method="post">
+   	<form name="form1" action="<c:url value='/task-telmanage.action'/>" method="post">
    	<input type="hidden" name="tid" value="${tid }"/>
    	<input type="hidden" name="tname" value="${tname }"/>
    	<input type="hidden" name="kind" value="${kind }"/>
@@ -54,13 +54,13 @@
 	        	<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>
 	        </li>
 	        <li>
-	        	<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/taskAction_export.action?tid=${tid }&kind=${kind }'" value="导出"/>
+	        	<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/task-export.action?tid=${tid }&kind=${kind }'" value="导出"/>
 	        </li>
 			<li>
 	        	<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="清空"/>
 	        </li>
 	        <li>
-	        	<input type="button" class="btn4" onclick="location.href='<c:url value='/taskAction_home.action'/>'" value="返回"/>
+	        	<input type="button" class="btn4" onclick="location.href='<c:url value='/task-list.action'/>'" value="返回"/>
 	        </li>
 		</ul>
 	</div>
@@ -85,7 +85,7 @@
 					<td>${tel.callret }</td>
 					<td>
 						<c:if test="${tel.stateid ne 1 }">
-						<a href="<c:url value='/taskAction_recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
+						<a href="<c:url value='/task-recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
 						</c:if>
 
 						<a href="javascript:saveTaskTel('edit','${tid }','${tel.ttid }','${telnum }')">修改</a>&nbsp;&nbsp;
@@ -111,7 +111,7 @@
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
 		<form id="form2" name="form2" 
-			action="${pageContext.request.contextPath }/taskAction_importTaskTel.action" 
+			action="${pageContext.request.contextPath }/task-importTaskTel.action" 
 			method="post" 
 			enctype="multipart/form-data"
 			onsubmit="return validateuploadInforFile(this)">
@@ -135,21 +135,21 @@
 	<!--POP LAYER END-->
 	
 	<!-- empty form3 -->
-	<form name="form3" action="<c:url value='/taskAction_emptyTaskTel.action'/>" method="post">
+	<form name="form3" action="<c:url value='/task-emptyTaskTel.action'/>" method="post">
 		<input type="hidden" name="tid" value="${tid }"/>
 		<input type="hidden" name="kind" value="${kind }"/>
 		<input type="hidden" name="tname" value="${tname }"/>
 	</form>
 	
 	<!-- delete tel -->
-	<form name="form4" action="<c:url value='/taskAction_deleteTaskTel.action'/>" method="post">
+	<form name="form4" action="<c:url value='/task-deleteTaskTel.action'/>" method="post">
 		<input type="hidden" id="del_tid" name="tid"/>
 		<input type="hidden" id="del_ttid" name="ttid"/>
 	</form>
 	
 	<!--POP LAYER START-->
 	<div id="popSaveTaskTelDiv" style="display:none;"> 
-		<form id="form5" action="${pageContext.request.contextPath }/taskAction_saveTaskTel.action" method="post">
+		<form id="form5" action="${pageContext.request.contextPath }/task-saveTaskTel.action" method="post">
 	    <input type="hidden" id="save_tidx" name="tid"/>
 	    <input type="hidden" id="save_ttidx" name="ttid"/>
 	    <div class="lab_ipt_item">
@@ -169,7 +169,7 @@
 	<!--POP LAYER END-->
 	
 	<!-- 号码过滤 -->
-	<form id="form6" action="<c:url value='taskAction_blackFilter.action?tid=${tid }'/>" method="post">
+	<form id="form6" action="<c:url value='task-blackFilter.action?tid=${tid }'/>" method="post">
 		
 	</form>
 	
@@ -212,6 +212,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=7'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=8'/>"></script>
 </body>
 </html>

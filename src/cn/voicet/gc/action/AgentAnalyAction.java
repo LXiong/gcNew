@@ -26,7 +26,7 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 		return agentForm;
 	}
 	
-	public String home()
+	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("sdt:"+agentForm.getSdt()+", edt:"+agentForm.getEdt());

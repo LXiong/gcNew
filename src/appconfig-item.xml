@@ -5,48 +5,48 @@
 	<role roleid="0" describle="未登录"></role>
 	<role roleid="1" describle="系统管理员">
 		<grp name="日常管理">
-			<fun name="任务及号码管理" action="taskAction_home.action" />
-      		<fun name="任务完成情况查看" action="taskAction_home.action" />
-	        <fun name="业务组监控" action="acdMonitorAction_home.action" />
-			<fun name="业务组分配统计" action="acdAnalyAction_home.action" />
-			<fun name="接听情况统计" action="agentAnalyAction_home.action" />
-			<fun name="通话及录音查询" action="callRecordAction_home.action" />
+			<fun name="任务及号码管理" action="task-list.action" />
+      		<fun name="任务完成情况查看" action="task-list.action" />
+	        <fun name="业务组监控" action="acdmonitor-list.action" />
+			<fun name="业务组分配统计" action="acdanaly-list.action" />
+			<fun name="接听情况统计" action="agentanaly-list.action" />
+			<fun name="通话及录音查询" action="callrecord.action" />
 		</grp>
 	    <grp name="维护管理">
-	      	<fun name="话务员资料维护" action="agentAction_home.action" />
-	      	<fun name="业务组资料维护" action="acdAction_home.action" />
-	      	<fun name="座席分机资料维护" action="subTelAction_home.action" />
-	      	<fun name="系统黑名单维护" action="blackAction_home.action" />
-	      	<fun name="NTS服务器维护" action="ntsAction_home.action" />
+	      	<fun name="话务员资料维护" action="agent-list.action" />
+	      	<fun name="业务组资料维护" action="acd-list.action" />
+	      	<fun name="座席分机资料维护" action="subtel-list.action" />
+	      	<fun name="系统黑名单维护" action="black-list.action" />
+	      	<fun name="NTS服务器维护" action="nts-list.action" />
 		</grp>
 	    <grp name="数据库">
-	      	<fun name="数据库维护" action="databaseConfigAction_home.action" />
-	      	<fun name="回访一" action="huiFangAction_home.action?flag=1" />
-	      	<fun name="回访二" action="huiFangAction_home.action?flag=2" />
-	      	<fun name="回访三" action="huiFangAction_home.action?flag=3" />
+	      	<fun name="数据库维护" action="dbconfig.action" />
+	      	<fun name="回访一" action="huifang-list.action?flag=1" />
+	      	<fun name="回访二" action="huifang-list.action?flag=2" />
+	      	<fun name="回访三" action="huifang-list.action?flag=3" />
 	    </grp>
 	</role>
 	<role roleid="2" describle="业务管理员">
     <grp name="日常工作">
-        <fun name="接听查询" action="agentAnalyAction_answer.action" />
+        <fun name="接听查询" action="agentanaly-answer.action" />
     </grp>
 	    <grp name="日常管理">
-	        <fun name="任务及号码管理" action="taskAction_home.action" />
-	        <fun name="任务完成情况查看" action="taskAction_home.action" />
-	        <fun name="业务组监控" action="acdMonitorAction_home.action" />
-	        <fun name="业务组分配统计" action="acdAnalyAction_home.action" />
-	        <fun name="接听情况统计" action="agentAnalyAction_home.action" />
-	        <fun name="通话及录音查询" action="callRecordAction_home.action" />
+	        <fun name="任务及号码管理" action="task-list.action" />
+      		<fun name="任务完成情况查看" action="task-list.action" />
+	        <fun name="业务组监控" action="acdmonitor-list.action" />
+			<fun name="业务组分配统计" action="acdanaly-list.action" />
+			<fun name="接听情况统计" action="agentanaly-list.action" />
+			<fun name="通话及录音查询" action="callrecord.action" />
 	    </grp>
     	<grp name="维护管理">
-      		<fun name="系统黑名单维护" action="blackAction_home.action" />
+      		<fun name="系统黑名单维护" action="black-list.action" />
     	</grp>
 	</role>
 	<role roleid="3" describle="话务员">
 		<grp name="日常工作">
-      	<fun name="任务完成情况查看" action="taskAction_home.action" />
-	    	<fun name="通话记录查询" action="callRecordAction_home.action" />
-      		<fun name="接听情况统计" action="agentAnalyAction_home.action" />
+      		<fun name="任务完成情况查看" action="task-list.action" />
+	    	<fun name="通话及录音查询" action="callrecord.action" />
+      		<fun name="接听情况统计" action="agentanaly-list.action" />
 	    </grp>
 	</role>
 	

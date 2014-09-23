@@ -78,7 +78,7 @@
     <!-- jPage end -->
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form1" action="<c:url value='/acdMonitorAction_setCaller.action'/>" method="post">
+		<form id="form1" action="<c:url value='/acdmonitor-setCaller.action'/>" method="post">
 	    <input type="hidden" id="grpidx" name="grpid"/>
 	    <div class="lab_ipt_item" id="whnum">
 	    	<span class="lab150">主叫号码：</span>
@@ -130,7 +130,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=1'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=2'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

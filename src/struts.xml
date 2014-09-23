@@ -18,7 +18,7 @@
 			<result name="show_login">/WEB-INF/page/admin/login.jsp</result>
 		</action>
 		<!-- 用户登录 -->
-		<action name="userAction_*" class="userAction" method="{1}">
+		<action name="user-*" class="userAction" method="{1}">
 			<result name="show_home">/WEB-INF/page/admin/home.jsp</result>
 			<result name="show_logout" type="redirectAction">index</result>
 			<!-- 处理验证登录失败, 跳转到login.jsp -->
@@ -26,29 +26,30 @@
 		</action>
 		
 		<!-- 外呼任务管理 -->
-		<action name="taskAction_*" class="taskAction" method="{1}">
+		<action name="task-*" class="taskAction" method="{1}">
 			<result name="show_task">/WEB-INF/page/manage/taskList.jsp</result>
 			<result name="show_telmanage">/WEB-INF/page/manage/telManage.jsp</result>
 		</action>
 		
 		<!-- 业务组调度统计 -->
-		<action name="acdAnalyAction_*" class="acdAnalyAction" method="{1}">
+		<action name="acdanaly-*" class="acdAnalyAction" method="{1}">
 			<result name="show_acd_analy">/WEB-INF/page/manage/acdAnalyList.jsp</result>
 		</action>
 		
 		<!-- 业务组监控 -->
-		<action name="acdMonitorAction_*" class="acdMonitorAction" method="{1}">
+		<action name="acdmonitor-*" class="acdMonitorAction" method="{1}">
 			<result name="show_acd_monitor">/WEB-INF/page/manage/acdMonitorList.jsp</result>
 		</action>
 		
 		<!-- 业务组档案管理 -->
-		<action name="acdAction_*" class="acdAction" method="{1}">
+		<action name="acd-*" class="acdAction" method="{1}">
 			<result name="show_acd">/WEB-INF/page/manage/acdList.jsp</result>
 		</action>
 		
 		<!-- 话务员技能统计 -->
-		<action name="agentAnalyAction_*" class="agentAnalyAction" method="{1}">
+		<action name="agentanaly-*" class="agentAnalyAction" method="{1}">
 			<result name="show_agent_analy">/WEB-INF/page/manage/agentAnalyList.jsp</result>
+			
 			<result name="show_agent_answer">/WEB-INF/page/manage/agentAnswerList.jsp</result>
 			<result name="show_agent_answer_hf1">/WEB-INF/page/huifang/agentAnswerHuifang0.jsp</result>
 			<result name="show_agent_answer_hf1">/WEB-INF/page/huifang/agentAnswerHuifang1.jsp</result>
@@ -62,41 +63,41 @@
 		</action>
 		
 		<!-- 话务员档案管理 -->
-		<action name="agentAction_*" class="agentAction" method="{1}">
+		<action name="agent-*" class="agentAction" method="{1}">
 			<result name="show_agent">/WEB-INF/page/manage/agentList.jsp</result>
 		</action>
 		
 		<!-- 通话记录查询 -->
-		<action name="callRecordAction_*" class="callRecordAction" method="{1}">
+		<action name="callrecord" class="callRecordAction" method="list">
 			<result name="show_call">/WEB-INF/page/manage/callRecordList.jsp</result>
 		</action>
 		
 		<!-- 座席分机管理 -->
-		<action name="subTelAction_*" class="subTelAction" method="{1}">
+		<action name="subtel-*" class="subTelAction" method="{1}">
 			<result name="show_subtel">/WEB-INF/page/manage/subTelList.jsp</result>
 		</action>
 		
 		<!-- 呼叫黑名单 -->
-		<action name="blackAction_*" class="blackAction" method="{1}">
+		<action name="black-*" class="blackAction" method="{1}">
 			<result name="show_blacklist">/WEB-INF/page/manage/blackList.jsp</result>
 		</action>
 		
 		<!-- NTS -->
-		<action name="ntsAction_*" class="ntsAction" method="{1}">
+		<action name="nts-*" class="ntsAction" method="{1}">
 			<result name="show_nts">/WEB-INF/page/manage/ntsList.jsp</result>
 		</action>
 		
 		<!-- 数据库维护 -->
-		<action name="databaseConfigAction_*" class="databaseConfigAction" method="{1}">
+		<action name="dbconfig" class="databaseConfigAction" method="home">
 			<result name="show_database">/WEB-INF/page/admin/databaseConfig.jsp</result>
 		</action>
 		
 		<!-- 系统日志查看 -->
-		<action name="systemLogAction_*" class="systemLogAction" method="{1}">
+		<action name="syslog-*" class="systemLogAction" method="{1}">
 			<result name="show_log">/WEB-INF/page/admin/systemLog.jsp</result>
 		</action>
 		
-		<action name="huiFangAction_*" class="huiFangAction" method="{1}">
+		<action name="huifang-*" class="huiFangAction" method="{1}">
 			<result name="show_huifang1">/huifang1.jsp</result>
 			<result name="show_huifang2">/huifang2.jsp</result>
 			<result name="show_huifang3">/huifang3.jsp</result>
@@ -112,15 +113,15 @@
 			<result type="json"></result>
 		</action>
 		<!-- 清空数据库日志 -->
-		<action name="databaseConfigAction_empty" class="databaseConfigAction" method="empty">
+		<action name="dbconfig_empty" class="databaseConfigAction" method="empty">
 			<result type="json"></result>
 		</action>
 		<!-- 备份数据库 -->
-		<action name="databaseConfigAction_backup" class="databaseConfigAction" method="backup">
+		<action name="dbconfig_backup" class="databaseConfigAction" method="backup">
 			<result type="json"></result>
 		</action>
 		<!-- 数据库索引管理 -->
-		<action name="databaseConfigAction_index" class="databaseConfigAction" method="dbIndex">
+		<action name="dbconfig_index" class="databaseConfigAction" method="dbIndex">
 			<result type="json"></result>
 		</action>
 		

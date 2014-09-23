@@ -76,7 +76,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form2" action="<c:url value='/agentAction_saveAgent.action'/>" method="post">
+		<form id="form2" action="<c:url value='/agent-saveAgent.action'/>" method="post">
 	    <input type="hidden" id="agtidx" name="agttxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">登录账号：</span>
@@ -124,12 +124,12 @@
 	<!--POP LAYER END-->
 	
 	<!-- delete agent form -->
-	<form name="form3" action="<c:url value='/agentAction_deleteAgent.action'/>" method="post">
+	<form name="form3" action="<c:url value='/agent-deleteAgent.action'/>" method="post">
 		<input type="hidden" id="del_agtid" name="agtid"/>
 	</form>
 	
 	<!-- init agentpwd form -->
-	<form id="form4" action="<c:url value='/agentAction_initAgentpwd.action'/>" method="post">
+	<form id="form4" action="<c:url value='/agent-initAgentpwd.action'/>" method="post">
 		<input type="hidden" id="init_agtid" name="agtid"/>
 	</form>
 	
@@ -169,7 +169,7 @@ $(function(){
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/agent.js?v=5'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/agent.js?v=6'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

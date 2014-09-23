@@ -70,7 +70,7 @@
     
      <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form2" action="<c:url value='/subTelAction_saveSubTel.action'/>" method="post">
+		<form id="form2" action="<c:url value='/subtel-saveSubTel.action'/>" method="post">
 	    <input type="hidden" id="telidx" name="subteltxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">分机号码：</span>
@@ -117,7 +117,7 @@
 	<!--POP LAYER END-->
 	
 	<!-- delete form -->
-	<form name="form3" action="<c:url value='subTelAction_deleteSubTel.action'/>" method="post">
+	<form name="form3" action="<c:url value='subtel-deleteSubTel.action'/>" method="post">
 		<input type="hidden" id="del_telid" name="telid"/>
 	</form>
 	
@@ -157,7 +157,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/subtel.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/subtel.js?v=4'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

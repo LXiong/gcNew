@@ -27,7 +27,7 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">通话及录音查询&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
-   	<form name="form1" action="<c:url value='/callRecordAction_home.action'/>" method="post">
+   	<form name="form1" action="<c:url value='/callrecord.action'/>" method="post">
 	<div class="queryDiv_h80">
 	   	<ul class="queryWrap_ul">
 			<li><label>开始日期：</label><input type="text" id="sdt" name="calltxt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="${calltxt[0] }"/></li>

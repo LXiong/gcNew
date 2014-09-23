@@ -143,7 +143,7 @@ function saveSubTelBtn()
 	$("#form2").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.href="${pageContext.request.contextPath}/subTelAction_home.action";
+			location.href="${pageContext.request.contextPath}/subtel-list.action";
         }  
 	}); 
     return false;	//not refresh page

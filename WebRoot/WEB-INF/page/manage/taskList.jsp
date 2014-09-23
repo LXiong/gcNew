@@ -64,7 +64,7 @@
 					<td>${task.ans }</td>
 					<td>
 						<a href="javascript:setAcd('${task.tid }')">指派业务组</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/taskAction_telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath }/task-telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
 						<a href="javascript:saveTask('edit','${task.tid }','${task.tname }','${task.kind }','${task.state }','${task.taskinfo }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskPre('${task.tid }','${task.tname }','${task.trn }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTask('${task.tid }','${task.tname }')" value="删除"/>
@@ -87,7 +87,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form1" action="<c:url value='/taskAction_saveTask.action'/>" method="post">
+		<form id="form1" action="<c:url value='/task-saveTask.action'/>" method="post">
 	    <input type="hidden" id="tidx" name="tid"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">任务名称：</span>
@@ -127,14 +127,14 @@
 	<!--POP LAYER END-->
 	
 	<!-- delete task -->
-	<form id="form2" name="form2" action="<c:url value='/taskAction_deleteTask.action'/>" method="post">
+	<form id="form2" name="form2" action="<c:url value='/task-deleteTask.action'/>" method="post">
 		<input type="hidden" id="del_tid" name="tid"/>
 		<input type="hidden" id="del_tname" name="tname"/>
 	</form>
 	
 	<!--POP LAYER START-->
 	<div id="popSetAcdDiv" style="display:none; border:1px solid #50A4C0; margin:10px 0 0 30px; border-radius:4px;"> 
-		<form name="form3" action="<c:url value='/taskAction_setAcd.action'/>" method="post">
+		<form name="form3" action="<c:url value='/task-setAcd.action'/>" method="post">
 	    <input type="hidden" id="setacd_tidx" name="tid"/>
 	    
 	   	<div id="acdHTML"></div>

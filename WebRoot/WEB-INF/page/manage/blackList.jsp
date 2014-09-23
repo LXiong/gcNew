@@ -20,7 +20,7 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">系统黑名单维护</h3>
-   	<form id="form1" name="form1" action="<c:url value='/blackAction_home.action'/>" method="post">
+   	<form id="form1" name="form1" action="<c:url value='/black-list.action'/>" method="post">
    	<div class="queryDiv">
    		<ul class="queryWrap_ul_w500 left">
 	        <li><label>电话号码：</label><input type="text" class="ipt100 inputDefault" name="telnum" id="telnum" value="<s:property value="telnum"/>"/></li>
@@ -72,7 +72,7 @@
 	
 	<!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form name="form2" action="<c:url value='/blackAction_saveTelnum.action'/>" method="post">
+		<form name="form2" action="<c:url value='/black-saveTelnum.action'/>" method="post">
 	    <input type="hidden" id="bidx" name="bid"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab100">电话号码：</span>
@@ -97,9 +97,9 @@
 	</div>
 	<!--POP LAYER END-->
 	
-	<form name="form3" action="<c:url value='/blackAction_emptyBlack.action'/>" method="post"></form>
+	<form name="form3" action="<c:url value='/black-emptyBlack.action'/>" method="post"></form>
 	
-	<form name="form4" action="<c:url value='/blackAction_deleteTelnum.action'/>" method="post">
+	<form name="form4" action="<c:url value='/black-deleteTelnum.action'/>" method="post">
 		<input type="hidden" id="del_bid" name="bid"/>
 	</form>
 	
@@ -137,6 +137,6 @@ $(function(){
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/black.js?v=2'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/black.js?v=3'/>"></script>
 </body>
 </html>

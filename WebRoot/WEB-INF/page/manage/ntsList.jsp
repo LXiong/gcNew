@@ -67,7 +67,7 @@
 	
 	<!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form2" action="<c:url value='/ntsAction_saveNts.action'/>" method="post">
+		<form id="form2" action="<c:url value='/nts-saveNts.action'/>" method="post">
 	    <!-- add 0, update 1 -->
 	    <input type="hidden" value="0" id="addup" name="ntstxt"/>
 	    <div class="lab_ipt_item">
@@ -115,7 +115,7 @@
 	</div>
 	<!--POP LAYER END-->
 	
-	<form name="form3" action="<c:url value='/ntsAction_deleteNts.action'/>" method="post">
+	<form name="form3" action="<c:url value='/nts-deleteNts.action'/>" method="post">
 		<input type="hidden" id="del_account" name="account"/>
 	</form>
 	
@@ -155,6 +155,6 @@ $(function(){
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/nts.js?v=4'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/nts.js?v=5'/>"></script>
 </body>
 </html>

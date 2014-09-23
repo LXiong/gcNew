@@ -26,7 +26,7 @@ public class AgentAction extends BaseAction implements ModelDriven<AgentForm>{
 		return agentForm;
 	}
 	
-	public String home()
+	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		agentDao.queryAgentList(ds);
@@ -70,7 +70,7 @@ public class AgentAction extends BaseAction implements ModelDriven<AgentForm>{
 		log.info("account:"+agentForm.getAgtid());
 		agentDao.deleteAgentByAccount(agentForm);
 		log.info("delete agent ["+agentForm.getAgtid()+"] success");
-		return home();
+		return list();
 	}
 	
 	/**

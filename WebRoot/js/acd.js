@@ -196,7 +196,7 @@ function saveAcdBtn()
 	$("#form2").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.href="${pageContext.request.contextPath}/acdAction_home.action";
+			location.href="${pageContext.request.contextPath}/acd-list.action";
         }  
 	}); 
     return false;	//not refresh page

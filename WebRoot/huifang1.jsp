@@ -76,7 +76,7 @@
 	</div>
 	
 	<iframe name="enterFrame" style="display:none;"></iframe>
-	<form name="form1" action="${pageContext.request.contextPath }/huiFangAction_save.action" method="post" target="enterFrame">
+	<form name="form1" action="${pageContext.request.contextPath }/huifang-save.action" method="post" target="enterFrame">
 	<input type="hidden" name="flag" value="${flag }"/>
 	<input type="hidden" name="tid" value="${hfMap.tid }"/>
 	<input type="hidden" name="ttid" value="${hfMap.ttid }"/>

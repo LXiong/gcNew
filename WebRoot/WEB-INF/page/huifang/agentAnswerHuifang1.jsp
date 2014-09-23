@@ -73,7 +73,7 @@
 					<td>${zjhm }</td>
 					<td>${yjsxsj }</td>
 					<td>
-						<a href="${pageContext.request.contextPath }/agentAnalyAction_viewhf.action?flag=1&tid=${tid }&ttid=${ttid }&telnum=${telnum}&xm=${xm}&sjtc=${sjtc}&txdz=${txdz}&ecdh=${ecdh}&zjhm=${zjhm}&yjsxsj=${yjsxsj}&hfqk=${hfqk}&hfname=${xm_n}&xb=${xb}&ywbwdc=${ywbwdc}&qdmyddc=${qdmyddc}&phonemodel=${sjppxh}&jkfl=${jkfl}&gkd=${gkd}">编辑</a>
+						<a href="${pageContext.request.contextPath }/agentanaly-viewhf.action?flag=1&tid=${tid }&ttid=${ttid }&telnum=${telnum}&xm=${xm}&sjtc=${sjtc}&txdz=${txdz}&ecdh=${ecdh}&zjhm=${zjhm}&yjsxsj=${yjsxsj}&hfqk=${hfqk}&hfname=${xm_n}&xb=${xb}&ywbwdc=${ywbwdc}&qdmyddc=${qdmyddc}&phonemodel=${sjppxh}&jkfl=${jkfl}&gkd=${gkd}">编辑</a>
 					</td>
 				</tr>
 				</s:iterator>

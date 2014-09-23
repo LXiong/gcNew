@@ -26,7 +26,7 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 		return huiFangForm;
 	}
 	
-	public String home()
+	public String list()
 	{
 		flag = (String)request.getParameter("flag");
 		log.info("flag:"+flag+", tid:"+huiFangForm.getTid()+", ttid:"+huiFangForm.getTtid());
@@ -54,7 +54,7 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 	public String save()
 	{
 		huiFangDao.saveHuiFangInfo(Integer.parseInt(flag), huiFangForm);
-		return home();
+		return list();
 	}
 	private String flag;
 	public String getFlag() {

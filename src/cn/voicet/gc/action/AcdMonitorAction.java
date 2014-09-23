@@ -28,7 +28,7 @@ public class AcdMonitorAction extends BaseAction implements ModelDriven<AcdForm>
 	 * 业务监控状态列表
 	 * @return
 	 */
-	public String home()
+	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		acdDao.getAcdMonitorList(ds);

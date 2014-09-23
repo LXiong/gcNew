@@ -34,5 +34,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/vt/voicet-tools-1.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi/poi-ooxml-3.9-20121203.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi/poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/c3p0-0.9.1.2.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

@@ -53,7 +53,7 @@ function setCallerBtn()
 	$("#form1").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.href="${pageContext.request.contextPath}/acdMonitorAction_home.action";
+			location.href="${pageContext.request.contextPath}/acdmonitor-list.action";
         }  
 	}); 
     return false;	//not refresh page

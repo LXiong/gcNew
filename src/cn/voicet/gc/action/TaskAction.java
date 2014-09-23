@@ -33,7 +33,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	/**
 	 * 任务列表
 	 */
-	public String home()
+	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		taskDao.queryTaskList(ds);
@@ -163,7 +163,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	{
 		log.info("tid:"+taskForm.getTid());
 		taskDao.setAcdByTid(taskForm);
-		return home();
+		return list();
 	}
 	
 	/**

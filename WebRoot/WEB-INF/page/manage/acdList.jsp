@@ -79,7 +79,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form2" action="<c:url value='/acdAction_saveAcd.action'/>" method="post">
+		<form id="form2" action="<c:url value='/acd-saveAcd.action'/>" method="post">
 	    <input type="hidden" id="grpidx" name="acdtxt"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab150">组名称：</span>
@@ -140,13 +140,13 @@
 	<!--POP LAYER END-->
 	
 	<!-- delete acd form -->
-	<form name="form3" action="<c:url value='acdAction_deleteAcd.action'/>" method="post">
+	<form name="form3" action="<c:url value='acd-deleteAcd.action'/>" method="post">
 		<input type="hidden" name="cts" value="${cts }"/>
 		<input type="hidden" id="del_grpid" name="grpid"/>
 	</form>
 	
 	<!-- set acd task form -->
-	<form name="form4" action="<c:url value='acdAction_setTask.action'/>" method="post">
+	<form name="form4" action="<c:url value='acd-setTask.action'/>" method="post">
 		<input type="hidden" name="cts" value="${cts }"/>
 		<input type="hidden" id="st_grpid" name="grpid"/>
 		<input type="hidden" id="st_taskid" name="taskid"/>

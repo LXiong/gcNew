@@ -24,7 +24,7 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 		return acdForm;
 	}
 	
-	public String home()
+	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		acdForm.setCts(ds.curCTS);
@@ -43,7 +43,7 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 		DotSession ds = DotSession.getVTSession(request);
 		acdDao.saveAcd(ds, acdForm);
 		log.info("save acd ["+acdForm.getAcdtxt()[1]+"] success");
-		return home();
+		return list();
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 		log.info("grpid:"+acdForm.getGrpid());
 		acdDao.deleteAcdByGrpid(acdForm);
 		log.info("delete acd ["+acdForm.getGrpid()+"] success");
-		return home();
+		return list();
 	}
 	
 	/**
@@ -67,7 +67,7 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 		log.info("cts:"+acdForm.getCts()+", grpid:"+acdForm.getGrpid()+", taskid:"+acdForm.getTaskid());
 		acdDao.setTaskForAcd(acdForm);
 		log.info("set acd task["+acdForm.getTaskid()+"] success");
-		return home();
+		return list();
 	}
 	
 }

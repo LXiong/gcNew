@@ -143,7 +143,7 @@ function saveAgentBtn()
 			layer.closeAll();
 			if(data=="ok")
 			{
-				location.href="${pageContext.request.contextPath}/agentAction_home.action";
+				location.href="${pageContext.request.contextPath}/agent-list.action";
 			}
 			else if(data=="err_telexists")
 			{

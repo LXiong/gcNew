@@ -28,7 +28,7 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">接听查询</h3>
-   	<form action="<c:url value='/agentAnalyAction_answer.action'/>" method="post">
+   	<form action="<c:url value='/agentanaly-answer.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
 	        <li>
@@ -75,7 +75,7 @@
 					<td>${fn:substring(calldt,2,19) }</td>
 					<td>${wait }</td>
 					<td>${talk }</td>
-					<td><a href="<c:url value='/agentAnalyAction_detail.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a></td>
+					<td><a href="<c:url value='/agentanaly-detail.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a></td>
 				</tr>
 				</s:iterator>
 			</tbody>
