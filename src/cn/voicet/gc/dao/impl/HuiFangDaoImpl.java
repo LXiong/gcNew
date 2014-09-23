@@ -1,7 +1,6 @@
 package cn.voicet.gc.dao.impl;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -12,18 +11,15 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.CallableStatementCallback;
-import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.HuiFangDao;
 import cn.voicet.gc.form.HuiFangForm;
-import cn.voicet.util.VTJime;
 @Repository(HuiFangDao.SERVICE_NAME)
 @SuppressWarnings("unchecked")
 public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 
 	private static Logger log = Logger.getLogger(HuiFangDaoImpl.class);
-	
 
 	public Map<String, Object> getHuiFangInfo(final int flag, final HuiFangForm huiFangForm) {
 		String sp_huifangs[] = {"{call web_huifang_org1(?,?)}","{call web_huifang_org2(?,?)}","{call web_huifang_org3(?,?)}"};
@@ -60,7 +56,6 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 			return null;
 		}
 	}
-	
 
 	public void saveHuiFangInfo(final int flag, final HuiFangForm huiFangForm) {
 		String sp_huifangs[] = {
@@ -119,177 +114,8 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 		}
 	}
 	
-	
-	public Map<String, Object> getHuiFang1Info() {
-		Map map = (Map)this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_huifang_org1(?,?)}");
-				cs.setInt(1, 1);
-				cs.setInt(2, 1);
-				cs.execute();
-				ResultSet rs = cs.getResultSet();
-				Map<String, Object> map = null;
-				if(rs!=null){
-					while (rs.next()) {
-						map = new HashMap<String, Object>();
-						ResultSetMetaData rsm =rs.getMetaData();
-						int colCount = rsm.getColumnCount();
-						String colName;
-						for(int i=1; i<=colCount; i++)
-						{
-							colName=rsm.getColumnName(i).toLowerCase();
-							map.put(colName, rs.getString(i));
-						}
-					}
-				}
-				return map;
-			}
-		});
-		return map;
-	}
-	
-	public void saveHuiFangOneInfo(final String[] hf) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_huifang_enter1(?,?,?,?,?,?,?,?,?,?,?)}");
-				String ix[][] = 
-					{
-						{"0","i"},
-						{"1","i"},
-						
-						{"2","i"},
-						{"3","s"},
-						{"4","i"},
-						{"5","i"},
-						{"6","i"},
-						{"7","s"},
-						{"8","i"},
-						{"9","s"},
-						{"10","s"},
-					};
-				VTJime.prepareParamFromInputArray(cs, hf, ix);
-				cs.execute();
-				return null;
-			}
-		});
-	}
-
-	public Map<String, Object> getHuiFang2Info() {
-		Map map = (Map)this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_huifang_org2(?,?)}");
-				cs.setInt(1, 1);
-				cs.setInt(2, 1);
-				cs.execute();
-				ResultSet rs = cs.getResultSet();
-				Map<String, Object> map = null;
-				if(rs!=null){
-					while (rs.next()) {
-						map = new HashMap<String, Object>();
-						ResultSetMetaData rsm =rs.getMetaData();
-						int colCount = rsm.getColumnCount();
-						String colName;
-						for(int i=1; i<=colCount; i++)
-						{
-							colName=rsm.getColumnName(i).toLowerCase();
-							map.put(colName, rs.getString(i));
-						}
-					}
-				}
-				return map;
-			}
-		});
-		return map;
-	}
-
-	public void saveHuiFangTwoInfo(final String[] hf) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_huifang_enter2(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-				String ix[][] = 
-					{
-						{"0","i"},
-						{"1","i"},
-						
-						{"2","i"},
-						{"3","i"},
-						{"4","s"},
-						{"5","i"},
-						{"6","i"},
-						{"7","s"},
-						{"8","s"},
-						{"9","s"},
-						{"10","s"},
-						{"11","s"},
-						{"12","s"},
-						{"13","s"},
-					};
-				VTJime.prepareParamFromInputArray(cs, hf, ix);
-				cs.execute();
-				return null;
-			}
-		});
-	}
-
-	public Map<String, Object> getHuiFang3Info() {
-		Map map = (Map)this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_huifang_org3(?,?)}");
-				cs.setInt(1, 1);
-				cs.setInt(2, 1);
-				cs.execute();
-				ResultSet rs = cs.getResultSet();
-				Map<String, Object> map = null;
-				if(rs!=null){
-					while (rs.next()) {
-						map = new HashMap<String, Object>();
-						ResultSetMetaData rsm =rs.getMetaData();
-						int colCount = rsm.getColumnCount();
-						String colName;
-						for(int i=1; i<=colCount; i++)
-						{
-							colName=rsm.getColumnName(i).toLowerCase();
-							map.put(colName, rs.getString(i));
-						}
-					}
-				}
-				return map;
-			}
-		});
-		return map;
-	}
-
-	public void saveHuiFangThreeInfo(final String[] hf) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_huifang_enter3(?,?,?,?,?,?,?,?,?)}");
-				String ix[][] = 
-					{
-						{"0","i"},
-						{"1","i"},
-						
-						{"2","i"},
-						{"3","s"},
-						{"4","s"},
-						{"5","s"},
-						{"6","s"},
-						{"7","i"},
-						{"8","s"}
-					};
-				VTJime.prepareParamFromInputArray(cs, hf, ix);
-				cs.execute();
-				return null;
-			}
-		});
-	}
-
 	public int getHuiFangType(final HuiFangForm huiFangForm) {
+		log.info("sp:web_task_querykind(?,?)");
 		return (Integer)this.getJdbcTemplate().execute("{call web_task_querykind(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -297,6 +123,38 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 				cs.registerOutParameter(2, Types.INTEGER);
 				cs.execute();
 				return cs.getObject(2);
+			}
+		});
+	}
+	
+	
+
+	public Map<String, Object> queryAgentAnserDetailList(final HuiFangForm huiFangForm) {
+		log.info("sp:web_tasktel_info(?,?,?)");
+		return (Map<String, Object>)this.getJdbcTemplate().execute("{call web_tasktel_info(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setInt(1, huiFangForm.getTid());
+				cs.setInt(2, huiFangForm.getTtid());
+				cs.registerOutParameter(3, Types.INTEGER);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				Map<String, Object> map = new HashMap<String, Object>();
+				if(rs!=null){
+					while (rs.next()) {
+						ResultSetMetaData rsm =rs.getMetaData();
+						int colCount = rsm.getColumnCount();
+						String colName;
+						for(int i=1; i<=colCount; i++)
+						{
+							colName=rsm.getColumnName(i).toLowerCase();
+							map.put(colName, rs.getString(i));
+						}
+					}
+				}
+				log.info("out param iKind:"+cs.getInt(3));
+				map.put("iKind", cs.getInt(3));
+				return map;
 			}
 		});
 	}

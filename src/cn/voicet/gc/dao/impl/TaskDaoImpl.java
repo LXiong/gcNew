@@ -42,10 +42,10 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	private static Logger log = Logger.getLogger(TaskDaoImpl.class);
 
 	public void queryTaskList(final DotSession ds) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_task_list()}");
+		log.info("sp:web_task_list()");
+		this.getJdbcTemplate().execute("{call web_task_list()}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -64,11 +64,10 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	
 
 	public void queryAcdSelectedByTid(final DotSession ds, final TaskForm taskForm) {
-		
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_ctsgrp_list(?)}");
+		log.info("sp:web_ctsgrp_list(?)");
+		this.getJdbcTemplate().execute("{call web_ctsgrp_list(?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
@@ -83,8 +82,7 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				}		
 				return null;
 			}
-		});//get selected task for acd
-		
+		});
 	}
 
 	
@@ -92,12 +90,11 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		return (String)this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
-				String task_insert = "{call web_task_insert(?,?,?,?)}";
-				String task_update = "{call web_task_update(?,?,?,?,?,?)}";
 				CallableStatement cs = null;
 				if(taskForm.getTid()!=0)
 				{
-					cs = conn.prepareCall(task_update);
+					log.info("sp:web_task_update(?,?,?,?,?,?)");
+					cs = conn.prepareCall("{call web_task_update(?,?,?,?,?,?)}");
 					cs.clearParameters();
 					cs.setInt(1, taskForm.getTid());
 					cs.setString(2, taskForm.getTname());
@@ -111,7 +108,8 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				}
 				else
 				{
-					cs = conn.prepareCall(task_insert);
+					log.info("sp:web_task_insert(?,?,?,?)");
+					cs = conn.prepareCall("{call web_task_insert(?,?,?,?)}");
 					cs.clearParameters();
 					cs.setString(1, taskForm.getTname());
 					cs.setInt(2, taskForm.getKind());
@@ -126,8 +124,8 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	}
 
 	public String deleteTaskByTid(final TaskForm taskForm) {
-		String procedureSql = "{call web_task_delete(?,?)}";
-		return (String)this.getJdbcTemplate().execute(procedureSql, new CallableStatementCallback() {
+		log.info("sp:web_task_delete(?,?)");
+		return (String)this.getJdbcTemplate().execute("{call web_task_delete(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
@@ -140,16 +138,16 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		});
 	}
 	
-	
+
 	/************************************************************************/
 	/******************************** 号码管理   *********************************/
 	/************************************************************************/
 
 	public void queryTelByTid(final DotSession ds, final TaskForm taskForm) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_tasktel_query(?,?,?)}");
+		log.info("sp:web_tasktel_query(?,?,?)");
+		this.getJdbcTemplate().execute("{call web_tasktel_query(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
 				cs.setString(2, taskForm.getTelnum());
 				cs.setInt(3, 0);
@@ -211,9 +209,9 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				"{call web_huifang_import1(?,?,?,?,?,?,?,?,?)}",
 				"{call web_huifang_import2(?,?,?,?,?,?,?)}",
 				"{call web_huifang_import3(?,?,?,?,?,?,?,?,?)}"};
+		log.info("sp:"+sp_name[iKind]);
 		//col_max[] excel actual column num
 		final int COL_ACTUAL_NUM[] = {2,8,6,8};
-		
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
@@ -383,8 +381,8 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	}
 
 	public void emptyTaskTel(final TaskForm taskForm) {
-		String sp_empty_task = "{call web_tasktel_empty(?)}";
-		this.getJdbcTemplate().execute(sp_empty_task, new CallableStatementCallback() {
+		log.info("sp:web_tasktel_empty(?)");
+		this.getJdbcTemplate().execute("{call web_tasktel_empty(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
@@ -395,8 +393,8 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	}
 
 	public void deleteTaskTelByTtid(final TaskForm taskForm) {
-		String sp_delete_task = "{call web_tasktel_delete(?,?)}";
-		this.getJdbcTemplate().execute(sp_delete_task, new CallableStatementCallback() {
+		log.info("sp:web_tasktel_delete(?,?)");
+		this.getJdbcTemplate().execute("{call web_tasktel_delete(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
@@ -408,8 +406,8 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	}
 
 	public void recallTel(final TaskForm taskForm) {
-		String sp_recall_task = "{call web_tasktel_recall(?,?)}";
-		this.getJdbcTemplate().execute(sp_recall_task, new CallableStatementCallback() {
+		log.info("sp:web_tasktel_recall(?,?)");
+		this.getJdbcTemplate().execute("{call web_tasktel_recall(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
@@ -424,21 +422,19 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
-				String sp_tasktel_add = "{call web_tasktel_add(?,?)}";
-				String sp_tasktel_update = "{call web_tasktel_update(?,?,?)}";
 				CallableStatement cs = null;
 				if(taskForm.getTtid()>0)
 				{
-					log.info("update telnum");
-					cs = conn.prepareCall(sp_tasktel_update);
+					log.info("sp:web_tasktel_update(?,?,?)");
+					cs = conn.prepareCall("{call web_tasktel_update(?,?,?)}");
 					cs.setInt(1, taskForm.getTid());
 					cs.setInt(2, taskForm.getTtid());
 					cs.setString(3, taskForm.getTelnum());
 				}
 				else
 				{
-					log.info("add telnum");
-					cs = conn.prepareCall(sp_tasktel_add);
+					log.info("sp:web_tasktel_add(?,?)");
+					cs = conn.prepareCall("{call web_tasktel_add(?,?)}");
 					cs.setInt(1, taskForm.getTid());
 					cs.setString(2, taskForm.getTelnum());
 				}
@@ -449,6 +445,7 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	}
 
 	public int blackFilter(final TaskForm taskForm) {
+		log.info("sp:web_task_checkblack(?,?)");
 		return (Integer)this.getJdbcTemplate().execute("{call web_task_checkblack(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -462,6 +459,7 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	}
 
 	public void setAcdByTid(final TaskForm taskForm) {
+		log.info("sp:web_task_setacd(?,?)");
 		this.getJdbcTemplate().execute("{call web_task_setacd(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {

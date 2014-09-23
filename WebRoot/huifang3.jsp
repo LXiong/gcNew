@@ -89,7 +89,7 @@
 					<s:radio name="yxsuccfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="yxsuccfail"/>
 				</td>
 				<td width="25%" align="right">办理套餐内容&nbsp;</td>
-				<td width="25%" align="left">&nbsp;<input type="text" name="tccon" vlaue="${tccon }" class="ipt100_24"/></td>
+				<td width="25%" align="left">&nbsp;<input type="text" name="tccon" value="${tccon }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">需取消套餐内容&nbsp;</td>
@@ -107,7 +107,7 @@
 			</tr>
 			<tr>
 				<td align="right">备注&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="remark" vlaue="remark" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="remark" value="remark" class="ipt100_24"/></td>
 				<td align="right">&nbsp;</td>
 				<td align="left">&nbsp;</td>
 			</tr>

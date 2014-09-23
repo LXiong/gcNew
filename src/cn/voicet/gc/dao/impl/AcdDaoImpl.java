@@ -26,6 +26,7 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 	private static Logger log = Logger.getLogger(AcdDaoImpl.class);
 
 	public void queryAcdList(final DotSession ds, final AcdForm acdForm) {
+		log.info("sp:web_acd_list(?)");
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
@@ -42,7 +43,9 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 		        		 ds.list.add(map);
 					}
 				}
-				//get selected task for acd
+				
+				/**get selected task for acd 页面[/manage/acdList.jsp]已取消该功能*/
+				/*
 				cs.clearParameters();
 				cs = conn.prepareCall("{call web_task_select()}");
 				cs.execute();
@@ -55,16 +58,17 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 		        		 ds.list2.add(map);
 					}
 				}
+				*/
 				return null;
 			}
 		});
 	}
 	
 	public void queryAcdAnalyList(final DotSession ds, final AcdForm acdForm) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_acd_analy(?,?,?)}");
+		log.info("sp:web_acd_analy(?,?,?)");
+		this.getJdbcTemplate().execute("{call web_acd_analy(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
 				cs.setString(2, acdForm.getSdt());
 				cs.setString(3, acdForm.getEdt());
@@ -85,8 +89,8 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 	}
 
 	public void saveAcd(final DotSession ds, final AcdForm acdForm) {
-		String sp_acd_update = "{call web_acd_update(?,?,?,?,?,?,?,?,?)}";
-		this.getJdbcTemplate().execute(sp_acd_update, new CallableStatementCallback() {
+		log.info("sp:web_acd_update(?,?,?,?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call web_acd_update(?,?,?,?,?,?,?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
@@ -105,8 +109,8 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 	}
 	
 	public void deleteAcdByGrpid(final AcdForm acdForm) {
-		String sp_acd_delete = "{call web_acd_remove(?,?)}";
-		this.getJdbcTemplate().execute(sp_acd_delete, new CallableStatementCallback() {
+		log.info("sp:web_acd_remove(?,?)");
+		this.getJdbcTemplate().execute("{call web_acd_remove(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, acdForm.getCts());
@@ -118,6 +122,7 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 	}
 
 	public void setTaskForAcd(final AcdForm acdForm) {
+		log.info("sp:web_acd_settask(?,?,?)");
 		this.getJdbcTemplate().execute("{call web_acd_settask(?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -131,6 +136,7 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 	}
 
 	public void getAcdMonitorList(final DotSession ds) {
+		log.info("sp:web_acd_monitor(?)");
 		this.getJdbcTemplate().execute("{call web_acd_monitor(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -152,12 +158,40 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 	}
 
 	public void setCaller(final DotSession ds, final AcdForm acdForm) {
+		log.info("sp:web_acd_setcaller(?,?,?)");
 		this.getJdbcTemplate().execute("{call web_acd_setcaller(?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
 				cs.setInt(2, acdForm.getGrpid());
 				cs.setString(3, acdForm.getAni());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	public void changeTrunkByGrpid(final DotSession ds, final AcdForm acdForm) {
+		log.info("sp:web_acd_trkchg(?,?,?)");
+		this.getJdbcTemplate().execute("{call web_acd_trkchg(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curCTS);
+				cs.setInt(2, acdForm.getGrpid());
+				cs.setInt(3, acdForm.getTrknum());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	public void changeCallState(final DotSession ds, final AcdForm acdForm) {
+		this.getJdbcTemplate().execute("{call web_acd_setcall(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curCTS);
+				cs.setInt(2, acdForm.getGrpid());
+				cs.setInt(3, acdForm.getCallstate());
 				cs.execute();
 				return null;
 			}

@@ -8,8 +8,8 @@
  	<title>电话自动外呼系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=2'/>" rel="stylesheet" />
-	
-	<link type="text/css" href="<c:url value='/music-player/css/style.css'/>" rel="stylesheet" />
+
+	<link type="text/css" href="<c:url value='/music-player/css/style.css?v=1'/>" rel="stylesheet" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>

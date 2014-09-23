@@ -26,10 +26,10 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 
 	private static Logger log = Logger.getLogger(BlackDaoImpl.class);
 	public void queryBlackList(final DotSession ds, final BlackForm blackForm) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_black_query(?,?,?,?)}");
+		log.info("sp:web_black_query(?,?,?,?)");
+		this.getJdbcTemplate().execute("{call web_black_query(?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setString(1, blackForm.getTelnum());
 				cs.setInt(2, 500);
 				cs.registerOutParameter(3, Types.INTEGER);
@@ -45,6 +45,8 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 		        		 ds.list.add(map);
 					}
 				}
+				log.info("@totalnum:"+cs.getInt(3));
+				log.info("@querynum:"+cs.getInt(4));
 				return null;
 			}
 		});
@@ -81,8 +83,8 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 	}
 
 	public void deleteTelnumByBid(final BlackForm blackForm) {
-		String procedureSql = "{call web_black_delete(?)}";
-		this.getJdbcTemplate().execute(procedureSql, new CallableStatementCallback() {
+		log.info("sp:web_black_delete(?)");
+		this.getJdbcTemplate().execute("{call web_black_delete(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, blackForm.getBid());
@@ -93,8 +95,8 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 	}
 
 	public void emptyBlack() {
-		String procedureSql = "{call web_black_empty()}";
-		this.getJdbcTemplate().execute(procedureSql, new CallableStatementCallback() {
+		log.info("sp:web_black_empty()");
+		this.getJdbcTemplate().execute("{call web_black_empty()}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.execute();

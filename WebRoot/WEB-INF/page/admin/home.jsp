@@ -1,109 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>电话自动外呼系统</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css'/>" rel="stylesheet" />
-	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
+	<!-- menu plugin start -->
+	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/menu.js'/>"></script>
-	<script type="text/javascript">
-		function js_detectcall(call,param)
-		{
-			var tid = param.substring(param.length-2, param.length-1);
-			var ttid = param.substring(param.length-4, param.length-3);
-			//获取回访类型
-			$.ajax({
-				type: "POST",
-				dataType: "json",
-				data: {tid: tid},
-				url: "huifangType.action",
-				success: function(data) {
-					$("#test")[0].href="huifang-list.action?flag="+data+"&tid="+tid+"&ttid="+ttid;
-					$("#test")[0].click();
-				}
-			});
-			
-		}
-
-		/*************** 实时刷新   ***************/ 
-		/*
-		function js_monitor_acdgrp(str){
-			str = str.split(",");
-			//获取表格对象
-		    var tableObj = window.frames["mainFrame"].document.getElementById("monitorTab");
-		    var start = window.frames["mainFrame"].document.getElementById("start"+str[0]);
-			var stop = window.frames["mainFrame"].document.getElementById("stop"+str[0]);
-		    if (tableObj == null)
-			    return false;
-		    if(str[1]=='停止'){
-				tableObj.rows[str[0]].cells[0].innerHTML='<img src="images/uncall.gif"/>';
-				start.disabled=false;
-				stop.disabled=true;
-				stop.removeAttribute("href"); 
-				start.setAttribute("href","javascript:startQueue('"+str[0]+"')");
-			}else{
-				tableObj.rows[str[0]].cells[0].innerHTML='<img src="images/call.gif"/>';
-				start.disabled=true;
-				stop.disabled=false;
-				start.removeAttribute("href"); 
-				stop.setAttribute("href","javascript:stopQueue('"+str[0]+"')");
-			}
-			//获取表格总行数
-			var tabrowlen = tableObj.rows.length;
-			//获取表格总列数
-			var tabcollen = tableObj.rows[0].cells.length;
-			//将字符串转化成整型变量
-			var i = parseInt(str[0]);
-			
-			tableObj.rows[i].cells[3].innerText=str[1];
-			tableObj.rows[i].cells[4].innerText=str[2];
-			tableObj.rows[i].cells[5].innerText=str[3];
-			tableObj.rows[i].cells[6].innerText=str[4];
-			tableObj.rows[i].cells[7].innerText=str[5];
-			tableObj.rows[i].cells[8].innerText=str[6];
-		}
-		*/
-
-		/*************** 座席分机监控  ***************/
-		/*
-		function js_seat_minitor(str){
-			str = str.split(",");
-			//获取表格对象
-			var tableObj = window.frames["mainFrame"].document.getElementById("monitorTab");
-			if (tableObj == null)
-			    return false;
-			var tabrowlen = tableObj.rows.length;
-			var tabcolnum = tableObj.rows[0].cells.length-1;
-			var i = parseInt(str[0])+1;
-			tableObj.rows[i].cells[1].innerText=str[0];
-			tableObj.rows[i].cells[2].innerText=str[1];
-			tableObj.rows[i].cells[3].innerText=str[2];
-			tableObj.rows[i].cells[4].innerText=str[3];
-			tableObj.rows[i].cells[5].innerText=str[4];
-			tableObj.rows[i].cells[6].innerText=str[5];	
-			
-		}
-		*/
-	</script>
+	<!-- menu plugin end -->
 </head>
 <body>
 <div id="container">
-<a id="test" target="mainFrame"></a>
+<a id="popHuifang" target="mainFrame"></a>
 	<!-- header -->
   	<div id="header">
   		<div class="tit1"><s:property value="#application.vta.product"/></div>
   		<div class="tit2"><s:property value="#application.vta.customer"/>
-  			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试一"/>
-  			<input type="button" onclick="js_monitor_acdgrp('1,2,2,2,2,2,2')" value="测试二"/>
+  			<!-- js 客户端测试 -->
+  			<!-- 
+  			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试弹屏"/>
+  			<input type="button" onclick="js_monitor_acdgrp('5,933300,呼叫,0,0,0,0.00%,0/0')" value="测试业务组监控"/>
+  			-->
+  			<input type="button" onclick="js_seat_minitor('0,正常,来电,9000,agt000')" value="测试分机监控"/>
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
     </div>
@@ -212,13 +135,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript">
-
 	//logout
 	function popLogoutDiv()
 	{
-		layer.confirm("确定要注销吗？",function(){
+		if(confirm("确定要注销吗？"))
+		{
 			location.href="user-logout.action";
-		});
+		}
 	}
 	//change cts server
 	function changeServer(obj)
@@ -235,6 +158,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 			}
 		});
+	}
+</script>
+<script type="text/javascript">
+	/*************** 弹屏   ***************/ 
+	function js_detectcall(call,param){
+		var tid = param.substring(param.length-2, param.length-1);
+		var ttid = param.substring(param.length-4, param.length-3);
+		//获取回访类型
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			data: {tid: tid},
+			url: "huifangType.action",
+			success: function(data) {
+				$("#popHuifang")[0].href="huifang-list.action?flag="+data+"&tid="+tid+"&ttid="+ttid;
+				$("#popHuifang")[0].click();
+			}
+		});
+	}
+
+	/*************** 业务组监控   ***************/ 
+	/*
+	5,,呼叫,0,0,0,0.00%,0/0
+	@@ani,@@autocalldesc,@@trkapp,@@callnum,@@ansnum,@@ansrate,@@freenum/@@onlinenum"
+	组编号,主叫号码,呼叫状态,补充中继数,呼叫总数,应答数,应答率,空闲座席数/在线总数,
+	*/
+	function js_monitor_acdgrp(str){
+		str = str.split(",");
+		//获取表格对象
+	    var tabObj = window.frames["mainFrame"].document.getElementById("acdMonitorTab");
+	    if (tabObj == null)
+		    return false;
+		//将字符串转化成整型变量
+		var i = parseInt(str[0]);
+		if(tabObj.rows[i] == null)
+			return false;
+		tabObj.rows[i].cells[3].innerText=str[1];
+		tabObj.rows[i].cells[4].innerText=str[2];
+		tabObj.rows[i].cells[5].innerText=str[3];
+		tabObj.rows[i].cells[6].innerText=str[4];
+		tabObj.rows[i].cells[7].innerText=str[5];
+		tabObj.rows[i].cells[8].innerText=str[6];
+		tabObj.rows[i].cells[9].innerText=str[7];
+	}
+	
+	/*************** 座席分机监控  ***************/
+	/*
+	js提供的内容:电话编号,分机状态,呼叫方向,对方号码,登录话务员
+	*/
+	function js_seat_minitor(str){
+		str = str.split(",");
+		//获取表格对象
+		var tabObj = window.frames["mainFrame"].document.getElementById("subTelMonitorTab");
+		if (tabObj == null)
+		    return false;
+		var i = parseInt(str[0])+1;
+		if(tabObj.rows[i] == null)
+			return false;
+		tabObj.rows[i].cells[2].innerText=str[1];
+		tabObj.rows[i].cells[3].innerText=str[2];
+		tabObj.rows[i].cells[4].innerText=str[3];
+		tabObj.rows[i].cells[5].innerText=str[4];
 	}
 </script>
 </body>

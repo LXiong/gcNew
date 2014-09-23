@@ -41,6 +41,11 @@
 			<result name="show_acd_monitor">/WEB-INF/page/manage/acdMonitorList.jsp</result>
 		</action>
 		
+		<!-- 座席分机监控 -->
+		<action name="subtelmonitor-*" class="subTelMonitorAction" method="{1}">
+			<result name="show_subtel_monitor">/WEB-INF/page/manage/subTelMonitorList.jsp</result>
+		</action>
+		
 		<!-- 业务组档案管理 -->
 		<action name="acd-*" class="acdAction" method="{1}">
 			<result name="show_acd">/WEB-INF/page/manage/acdList.jsp</result>
@@ -51,10 +56,6 @@
 			<result name="show_agent_analy">/WEB-INF/page/manage/agentAnalyList.jsp</result>
 			
 			<result name="show_agent_answer">/WEB-INF/page/manage/agentAnswerList.jsp</result>
-			<result name="show_agent_answer_hf1">/WEB-INF/page/huifang/agentAnswerHuifang0.jsp</result>
-			<result name="show_agent_answer_hf1">/WEB-INF/page/huifang/agentAnswerHuifang1.jsp</result>
-			<result name="show_agent_answer_hf2">/WEB-INF/page/huifang/agentAnswerHuifang2.jsp</result>
-			<result name="show_agent_answer_hf3">/WEB-INF/page/huifang/agentAnswerHuifang3.jsp</result>
 			
 			<result name="show_edit_huifang1">/WEB-INF/page/huifang/huifang1edit.jsp</result>
 			<result name="show_edit_huifang2">/WEB-INF/page/huifang/huifang2edit.jsp</result>
@@ -98,11 +99,15 @@
 		</action>
 		
 		<action name="huifang-*" class="huiFangAction" method="{1}">
+			<!-- for 弹屏 -->
 			<result name="show_huifang1">/huifang1.jsp</result>
 			<result name="show_huifang2">/huifang2.jsp</result>
 			<result name="show_huifang3">/huifang3.jsp</result>
+			
+			<result name="show_hfedit1">/WEB-INF/page/huifang/huifang1edit.jsp</result>
+			<result name="show_hfedit2">/WEB-INF/page/huifang/huifang2edit.jsp</result>
+			<result name="show_hfedit3">/WEB-INF/page/huifang/huifang3edit.jsp</result>
 		</action>
-		
 	</package>  
 	<package name="dot" namespace="/" extends="json-default">
 		<!-- login -->
@@ -131,6 +136,14 @@
 		
 		<!--  -->
 		<action name="huifangType" class="huiFangAction" method="getHuiFangType">
+			<result type="json"></result>
+		</action>
+		
+		<action name="editTrunk" class="acdMonitorAction" method="editTrunk">
+			<result type="json"></result>
+		</action>
+		
+		<action name="editCallState" class="acdMonitorAction" method="editCallState">
 			<result type="json"></result>
 		</action>
 	</package>

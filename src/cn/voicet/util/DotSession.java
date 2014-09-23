@@ -33,6 +33,7 @@ public class DotSession {
 	public String password;
 	public String username;
 	public String roleName;
+	public String agttelnum;
 	public String roleID;
 	public SubPathTitle subPathTitle;
 	public String rbm;

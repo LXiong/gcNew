@@ -39,12 +39,14 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		DotSession ds=DotSession.getVTSession(request);
 		
 		Map<String, Object> map = userDao.userLogin(userForm);
+		log.info("user login map: "+map);
 		//
 		userDao.queryCTSList(ds);
 		log.info("curCTS:"+ds.ctsList);
-		log.info("user login: "+map);
+		//
 		ds.username=(String) map.get("username");
 		ds.roleName = (String) map.get("rolename");
+		ds.agttelnum = (String) map.get("telnum");
 		ds.roleID=(String) map.get("roleid");
 		//
 		ds.password = userForm.getPassword();
@@ -113,12 +115,12 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 	public String saveCTS()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("cts:"+cts);
+		log.info("current cts:"+cts);
 		ds.curCTS = cts;
 		return null;
 	}
+	
 	public String cts;
-
 	public String getCts() {
 		return cts;
 	}

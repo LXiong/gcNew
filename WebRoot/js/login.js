@@ -5,19 +5,16 @@ function login(){
 	if(!account)
 	{
 		layer.alert("账号不能为空",111);
-		Form1.account.focus();
 		return false;
 	}
 	if(!password)
 	{
 		layer.alert("密码不能为空",111);
-		Form1.password.focus();
 		return false;
 	}
 	if(!vercode)
 	{
 		layer.alert("请输入验证码",111);
-		Form1.vercode.focus();
 		return false;
 	}
 	var datajson = {"account":account, "password":password,"vercode":vercode};
@@ -60,11 +57,4 @@ var responseLogin = function(data, textStatus, jqXHR)
 		layer.alert("账号或密码错误",111);
 	}
 	verImg.src = "verCode?"+Math.random();
-}
-
-//register
-function register()
-{
-	document.Form2.action="userAction_register.action";
-	document.Form2.submit();
 }

@@ -14,6 +14,9 @@ public class AcdForm {
 	private int taskid;
 	private String ani;
 	
+	private int trknum;
+	private int callstate;
+	
 	public String getCts() {
 		return cts;
 	}
@@ -55,5 +58,17 @@ public class AcdForm {
 	}
 	public void setAni(String ani) {
 		this.ani = ani;
+	}
+	public int getTrknum() {
+		return trknum;
+	}
+	public void setTrknum(int trknum) {
+		this.trknum = trknum;
+	}
+	public int getCallstate() {
+		return callstate;
+	}
+	public void setCallstate(int callstate) {
+		this.callstate = callstate;
 	}
 }

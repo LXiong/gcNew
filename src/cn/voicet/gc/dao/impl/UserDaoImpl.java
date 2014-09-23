@@ -1,7 +1,6 @@
 package cn.voicet.gc.dao.impl;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -12,7 +11,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.CallableStatementCallback;
-import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.UserDao;
@@ -26,11 +24,10 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
 	private static Logger log = Logger.getLogger(UserDaoImpl.class);
 	public Map<String, Object> userLogin(final UserForm userForm) {
-		return  (Map<String, Object>) this.getJdbcTemplate().execute(
-			new ConnectionCallback() {
-				public Object doInConnection(Connection conn)
-						throws SQLException, DataAccessException {
-					CallableStatement cs = conn.prepareCall("{call web_userlogin(?,?)}");
+		log.info("sp:web_userlogin(?,?)");
+		return (Map<String, Object>)this.getJdbcTemplate().execute("{call web_userlogin(?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+			throws SQLException, DataAccessException {
 					cs.setString(1, userForm.getAccount());
 					cs.setString(2, userForm.getPassword());
 					cs.execute();
@@ -49,6 +46,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	
 
 	public void queryCTSList(final DotSession ds) {
+		log.info("sp:web_cts_list()");
 		this.getJdbcTemplate().execute("{call web_cts_list()}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -69,8 +67,8 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	}
 
 	public boolean updateUserPassword(final DotSession ds, final UserForm userForm) {
-		String sp = "{call web_userchgpwd(?,?,?,?)}";
-		return (Boolean)this.getJdbcTemplate().execute(sp, new CallableStatementCallback() {
+		log.info("sp:web_userchgpwd(?,?,?,?)");
+		return (Boolean)this.getJdbcTemplate().execute("{call web_userchgpwd(?,?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.account);

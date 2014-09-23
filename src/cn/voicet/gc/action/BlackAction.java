@@ -28,7 +28,6 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("telnum:"+blackForm.getTelnum());
 		blackDao.queryBlackList(ds, blackForm);
-		log.info("---------- blackList load success ----------");
 		return "show_blacklist";
 	}
 	
@@ -39,7 +38,6 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
 	public String saveTelnum(){
 		log.info("bid:"+blackForm.getBid()+", telnum:"+blackForm.getTelnum()+" noteinfo:"+blackForm.getNoteinfo());
 		blackDao.saveTelnum(blackForm);
-		log.info("---------- save telnum success ----------");
 		blackForm.setTelnum(null);
 		return list();
 	}
@@ -47,7 +45,6 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
 	public String deleteTelnum(){
 		log.info("bid:"+blackForm.getBid());
 		blackDao.deleteTelnumByBid(blackForm);
-		log.info("---------- delete telnum success ----------");
 		return list();
 	}
 	
@@ -58,7 +55,6 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
 	public String emptyBlack()
 	{
 		blackDao.emptyBlack();
-		log.info("---------- empte black telnum success ----------");
 		return list();
 	}
 }

@@ -39,9 +39,9 @@
 		<table cellpadding="0" cellspacing="0" class="hftab1">
 			<tr>
 				<td width="25%" align="right">任务号&nbsp;</td>
-				<td width="25%" align="left">&nbsp;${hfMap.tid }</td>
+				<td width="25%" align="left">&nbsp;${tid }</td>
 				<td width="25%" align="right">序号&nbsp;</td>
-				<td width="25%" align="left">&nbsp;${hfMap.ttid }</td>
+				<td width="25%" align="left">&nbsp;${ttid }</td>
 			</tr>
 		</table>
 		<br/>
@@ -69,10 +69,10 @@
 	</div>
 	
 	<iframe name="enterFrame" style="display:none;"></iframe>
-	<form name="form1" action="${pageContext.request.contextPath }/huiFangAction_save.action" method="post">
+	<form name="form1" action="${pageContext.request.contextPath }/huifang-agentSave.action" method="post">
 	<input type="hidden" name="flag" value="${flag }"/>
-	<input type="hidden" name="tid" value="${hfMap.tid }"/>
-	<input type="hidden" name="ttid" value="${hfMap.ttid }"/>
+	<input type="hidden" name="tid" value="${tid }"/>
+	<input type="hidden" name="ttid" value="${ttid }"/>
 	
 	<div class="huifanginfo2">
 		<h2 class="hftitle3">回访录入信息</h2>
@@ -80,52 +80,53 @@
 			<tr>
 				<td width="25%" align="right">缴费方式&nbsp;</td>
 				<td width="25%" align="left">&nbsp;
-					<s:select name="jffs" list="#application.vta.GetList('jffs')" listKey="id" listValue="str" value="jffs"></s:select>
+					<s:select name="jffs" list="#application.vta.GetList('jffs')" listKey="id" listValue="str" value="#request.hfMap.jffs"></s:select>
 				</td>
 				<td width="25%" align="right">服务态度&nbsp;</td>
 				<td width="25%" align="left">&nbsp;
-					<s:radio name="manyid" list="#application.vta.GetList('manyi')" listKey="id" listValue="str" value="manyid"/>
+					<s:radio name="manyid" list="#application.vta.GetList('manyi')" listKey="id" listValue="str" value="#request.hfMap.fwtd"/>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">客户建议&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="customjy" class="ipt100_24" value="${customjy }"/></td>
+				<td align="left">&nbsp;<input type="text" name="customjy" class="ipt100_24" value="${hfMap.jy }"/></td>
 				<td align="right">外呼结果&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="succfail"/>
+					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.whjj"/>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">回访情况&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:select name="hfqk" list="#application.vta.GetList('hfqk')" listKey="id" listValue="str" value="hfqk"></s:select>	
+					<s:select name="hfqk" list="#application.vta.GetList('hfqk')" listKey="id" listValue="str" value="#request.hfMap.qk"></s:select>	
 				</td>
 				<td align="right">回访姓名&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" id="hfnamex" name="hfname" value="${hfname }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" id="hfnamex" name="hfname" value="${hfMap.xm_n }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">回访证件号&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="hfzjh" value="${hfzjh }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="hfzjh" value="${hfMap.zj }" class="ipt100_24"/></td>
 				<td align="right">回访二次电话&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="hfstel" value="${hfstel }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="hfstel" value="${hfMap.dh2 }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">回访联系地址&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="address" value="${address }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="address" value="${hfMap.dz }" class="ipt100_24"/></td>
 				<td align="right">手机品牌及型号&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="phonemodel" value="${phonemodel }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="phonemodel" value="${hfMap.pp }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">邮箱地址&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="email" value="${email }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="email" value="${hfMap.email }" class="ipt100_24"/></td>
 				<td align="right">备注&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="remark" value="${remark }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="remark" value="${hfMap.bz }" class="ipt100_24"/></td>
 			</tr>
 		</table>
 	</div>
 	<div class="huifanginfo2">
 	<p class="btnline">
 		<input type="button" onclick="saveHuifangBtn('${flag}')" value="保存" class="btn4"/>
+		<input style="margin-left:40px;" type="button" onclick="location.href='agentanaly-answer.action'" value="返回" class="btn4"/>
 	</p>
 	</div>
 	</form>

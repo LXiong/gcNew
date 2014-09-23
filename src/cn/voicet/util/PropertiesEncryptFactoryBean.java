@@ -2,6 +2,7 @@ package cn.voicet.util;
 
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.FactoryBean;
 
 /**
@@ -11,6 +12,9 @@ import org.springframework.beans.factory.FactoryBean;
  */
 @SuppressWarnings("unchecked")
 public class PropertiesEncryptFactoryBean implements FactoryBean {
+	
+	private static Logger log = Logger.getLogger(PropertiesEncryptFactoryBean.class);
+	
 	private Properties properties;
 
     private String key = "8a!2e4b4%1b6e2&ba5.-011b?720f-=+";
@@ -28,7 +32,7 @@ public class PropertiesEncryptFactoryBean implements FactoryBean {
     }
 
     public Properties getProperties() {
-    	System.out.println("properties:"+properties);
+    	log.info("properties:"+properties);
         return properties;
     }
 

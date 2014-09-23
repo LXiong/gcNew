@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 @Controller("taskAction")
 @Scope(value="prototype")
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial","unchecked","unused"})
 public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	private static Logger log = Logger.getLogger(TaskAction.class);
 	@Resource(name=TaskDao.SERVICE_NAME)
@@ -273,7 +273,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
     //myFileFileName属性用来封装上传文件的文件名  
     private String uploadExcelFileName;
     //控制文件类型
-    private static String[] allowFileType = { "xls", "XLS", "xlsx", "XLSX" };
+	private static String[] allowFileType = { "xls", "XLS", "xlsx", "XLSX" };
 
 	public File getUploadExcel() {
 		return uploadExcel;

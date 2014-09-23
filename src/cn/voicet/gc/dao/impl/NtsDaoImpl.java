@@ -1,7 +1,6 @@
 package cn.voicet.gc.dao.impl;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,11 +10,9 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.CallableStatementCallback;
-import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.NtsDao;
-import cn.voicet.gc.form.AcdForm;
 import cn.voicet.gc.form.NtsForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
@@ -27,7 +24,7 @@ public class NtsDaoImpl extends BaseDaoImpl implements NtsDao {
 	private static Logger log = Logger.getLogger(NtsDaoImpl.class);
 
 	public void queryNtsList(final DotSession ds, final NtsForm ntsForm) {
-		
+		log.info("sp:nts_client_query()");
 		this.getJdbcTemplate().execute("{call nts_client_query()}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -51,7 +48,7 @@ public class NtsDaoImpl extends BaseDaoImpl implements NtsDao {
 	public void saveNts(final DotSession ds, final NtsForm ntsForm) {
 		String[] sp_nts = {"{call nts_client_add(?,?,?,?,?)}","{call nts_client_update(?,?,?,?,?)}"};
 		int au = Integer.parseInt(ntsForm.getNtstxt()[0]);
-		log.info("sp_nts"+sp_nts[au]);
+		log.info("sp:"+sp_nts[au]);
 		this.getJdbcTemplate().execute(sp_nts[au], new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -67,6 +64,7 @@ public class NtsDaoImpl extends BaseDaoImpl implements NtsDao {
 	}
 	
 	public void deleteNts(final NtsForm ntsForm) {
+		log.info("sp:nts_client_remove(?)");
 		this.getJdbcTemplate().execute("{call nts_client_remove(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {

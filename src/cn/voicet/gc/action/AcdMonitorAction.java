@@ -1,5 +1,9 @@
 package cn.voicet.gc.action;
+import java.io.IOException;
+
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
@@ -45,4 +49,35 @@ public class AcdMonitorAction extends BaseAction implements ModelDriven<AcdForm>
 		acdDao.setCaller(ds,acdForm);
 		return null;
 	}
+	
+	/**
+	 * 添加减少中继数
+	 * @throws IOException 
+	 */
+	public String editTrunk() throws IOException
+	{
+		DotSession ds = DotSession.getVTSession(request);		
+		log.info("cts:"+ds.curCTS+", grpid:"+acdForm.getGrpid()+", trknum:"+acdForm.getTrknum());
+		acdDao.changeTrunkByGrpid(ds,acdForm);
+		JSONObject json = new JSONObject();
+		json.put("status", "ok");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(json.toString());
+		response.getWriter().flush();
+		return null;
+	}
+	
+	public String editCallState() throws IOException
+	{
+		DotSession ds = DotSession.getVTSession(request);		
+		log.info("cts:"+ds.curCTS+", grpid:"+acdForm.getGrpid()+", callstate:"+acdForm.getCallstate());
+		acdDao.changeCallState(ds,acdForm);
+		JSONObject json = new JSONObject();
+		json.put("status", "ok");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(json.toString());
+		response.getWriter().flush();
+		return null;
+	}
 }
+

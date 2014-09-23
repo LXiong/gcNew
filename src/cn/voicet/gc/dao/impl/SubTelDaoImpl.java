@@ -24,8 +24,8 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 	private static Logger log = Logger.getLogger(SubTelDaoImpl.class);
 
 	public void querySubTelList(final DotSession ds) {
-		String sp_subtel = "{call web_subtel_list(?)}";
-		this.getJdbcTemplate().execute(sp_subtel, new CallableStatementCallback() {
+		log.info("sp:web_subtel_list(?)");
+		this.getJdbcTemplate().execute("{call web_subtel_list(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
@@ -46,8 +46,8 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 	}
 
 	public void saveSubTel(final DotSession ds, final SubTelForm subTelForm) {
-		String sp_acd_update = "{call web_subtel_update(?,?,?,?,?,?,?)}";
-		this.getJdbcTemplate().execute(sp_acd_update, new CallableStatementCallback() {
+		log.info("sp:web_subtel_update(?,?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call web_subtel_update(?,?,?,?,?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
@@ -71,13 +71,35 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 	}
 
 	public void deleteSubTelByTelid(final DotSession ds, final SubTelForm subTelForm) {
-		String sp_subtel_delete = "{call web_subtel_remove(?,?)}";
-		this.getJdbcTemplate().execute(sp_subtel_delete, new CallableStatementCallback() {
+		log.info("sp:web_subtel_remove(?,?)");
+		this.getJdbcTemplate().execute("{call web_subtel_remove(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
 				cs.setInt(2, subTelForm.getTelid());
 				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	public void querySubTelMonitorList(final DotSession ds) {
+		log.info("sp:web_subtel_monitor(?)");
+		this.getJdbcTemplate().execute("{call web_subtel_monitor(?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curCTS);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();
+				if(rs!=null){
+					while (rs.next()) {
+						 Map map = new HashMap();
+						 VTJime.putMapDataByColName(map, rs);
+		        		 ds.list.add(map);
+					}
+				}
 				return null;
 			}
 		});

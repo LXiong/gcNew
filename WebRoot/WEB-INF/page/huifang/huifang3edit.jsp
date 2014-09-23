@@ -39,9 +39,9 @@
 		<table cellpadding="0" cellspacing="0" class="hftab1">
 			<tr>
 				<td width="25%" align="right">任务号&nbsp;</td>
-				<td width="25%" align="left">&nbsp;${hfMap.tid }</td>
+				<td width="25%" align="left">&nbsp;${tid }</td>
 				<td width="25%" align="right">序号&nbsp;</td>
-				<td width="25%" align="left">&nbsp;${hfMap.ttid }</td>
+				<td width="25%" align="left">&nbsp;${ttid }</td>
 			</tr>
 		</table>
 		<br/>
@@ -75,10 +75,10 @@
 	</div>
 	
 	<iframe name="enterFrame" style="display:none;"></iframe>
-	<form name="form1" action="${pageContext.request.contextPath }/huiFangAction_save.action" method="post">
+	<form name="form1" action="${pageContext.request.contextPath }/huifang-agentSave.action" method="post">
 	<input type="hidden" name="flag" value="${flag }"/>
-	<input type="hidden" name="tid" value="${hfMap.tid }"/>
-	<input type="hidden" name="ttid" value="${hfMap.ttid }"/>
+	<input type="hidden" name="tid" value="${tid }"/>
+	<input type="hidden" name="ttid" value="${ttid }"/>
 	
 	<div class="huifanginfo2">
 		<h2 class="hftitle3">回访录入信息</h2>
@@ -86,28 +86,28 @@
 			<tr>
 				<td width="25%" align="right">是否营销成功&nbsp;</td>
 				<td width="25%" align="left">&nbsp;
-					<s:radio name="yxsuccfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="yxsuccfail"/>
+					<s:radio name="yxsuccfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.cgf"/>
 				</td>
 				<td width="25%" align="right">办理套餐内容&nbsp;</td>
-				<td width="25%" align="left">&nbsp;<input type="text" name="tccon" vlaue="${tccon }" class="ipt100_24"/></td>
+				<td width="25%" align="left">&nbsp;<input type="text" name="tccon" value="${hfMap.tclr }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">需取消套餐内容&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="qxtccon" value="${qxtccon }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="qxtccon" value="${hfMap.qxtclr }" class="ipt100_24"/></td>
 				<td align="right">营销失败原因&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="yxfaildecause" value="${yxfaildecause }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="yxfaildecause" value="${hfMap.sbyy }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">客户联系地址&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="address" value="address" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="address" value="${hfMap.lxdz }" class="ipt100_24"/></td>
 				<td align="right">呼叫结果&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="succfail"/>
+					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.hjjj"/>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">备注&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="remark" vlaue="remark" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="remark" value="${hfMap.bz }" class="ipt100_24"/></td>
 				<td align="right">&nbsp;</td>
 				<td align="left">&nbsp;</td>
 			</tr>
@@ -116,6 +116,7 @@
 	<div class="huifanginfo2">
 	<p class="btnline">
 		<input type="button" onclick="saveHuifangBtn('${flag}')" value="保存" class="btn4"/>
+		<input style="margin-left:40px;" type="button" onclick="location.href='agentanaly-answer.action'" value="返回" class="btn4"/>
 	</p>
 	</div>
 	</form>

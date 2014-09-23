@@ -25,7 +25,7 @@
 <div id="contentWrap">
 	<h3 class="h3_title">业务组监控&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
 	<div class="content_List615">
-		<table id="monitorTab" cellpadding="0" cellspacing="0" class="tab_border">
+		<table id="acdMonitorTab" cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
                      <th width="4%">组编号</th>
@@ -38,7 +38,6 @@
                      <th width="4%">应答数</th>
                      <th width="4%">应答率</th>
                      <th width="6%">在线客服</th>
-                     <th width="6%">空闲座席数</th>
                      <th width="14%">操作</th>
                  </tr>
              </thead>
@@ -53,13 +52,14 @@
 					<td>${addtrk }</td>
 					<td>${obt_num }</td>
 					<td>${ans_num }</td>
-					<td>${agt_num }</td>
 					<td>${ans_rate }</td>
-					<td>${agt_free }</td>
+					<td>${agt_num }</td>
 					<td>
-						<a id="start1" href="javascript:setCaller('${grpid }','${ani }')">设置主叫</a>&nbsp;
-						<a id="start1" href="javascript:startQueue('1')">启动</a>&nbsp;
-						<a id="stop1" href="javascript:stopQueue('1')">暂停</a>&nbsp;
+						<a href="javascript:setCaller('${grpid }','${ani }')">主叫</a>&nbsp;&nbsp;
+						<a href="javascript:editTrunk('${grpid }','1')" title="增加中继数">++</a>&nbsp;&nbsp;
+						<a href="javascript:editTrunk('${grpid }','-1')" title="减少中继数">--</a>&nbsp;&nbsp;
+						<a href="javascript:editCall('${grpid }','1')">启动</a>&nbsp;&nbsp;
+						<a href="javascript:editCall('${grpid }','0')">停止</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -99,19 +99,17 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var nowPage = parent.document.getElementById("curAcdAnalyPage").value;
 		$("div.holder").jPages({
 			containerID : "movies",
 	        first : "首页",
 	        previous : "上一页",
 	        next : "下一页",
 	        last : "尾页",
-	        startPage : nowPage,
+	        startPage : 1,
 	        perPage : 28,
 	        keyBrowse:true,
 	        delay : 0,
 	        callback : function( pages, items ){
-				parent.document.getElementById("curAcdAnalyPage").value = pages.current;
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 		    }
@@ -130,7 +128,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=2'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=7'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

@@ -53,9 +53,32 @@ function setCallerBtn()
 	$("#form1").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.href="${pageContext.request.contextPath}/acdmonitor-list.action";
         }  
 	}); 
     return false;	//not refresh page
 }
 
+function editTrunk(grpid,trknum)
+{
+	$.ajax({
+		type: "POST",
+		dataType: "json",
+		data: {grpid:grpid, trknum:trknum},
+		url: "editTrunk.action",
+		success: function(data) {
+		}
+	});
+}
+
+function editCall(grpid, callstate)
+{
+	$.ajax({
+		type: "POST",
+		dataType: "json",
+		data: {grpid:grpid, callstate:callstate},
+		url: "editCallState.action",
+		success: function(data) {
+			
+		}
+	});
+}

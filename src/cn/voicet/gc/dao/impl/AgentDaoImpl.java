@@ -2,7 +2,6 @@ package cn.voicet.gc.dao.impl;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -18,7 +17,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.CallableStatementCallback;
-import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.AgentDao;
@@ -33,10 +31,10 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 	private static Logger log = Logger.getLogger(AgentDaoImpl.class);
 
 	public void queryAgentList(final DotSession ds) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_agent_list()}");
+		log.info("sp:web_agent_list()");
+		this.getJdbcTemplate().execute("{call web_agent_list()}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -54,10 +52,10 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 	}
 	
 	public void queryAgentAnalyList(final DotSession ds, final AgentForm agentForm) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_agent_analy(?,?)}");
+		log.info("sp:web_agent_analy(?,?)");
+		this.getJdbcTemplate().execute("{call web_agent_analy(?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setString(1, agentForm.getSdt());
 				cs.setString(2, agentForm.getEdt());
 				cs.execute();
@@ -80,6 +78,7 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		final String excelExportFile = "agt_analy_export.xls";
 		final String outputFileName="agent_analy.xls";
 		//
+		log.info("sp:web_agent_analy(?,?)");
 		this.getJdbcTemplate().execute("{call web_agent_analy(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -108,8 +107,8 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 
 	
 	public String saveAgent(final AgentForm agentForm) {
-		String sp_agent_update = "{call web_agent_update(?,?,?,?,?,?,?)}";
-		return (String)this.getJdbcTemplate().execute(sp_agent_update, new CallableStatementCallback() {
+		log.info("sp:web_agent_update(?,?,?,?,?,?,?)");
+		return (String)this.getJdbcTemplate().execute("{call web_agent_update(?,?,?,?,?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, agentForm.getAgttxt()[0]);
@@ -128,8 +127,8 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 
 	
 	public void deleteAgentByAccount(final AgentForm agentForm) {
-		String sp_agent_delete = "{call web_agent_delete(?)}";
-		this.getJdbcTemplate().execute(sp_agent_delete, new CallableStatementCallback() {
+		log.info("sp:web_agent_delete(?)");
+		this.getJdbcTemplate().execute("{call web_agent_delete(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, agentForm.getAgtid());
@@ -140,6 +139,7 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 	}
 
 	public void initAgentpwdByAgtid(final AgentForm agentForm) {
+		log.info("sp:web_agent_initpwd(?)");
 		this.getJdbcTemplate().execute("{call web_agent_initpwd(?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
@@ -150,11 +150,12 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		});
 	}
 
-	public void queryAgentAnserList(final DotSession ds, final AgentForm agentForm) {
+	public void queryAgentAnswerList(final DotSession ds, final AgentForm agentForm) {
+		log.info("sp:web_agent_callquery(?,?,?)");
 		this.getJdbcTemplate().execute("{call web_agent_callquery(?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, ds.account);
+				cs.setString(1, ds.agttelnum);	//话务员号码
 				cs.setInt(2, agentForm.getCallio());
 				cs.setString(3, agentForm.getTelnum());
 				cs.execute();
@@ -169,30 +170,6 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 					}
 				}
 				return null;
-			}
-		});
-	}
-
-	public int queryAgentAnserDetailList(final DotSession ds, final AgentForm agentForm) {
-		return (Integer)this.getJdbcTemplate().execute("{call web_tasktel_info(?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setInt(1, agentForm.getTid());
-				cs.setInt(2, agentForm.getTtid());
-				cs.registerOutParameter(3, Types.INTEGER);
-				cs.execute();
-				ResultSet rs = cs.getResultSet();
-				ds.initData();
-				ds.list = new ArrayList();
-				if(rs!=null){
-					while (rs.next()) {
-						 Map map = new HashMap();
-						 VTJime.putMapDataByColName(map, rs);
-		        		 ds.list.add(map);
-					}
-				}
-				log.info("out param kind:"+cs.getInt(3));
-				return cs.getInt(3);
 			}
 		});
 	}

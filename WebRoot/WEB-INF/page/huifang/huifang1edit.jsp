@@ -50,25 +50,25 @@
 		<table cellpadding="0" cellspacing="0" border="1" class="hftab2">
 			<tr>
 				<td width="25%" align="right">手机号码&nbsp;</td>
-				<td width="25%" align="left">&nbsp;${telnum }</td>
+				<td width="25%" align="left">&nbsp;${hfMap.telnum }</td>
 				<td width="25%" align="right">姓名&nbsp;</td>
-				<td width="25%" align="left">&nbsp;${xm }</td>
+				<td width="25%" align="left">&nbsp;${hfMap.xm }</td>
 			</tr>
 			<tr>
 				<td align="right">手机套餐&nbsp;</td>
-				<td align="left">&nbsp;${sjtc }</td>
+				<td align="left">&nbsp;${hfMap.sjtc }</td>
 				<td align="right">通迅地址&nbsp;</td>
-				<td align="left">&nbsp;${txdz }</td>
+				<td align="left">&nbsp;${hfMap.txdz }</td>
 			</tr>
 			<tr>
 				<td align="right">二次电话&nbsp;</td>
-				<td align="left">&nbsp;${ecdh }</td>
+				<td align="left">&nbsp;${hfMap.ecdh }</td>
 				<td align="right">证件号码&nbsp;</td>
-				<td align="left">&nbsp;${zjhm }</td>
+				<td align="left">&nbsp;${hfMap.zjhm }</td>
 			</tr>
 			<tr>
 				<td align="right">预警生效时间&nbsp;</td>
-				<td align="left">&nbsp;${yjsxsj }</td>
+				<td align="left">&nbsp;${hfMap.yjsxsj }</td>
 				<td align="right"></td>
 				<td align="left">&nbsp;</td>
 			</tr>
@@ -76,10 +76,10 @@
 	</div>
 	
 	<iframe name="enterFrame" style="display:none;"></iframe>
-	<form name="form1" action="${pageContext.request.contextPath }/huiFangAction_save.action" method="post" target="enterFrame">
+	<form name="form1" action="${pageContext.request.contextPath }/huifang-agentSave.action" method="post" target="enterFrame">
 	<input type="hidden" name="flag" value="${flag }"/>
-	<input type="hidden" name="tid" value="${hfMap.tid }"/>
-	<input type="hidden" name="ttid" value="${hfMap.ttid }"/>
+	<input type="hidden" name="tid" value="${tid }"/>
+	<input type="hidden" name="ttid" value="${ttid }"/>
 	
 	<div class="huifanginfo2">
 		<h2 class="hftitle3">回访录入信息</h2>
@@ -87,40 +87,40 @@
 			<tr>
 				<td width="25%" align="right">回访情况&nbsp;</td>
 				<td width="25%" align="left">&nbsp;
-					<s:select name="hfqk" list="#application.vta.GetList('hfqk')" listKey="id" listValue="str" value="hfqk"></s:select>
+					<s:select name="hfqk" list="#application.vta.GetList('hfqk')" listKey="id" listValue="str" value="#request.hfMap.hfqk"></s:select>
 				</td>
 				<td width="25%" align="right">回访姓名&nbsp;</td>
-				<td width="25%" align="left">&nbsp;<input type="text" id="hfnamex" name="hfname" value="${hfname }" class="ipt100_24"/></td>
+				<td width="25%" align="left">&nbsp;<input type="text" id="hfnamex" name="hfname" value="${hfMap.xm_n }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">性别&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:radio name="sex" list="#application.vta.GetList('sex')" listKey="id" listValue="str" value="sex"/>
+					<s:radio name="sex" list="#application.vta.GetList('sex')" listKey="id" listValue="str" value="#request.hfMap.xb"/>
 				</td>
 				<td align="right">异网本网调查&nbsp;</td>
 				<td align="left">&nbsp;
-					<input name="ywbwdc" value="0" type="checkbox" <c:if test="${ywbwdc eq 1 }">checked="checked"</c:if> onclick="changeCHKVal(this)"/>
+					<input name="ywbwdc" value="0" type="checkbox" <c:if test="${hfMap.ywbwdc eq 1 }">checked="checked"</c:if> onclick="changeCHKVal(this)"/>
 				</td>
 			</tr>
 			<tr>
 				<td align="right">渠道满意度调查&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:radio name="manyid" list="#application.vta.GetList('manyi')" listKey="id" listValue="str" value="manyid"/>
+					<s:radio name="manyid" list="#application.vta.GetList('manyi')" listKey="id" listValue="str" value="#request.hfMap.qdmyddc"/>
 				</td>
 				<td align="right">手机品牌型号&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="phonemodel" value="${phonemodel }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="phonemodel" value="${hfMap.sjppxh }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">机卡分离&nbsp;</td>
 				<td align="left">&nbsp;
-					<input name="jkfl" value="0" type="checkbox" <c:if test="${jkfl eq 1 }">checked="checked"</c:if> onclick="changeCHKVal(this)"/>
+					<input name="jkfl" value="0" type="checkbox" <c:if test="${hfMap.jkfl eq 1 }">checked="checked"</c:if> onclick="changeCHKVal(this)"/>
 				</td>
 				<td align="right">购卡点&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="gkd" value="${gkd }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="gkd" value="${hfMap.gkd }" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">备注信息&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="remark" value="${remark }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="remark" value="${hfMap.bz }" class="ipt100_24"/></td>
 				<td align="right">&nbsp;</td>
 				<td align="left">&nbsp;</td>
 			</tr>
@@ -129,6 +129,7 @@
 	<div class="huifanginfo2">
 	<p class="btnline">
 		<input type="button" onclick="saveHuifangBtn('${flag}')" value="保存" class="btn4"/>
+		<input style="margin-left:40px;" type="button" onclick="location.href='agentanaly-answer.action'" value="返回" class="btn4"/>
 	</p>
 	</div>
 	</form>

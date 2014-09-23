@@ -8,10 +8,9 @@
 		    height: 672px;
 		    margin: 0px auto;
 		    background: url('${pageContext.request.contextPath}/images/err_back.png') repeat-x scroll 0% 0% transparent;
-		    position: relative;
 		}
 		.top_box0311 {
-		    height:195px;
+		    height:220px;
 		    overflow:hidden;
 		    padding-top:105px;
 		    padding-left:180px;
@@ -22,7 +21,7 @@
 		    line-height:24px;
 		}
 		.pt-360 {
-		    padding-top: 35px;
+		    padding-top:0px;
 		}
 		.refurbish_btn {
 		    text-align: center;
@@ -33,7 +32,6 @@
 		    width: 151px;
 		    height: 56px;
 		    display: block;
-		    margin: 0px auto;
 		    outline: medium none;
 		    cursor: pointer;
 		    text-align:center;
@@ -61,7 +59,7 @@
 				</div>
 			</div>
 			<div class="pt-360">
-				<div>
+				<div style="padding-left:360px;">
 					<a href="${pageContext.request.contextPath }/index.action" target="_top" class="again_login">
 						重新登录
 					</a>

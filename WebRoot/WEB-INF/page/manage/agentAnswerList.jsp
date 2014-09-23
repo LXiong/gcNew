@@ -75,7 +75,7 @@
 					<td>${fn:substring(calldt,2,19) }</td>
 					<td>${wait }</td>
 					<td>${talk }</td>
-					<td><a href="<c:url value='/agentanaly-detail.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a></td>
+					<td><a href="<c:url value='/huifang-agentAnswer.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a></td>
 				</tr>
 				</s:iterator>
 			</tbody>

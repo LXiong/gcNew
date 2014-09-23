@@ -10,7 +10,7 @@ import cn.voicet.util.DotSession;
 
 @Controller("databaseConfigAction")
 @Scope("prototype")
-@SuppressWarnings({"serial","unchecked"})
+@SuppressWarnings("serial")
 public class DatabaseConfigAction extends BaseAction{
 
 	private static Logger log = Logger.getLogger(DatabaseConfigAction.class);
@@ -39,27 +39,11 @@ public class DatabaseConfigAction extends BaseAction{
 		return null;
 	}
 
-	public String dbIndex(){
-		DotSession ds = DotSession.getVTSession(request);
-		if(null!=ds.map.get("dbindex")){
-			ds.map.put("dbindex", dbindex);
-			databaseConfigDao.databaseIndexManage(ds);
-		}
-		return null;
-	}
-	
 	private String defbackupfilename;
-	public int dbindex;
 	public String getDefbackupfilename() {
 		return defbackupfilename;
 	}
 	public void setDefbackupfilename(String defbackupfilename) {
 		this.defbackupfilename = defbackupfilename;
-	}
-	public int getDbindex() {
-		return dbindex;
-	}
-	public void setDbindex(int dbindex) {
-		this.dbindex = dbindex;
 	}
 }

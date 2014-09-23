@@ -36,7 +36,9 @@
                      <th width="12%">最大等待时长(秒)</th>
                      <th width="10%">最大排队数目</th>
                      <th width="8%">溢出去向</th>
-                     <th width="10%">任务名称</th>
+                     <!--
+					 <th width="10%">任务名称</th>
+                     -->
                      <th width="10%">
                      	<input type="button" class="btn btn-primary" onclick="saveAcd('add','0','<s:property value="#session.vts.curCTS"/>','','','','','','','')" value="添加"/>
                      </th>
@@ -53,9 +55,11 @@
 					<td>${acd.maxwaittime }</td>
 					<td>${acd.maxwaitnum }</td>
 					<td>${acd.overflowto }</td>
+					<!--
 					<td>
 						<s:select list="#session.vts.list2" onchange="popSetTask('%{grpid}','%{grpname}',this)" listKey="tid" listValue="tname" value="taskid" cssClass="seldefault_w85"></s:select>
 					</td>
+					-->
 					<td>
 						<a href="javascript:saveAcd('edit','${acd.grpid }','<s:property value="#session.vts.curCTS"/>','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.ani }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteAcdPre('${acd.grpid }')">删除</a>

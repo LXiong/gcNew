@@ -1,7 +1,6 @@
 package cn.voicet.gc.dao.impl;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -9,8 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.ConnectionCallback;
+import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.SystemLogDao;
@@ -22,11 +22,13 @@ import cn.voicet.util.VTJime;
 @SuppressWarnings("unchecked")
 public class SystemLogDaoImpl extends BaseDaoImpl implements SystemLogDao {
 
+	private static Logger log = Logger.getLogger(SystemLogDaoImpl.class);
+	
 	public int findLogTotalPage(final DotSession ds, final SystemLogForm systemLogForm) {
-		int totalP = (Integer)this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call sys_log_query_page_t(?,?,?,?,?,?,?,?)}");
+		log.info("sp:sys_log_query_page_t(?,?,?,?,?,?,?,?)");
+		return (Integer)this.getJdbcTemplate().execute("{call sys_log_query_page_t(?,?,?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setString(1, ds.rbm);
 				cs.setString(2, ds.roleID);
 				cs.setString(3, systemLogForm.getStartdate());
@@ -36,18 +38,17 @@ public class SystemLogDaoImpl extends BaseDaoImpl implements SystemLogDao {
 		        cs.setInt(7, systemLogForm.getPageSize());
 		        cs.registerOutParameter(8, Types.INTEGER);
 				cs.execute();
-				Integer count = cs.getInt(8);
-				return count;
+				log.info("total:"+cs.getInt(8));
+				return cs.getInt(8);
 			}
 		});
-		return totalP;
 	}
 
 	public void findLogInfoList(final DotSession ds, final SystemLogForm systemLogForm) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call sys_log_query_page(?,?,?,?,?,?,?,?)}");
+		log.info("sp:sys_log_query_page(?,?,?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call sys_log_query_page(?,?,?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setString(1, ds.rbm);
 				cs.setString(2, ds.roleID);
 				cs.setString(3, systemLogForm.getStartdate());
@@ -71,4 +72,5 @@ public class SystemLogDaoImpl extends BaseDaoImpl implements SystemLogDao {
 			}
 		});
 	}
+	
 }

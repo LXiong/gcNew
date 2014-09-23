@@ -1,7 +1,6 @@
 package cn.voicet.gc.dao.impl;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,11 +9,10 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.ConnectionCallback;
+import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.CallRecordDao;
-import cn.voicet.gc.form.AcdForm;
 import cn.voicet.gc.form.CallRecordForm;
 import cn.voicet.util.DotSession;
 import cn.voicet.util.VTJime;
@@ -26,10 +24,10 @@ public class CallRecordDaoImpl extends BaseDaoImpl implements CallRecordDao {
 	private static Logger log = Logger.getLogger(CallRecordDaoImpl.class);
 
 	public void queryCallRecordList(final DotSession ds, final CallRecordForm callRecordForm) {
-		this.getJdbcTemplate().execute(new ConnectionCallback() {
-			public Object doInConnection(Connection conn) throws SQLException,
-					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call web_session_talk_query(?,?,?,?,?,?,?,?,?,?)}");
+		log.info("sp:web_session_talk_query(?,?,?,?,?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call web_session_talk_query(?,?,?,?,?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
 				cs.setString(2, callRecordForm.getCalltxt()[0]);
 				cs.setString(3, callRecordForm.getCalltxt()[1]);
