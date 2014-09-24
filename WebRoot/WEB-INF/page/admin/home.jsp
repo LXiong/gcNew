@@ -162,20 +162,29 @@
 </script>
 <script type="text/javascript">
 	/*************** 弹屏   ***************/ 
-	function js_detectcall(call,param){
-		var tid = param.substring(param.length-2, param.length-1);
-		var ttid = param.substring(param.length-4, param.length-3);
-		//获取回访类型
-		$.ajax({
-			type: "POST",
-			dataType: "json",
-			data: {tid: tid},
-			url: "huifangType.action",
-			success: function(data) {
-				$("#popHuifang")[0].href="huifang-list.action?flag="+data+"&tid="+tid+"&ttid="+ttid;
-				$("#popHuifang")[0].click();
-			}
-		});
+	function js_detectcall(call,str){
+		var pIndex = str.indexOf("param=")+6; //25
+		var taskstr = str.substr(pIndex);		//a,1,1;
+		taskstr = taskstr.substring(0,taskstr.length-1);	//a,1,1
+		taskstr = taskstr.split(",");				//[a,1,1]
+		if(taskstr[0]=="a")
+		{
+			//获取回访类型
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				data: {tid: taskstr[1]},
+				url: "huifangType.action",
+				success: function(data) {
+					$("#popHuifang")[0].href="huifang-list.action?flag="+data+"&tid="+taskstr[1]+"&ttid="+taskstr[2];
+					$("#popHuifang")[0].click();
+				}
+			});
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	/*************** 业务组监控   ***************/ 

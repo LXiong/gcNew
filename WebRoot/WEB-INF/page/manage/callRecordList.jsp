@@ -36,7 +36,7 @@
 	        <li><label>被叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[3] }" maxlength="12"/></li>
 	        <li>
 	        	<label>呼叫方向：</label>
-	        	<s:select name="calltxt" list="#{1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{calltxt[4]}" cssClass="inputDefault"></s:select>
+	        	<s:select name="calltxt" list="#{1:'呼入',0:'呼出'}" listKey="key" listValue="value" value="%{calltxt[4]}" cssClass="inputDefault"></s:select>
 			</li>
 		</ul>
 		<ul class="queryWrap_ul">
