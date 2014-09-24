@@ -53,6 +53,7 @@
 			<thead class="tab_head2">
                  <tr>
                      <th width="4%">编号</th>
+                 	<th width="4%">任务</th>
                      <th width="8%">主叫号码</th>
                      <th width="8%">被叫号码</th>
                      <th width="6%">呼叫方向</th>
@@ -66,6 +67,7 @@
                	<s:iterator id="answer" value="#session.vts.list">
 				<tr align="center">
 					<td>${cid }</td>
+					<td>${tid }</td>
 					<td>${ani }</td>
 					<td>${dnis }</td>
 					<td>
