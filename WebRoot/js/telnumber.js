@@ -96,6 +96,7 @@ function recall(tid,tname,kind)
 //show pop div
 function saveTaskTel(t,tid,ttid,telnum)
 {
+	$(".asterisk")[1].innerHTML="";
 	var tit;
 	if(t=="add")
 	{
