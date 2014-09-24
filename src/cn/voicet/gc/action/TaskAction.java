@@ -290,7 +290,6 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	public String getUploadExcelFileName() {
 		return uploadExcelFileName;
 	}
-
 	public void setUploadExcelFileName(String uploadExcelFileName) {
 		this.uploadExcelFileName = uploadExcelFileName;
 	}

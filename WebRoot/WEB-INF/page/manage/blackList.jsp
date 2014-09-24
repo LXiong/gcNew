@@ -22,13 +22,22 @@
 	<h3 class="h3_title">系统黑名单维护</h3>
    	<form id="form1" name="form1" action="<c:url value='/black-list.action'/>" method="post">
    	<div class="queryDiv">
-   		<ul class="queryWrap_ul_w500 left">
+   		<ul class="queryWrap_ul_w400 left">
 	        <li><label>电话号码：</label><input type="text" class="ipt100 inputDefault" name="telnum" id="telnum" value="<s:property value="telnum"/>"/></li>
 	        <li><input type="submit" id="searchImg" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
-		<ul class="queryWrap_ul_w200 right">
+		<ul class="queryWrap_ul_w400 right">
 			<li><input type="button" class="btn4" onclick="emptyBlack()" value="清空"/></li>
 	        <li><input type="button" class="btn4" onclick="saveBlackNumber('add','','','')" value="添加"/></li>
+	        <li>
+	        	<label><a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/black_import.xls">下载</a>模板</label>
+	        </li>
+	        <li>
+	        	<input type="button" class="btn4" onclick="showSelFile()" value="导入"/>
+	        </li>
+	        <li>
+	        	<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/black-export.action'" value="导出"/>
+	        </li>
 		</ul>
    	</div>
    	
@@ -69,7 +78,6 @@
 	</div>
     <!-- jPage end -->
     
-	
 	<!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
 		<form name="form2" action="<c:url value='/black-saveTelnum.action'/>" method="post">
@@ -102,6 +110,30 @@
 	<form name="form4" action="<c:url value='/black-deleteTelnum.action'/>" method="post">
 		<input type="hidden" id="del_bid" name="bid"/>
 	</form>
+	
+	<!--POP LAYER START-->
+	<div id="popImportDiv" style="display:none;"> 
+		<form id="form5" name="form5" 
+			action="${pageContext.request.contextPath }/black-importBlacknum.action" 
+			method="post" 
+			enctype="multipart/form-data"
+			onsubmit="return validateuploadInforFile(this)">
+	    <div class="lab_ipt_item">
+	    	<span class="lab120">您当前导入的文件：</span>
+	        <div class="ipt-box">
+	        	<label id="curFile"></label>&nbsp;&nbsp;
+	        	<span class="asterisk"></span>
+	        </div>
+	    </div>
+	    <input type="file" id="uploadExcel" name="uploadExcel" style="display:none;" onchange="showPopDiv()"/>
+		<div class="lab_ipt_item">
+			<span class="lab120"></span>
+			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
+			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
+		</div>	
+		</form>
+	</div>
+	<!--POP LAYER END-->
 	
 </div>
 <script type="text/javascript">
@@ -137,6 +169,8 @@ $(function(){
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/black.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/black.js?v=5'/>"></script>
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>
 </html>

@@ -247,11 +247,11 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 							{
 								cellValues[j]="";
 							}
-							if(!checkCellOK(iKind,i,j,cellValues[j])) 
+							/*if(!checkCellOK(iKind,i,j,cellValues[j])) 
 							{
 								bCheckOK=false;
 								break;
-							}
+							}*/
 						}// end col
 						//exec procedure
 						if(bCheckOK)
@@ -282,13 +282,11 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				} 
 				catch (Exception e) 
 				{
-					//
+					log.error(e);
 					return null;
 				}
 			}
 		});
-		
-		
 	}
 
 	public StringBuffer errorString;  
