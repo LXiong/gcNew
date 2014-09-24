@@ -25,7 +25,7 @@
 			<tr align="center" style="font-size: 12px; height: 20px">
 				<td align="left">&nbsp;<s:property value="#datafile.name"/></td>
 				<td align="left">&nbsp;<s:property value="#datafile.filename"/></td>
-				<td align="center"><s:property value="#datafile.sizex"/></td>
+				<td align="center"><s:property value="#datafile.size"/></td>
 			</tr>
 			</s:iterator>
         </table>
