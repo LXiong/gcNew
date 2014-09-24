@@ -21,9 +21,11 @@
 		</grp>
 	    <grp name="数据库">
 	      	<fun name="数据库维护" action="dbconfig.action" />
+	      	<!--  
 	      	<fun name="回访一" action="huifang-list.action?flag=1" />
 	      	<fun name="回访二" action="huifang-list.action?flag=2" />
 	      	<fun name="回访三" action="huifang-list.action?flag=3" />
+	      	-->
 	    </grp>
 	</role>
 	<role roleid="2" describle="业务管理员">
