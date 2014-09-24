@@ -52,15 +52,16 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head2">
                  <tr>
-                     <th width="4%">编号</th>
+					<th width="4%">编号</th>
                  	<th width="4%">任务</th>
-                     <th width="8%">主叫号码</th>
-                     <th width="8%">被叫号码</th>
-                     <th width="6%">呼叫方向</th>
-                     <th width="10%">呼叫日期</th>
-                     <th width="8%">等待时长(秒)</th>
-                     <th width="8%">通话时长(秒)</th>
-                     <th width="10%">操作</th>
+                    <th width="6%">任务类型</th>
+                    <th width="8%">主叫号码</th>
+                    <th width="8%">被叫号码</th>
+                    <th width="6%">呼叫方向</th>
+                    <th width="10%">呼叫日期</th>
+                    <th width="8%">等待时长(秒)</th>
+                    <th width="8%">通话时长(秒)</th>
+                    <th width="10%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -68,6 +69,12 @@
 				<tr align="center">
 					<td>${cid }</td>
 					<td>${tid }</td>
+					<td>
+						<c:if test="${kind eq 0 }">标准</c:if>
+						<c:if test="${kind eq 1 }">回访1</c:if>
+						<c:if test="${kind eq 2 }">回访2</c:if>
+						<c:if test="${kind eq 3 }">回访3</c:if>
+					</td>
 					<td>${ani }</td>
 					<td>${dnis }</td>
 					<td>
