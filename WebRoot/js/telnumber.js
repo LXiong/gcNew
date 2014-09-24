@@ -16,7 +16,7 @@ function showPopDiv()
 	{
 		$.layer({
 			type: 1,
-	        title: '导入 数据',
+	        title: '导入数据',
 	        offset: [($(window).height() - 290)/2+'px', ''],
 	        border : [5, 0.5, '#666'],
 	        area: ['400px','150px'],
@@ -110,7 +110,7 @@ function saveTaskTel(t,tid,ttid,telnum)
 	$("#save_telnumx").val(telnum);
 	$.layer({
 		type: 1,
-        title: '导入 数据',
+        title: tit,
         offset: [($(window).height() - 290)/2+'px', ''],
         border : [5, 0.5, '#666'],
         area: ['400px','150px'],

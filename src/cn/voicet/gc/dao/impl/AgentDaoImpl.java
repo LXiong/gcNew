@@ -2,7 +2,6 @@ package cn.voicet.gc.dao.impl;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
-import java.sql.ParameterMetaData;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
