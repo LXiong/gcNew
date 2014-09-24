@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,10 +25,10 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
 				<tr>
-					<th width="6%">任务编号</th>
+					<th width="6%">编号</th>
                     <th width="10%">任务名称</th>
-                    <th width="6%">任务类型</th>
-                    <th width="6%">任务状态</th>
+                    <th width="6%">类型</th>
+                    <th width="6%">状态</th>
                     <th width="8%">业务组(个)</th>
                     <th width="6%">号码总数</th>
                     <th width="6%">新建数</th>
@@ -42,32 +43,34 @@
              <tbody id="movies">
                	<s:iterator id="task" value="#session.vts.list">
 				<tr align="center">
-					<td>${task.tid }</td>
-					<td align="left">&nbsp;${task.tname }</td>
-					<td>
-						<c:if test="${task.kind eq 0 }">标准</c:if>
-						<c:if test="${task.kind eq 1 }">回访1</c:if>
-						<c:if test="${task.kind eq 2 }">回访2</c:if>
-						<c:if test="${task.kind eq 3 }">回访3</c:if>
+					<td>${tid }</td>
+					<td align="left">&nbsp;
+						<s:property value="tname.length()>6?tname.substring(0,5)+'...':tname"/>	
 					</td>
 					<td>
-						<c:if test="${task.state eq 0 }">新建</c:if>
-						<c:if test="${task.state eq 1 }">激活</c:if>
-						<c:if test="${task.state eq 9 }">停止</c:if>
-						<c:if test="${task.state eq 10 }">呼叫完成</c:if>
+						<c:if test="${kind eq 0 }">标准</c:if>
+						<c:if test="${kind eq 1 }">回访1</c:if>
+						<c:if test="${kind eq 2 }">回访2</c:if>
+						<c:if test="${kind eq 3 }">回访3</c:if>
 					</td>
-					<td>${task.acdnum }</td>
-					<td>${task.trn }</td>
-					<td>${task.nrn }</td>
-					<td>${task.drn }</td>
-					<td>${task.frn }</td>
-					<td>${task.ans }</td>
 					<td>
-						<a href="javascript:setAcd('${task.tid }')">指派业务组</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/task-telmanage.action?tid=${task.tid}&tname=${task.tname}&kind=${task.kind}">号码管理</a>&nbsp;&nbsp;
-						<a href="javascript:saveTask('edit','${task.tid }','${task.tname }','${task.kind }','${task.state }','${task.taskinfo }')">修改</a>&nbsp;&nbsp;
-						<a href="javascript:deleteTaskPre('${task.tid }','${task.tname }','${task.trn }')">删除</a>
-						<input type="button" class="hide" onclick="deleteTask('${task.tid }','${task.tname }')" value="删除"/>
+						<c:if test="${state eq 0 }">新建</c:if>
+						<c:if test="${state eq 1 }">激活</c:if>
+						<c:if test="${state eq 9 }">停止</c:if>
+						<c:if test="${state eq 10 }">呼叫完成</c:if>
+					</td>
+					<td>${acdnum }</td>
+					<td>${trn }</td>
+					<td>${nrn }</td>
+					<td>${drn }</td>
+					<td>${frn }</td>
+					<td>${ans }</td>
+					<td>
+						<a href="javascript:setAcd('${tid }')">指派业务组</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath }/task-telmanage.action?tid=${tid}&tname=${tname}&kind=${kind}">号码管理</a>&nbsp;&nbsp;
+						<a href="javascript:saveTask('edit','${tid }','${tname }','${kind }','${state }','${taskinfo }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:deleteTaskPre('${tid }','${tname }','${trn }')">删除</a>
+						<input type="button" class="hide" onclick="deleteTask('${tid }','${tname }')" value="删除"/>
 					</td>
 				</tr>
 				</s:iterator>
