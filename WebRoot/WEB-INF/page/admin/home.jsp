@@ -25,8 +25,8 @@
   			<!-- 
   			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试弹屏"/>
   			<input type="button" onclick="js_monitor_acdgrp('5,933300,呼叫,0,0,0,0.00%,0/0')" value="测试业务组监控"/>
-  			-->
   			<input type="button" onclick="js_seat_minitor('0,正常,来电,9000,agt000')" value="测试分机监控"/>
+  			-->
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
     </div>
