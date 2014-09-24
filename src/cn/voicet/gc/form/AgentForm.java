@@ -14,7 +14,7 @@ public class AgentForm {
 	private int agtid;
 	
 	//agent answer query
-	private int callio=0;
+	private int callio=2;	//默认：不限,1:呼入,0:呼出
 	private String telnum;
 	
 	private int tid;

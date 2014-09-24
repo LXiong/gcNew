@@ -33,7 +33,7 @@
 	   	<ul class="queryWrap_ul_w600 left">
 	        <li>
 	        	<label>呼叫方向：</label>
-	        	<s:select name="callio" list="#{0:'不限',1:'呼入',2:'呼出'}" listKey="key" listValue="value" value="%{callio}" cssClass="inputDefault"></s:select>
+	        	<s:select name="callio" list="#{'2':'不限',1:'呼入',0:'呼出'}" listKey="key" listValue="value" value="%{callio}" cssClass="inputDefault"></s:select>
 			</li>
 			<li>
 				<label id="telnumLabx">对方号码：</label>

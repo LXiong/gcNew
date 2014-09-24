@@ -2,6 +2,7 @@ package cn.voicet.gc.dao.impl;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
+import java.sql.ParameterMetaData;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -156,7 +157,14 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.agttelnum);	//话务员号码
-				cs.setInt(2, agentForm.getCallio());
+				if(agentForm.getCallio()==2)
+				{
+					cs.setString(2, null);	//呼叫方向，为空不限，1：呼入，0：呼出
+				}
+				else
+				{
+					cs.setInt(2, agentForm.getCallio());
+				}
 				cs.setString(3, agentForm.getTelnum());
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
