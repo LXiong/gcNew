@@ -150,7 +150,7 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
 				cs.setString(2, taskForm.getTelnum());
-				cs.setInt(3, 0);
+				cs.setInt(3, 500);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
