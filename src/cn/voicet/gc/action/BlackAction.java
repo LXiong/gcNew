@@ -48,7 +48,7 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
 	public String deleteTelnum(){
 		log.info("bid:"+blackForm.getBid());
 		blackDao.deleteTelnumByBid(blackForm);
-		return list();
+		return null;
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
 	public String emptyBlack()
 	{
 		blackDao.emptyBlack();
-		return list();
+		return null;
 	}
 	
 	/**

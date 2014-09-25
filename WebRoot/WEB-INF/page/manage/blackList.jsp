@@ -60,7 +60,7 @@
 					<td align="left" class="tabtd1">&nbsp;&nbsp;<s:property value="#black.noteinfo"/></td>
 					<td>
 						<a href="javascript:saveBlackNumber('edit','<s:property value="#black.bid"/>','<s:property value="#black.telnum"/>','<s:property value="#black.noteinfo"/>')">修改</a>&nbsp;&nbsp;
-						<a href="javascript:deleteBlackPre('${black.bid }')">删除</a>
+						<a href="javascript:deleteBlack('${black.bid }')">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -105,9 +105,9 @@
 	</div>
 	<!--POP LAYER END-->
 	
-	<form name="form3" action="<c:url value='/black-emptyBlack.action'/>" method="post"></form>
+	<form id="form3" action="<c:url value='/black-emptyBlack.action'/>" method="post"></form>
 	
-	<form name="form4" action="<c:url value='/black-deleteTelnum.action'/>" method="post">
+	<form id="form4" action="<c:url value='/black-deleteTelnum.action'/>" method="post">
 		<input type="hidden" id="del_bid" name="bid"/>
 	</form>
 	
@@ -169,7 +169,7 @@ $(function(){
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/black.js?v=5'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/black.js?v=16'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

@@ -68,22 +68,29 @@ function submitSaveNumberBtn()
 function emptyBlack()
 {
 	layer.confirm("确定要清空黑名单中的所有号码吗？",function(){
-		document.form3.submit();
+		$("#form3").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				location.href="black-list.action";
+	        }  
+		}); 
+	    return false;	//not refresh page
 	});
 }
 
 //delete
-function deleteBlackPre(bid)
+function deleteBlack(bid)
 {
 	$("#del_bid").val(bid);
 	layer.confirm("确定要删除吗？",function(){
-		deleteBlack();
+		$("#form4").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				location.href="black-list.action";
+	        }  
+		}); 
+	    return false;	//not refresh page
 	});
 }
-function deleteBlack()
-{
-	document.form4.submit();
-}
+
 //import black telnum
 //show select file dialog
 function showSelFile()

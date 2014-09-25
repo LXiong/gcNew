@@ -105,7 +105,7 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		DotSession ds=DotSession.getVTSession(request);
 		ds.clear();
 		request.getSession().invalidate();
-		return "show_logout";
+		return null;
 	}
 	
 	/**

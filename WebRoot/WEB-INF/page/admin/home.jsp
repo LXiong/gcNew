@@ -45,7 +45,7 @@
         		<label>当前服务器：</label><s:select list="#session.vts.ctsList" onchange="changeServer(this)" listKey="ctsinfo" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
         	</span>
             <span><a class="menu_righta" href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
-            <span><a class="menu_righta" href="javascript:popLogoutDiv()" target="_top">[&nbsp;注销&nbsp;]</a></span>
+            <span><a class="menu_righta" href="javascript:logout()">[&nbsp;注销&nbsp;]</a></span>
         </div>
     </div>
     <!-- main -->
@@ -127,6 +127,7 @@
 	</div>	
 	</form>
 </div>
+<form id="form2" action="<c:url value='/user-logout.action'/>" method="post"></form>
 <!--POP LAYER END-->
 <script type="text/javascript" src="<c:url value='/js/updatepwd.js?v=3'/>"></script>
 <!-- layer 弹出插件 start -->
@@ -136,12 +137,16 @@
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript">
 	//logout
-	function popLogoutDiv()
+	function logout()
 	{
-		if(confirm("确定要注销吗？"))
-		{
-			location.href="user-logout.action";
-		}
+		layer.confirm("确定要注销吗？",function(){
+			$("#form2").ajaxSubmit({ 
+				success:function(data){ //提交成功的回调函数
+					location.href="index.action";
+		        }  
+			}); 
+		    return false;
+		});
 	}
 	//change cts server
 	function changeServer(obj)

@@ -20,7 +20,6 @@
 		<!-- 用户登录 -->
 		<action name="user-*" class="userAction" method="{1}">
 			<result name="show_home">/WEB-INF/page/admin/home.jsp</result>
-			<result name="show_logout" type="redirectAction">index</result>
 			<!-- 处理验证登录失败, 跳转到login.jsp -->
 			<result name="show_error">/WEB-INF/page/admin/login.jsp</result>
 		</action>
