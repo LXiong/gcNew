@@ -39,24 +39,20 @@
                  </tr>
              </thead>
              <tbody id="movies">
-               	<s:iterator id="agent" value="#session.vts.list">
+               	<s:iterator id="agt" value="#session.vts.list">
 				<tr align="center">
-					<td>${agent.account }</td>
-					<td>${agent.telnum }</td>
+					<td>${account }</td>
+					<td>${telnum }</td>
 					<td>
-						<c:if test="${agent.ismaster eq 1}">√</c:if>
+						<c:if test="${ismaster eq 1}">√</c:if>
 					</td>
-					<td>${agent.agtname }</td>
-					<td>${agent.email }</td>
+					<td>${agtname }</td>
+					<td>${email }</td>
 					<td>
 						<!-- a to button 解决ajax submit提交问题 -->
-						<a href="javascript:initAgentpwdPre('${agent.agtid }')">密码初始化</a>&nbsp;&nbsp;
-						<input type="button" class="hide" onclick="initAgentpwd()" value="密码初始化"/>
-						
-						<a href="javascript:saveAgent('edit','${agent.agtid }','${agent.account }','${agent.ismaster }','${agent.telnum }','${agent.agtname }','${agent.email }')">修改</a>&nbsp;&nbsp;
-						
-						<a href="javascript:deleteAgentPre('${agent.agtid }')">删除</a>
-						<input type="button" class="hide" onclick="deleteAgent()" value="删除"/>
+						<a href="javascript:initAgentpwd('${agtid }')">密码初始化</a>&nbsp;&nbsp;
+						<a href="javascript:saveAgent('edit','${agtid }','${account }','${ismaster }','${telnum }','${agtname }','${email }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:deleteAgent('${agtid }')">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -124,13 +120,8 @@
 	<!--POP LAYER END-->
 	
 	<!-- delete agent form -->
-	<form name="form3" action="<c:url value='/agent-deleteAgent.action'/>" method="post">
+	<form id="form3" action="<c:url value='/agent-deleteAgent.action'/>" method="post">
 		<input type="hidden" id="del_agtid" name="agtid"/>
-	</form>
-	
-	<!-- init agentpwd form -->
-	<form id="form4" action="<c:url value='/agent-initAgentpwd.action'/>" method="post">
-		<input type="hidden" id="init_agtid" name="agtid"/>
 	</form>
 	
 </div>
@@ -169,7 +160,7 @@ $(function(){
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/agent.js?v=6'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/agent.js?v=11'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

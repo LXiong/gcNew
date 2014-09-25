@@ -163,31 +163,30 @@ function saveAgentBtn()
 }
 
 //delete agent
-function deleteAgentPre(agtid)
+function deleteAgent(agtid)
 {
 	$("#del_agtid").val(agtid);
 	layer.confirm("确定要删除吗？",function(){
-		deleteAgent();
+		$("#form3").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				location.href="agent-list.action";		
+	        }  
+		}); 
+	    return false;
 	});
-}
-function deleteAgent()
-{
-	document.form3.submit();
 }
 
 //init agent password
-function initAgentpwdPre(agtid)
+function initAgentpwd(agtid)
 {
-	$("#init_agtid").val(agtid);
-	initAgentpwd();
-}
-function initAgentpwd()
-{
-	$("#form4").ajaxSubmit({ 
-		success:function(data){ //提交成功的回调函数
-			layer.msg("密码初始化成功",1,111);
+    $.ajax({  
+        type: "POST",  
+        url: "agent-initAgentpwd.action",  
+        data: {agtid:agtid},  
+        success: function(data){  
+        	if(data=="ok")
+        		layer.msg("密码初始化成功",1,111);
         }  
-	}); 
-    return false;
+    }); 
 }
 

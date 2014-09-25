@@ -70,18 +70,20 @@ public class AgentAction extends BaseAction implements ModelDriven<AgentForm>{
 		log.info("account:"+agentForm.getAgtid());
 		agentDao.deleteAgentByAccount(agentForm);
 		log.info("delete agent ["+agentForm.getAgtid()+"] success");
-		return list();
+		return null;
 	}
 	
 	/**
 	 * 密码初始化
 	 * @return
+	 * @throws IOException 
 	 */
-	public String initAgentpwd()
+	public String initAgentpwd() throws IOException
 	{
 		log.info("agtid:"+agentForm.getAgtid());
 		agentDao.initAgentpwdByAgtid(agentForm);
 		log.info("init agent password ["+agentForm.getAgtid()+"] success");
+		response.getWriter().print("ok");
 		return null;
 	}
 }
