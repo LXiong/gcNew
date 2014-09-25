@@ -44,7 +44,7 @@
                	<s:iterator id="task" value="#session.vts.list">
 				<tr align="center">
 					<td>${tid }</td>
-					<td align="left">&nbsp;
+					<td align="left" title="${tname }">&nbsp;
 						<s:property value="tname.length()>6?tname.substring(0,5)+'...':tname"/>	
 					</td>
 					<td>
