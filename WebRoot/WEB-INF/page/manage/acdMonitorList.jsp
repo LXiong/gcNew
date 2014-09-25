@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">业务组监控&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">座席组监控&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
 	<div class="content_List615">
 		<table id="acdMonitorTab" cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">

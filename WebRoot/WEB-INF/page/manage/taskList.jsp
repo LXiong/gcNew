@@ -20,21 +20,23 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">任务及号码管理</h3>
+	<h3 class="h3_title">外呼任务管理</h3>
 	<div class="content_List615">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
 				<tr>
-					<th width="6%">编号</th>
+					<th width="4%">编号</th>
                     <th width="10%">任务名称</th>
                     <th width="6%">类型</th>
-                    <th width="6%">状态</th>
-                    <th width="8%">业务组(个)</th>
+                    <th width="4%">状态</th>
+                    <th width="6%">座席组</th>
                     <th width="6%">号码总数</th>
                     <th width="6%">新建数</th>
                     <th width="6%">执行中</th>
                     <th width="6%">执行完成</th>
-                    <th width="8%">呼叫接通数</th>
+                    <th width="6%">接通数</th>
+                    <th width="6%">接通率</th>
+                    <th width="6%">完成率</th>
                     <th width="20%">
                     	<input type="button" class="btn btn-primary" onclick="saveTask('add','0','','0','0','')" value="添加"/>
 					</th>
@@ -65,8 +67,10 @@
 					<td>${drn }</td>
 					<td>${frn }</td>
 					<td>${ans }</td>
+					<td>${jtr }</td>
+					<td>${frr }</td>
 					<td>
-						<a href="javascript:setAcd('${tid }')">指派业务组</a>&nbsp;&nbsp;
+						<a href="javascript:setAcd('${tid }')">指派座席组</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/task-telmanage.action?tid=${tid}&tname=${tname}&kind=${kind}">号码管理</a>&nbsp;&nbsp;
 						<a href="javascript:saveTask('edit','${tid }','${tname }','${kind }','${state }','${taskinfo }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskPre('${tid }','${tname }','${trn }')">删除</a>

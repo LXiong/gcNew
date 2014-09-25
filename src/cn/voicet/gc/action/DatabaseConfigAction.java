@@ -1,4 +1,6 @@
 package cn.voicet.gc.action;
+import java.io.IOException;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -23,19 +25,23 @@ public class DatabaseConfigAction extends BaseAction{
 		return "show_database";
 	}
 	
-	/** 清空日志 */
-	public String empty() {
+	/** 清空日志 
+	 * @throws IOException */
+	public String empty() throws IOException {
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("account:"+ds.account+", roleid:"+ds.roleID);
 		databaseConfigDao.emptyDatabase(ds);
+		response.getWriter().print("ok");
 		return null;
 	}
 	
-	/** 备份数据库 */
-	public String backup() {
+	/** 备份数据库 
+	 * @throws IOException */
+	public String backup() throws IOException {
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("account:"+ds.account+", roleid:"+ds.roleID+", defbackupfilename:"+defbackupfilename);
 		databaseConfigDao.backupDatabase(ds, defbackupfilename);
+		response.getWriter().print("ok");
 		return null;
 	}
 

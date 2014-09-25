@@ -55,7 +55,7 @@ public class AcdAction extends BaseAction implements ModelDriven<AcdForm>{
 		log.info("grpid:"+acdForm.getGrpid());
 		acdDao.deleteAcdByGrpid(acdForm);
 		log.info("delete acd ["+acdForm.getGrpid()+"] success");
-		return list();
+		return null;
 	}
 	
 	/**

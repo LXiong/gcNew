@@ -144,13 +144,30 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 	/************************************************************************/
 
 	public void queryTelByTid(final DotSession ds, final TaskForm taskForm) {
-		log.info("sp:web_tasktel_query(?,?,?)");
-		this.getJdbcTemplate().execute("{call web_tasktel_query(?,?,?)}", new CallableStatementCallback() {
+		log.info("sp:web_tasktel_query(?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call web_tasktel_query(?,?,?,?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setInt(1, taskForm.getTid());
 				cs.setString(2, taskForm.getTelnum());
-				cs.setInt(3, 500);
+				if(taskForm.getDdstate()==20)
+				{
+					cs.setString(3, null);
+				}
+				else
+				{
+					cs.setInt(3, taskForm.getDdstate());
+				}
+				if(taskForm.getCallret()==20)
+				{
+					cs.setString(4, null);
+				}
+				else
+				{
+					cs.setInt(4, taskForm.getCallret());
+				}
+				cs.setInt(5, taskForm.getStart());
+				cs.setInt(6, 500);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();

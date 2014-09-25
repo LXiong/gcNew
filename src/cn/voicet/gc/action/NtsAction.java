@@ -50,7 +50,7 @@ public class NtsAction extends BaseAction implements ModelDriven<NtsForm>{
 	{
 		log.info("account:"+ntsForm.getAccount());
 		ntsDao.deleteNts(ntsForm);
-		return list();
+		return null;
 	}
 	
 }

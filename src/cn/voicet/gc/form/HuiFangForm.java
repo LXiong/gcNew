@@ -3,6 +3,9 @@ package cn.voicet.gc.form;
 public class HuiFangForm {
 	
 	private int tid;
+	private String tname;
+	private int kind;
+	
 	private int ttid;
 	private int hfqk;		//回访情况
 	private String hfname;	//回访姓名	
@@ -34,6 +37,18 @@ public class HuiFangForm {
 	}
 	public int getTtid() {
 		return ttid;
+	}
+	public String getTname() {
+		return tname;
+	}
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+	public int getKind() {
+		return kind;
+	}
+	public void setKind(int kind) {
+		this.kind = kind;
 	}
 	public void setTtid(int ttid) {
 		this.ttid = ttid;

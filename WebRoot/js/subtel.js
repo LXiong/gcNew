@@ -149,15 +149,16 @@ function saveSubTelBtn()
     return false;	//not refresh page
 }
 
-function deleteSubtelPre(telid)
+function deleteSubtel(telid)
 {
 	$("#del_telid").val(telid);
 	layer.confirm("确定要删除吗？",function(){
-		deleteSubtel();
+		$("#form3").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				location.href="subtel-list.action";		
+	        }  
+		}); 
+	    return false;
 	});
-}
-function deleteSubtel()
-{
-	document.form3.submit();
 }
 

@@ -9,7 +9,9 @@ public class TaskForm {
 	
 	private String telnum;
 	private int ttid;
-	
+	private int ddstate=20;	//调度状态
+	private int start;		//起始序号
+	private int callret=20;	//呼叫结果
 	
 	private String[] cts;
 	
@@ -60,6 +62,24 @@ public class TaskForm {
 	}
 	public void setCts(String[] cts) {
 		this.cts = cts;
+	}
+	public int getDdstate() {
+		return ddstate;
+	}
+	public void setDdstate(int ddstate) {
+		this.ddstate = ddstate;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getCallret() {
+		return callret;
+	}
+	public void setCallret(int callret) {
+		this.callret = callret;
 	}
 	
 }

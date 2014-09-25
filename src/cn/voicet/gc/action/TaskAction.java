@@ -173,7 +173,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	public String telmanage()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("tid:"+taskForm.getTid()+", telnum:"+taskForm.getTelnum());
+		log.info("tid:"+taskForm.getTid()+", telnum:"+taskForm.getTelnum()+", ddstate:"+taskForm.getDdstate()+", callret:"+taskForm.getCallret()+", start:"+taskForm.getStart());
 		taskDao.queryTelByTid(ds, taskForm);
 		return "show_telmanage";
 	}
@@ -187,7 +187,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		log.info("tid:"+taskForm.getTid()+", kind:"+taskForm.getKind()+", tname:"+taskForm.getTname());
 		taskDao.emptyTaskTel(taskForm);
 		log.info("empty ["+taskForm.getTname()+"] success");
-		return telmanage();
+		return null;
 	}
 	
 	/**
@@ -198,7 +198,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	{
 		log.info("tid:"+taskForm.getTid()+"ttid:"+taskForm.getTtid());
 		taskDao.deleteTaskTelByTtid(taskForm);
-		return telmanage();
+		return null;
 	}
 	
 	/**
@@ -210,7 +210,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		log.info("tid:"+taskForm.getTid()+", ttid:"+taskForm.getTtid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind());
 		taskDao.recallTel(taskForm);
 		log.info("recall complete");
-		return telmanage();
+		return null;
 	}
 	
 	/**

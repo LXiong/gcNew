@@ -53,13 +53,7 @@
 		<!-- 话务员技能统计 -->
 		<action name="agentanaly-*" class="agentAnalyAction" method="{1}">
 			<result name="show_agent_analy">/WEB-INF/page/manage/agentAnalyList.jsp</result>
-			
 			<result name="show_agent_answer">/WEB-INF/page/manage/agentAnswerList.jsp</result>
-			
-			<result name="show_edit_huifang1">/WEB-INF/page/huifang/huifang1edit.jsp</result>
-			<result name="show_edit_huifang2">/WEB-INF/page/huifang/huifang2edit.jsp</result>
-			<result name="show_edit_huifang3">/WEB-INF/page/huifang/huifang3edit.jsp</result>
-			
 		</action>
 		
 		<!-- 话务员档案管理 -->
@@ -106,6 +100,11 @@
 			<result name="show_hfedit1">/WEB-INF/page/huifang/huifang1edit.jsp</result>
 			<result name="show_hfedit2">/WEB-INF/page/huifang/huifang2edit.jsp</result>
 			<result name="show_hfedit3">/WEB-INF/page/huifang/huifang3edit.jsp</result>
+			<!-- for view -->
+			<result name="show_hfview1">/WEB-INF/page/huifang/huifang1view.jsp</result>
+			<result name="show_hfview2">/WEB-INF/page/huifang/huifang2view.jsp</result>
+			<result name="show_hfview3">/WEB-INF/page/huifang/huifang3view.jsp</result>
+			
 		</action>
 	</package>  
 	<package name="dot" namespace="/" extends="json-default">
@@ -117,18 +116,14 @@
 			<result type="json"></result>
 		</action>
 		<!-- 清空数据库日志 -->
-		<action name="dbconfig_empty" class="databaseConfigAction" method="empty">
+		<action name="dbconfig-empty" class="databaseConfigAction" method="empty">
 			<result type="json"></result>
 		</action>
 		<!-- 备份数据库 -->
-		<action name="dbconfig_backup" class="databaseConfigAction" method="backup">
+		<action name="dbconfig-backup" class="databaseConfigAction" method="backup">
 			<result type="json"></result>
 		</action>
-		<!-- 数据库索引管理 -->
-		<action name="dbconfig_index" class="databaseConfigAction" method="dbIndex">
-			<result type="json"></result>
-		</action>
-		
+
 		<action name="getAcdSelect" class="taskAction" method="getAcdSelectByTid">
 			<result type="json"></result>
 		</action>

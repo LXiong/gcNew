@@ -129,14 +129,15 @@ function submitSaveNtsBtn()
 }
 
 //delete agent
-function deleteNtsPre(account)
+function deleteNts(account)
 {
 	$("#del_account").val(account);
 	layer.confirm("确定要删除吗？",function(){
-		deleteNts();
+		$("#form3").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				location.href="nts-list.action";		
+	        }  
+		}); 
+	    return false;
 	});
-}
-function deleteNts()
-{
-	document.form3.submit();
 }

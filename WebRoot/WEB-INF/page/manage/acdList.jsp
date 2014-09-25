@@ -62,8 +62,7 @@
 					-->
 					<td>
 						<a href="javascript:saveAcd('edit','${acd.grpid }','<s:property value="#session.vts.curCTS"/>','${acd.grpname }','${acd.telnum }','${acd.acw }','${acd.ani }','${acd.maxwaittime }','${acd.maxwaitnum }','${acd.overflowto }')">修改</a>&nbsp;&nbsp;
-						<a href="javascript:deleteAcdPre('${acd.grpid }')">删除</a>
-						<input type="button" class="hide" onclick="deleteAcd()" value="删除"/>
+						<a href="javascript:deleteAcd('${acd.grpid }')">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -144,7 +143,7 @@
 	<!--POP LAYER END-->
 	
 	<!-- delete acd form -->
-	<form name="form3" action="<c:url value='acd-deleteAcd.action'/>" method="post">
+	<form id="form3" action="<c:url value='acd-deleteAcd.action'/>" method="post">
 		<input type="hidden" name="cts" value="${cts }"/>
 		<input type="hidden" id="del_grpid" name="grpid"/>
 	</form>
@@ -191,7 +190,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd.js?v=4'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

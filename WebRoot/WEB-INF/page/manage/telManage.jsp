@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  	<title>扶贫观察点管理系统</title>
-	<link type="text/css" href="<c:url value='/style/common_cn.css?v=2'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/common_cn.css?v=3'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=3'/>" rel="stylesheet" />
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
@@ -34,38 +34,51 @@
    	<input type="hidden" name="tname" value="${tname }"/>
    	<input type="hidden" name="kind" value="${kind }"/>
    	
-	<div class="queryDiv">
-	   	<ul class="queryWrap_ul left">
-			<li><label>电话号码：</label><input type="text" name="telnum" class="ipt100 inputDefault" value="<s:property value="telnum"/>"/></li>
-	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+	<div class="queryDiv_h80">
+	   	<ul class="queryWrap_ul">
 			<li>
-	        	<input type="button" onclick="filterBlack()" class="btn4" value="号码过滤" />
-	        </li>
-			<li>
-	        	<label><input type="button" onclick="recall('${tid }','${tname }','${kind }')" class="btn4" value="重呼所有" /></label>
-	        </li>
-			<li>
-	        	<input type="button" onclick="saveTaskTel('add','${tid }','','')" class="btn4" value="添加" />
-	        </li>
-			<li>
-	        	<label><a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板</label>
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;电话号码：</label><input type="text" name="telnum" class="ipt100 inputDefault" value="<s:property value="telnum"/>"/>
+			</li>
+	        <li>
+	        	<label>&nbsp;&nbsp;&nbsp;&nbsp;状态：</label>
+	        	<s:select name="ddstate" list="#{20:'不限',0:'未调度',1:'正在呼叫',8:'错号空号',9:'黑名单',10:'呼叫完成'}" listKey="key" listValue="value" value="ddstate" cssClass="inputDefault"></s:select>
 	        </li>
 	        <li>
-	        	<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>
+	        	<label>&nbsp;&nbsp;&nbsp;&nbsp;结果：</label>
+	        	<s:select name="callret" list="#{20:'不限',1:'呼叫接通',2:'呼叫失败'}" listKey="key" listValue="value" value="callret" cssClass="inputDefault"></s:select>
 	        </li>
+			<li><label>&nbsp;&nbsp;&nbsp;&nbsp;起始编号：</label><input type="text" name="start" class="ipt40 inputDefault" value="<s:property value="start"/>"/></li>	        
+	        <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+		</ul>
+		<ul class="queryWrap_ul">
 	        <li>
-	        	<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/task-export.action?tid=${tid }&kind=${kind }'" value="导出"/>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="filterBlack()" class="btn4" value="号码过滤" />
 	        </li>
 			<li>
-	        	<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="清空"/>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="button" onclick="recall()" class="btn4" value="重呼所有" /></label>
+	        </li>
+			<li>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="saveTaskTel('add','${tid }','','')" class="btn4" value="添加" />
+	        </li>
+			<li>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<label><a style="color:#00f" href="${pageContext.request.contextPath }/excelTemplate/huifang${kind }_import.xls">下载</a>模板</label>
 	        </li>
 	        <li>
-	        	<input type="button" class="btn4" onclick="location.href='<c:url value='/task-list.action'/>'" value="返回"/>
+	        	&nbsp;&nbsp;<input type="button" class="btn4" onclick="showSelFile('${tid }','${tname }','${kind }')" value="导入"/>
+	        </li>
+	        <li>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/task-export.action?tid=${tid }&kind=${kind }'" value="导出"/>
+	        </li>
+			<li>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn4" onclick="emptyTasktel('${tname }')" value="清空"/>
+	        </li>
+	        <li>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn4" onclick="location.href='<c:url value='/task-list.action'/>'" value="返回"/>
 	        </li>
 		</ul>
 	</div>
     </form>
-	<div class="content_List568">
+	<div class="content_List528">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
@@ -84,13 +97,12 @@
 					<td>${tel.state }</td>
 					<td>${tel.callret }</td>
 					<td>
+						<a href="<c:url value='/huifang-viewtel.action?tid=${tid }&ttid=${ttid }&tname=${tname }&kind=${kind }'/>">查看详细</a>&nbsp;&nbsp;
 						<c:if test="${tel.stateid ne 1 }">
 						<a href="<c:url value='/task-recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
 						</c:if>
-
 						<a href="javascript:saveTaskTel('edit','${tid }','${tel.ttid }','${telnum }')">修改</a>&nbsp;&nbsp;
-						<a href="javascript:deleteTaskTelPre('${tid }','${tel.ttid }')">删除</a>
-						<input type="button" class="hide" onclick="deleteTaskTel()" value="删除"/>
+						<a href="javascript:deleteTaskTel('${tid }','${tel.ttid }')">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -135,14 +147,14 @@
 	<!--POP LAYER END-->
 	
 	<!-- empty form3 -->
-	<form name="form3" action="<c:url value='/task-emptyTaskTel.action'/>" method="post">
+	<form id="form3" action="<c:url value='/task-emptyTaskTel.action'/>" method="post">
 		<input type="hidden" name="tid" value="${tid }"/>
 		<input type="hidden" name="kind" value="${kind }"/>
 		<input type="hidden" name="tname" value="${tname }"/>
 	</form>
 	
 	<!-- delete tel -->
-	<form name="form4" action="<c:url value='/task-deleteTaskTel.action'/>" method="post">
+	<form id="form4" action="<c:url value='/task-deleteTaskTel.action'/>" method="post">
 		<input type="hidden" id="del_tid" name="tid"/>
 		<input type="hidden" id="del_ttid" name="ttid"/>
 	</form>
@@ -169,10 +181,10 @@
 	<!--POP LAYER END-->
 	
 	<!-- 号码过滤 -->
-	<form id="form6" action="<c:url value='task-blackFilter.action?tid=${tid }'/>" method="post">
-		
-	</form>
+	<form id="form6" action="<c:url value='task-blackFilter.action?tid=${tid }'/>" method="post"></form>
 	
+	<!-- recall -->
+	<form id="form7" action="<c:url value='task-recall.action?tid=${tid }&tname=${tname }&kind=${kind }'/>" method="post"></form>
 	
 </div>
 
@@ -186,9 +198,9 @@
 	        next : "下一页",
 	        last : "尾页",
 	        startPage : nowPage,
-	        perPage : 26,
+	        perPage : 24,
 	        keyBrowse:true,
-	        delay : 5,
+	        delay : 0,
 	        callback : function( pages, items ){
 				parent.document.getElementById("curTelnumPage").value = pages.current;
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
@@ -212,6 +224,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=10'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=14'/>"></script>
 </body>
 </html>

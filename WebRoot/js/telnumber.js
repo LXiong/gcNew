@@ -65,30 +65,41 @@ function validateExcelUpLoadFile(form)
 function emptyTasktel(tname)
 {
 	layer.confirm("确定要清空 【"+tname+"】中所有号码吗？",function(){
-		document.form3.submit();
+		$("#form3").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				document.form1.submit();		
+	        }  
+		}); 
+	    return false;
 	});
 }
 
 //delete task
-function deleteTaskTelPre(tid,ttid)
+function deleteTaskTel(tid,ttid)
 {
 	$("#del_tid").val(tid);
 	$("#del_ttid").val(ttid);
 	layer.confirm("确定要删除吗？",function(){
-		deleteTaskTel();
+		$("#form4").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				document.form1.submit();		
+	        }  
+		}); 
+	    return false;
 	});
-}
-function deleteTaskTel()
-{
-	document.form4.submit();
 }
 
 
 //recall
-function recall(tid,tname,kind)
+function recall()
 {
 	layer.confirm("确定要重呼所有号码吗？",function(){
-		location.href="task-recall.action?tid="+tid+"&tname="+tname+"&kind="+kind;
+		$("#form7").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				document.form1.submit();		
+	        }  
+		}); 
+	    return false;
 	});
 }
 

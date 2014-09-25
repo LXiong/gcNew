@@ -203,16 +203,17 @@ function saveAcdBtn()
 }
 
 
-function deleteAcdPre(grpid)
+function deleteAcd(grpid)
 {
 	$("#del_grpid").val(grpid)
 	layer.confirm("确定要删除吗？",function(){
-		deleteAcd();
+		$("#form3").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				location.href="acd-list.action";		
+	        }  
+		}); 
+	    return false;
 	});
-}
-function deleteAcd()
-{
-	document.form3.submit();
 }
 
 //set acd task

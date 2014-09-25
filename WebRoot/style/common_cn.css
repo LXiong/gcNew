@@ -49,6 +49,7 @@ a:hover, a:active{text-decoration: underline;color: #2284E1;border: none;}
 
 /* input */
 .ipt20{width:20px;height:12px; padding:2px 5px; border:1px solid #CCC; color:#000;}
+.ipt40{width:40px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}
 .ipt50{width:50px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}
 .ipt70{width:70px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}
 .ipt90{width:70px;height:16px; padding:2px 5px; border:1px solid #CCC; color:#000;}

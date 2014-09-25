@@ -46,7 +46,7 @@
 					<td>${content }</td>
 					<td>
 						<a href="javascript:saveNts('edit','${account }','${pwd }','${ip_allow }','${anyone }','${content }')">修改</a>&nbsp;&nbsp;
-						<a href="javascript:deleteNtsPre('${account }')">删除</a>
+						<a href="javascript:deleteNts('${account }')">删除</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -115,7 +115,7 @@
 	</div>
 	<!--POP LAYER END-->
 	
-	<form name="form3" action="<c:url value='/nts-deleteNts.action'/>" method="post">
+	<form id="form3" action="<c:url value='/nts-deleteNts.action'/>" method="post">
 		<input type="hidden" id="del_account" name="account"/>
 	</form>
 	
@@ -155,6 +155,6 @@ $(function(){
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/nts.js?v=5'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/nts.js?v=6'/>"></script>
 </body>
 </html>

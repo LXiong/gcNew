@@ -51,6 +51,6 @@ public class SubTelAction extends BaseAction implements ModelDriven<SubTelForm>{
 		log.info("cts:"+ds.curCTS+", telid:"+subTelForm.getTelid());
 		subTelDao.deleteSubTelByTelid(ds, subTelForm);
 		log.info("delete subtel ["+subTelForm.getTelid()+"] success!");
-		return list();
+		return null;
 	}
 }
