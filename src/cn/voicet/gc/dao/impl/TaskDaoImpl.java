@@ -259,17 +259,11 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 							{
 								cell.setCellType(HSSFCell.CELL_TYPE_STRING);
 								cellValues[j] = row.getCell(j).getStringCellValue();
-								log.info("cellValues[j]:"+cellValues[j]);
 							}
 							else
 							{
 								cellValues[j]="";
 							}
-							/*if(!checkCellOK(iKind,i,j,cellValues[j])) 
-							{
-								bCheckOK=false;
-								break;
-							}*/
 						}// end col
 						//exec procedure
 						if(bCheckOK)

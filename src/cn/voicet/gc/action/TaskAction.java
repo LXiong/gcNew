@@ -259,9 +259,6 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	{
 		log.info("tid:"+taskForm.getTid()+", kind:"+taskForm.getKind()+", uploadExcel file:"+uploadExcel);
 		taskDao.batchImportData(uploadExcel, taskForm.getTid(), taskForm.getKind());	
-		
-		//response.getWriter().print(true);
-		
 		return null;
 	}
 	

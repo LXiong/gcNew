@@ -6,7 +6,7 @@
 <head>
  	<title>扶贫观察点管理系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css?v=3'/>" rel="stylesheet" />
-	<link type="text/css" href="<c:url value='/style/layout.css?v=3'/>" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/style/layout.css?v=4'/>" rel="stylesheet" />
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
@@ -141,7 +141,7 @@
 	        </div>
 	    </div>
 	    <input type="file" id="uploadExcel" name="uploadExcel" style="display:none;" onchange="showPopDiv()"/>
-		<div class="lab_ipt_item">
+		<div class="lab_ipt_item" id="importBtnDiv">
 			<span class="lab120"></span>
 			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
@@ -228,6 +228,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=15'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=19'/>"></script>
 </body>
 </html>

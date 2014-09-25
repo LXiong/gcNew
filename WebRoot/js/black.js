@@ -101,7 +101,11 @@ function showPopDiv()
 {
 	//clear
 	$(".asterisk")[1].innerHTML="";
-	$("#curFile")[0].innerHTML=$("#uploadExcel").val();
+	var f = $("#uploadExcel").val()
+	var index = f.lastIndexOf("\\",f.length);
+	if(parseInt(index)>0)
+		f = f.substring(index+1, f.length);
+	$("#curFile")[0].innerHTML=f;
 	if($("#uploadExcel").val().length>0)
 	{
 		$.layer({
@@ -120,9 +124,15 @@ function showPopDiv()
 function validateuploadInforFile(form)
 {
 	if(!validateExcelUpLoadFile(form)) return false;
+	var f = $("#uploadExcel").val()
+	//lastIndexOf("查找的字符串","字符串长度")
+	var index = f.lastIndexOf("\\",f.length);
+	if(parseInt(index)>0)
+		f = f.substring(index+1, f.length);
+	layer.closeAll();
+	layer.load("正在导入【"+f+"】...",0);
 	$("#form5").ajaxSubmit({ 
         success:function(data){ //提交成功的回调函数
-			layer.closeAll(); 
 			document.form1.submit();
         }  
 	}); 
