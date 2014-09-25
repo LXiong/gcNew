@@ -49,7 +49,6 @@ function queryCall()
 	if(!checkWaittime()) return false;
 	if(!checkCalltime()) return false;
 	document.form1.submit();
-
 }
 //play music
 function play(t,w)

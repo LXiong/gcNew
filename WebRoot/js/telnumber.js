@@ -10,7 +10,7 @@ function showSelFile(tid,tname,kind)
 function showPopDiv()
 {
 	//clear
-	$(".asterisk")[0].innerHTML="";
+	$(".asterisk")[1].innerHTML="";
 	$("#curFile")[0].innerHTML=$("#uploadExcel").val();
 	if($("#uploadExcel").val().length>0)
 	{
@@ -53,10 +53,10 @@ function validateExcelUpLoadFile(form)
                 continue;
             }
         }
-        $(".asterisk")[0].innerHTML="文件格式不正确！";
+        $(".asterisk")[1].innerHTML="文件格式不正确！";
         return false;
     } else {
-    	$(".asterisk")[0].innerHTML="请选择你需要导入的文件";
+    	$(".asterisk")[1].innerHTML="请选择你需要导入的文件";
         return false;
     }	
 }
@@ -107,7 +107,7 @@ function recall()
 //show pop div
 function saveTaskTel(t,tid,ttid,telnum)
 {
-	$(".asterisk")[1].innerHTML="";
+	$(".asterisk")[2].innerHTML="";
 	var tit;
 	if(t=="add")
 	{
@@ -134,6 +134,7 @@ function saveTaskTel(t,tid,ttid,telnum)
 
 $(function(){
 	$("#save_telnumx").bind("blur",checkTelnum);
+	$("#startnumx").bind("blur",checkStartnum);
 });
 
 function checkTelnum()
@@ -143,17 +144,17 @@ function checkTelnum()
 	
 	if(!telnum)
 	{
-		$(".asterisk")[1].innerHTML="电话号码不能为空";
+		$(".asterisk")[2].innerHTML="电话号码不能为空";
 		return false;
 	}
 	else if(!regexp.exec(telnum))
 	{
-		$(".asterisk")[1].innerHTML="电话号码不合理";
+		$(".asterisk")[2].innerHTML="电话号码不合理";
 		return false;
 	}
 	else
 	{
-		$(".asterisk")[1].innerHTML="";
+		$(".asterisk")[2].innerHTML="";
 		return true;
 	}
 }
@@ -183,4 +184,31 @@ function filterBlack()
         }  
 	}); 
     return false;	//not refresh page
+}
+
+function checkStartnum()
+{
+	var start = $("#startnumx").val();
+	var regexp = /^[0-9]*$/;
+	if(!start)
+	{
+		$(".asterisk")[0].innerHTML="起始编号不能为空";
+		return false;
+	}
+	else if(!regexp.exec(start))
+	{
+		$(".asterisk")[0].innerHTML="只能是数字";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[0].innerHTML="";
+		return true;
+	}
+}
+
+function queryTelnum()
+{
+	if(!checkStartnum()) return false;
+	document.form1.submit();
 }

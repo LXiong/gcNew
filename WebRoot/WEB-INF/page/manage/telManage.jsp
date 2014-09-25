@@ -47,8 +47,12 @@
 	        	<label>&nbsp;&nbsp;&nbsp;&nbsp;结果：</label>
 	        	<s:select name="callret" list="#{20:'不限',1:'呼叫接通',2:'呼叫失败'}" listKey="key" listValue="value" value="callret" cssClass="inputDefault"></s:select>
 	        </li>
-			<li><label>&nbsp;&nbsp;&nbsp;&nbsp;起始编号：</label><input type="text" name="start" class="ipt40 inputDefault" value="<s:property value="start"/>"/></li>	        
-	        <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+			<li>
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;起始编号：</label>
+				<input type="text" id="startnumx" name="start" class="ipt40 inputDefault" value="<s:property value="start"/>"/>
+				<span class="asterisk"></span>
+			</li>	        
+	        <li>&nbsp;&nbsp;<input type="button" onclick="queryTelnum()" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 		<ul class="queryWrap_ul">
 	        <li>
@@ -224,6 +228,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=14'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=15'/>"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ public class TaskForm {
 	private String telnum;
 	private int ttid;
 	private int ddstate=20;	//调度状态
-	private int start;		//起始序号
+	private int start=1;	//起始序号
 	private int callret=20;	//呼叫结果
 	
 	private String[] cts;
