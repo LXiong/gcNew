@@ -30,7 +30,6 @@
                      <th width="10%">方向</th>
                      <th width="10%">对方号码</th>
                      <th width="10%">登录话务员</th>
-                     <th width="20%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -42,9 +41,6 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>
-						<a href="#">取消登录</a>
-					</td>
 				</tr>
 				</s:iterator>
 			</tbody>
