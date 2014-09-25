@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">业务组资料维护&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">座席组资料维护&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
 	<div class="content_List615">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
@@ -190,7 +190,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd.js?v=4'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd.js?v=5'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

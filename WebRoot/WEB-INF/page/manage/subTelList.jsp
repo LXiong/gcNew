@@ -31,7 +31,7 @@
 					<th width="8%">分机编号</th>
                     <th width="12%">分机号码</th>
                     <th width="12%">默认话务员帐号</th>
-                    <th width="12%">默认业务组号码</th>
+                    <th width="12%">默认座席组号码</th>
                     <th width="12%">默认##命令</th>
                     <th width="15%">绑定座席客户端名称</th>
                     <th width="12%">
@@ -87,7 +87,7 @@
 	        </div>
 	    </div>
 	    <div class="lab_ipt_item" id="whnum">
-	    	<span class="lab150">默认业务组号码：</span>
+	    	<span class="lab150">默认座席组号码：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="defacdx" name="subteltxt" value="0" class="ipt_text_w150 inputDefault" />
 	            <span class="asterisk">*</span>

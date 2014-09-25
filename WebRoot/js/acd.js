@@ -10,11 +10,11 @@ function saveAcd(t,grpid,cts,grpname,telnum,acw,ani,maxwaittime,maxwaitnum,overf
 	var tit;
 	if(t=="add")
 	{
-		tit="为【"+cts+"】添加业务组";
+		tit="为【"+cts+"】添加座席组";
 	}
 	else
 	{
-		tit="修改【"+cts+"】业务组信息";
+		tit="修改【"+cts+"】座席组信息";
 	}
 	//
 	$("#grpidx").val(grpid);
