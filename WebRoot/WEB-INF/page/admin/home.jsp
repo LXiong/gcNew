@@ -215,6 +215,7 @@
 		tabObj.rows[i].cells[7].innerText=str[5];
 		tabObj.rows[i].cells[8].innerText=str[6];
 		tabObj.rows[i].cells[9].innerText=str[7];
+		tabObj.rows[i].cells[10].innerText=str[8];
 	}
 	
 	/*************** 座席分机监控  ***************/

@@ -53,6 +53,7 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 	
 	public String save()
 	{
+		rflag = rflag + 1;
 		huiFangDao.saveHuiFangInfo(Integer.parseInt(flag), huiFangForm);
 		return list();
 	}
@@ -85,6 +86,7 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 
 	public String agentSave()
 	{
+		rflag = rflag + 1;
 		huiFangDao.saveHuiFangInfo(Integer.parseInt(flag), huiFangForm);
 		return agentAnswer();
 	}
@@ -115,14 +117,6 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 		}
 	}
 	
-	private String flag;
-	public String getFlag() {
-		return flag;
-	}
-	public void setFlag(String flag) {
-		this.flag = flag;
-	}
-	
 	/**
 	 * 
 	 * @return
@@ -135,5 +129,21 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 		log.info("type:"+type);
 		response.getWriter().write(String.valueOf(type));
 		return null;
+	}
+	
+
+	private String flag;
+	private int rflag=1;	//return flag;
+	public String getFlag() {
+		return flag;
+	}
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+	public int getRflag() {
+		return rflag;
+	}
+	public void setRflag(int rflag) {
+		this.rflag = rflag;
 	}
 }

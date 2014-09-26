@@ -32,6 +32,7 @@
                      <th width="8%">组号码</th>
                      <th width="8%">组名称</th>
                      <th width="6%">外呼主叫</th>
+                     <th width="4%">任务</th>
                      <th width="4%">状态</th>
                      <th width="6%">添加中继数</th>
                      <th width="4%">外呼数</th>
@@ -48,6 +49,7 @@
 					<td>${telnum }</td>
 					<td>${grpname }</td>
 					<td>${ani }</td>
+					<td>${taskid }</td>
 					<td>${curstate }</td>
 					<td>${addtrk }</td>
 					<td>${obt_num }</td>

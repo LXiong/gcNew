@@ -8,17 +8,14 @@
  	<title>电话自动外呼系统</title>
 	<link type="text/css" href="<c:url value='/style/common_cn.css?v=2'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=1'/>" rel="stylesheet" />
+ 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ 	<meta http-equiv="cache-control" content="no-cache"/>
+ 	<meta http-equiv="expires" content="0"/>
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
     <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/datePicker/WdatePicker.js'/>"></script>
     <!-- 日期控件结束 -->
- 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- 	<meta http-equiv="cache-control" content="no-cache"/>
- 	<meta http-equiv="expires" content="0"/>
- 	<!-- layer 弹出插件 start -->
-	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
-	<!-- layer 弹出插件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
@@ -28,9 +25,11 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">接听查询</h3>
-   	<form action="<c:url value='/agentanaly-answer.action'/>" method="post">
+   	<form name="form1" action="<c:url value='/agentanaly-answer.action'/>" method="post">
 	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w600 left">
+	   	<ul class="queryWrap_ul left">
+	        <li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate inputDefault" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="sdt"/>"/></li>
+	        <li><label>结束日期：</label><input type="text" id="edt" name="edt" class="Wdate inputDefault" style="width:90px; height:18px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value="edt"/>"/></li>
 	        <li>
 	        	<label>呼叫方向：</label>
 	        	<s:select name="callio" list="#{'2':'不限',1:'呼入',0:'呼出'}" listKey="key" listValue="value" value="%{callio}" cssClass="inputDefault"></s:select>
@@ -42,9 +41,9 @@
 	        <li>
 	        	<input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/>
 	        </li>
-		</ul>
-		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
+	        <li>
+	        	<input type="button" onclick="emptyAnswer()" class="btn4" value="清空"/>
+	        </li>
 		</ul>
 	</div>
     </form>
@@ -100,7 +99,7 @@
  		<button id="tiaozhuan" class="btn btn-primary">跳转</button>
 	</div>
     <!-- jPage end -->
-	
+	<form id="form2" action="<c:url value='/agentanaly-emptyAnswer.action'/>" method="post"></form>
 </div>
 <script type="text/javascript">
 	$(function(){
@@ -133,5 +132,11 @@
 	});
 </script>
 
+<!-- layer 弹出插件 start -->
+<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- layer 弹出插件 end -->
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/agent.js?v=2'/>"></script>
 </body>
 </html>

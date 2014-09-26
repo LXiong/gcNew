@@ -101,8 +101,8 @@
 					<td>${tel.state }</td>
 					<td>${tel.callret }</td>
 					<td>
-						<a href="<c:url value='/huifang-viewtel.action?tid=${tid }&ttid=${ttid }&tname=${tname }&kind=${kind }'/>">查看详细</a>&nbsp;&nbsp;
-						<c:if test="${tel.stateid ne 1 }">
+						<a href="<c:url value='/huifang-viewtel.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a>&nbsp;&nbsp;
+						<c:if test="${tel.stateid ne 0 }">
 						<a href="<c:url value='/task-recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
 						</c:if>
 						<a href="javascript:saveTaskTel('edit','${tid }','${tel.ttid }','${telnum }')">修改</a>&nbsp;&nbsp;

@@ -14,4 +14,5 @@ public interface AgentDao{
 	void initAgentpwdByAgtid(AgentForm agentForm);
 	void exportAgentAnalyData(AgentForm agentForm, HttpServletResponse response);
 	void queryAgentAnswerList(DotSession ds, AgentForm agentForm);
+	void emptyAnswerByAgent(DotSession ds);
 }

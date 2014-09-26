@@ -151,8 +151,8 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 	}
 
 	public void queryAgentAnswerList(final DotSession ds, final AgentForm agentForm) {
-		log.info("sp:web_agent_callquery(?,?,?)");
-		this.getJdbcTemplate().execute("{call web_agent_callquery(?,?,?)}", new CallableStatementCallback() {
+		log.info("sp:web_agent_callquery(?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call web_agent_callquery(?,?,?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.agttelnum);	//话务员号码
@@ -164,7 +164,9 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 				{
 					cs.setInt(2, agentForm.getCallio());
 				}
-				cs.setString(3, agentForm.getTelnum());
+				cs.setString(3, agentForm.getSdt());
+				cs.setString(4, agentForm.getEdt());
+				cs.setString(5, agentForm.getTelnum());
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -176,6 +178,18 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		        		 ds.list.add(map);
 					}
 				}
+				return null;
+			}
+		});
+	}
+
+	public void emptyAnswerByAgent(final DotSession ds) {
+		log.info("sp:web_agent_callempty(?)");
+		this.getJdbcTemplate().execute("{call web_agent_callempty(?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.agttelnum);	//话务员号码
+				cs.execute();
 				return null;
 			}
 		});

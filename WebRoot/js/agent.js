@@ -190,3 +190,15 @@ function initAgentpwd(agtid)
     }); 
 }
 
+//清空接听查询
+function emptyAnswer()
+{
+	layer.confirm("确定要清空吗？",function(){
+		$("#form2").ajaxSubmit({ 
+			success:function(data){ //提交成功的回调函数
+				document.form1.submit();
+	        }  
+		}); 
+	    return false;	//not refresh page
+	});
+}
