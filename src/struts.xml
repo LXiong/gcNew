@@ -86,6 +86,11 @@
 			<result name="show_database">/WEB-INF/page/admin/databaseConfig.jsp</result>
 		</action>
 		
+		<!-- 系统参数设定 -->
+		<action name="sysparam-*" class="sysParamAction" method="{1}">
+			<result name="show_sysparam">/WEB-INF/page/admin/sysparam.jsp</result>
+		</action>
+		
 		<!-- 系统日志查看 -->
 		<action name="syslog-*" class="systemLogAction" method="{1}">
 			<result name="show_log">/WEB-INF/page/admin/systemLog.jsp</result>

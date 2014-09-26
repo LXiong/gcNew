@@ -21,6 +21,7 @@
 		</grp>
 	    <grp name="数据库">
 	      	<fun name="数据库维护" action="dbconfig.action" />
+	      	<fun name="系统参数设定" action="sysparam-list.action" />
 	    </grp>
 	</role>
 	<role roleid="2" describle="业务管理员">

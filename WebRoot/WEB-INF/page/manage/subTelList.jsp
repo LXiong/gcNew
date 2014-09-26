@@ -30,7 +30,7 @@
 				<tr>
 					<th width="8%">分机编号</th>
                     <th width="12%">分机号码</th>
-                    <th width="12%">默认话务员帐号</th>
+                    <th width="12%">默认话务员号码</th>
                     <th width="12%">默认座席组号码</th>
                     <th width="12%">默认##命令</th>
                     <th width="15%">绑定座席客户端名称</th>
