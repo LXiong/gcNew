@@ -107,7 +107,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 * @throws IOException 
 	 */
 	public String saveTask() throws IOException{
-		log.info("tid:"+taskForm.getTid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind()+", state:"+taskForm.getState()+", taskinfo:"+taskForm.getTaskinfo());
+		log.info("tid:"+taskForm.getTid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind()+", taskinfo:"+taskForm.getTaskinfo());
 		String ret = taskDao.saveTask(taskForm);
 		//task update
 		if(ret.equals("ok"))

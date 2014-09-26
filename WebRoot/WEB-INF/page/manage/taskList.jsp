@@ -28,7 +28,6 @@
 					<th width="4%">编号</th>
                     <th width="10%">任务名称</th>
                     <th width="6%">类型</th>
-                    <th width="4%">状态</th>
                     <th width="6%">座席组</th>
                     <th width="6%">号码总数</th>
                     <th width="6%">新建数</th>
@@ -38,7 +37,7 @@
                     <th width="6%">接通率</th>
                     <th width="6%">完成率</th>
                     <th width="20%">
-                    	<input type="button" class="btn btn-primary" onclick="saveTask('add','0','','0','0','')" value="添加"/>
+                    	<input type="button" class="btn btn-primary" onclick="saveTask('add','0','','0','')" value="添加"/>
 					</th>
 				</tr>
              </thead>
@@ -55,12 +54,6 @@
 						<c:if test="${kind eq 2 }">回访2</c:if>
 						<c:if test="${kind eq 3 }">回访3</c:if>
 					</td>
-					<td>
-						<c:if test="${state eq 0 }">新建</c:if>
-						<c:if test="${state eq 1 }">激活</c:if>
-						<c:if test="${state eq 9 }">停止</c:if>
-						<c:if test="${state eq 10 }">呼叫完成</c:if>
-					</td>
 					<td>${acdnum }</td>
 					<td>${trn }</td>
 					<td>${nrn }</td>
@@ -72,7 +65,7 @@
 					<td>
 						<a href="javascript:setAcd('${tid }')">指派座席组</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/task-telmanage.action?tid=${tid}&tname=${tname}&kind=${kind}">号码管理</a>&nbsp;&nbsp;
-						<a href="javascript:saveTask('edit','${tid }','${tname }','${kind }','${state }','${taskinfo }')">修改</a>&nbsp;&nbsp;
+						<a href="javascript:saveTask('edit','${tid }','${tname }','${kind }','${taskinfo }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskPre('${tid }','${tname }','${trn }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTask('${tid }','${tname }')" value="删除"/>
 					</td>
@@ -107,13 +100,6 @@
 	    	<span class="lab120">任务类型：</span>
 	        <div class="ipt-box">
 	        	<s:select id="kindx" name="kind" list="#application.vta.GetList('taskkind')" listKey="id" listValue="str" cssStyle="height:28px;"></s:select>
-	            <span class="asterisk"></span>
-	        </div>
-	    </div>
-	    <div class="lab_ipt_item" id="tstate_add_hide">
-	    	<span class="lab120">任务状态：</span>
-	        <div class="ipt-box">
-	        	<s:select id="statex" name="state" list="#application.vta.GetList('taskstate')" listKey="id" listValue="str" cssStyle="height:28px;"></s:select>
 	            <span class="asterisk"></span>
 	        </div>
 	    </div>
@@ -194,6 +180,6 @@ $(function(){
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/json_ie.js?v=1'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/task.js?v=9'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=10'/>"></script>
 </body>
 </html>

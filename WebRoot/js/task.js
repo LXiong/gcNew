@@ -1,5 +1,5 @@
 //save task
-function saveTask(t,tid,tname,kind,state,taskinfo)
+function saveTask(t,tid,tname,kind,taskinfo)
 {
 	$(".asterisk")[0].innerHTML="";
 	var tit;
@@ -16,7 +16,6 @@ function saveTask(t,tid,tname,kind,state,taskinfo)
 	//
 	$("#tidx").val(tid);
 	$("#kindx").val(kind);
-	$("#statex").val(state);
 	$("#tnamex").val(tname);
 	$("#taskinfox").val(taskinfo);
 	$.layer({
@@ -70,9 +69,7 @@ function saveTaskBtn()
 			}
 			else if(data=="insertok")
 			{
-				
 				location.href="${pageContext.request.contextPath}/task-list.action";
-				
 			}
         }  
 	}); 

@@ -94,17 +94,16 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 				if(taskForm.getTid()!=0)
 				{
 					log.info("sp:web_task_update(?,?,?,?,?,?)");
-					cs = conn.prepareCall("{call web_task_update(?,?,?,?,?,?)}");
+					cs = conn.prepareCall("{call web_task_update(?,?,?,?,?)}");
 					cs.clearParameters();
 					cs.setInt(1, taskForm.getTid());
 					cs.setString(2, taskForm.getTname());
 					cs.setInt(3, taskForm.getKind());
-					cs.setInt(4, taskForm.getState());
-					cs.setString(5, taskForm.getTaskinfo());
-					cs.registerOutParameter(6, Types.VARCHAR);
+					cs.setString(4, taskForm.getTaskinfo());
+					cs.registerOutParameter(5, Types.VARCHAR);
 					cs.execute();
-					log.info("ret:"+cs.getString(6));
-					return cs.getString(6);
+					log.info("ret:"+cs.getString(5));
+					return cs.getString(5);
 				}
 				else
 				{

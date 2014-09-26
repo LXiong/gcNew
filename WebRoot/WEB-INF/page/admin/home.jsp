@@ -156,7 +156,6 @@
 			cache: false,
 			async: false,
 			type: "POST",
-			dataType: "json",
 			data: {cts: ctsVal},
 			url: "saveCTS.action",
 			success: function() {
