@@ -3,15 +3,14 @@ package cn.voicet.gc.dao.impl;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Types;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.SysParamDao;
+import cn.voicet.util.DotSession;
 
 @SuppressWarnings("unchecked")
 @Repository(SysParamDao.SERVICE_NAME)
@@ -27,7 +26,7 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 		return this.getJdbcTemplate().queryForInt("select dbo.sys_getparam ('cts100_golable','maxwait')");
 	}
 
-	public void saveParam(final int ani, final int maxwait) {
+	public void saveParam(final DotSession ds, final int ani, final int maxwait) {
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
@@ -46,6 +45,13 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 				cs.setString(2, "maxwait");
 				cs.setInt(3, maxwait);
 				cs.execute();
+				//
+				cs.clearParameters();
+				cs = conn.prepareCall("{call web_cts_alter_chggolbal(?)}");
+				log.info("sp:web_cts_alter_chggolbal(?)");
+				cs.setString(1, ds.curCTS);
+				cs.execute();
+				//
 				return null;
 			}
 		});

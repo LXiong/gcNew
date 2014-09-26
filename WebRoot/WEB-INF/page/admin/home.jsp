@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- menu plugin start -->
 	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/js/menu.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/menu.js?v=5'/>"></script>
 	<!-- menu plugin end -->
 </head>
 <body>
@@ -56,7 +56,7 @@
             </ul>
         </div>
         <div class="main_right">
-            <iframe name="mainFrame" src="main.jsp" class="mainFrame" scrolling="no" marginwidth="1" marginheight="1" frameborder="0">
+            <iframe id="mainFrame" name="mainFrame" src="main.jsp" class="mainFrame" scrolling="no" marginwidth="1" marginheight="1" frameborder="0">
         		
             </iframe>
         </div>
@@ -152,6 +152,8 @@
 	function changeServer(obj)
 	{
 		var ctsVal = obj.options[obj.selectedIndex].text;
+		var mframe =document.getElementById("mainFrame");
+		var fs = mframe.src;
 		$.ajax({
 			cache: false,
 			async: false,
@@ -159,7 +161,10 @@
 			data: {cts: ctsVal},
 			url: "saveCTS.action",
 			success: function() {
-				
+				if(fs.indexOf("acd")>0 || fs.indexOf("subtel")>0 || fs.indexOf("callrecord")>0)
+				{
+					mframe.src = mframe.src;
+				}
 			}
 		});
 	}
@@ -235,6 +240,7 @@
 		tabObj.rows[i].cells[4].innerText=str[3];
 		tabObj.rows[i].cells[5].innerText=str[4];
 	}
+
 </script>
 </body>
 </html>

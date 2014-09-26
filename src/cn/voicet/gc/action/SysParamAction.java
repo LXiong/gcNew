@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.voicet.gc.dao.SysParamDao;
+import cn.voicet.util.DotSession;
 
 @Controller("sysParamAction")
 @Scope("prototype")
@@ -25,8 +26,9 @@ public class SysParamAction extends BaseAction{
 	
 	public String save()
 	{
+		DotSession ds = DotSession.getVTSession(request);
 		log.info("ani:"+ani+", maxwait:"+maxwait);
-		sysParamDao.saveParam(ani, maxwait);
+		sysParamDao.saveParam(ds, ani, maxwait);
 		return null;
 	}
 	
