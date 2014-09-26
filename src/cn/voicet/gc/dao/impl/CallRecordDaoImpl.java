@@ -33,7 +33,14 @@ public class CallRecordDaoImpl extends BaseDaoImpl implements CallRecordDao {
 				cs.setString(3, ds.curedt);
 				cs.setString(4, callRecordForm.getCalltxt()[0]);
 				cs.setString(5, callRecordForm.getCalltxt()[1]);
-				cs.setString(6, callRecordForm.getCalltxt()[2]);
+				if(callRecordForm.getCalltxt()[2].equals("2"))	//2:不限
+				{
+					cs.setString(6, null);
+				}
+				else
+				{
+					cs.setString(6, callRecordForm.getCalltxt()[2]);
+				}
 				cs.setString(7, callRecordForm.getCalltxt()[3]);
 				cs.setString(8, callRecordForm.getCalltxt()[4]);
 				cs.setString(9, callRecordForm.getCalltxt()[5]);
