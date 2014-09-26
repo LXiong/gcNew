@@ -66,6 +66,10 @@ public class DotSession {
 	
 	public String html;
 	
+	String curDate = String.format("%tF", new Date());
+	public String cursdt = curDate;
+	public String curedt = curDate;
+	
 	private class StackInfo{
 		
 		public StackInfo(){}

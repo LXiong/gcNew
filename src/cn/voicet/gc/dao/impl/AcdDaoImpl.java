@@ -43,35 +43,19 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 		        		 ds.list.add(map);
 					}
 				}
-				
-				/**get selected task for acd 页面[/manage/acdList.jsp]已取消该功能*/
-				/*
-				cs.clearParameters();
-				cs = conn.prepareCall("{call web_task_select()}");
-				cs.execute();
-				rs = cs.getResultSet();
-				ds.list2 = new ArrayList();
-				if(rs!=null){
-					while (rs.next()) {
-						 Map map = new HashMap();
-						 VTJime.putMapDataByColName(map, rs);
-		        		 ds.list2.add(map);
-					}
-				}
-				*/
 				return null;
 			}
 		});
 	}
 	
-	public void queryAcdAnalyList(final DotSession ds, final AcdForm acdForm) {
+	public void queryAcdAnalyList(final DotSession ds) {
 		log.info("sp:web_acd_analy(?,?,?)");
 		this.getJdbcTemplate().execute("{call web_acd_analy(?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
-				cs.setString(2, acdForm.getSdt());
-				cs.setString(3, acdForm.getEdt());
+				cs.setString(2, ds.cursdt);
+				cs.setString(3, ds.curedt);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();

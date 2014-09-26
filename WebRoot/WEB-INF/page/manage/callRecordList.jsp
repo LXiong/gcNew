@@ -30,27 +30,27 @@
    	<form name="form1" action="<c:url value='/callrecord.action'/>" method="post">
 	<div class="queryDiv_h80">
 	   	<ul class="queryWrap_ul">
-			<li><label>开始日期：</label><input type="text" id="sdt" name="calltxt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="${calltxt[0] }"/></li>
-	        <li><label>结束日期：</label><input type="text" id="edt" name="calltxt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="${calltxt[1] }"/></li>
-	        <li><label>主叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[2] }" maxlength="12"/></li>
-	        <li><label>被叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[3] }" maxlength="12"/></li>
+			<li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value='#session.vts.cursdt'/>"/></li>
+	        <li><label>结束日期：</label><input type="text" id="edt" name="edt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value='#session.vts.curedt'/>"/></li>
+	        <li><label>主叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[0] }" maxlength="12"/></li>
+	        <li><label>被叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[1] }" maxlength="12"/></li>
 	        <li>
 	        	<label>呼叫方向：</label>
-	        	<s:select name="calltxt" list="#{1:'呼入',0:'呼出'}" listKey="key" listValue="value" value="%{calltxt[4]}" cssClass="inputDefault"></s:select>
+	        	<s:select name="calltxt" list="#{1:'呼入',0:'呼出'}" listKey="key" listValue="value" value="%{calltxt[2]}" cssClass="inputDefault"></s:select>
 			</li>
 		</ul>
 		<ul class="queryWrap_ul">
 	        <li>
 	        	<label>等待时长：</label>
-	        	<input type="text" id="waittimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[5] }"/>
+	        	<input type="text" id="waittimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[3] }"/>
 	        	<span class="asterisk"></span>
 	        </li>
 	        <li>
 	        	<label>通话时长：</label>
-	        	<input type="text" id="calltimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[6] }"/>
+	        	<input type="text" id="calltimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[4] }"/>
 	        	<span class="asterisk"></span>
 	        </li>
-	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt50 inputDefault" value="${calltxt[7] }"/></li>
+	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt50 inputDefault" value="${calltxt[5] }"/></li>
 	        <li><input type="button" onclick="queryCall()" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 	</div>

@@ -1,11 +1,9 @@
 package cn.voicet.gc.form;
 
-import java.util.Date;
 
 public class AgentForm {
-	String curDate = String.format("%tF", new Date());
-	private String sdt=curDate;	//统计开始日期
-	private String edt=curDate;	//统计结束日期
+	private String sdt;	//统计开始日期
+	private String edt;	//统计结束日期
 	/*
 	 * agttxt[] addeidt,account,telnum,agtname,email
 	 */

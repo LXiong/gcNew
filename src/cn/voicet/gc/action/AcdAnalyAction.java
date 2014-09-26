@@ -27,8 +27,14 @@ public class AcdAnalyAction extends BaseAction implements ModelDriven<AcdForm>{
 	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("cts:"+ds.curCTS+", sdt:"+acdForm.getSdt()+", edt:"+acdForm.getEdt());
-		acdDao.queryAcdAnalyList(ds, acdForm);
+		log.info("form cts:"+ds.curCTS+", sdt:"+acdForm.getSdt()+", edt:"+acdForm.getEdt());
+		if(null!=acdForm.getSdt() || null!=acdForm.getEdt())
+		{
+			ds.cursdt = acdForm.getSdt();
+			ds.curedt = acdForm.getEdt();
+		}
+		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
+		acdDao.queryAcdAnalyList(ds);
 		return "show_acd_analy";
 	}
 	

@@ -27,8 +27,14 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("sdt:"+agentForm.getSdt()+", edt:"+agentForm.getEdt());
-		agentDao.queryAgentAnalyList(ds, agentForm);
+		log.info("form sdt:"+agentForm.getSdt()+", edt:"+agentForm.getEdt());
+		if(null!=agentForm.getSdt() || null!=agentForm.getEdt())
+		{
+			ds.cursdt = agentForm.getSdt();
+			ds.curedt = agentForm.getEdt();
+		}
+		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
+		agentDao.queryAgentAnalyList(ds);
 		return "show_agent_analy";
 	}
 	
@@ -51,6 +57,12 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("agttelnum:"+ds.agttelnum+", callio:"+agentForm.getCallio()+", sdt:"+agentForm.getSdt()+", end:"+agentForm.getEdt()+", telnum:"+agentForm.getTelnum());
+		if(null!=agentForm.getSdt() || null!=agentForm.getEdt())
+		{
+			ds.cursdt = agentForm.getSdt();
+			ds.curedt = agentForm.getEdt();
+		}
+		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
 		agentDao.queryAgentAnswerList(ds, agentForm);
 		return "show_agent_answer";
 	}

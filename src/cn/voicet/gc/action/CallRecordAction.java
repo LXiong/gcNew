@@ -27,8 +27,14 @@ public class CallRecordAction extends BaseAction implements ModelDriven<CallReco
 	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("form sdt:"+callRecordForm.getSdt()+", edt:"+callRecordForm.getEdt());
+		if(null!=callRecordForm.getSdt() || null!=callRecordForm.getEdt())
+		{
+			ds.cursdt = callRecordForm.getSdt();
+			ds.curedt = callRecordForm.getEdt();
+		}
+		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
 		callRecordDao.queryCallRecordList(ds, callRecordForm);
-		log.info("list size:"+ds.list.size());
 		return "show_call";
 	}
 	

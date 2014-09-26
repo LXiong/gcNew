@@ -1,13 +1,10 @@
 package cn.voicet.gc.form;
 
-import java.util.Date;
-
 public class AcdForm {
 	private String cts;	//统计服务器别名
 	
-	String curDate = String.format("%tF", new Date());
-	private String sdt=curDate;	//统计开始日期
-	private String edt=curDate;	//统计结束日期
+	private String sdt;	//统计开始日期
+	private String edt;	//统计结束日期
 	
 	private String[] acdtxt;
 	private int grpid;

@@ -29,15 +29,15 @@ public class CallRecordDaoImpl extends BaseDaoImpl implements CallRecordDao {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.setString(1, ds.curCTS);
-				cs.setString(2, callRecordForm.getCalltxt()[0]);
-				cs.setString(3, callRecordForm.getCalltxt()[1]);
-				cs.setString(4, callRecordForm.getCalltxt()[2]);
-				cs.setString(5, callRecordForm.getCalltxt()[3]);
-				cs.setString(6, callRecordForm.getCalltxt()[4]);
-				cs.setString(7, callRecordForm.getCalltxt()[5]);
-				cs.setString(8, callRecordForm.getCalltxt()[6]);
-				cs.setString(9, callRecordForm.getCalltxt()[7]);
-				cs.setInt(10, 100);
+				cs.setString(2, ds.cursdt);
+				cs.setString(3, ds.curedt);
+				cs.setString(4, callRecordForm.getCalltxt()[0]);
+				cs.setString(5, callRecordForm.getCalltxt()[1]);
+				cs.setString(6, callRecordForm.getCalltxt()[2]);
+				cs.setString(7, callRecordForm.getCalltxt()[3]);
+				cs.setString(8, callRecordForm.getCalltxt()[4]);
+				cs.setString(9, callRecordForm.getCalltxt()[5]);
+				cs.setInt(10, 500);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
