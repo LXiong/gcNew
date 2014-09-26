@@ -36,4 +36,16 @@ public class SubTelMonitorAction extends BaseAction implements ModelDriven<SubTe
 		return "show_subtel_monitor";
 	}
 	
+	/**
+	 * 座席分机监听
+	 * @return
+	 */
+	public String listen()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("agent:"+ds.agttelnum+", cts:"+ds.curCTS+", telnum:"+subTelForm.getTelnum());
+		subTelDao.listen(ds, subTelForm);
+		return null;
+	}
+	
 }

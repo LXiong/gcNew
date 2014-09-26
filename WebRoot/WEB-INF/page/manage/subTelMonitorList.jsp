@@ -30,6 +30,7 @@
                      <th width="10%">方向</th>
                      <th width="10%">对方号码</th>
                      <th width="10%">登录话务员</th>
+                     <th width="10%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -41,6 +42,7 @@
 					<td></td>
 					<td></td>
 					<td></td>
+					<td><a href="javascript:listen('${telnum }')">监听</a></td>
 				</tr>
 				</s:iterator>
 			</tbody>
@@ -90,5 +92,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/subtel-monitor.js?v=2'/>"></script>
 </body>
 </html>

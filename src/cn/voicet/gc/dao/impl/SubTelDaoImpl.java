@@ -105,4 +105,18 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 		});
 	}
 
+	public void listen(final DotSession ds, final SubTelForm subTelForm) {
+		log.info("sp:web_cts_listen(?,?,?)");
+		this.getJdbcTemplate().execute("{call web_cts_listen(?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.agttelnum);
+				cs.setString(2, ds.curCTS);
+				cs.setString(3, subTelForm.getTelnum());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
 }
