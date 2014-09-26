@@ -188,7 +188,7 @@
 	<form id="form6" action="<c:url value='task-blackFilter.action?tid=${tid }'/>" method="post"></form>
 	
 	<!-- recall -->
-	<form id="form7" action="<c:url value='task-recall.action?tid=${tid }&tname=${tname }&kind=${kind }'/>" method="post"></form>
+	<form id="form7" action="<c:url value='task-recallAll.action?tid=${tid }&tname=${tname }&kind=${kind }'/>" method="post"></form>
 	
 </div>
 
@@ -228,6 +228,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=19'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=20'/>"></script>
 </body>
 </html>

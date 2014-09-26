@@ -126,10 +126,9 @@
 	</form>
 	
 	<!--POP LAYER START-->
-	<div id="popSetAcdDiv" style="display:none; border:1px solid #50A4C0; margin:10px 0 0 30px; border-radius:4px;"> 
+	<div id="popSetAcdDiv" style="display:none; border:1px solid #50A4C0; margin:10px; border-radius:4px;"> 
 		<form name="form3" action="<c:url value='/task-setAcd.action'/>" method="post">
 	    <input type="hidden" id="setacd_tidx" name="tid"/>
-	    
 	   	<div id="acdHTML"></div>
 	    <div style="height:10px;"></div>
 		<div class="lab_ipt_item">

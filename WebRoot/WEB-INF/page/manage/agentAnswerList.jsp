@@ -76,10 +76,7 @@
 					</td>
 					<td>${ani }</td>
 					<td>${dnis }</td>
-					<td>
-						<c:if test="${callio eq 1 }">呼入</c:if>
-						<c:if test="${callio eq 2 }">呼出</c:if>
-					</td>
+					<td>${callio }</td>
 					<td>${fn:substring(calldt,2,19) }</td>
 					<td>${wait }</td>
 					<td>${talk }</td>

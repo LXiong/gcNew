@@ -46,6 +46,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		log.info("tid:"+taskForm.getTid());
 		taskDao.queryAcdSelectedByTid(ds, taskForm);
 		String html="";
+		html += "<table cellpadding='0' cellspacing='0' width='100%' style='line-height:26px; vertical-align:middle;'>";
 		boolean bHaveLine=false;
 		Map map;
 		for (int i = 0; i < ds.list2.size(); i++) 
@@ -55,27 +56,28 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 			{
 				if(bHaveLine)
 				{
-						html+="</div>";
-					html+="</div>";
+					html+="</td>";
+					html+="</tr>";
 				}
-				bHaveLine=false;
-				html+="<div class='lab_ipt_item' style='font-size:16px; font-weight:bold'>";
-				html+="<span class='lab120'>"+map.get("name")+"：</span>";
+				
+				html+="<tr>";
+				html+="<th width='20%' align='right' style='font-size:16px;'>"+map.get("name")+":";
 				html+="<input type='hidden' name='cts' value=';"+map.get("name")+"='/>";
-				html+="<div class='ipt-box-hei'>";
-				html+="<label>"+map.get("info")+"</label>";
-				html+="</div>";
-				html+="</div>";
+				html+="</th>";
+				html+="<th width='60%' align='left' style='font-size:16px;'>&nbsp;"+map.get("info")+"</th>";
+				html+="</tr>";
+				bHaveLine=false;
 			}
 			else
 			{
 				if(!bHaveLine)
 				{
-					html+="<div class='lab_ipt_item'>";
-					html+="<span class='lab120'></span>";
-					html+="<div class='ipt-box-hei'>";
+					html+="<tr>";
+					html+="<td></td>";
+					html+="<td class='ipt-box-hei'>&nbsp;";
 				}
 				html+="<span style='display:inline-block'><input type='checkbox' id='group"+map.get("id")+"' value='"+map.get("grpid")+",' name='cts' #CHK#/><label for='group"+map.get("id")+"'>"+map.get("name")+"</label></span>&nbsp;&nbsp;";
+				
 				if(map.get("its").equals("1"))
 				{
 					html = html.replace("#CHK#", "checked='checked'");
@@ -90,8 +92,7 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 		//
 		if(bHaveLine)
 		{
-			html+="</div>";
-			html+="</div>";
+			html+="</table>";
 		}
 		JSONObject json = new JSONObject();
 		json.put("html", html);
@@ -206,6 +207,17 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	 * @return
 	 */
 	public String recall()
+	{
+		log.info("tid:"+taskForm.getTid()+", ttid:"+taskForm.getTtid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind());
+		taskDao.recallTel(taskForm);
+		log.info("recall complete");
+		return telmanage();
+	}
+	
+	/**
+	 * 重呼所有
+	 */
+	public String recallAll()
 	{
 		log.info("tid:"+taskForm.getTid()+", ttid:"+taskForm.getTtid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind());
 		taskDao.recallTel(taskForm);
