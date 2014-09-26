@@ -18,10 +18,10 @@
 	      	<fun name="座席分机资料维护" action="subtel-list.action" />
 	      	<fun name="系统黑名单维护" action="black-list.action" />
 	      	<fun name="NTS服务器维护" action="nts-list.action" />
+	      	<fun name="系统参数设定" action="sysparam-list.action" />
 		</grp>
 	    <grp name="数据库">
 	      	<fun name="数据库维护" action="dbconfig.action" />
-	      	<fun name="系统参数设定" action="sysparam-list.action" />
 	    </grp>
 	</role>
 	<role roleid="2" describle="业务管理员">
