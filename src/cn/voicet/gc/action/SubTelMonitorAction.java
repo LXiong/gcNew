@@ -43,7 +43,7 @@ public class SubTelMonitorAction extends BaseAction implements ModelDriven<SubTe
 	public String listen()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("agent:"+ds.agttelnum+", cts:"+ds.curCTS+", telnum:"+subTelForm.getTelnum());
+		log.info("agent:"+ds.account+", cts:"+ds.curCTS+", telnum:"+subTelForm.getTelnum());
 		subTelDao.listen(ds, subTelForm);
 		return null;
 	}
