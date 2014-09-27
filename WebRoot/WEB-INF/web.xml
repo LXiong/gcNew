@@ -46,6 +46,10 @@
 		<url-pattern>/verCode</url-pattern>
 	</servlet-mapping>
 	
+	<session-config>
+		<session-timeout>360</session-timeout>
+	</session-config>
+	
 	<welcome-file-list>
 		<welcome-file>index.action</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
