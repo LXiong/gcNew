@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import cn.voicet.gc.dao.SysParamDao;
 import cn.voicet.util.DotSession;
 
-@SuppressWarnings("unchecked")
 @Repository(SysParamDao.SERVICE_NAME)
 public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 	

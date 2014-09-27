@@ -1,6 +1,7 @@
 package cn.voicet.gc.dao.impl;
 
 import java.sql.CallableStatement;
+import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -28,20 +29,25 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		return (Map<String, Object>)this.getJdbcTemplate().execute("{call web_userlogin(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 			throws SQLException, DataAccessException {
-					cs.setString(1, userForm.getAccount());
-					cs.setString(2, userForm.getPassword());
-					cs.execute();
-					ResultSet rs = cs.getResultSet();
-					Map<String, Object> map = null;
-					if (rs != null) {
-						while (rs.next()) {
-							map = new HashMap<String, Object>();
-							VTJime.putMapDataByColName(map, rs);
-						}
+				DatabaseMetaData md = cs.getConnection().getMetaData();
+				log.info("数据库名称(name):" + md.getDatabaseProductName());
+				log.info("数据库主版本(marjor):" + md.getDatabaseMajorVersion());
+				log.info("数据库次版本(minor):" + md.getDatabaseMinorVersion());
+				log.info("数据库版本(version):" + md.getDatabaseProductVersion());
+				cs.setString(1, userForm.getAccount());
+				cs.setString(2, userForm.getPassword());
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				Map<String, Object> map = null;
+				if (rs != null) {
+					while (rs.next()) {
+						map = new HashMap<String, Object>();
+						VTJime.putMapDataByColName(map, rs);
 					}
-					return map;
 				}
-			});
+				return map;
+			}
+		});
 	}
 	
 
