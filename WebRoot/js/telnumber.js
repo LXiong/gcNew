@@ -186,14 +186,27 @@ function saveTaskTelBtn()
 //black filter
 function filterBlack()
 {
-	$("#form6").ajaxSubmit({ 
-		success:function(data){ //提交成功的回调函数
-			layer.msg("过滤黑名单数："+data, 2, 111, function(){
-				document.form1.submit();
-			});
-        }  
-	}); 
-    return false;	//not refresh page
+	$.layer({
+	    shade: [0],
+	    area: ['auto','auto'],
+	    dialog: {
+	        msg: '确定要过滤号码吗？',
+	        btns: 2,                    
+	        type: 4,
+	        btn: ['确定','取消'],
+	        yes: function(){
+				$("#form6").ajaxSubmit({ 
+					success:function(data){ //提交成功的回调函数
+						layer.alert("过滤黑名单数："+data,111);
+			        }  
+				}); 
+			    return false;	//not refresh page
+	        }, no: function(){
+	            layer.closeAll();
+	        }
+	    }
+	});
+	
 }
 
 function checkStartnum()

@@ -17,7 +17,7 @@
 		.hftitle1{background:#ddd; color:#666666; font-size:14px; text-indent:10px; height:28px; line-height:28px; border:1px solid #ddd;}
 		.hftitle2{background:#FFB848; color:#fff; font-size:16px; text-indent:10px; height:28px; line-height:28px;}
 		.hftitle3{background:#35AA47; color:#fff; font-size:16px; text-indent:10px; font-weight:bold; height:28px; line-height:28px;}
-		.ipt100_24{width:100px;height:20px; padding:2px 5px; border:1px solid #CCC; color:#666;}
+		.ipt100_24{width:100px;height:20px; padding:2px 5px; border:1px solid #CCC; color:#000;}
 		table{line-height:26px;}
 		.huifanginfo2 .btnline{text-indent:45px;}
 		

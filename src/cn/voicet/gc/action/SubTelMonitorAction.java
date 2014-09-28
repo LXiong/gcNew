@@ -32,7 +32,6 @@ public class SubTelMonitorAction extends BaseAction implements ModelDriven<SubTe
 	{
 		DotSession ds = DotSession.getVTSession(request);
 		subTelDao.querySubTelMonitorList(ds);
-		log.info("list size:"+ds.list.size());
 		return "show_subtel_monitor";
 	}
 	

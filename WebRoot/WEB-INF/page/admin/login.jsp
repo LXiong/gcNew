@@ -8,7 +8,7 @@
 	<link type="text/css" href="<c:url value='/style/layout.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/js/cookie.js'/>"></script>
- 	<script type="text/javascript" src="<c:url value='/js/login.js?v=4'/>"></script>
+ 	<script type="text/javascript" src="<c:url value='/js/login.js?v=5'/>"></script>
  	
  	<!-- layer 弹出插件 start -->
 	<script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
@@ -72,8 +72,7 @@
 							<th class="login_label">验证码&nbsp;</th>
 							<td align="left">
 								<input type="text" id="vercode" name="vercode" placeholder="输入验证码" class="ipt70 inputDefault" maxlength="4"/>
-								<input type="hidden" id="bpath" value="${pageContext.request.contextPath }"/>
-								<img src="${pageContext.request.contextPath }/verCode" id="verImg" onclick="changeVerCode()" class="cursor_p" height="20" width="60"/>
+								<img src="${pageContext.request.contextPath }/verCode" id="verImg" class="cursor_p" height="20" width="60"/>
 							</td>
 						</tr>
 						<tr height="28px">

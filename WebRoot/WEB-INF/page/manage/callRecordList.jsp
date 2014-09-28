@@ -26,20 +26,23 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">通话及录音查询&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">通话及录音查询&nbsp;</h3>
    	<form name="form1" action="<c:url value='/callrecord.action'/>" method="post">
 	<div class="queryDiv_h80">
 	   	<ul class="queryWrap_ul">
+	   		<li>
+			<label>服务器名称：</label><s:select list="#session.vts.ctsList" onchange="changeServer(this)" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
+			</li>
 			<li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value='#session.vts.cursdt'/>"/></li>
 	        <li><label>结束日期：</label><input type="text" id="edt" name="edt" class="Wdate inputDefault" style="width:90px; height:20px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value='#session.vts.curedt'/>"/></li>
 	        <li><label>主叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[0] }" maxlength="12"/></li>
 	        <li><label>被叫：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[1] }" maxlength="12"/></li>
-	        <li>
-	        	<label>呼叫方向：</label>
-	        	<s:select name="calltxt" list="#{2:'不限',1:'呼入',0:'呼出'}" listKey="key" listValue="value" value="%{calltxt[2]}" cssClass="inputDefault"></s:select>
-			</li>
 		</ul>
 		<ul class="queryWrap_ul">
+			<li>
+	        	<label>呼叫方向：</label>
+	        	<s:select name="calltxt" list="#{2:'不限',1:'呼入',0:'呼出'}" listKey="key" listValue="value" value="%{calltxt[2]}" cssClass="inputDefault"></s:select>
+			</li>	       
 	        <li>
 	        	<label>等待时长：</label>
 	        	<input type="text" id="waittimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[3] }"/>
@@ -109,20 +112,18 @@
     <!-- jPage end -->
 </div>
 <script type="text/javascript">
-	$(function(){
-		var nowPage = parent.document.getElementById("curCallRecordPage").value;
+	$(function(){ 
 		$("div.holder").jPages({
 			containerID : "movies",
 	        first : "首页",
 	        previous : "上一页",
 	        next : "下一页",
 	        last : "尾页",
-	       	startPage : nowPage,
+	       	startPage : 1,
 	        perPage : 24,
 	        keyBrowse:true,
 	        delay : 0,
 	        callback : function( pages, items ){
-				parent.document.getElementById("curCallRecordPage").value = pages.current;
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 		    }
@@ -174,5 +175,6 @@
 </div>
 <!--POP PLAYER END-->
 <script type="text/javascript" src="<c:url value='/js/callrecord.js?v=1'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
 </body>
 </html>

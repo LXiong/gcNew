@@ -1,7 +1,5 @@
 package cn.voicet.gc.form;
 
-import java.util.Date;
-
 public class CallRecordForm {
 	private String cts;	//统计服务器别名
 	

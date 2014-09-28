@@ -42,7 +42,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		log.info("user login map: "+map);
 		//
 		userDao.queryCTSList(ds);
-		log.info("curCTS:"+ds.ctsList);
+		log.info("ctsList:"+ds.ctsList);
+		
 		//
 		ds.username=(String) map.get("username");
 		ds.roleName = (String) map.get("rolename");

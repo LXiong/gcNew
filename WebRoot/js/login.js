@@ -50,7 +50,6 @@ var responseLogin = function(data, textStatus, jqXHR)
 	else if(data.status=="vercodeerror")
 	{
 		layer.alert("验证码错误,请重新输入!",111);
-		Form1.vercode.focus();
 	}
 	else
 	{

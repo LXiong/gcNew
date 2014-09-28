@@ -27,11 +27,14 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">座席组分配统计&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">座席组分配统计&nbsp;</h3>
    	<form action="<c:url value='/acdanaly-list.action'/>" method="post">
    	<input type="hidden" name="cts" value="<s:property value="#session.vts.curCTS"/>"/>
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul_w600 left">
+			<li>
+			<label>服务器名称：</label><s:select list="#session.vts.ctsList" onchange="changeServer(this)" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
+			</li>
 			<li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate inputDefault" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="#session.vts.cursdt"/>"/></li>
 	        <li><label>结束日期：</label><input type="text" id="edt" name="edt" class="Wdate inputDefault" style="width:90px; height:18px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value="#session.vts.curedt"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
@@ -87,19 +90,17 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var nowPage = parent.document.getElementById("curAcdAnalyPage").value;
 		$("div.holder").jPages({
 			containerID : "movies",
 	        first : "首页",
 	        previous : "上一页",
 	        next : "下一页",
 	        last : "尾页",
-	        startPage : nowPage,
+	        startPage : 1,
 	        perPage : 26,
 	        keyBrowse:true,
 	        delay : 0,
 	        callback : function( pages, items ){
-				parent.document.getElementById("curAcdAnalyPage").value = pages.current;
 		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
 		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
 		    }
@@ -115,6 +116,6 @@
     	});
 	});
 </script>
-
+<script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
 </body>
 </html>

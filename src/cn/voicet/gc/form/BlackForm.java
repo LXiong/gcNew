@@ -7,6 +7,8 @@ public class BlackForm {
 	private String peeknum;
 	private String noteinfo;
 
+	private String pageflag;
+	
 	public int getBid() {
 		return bid;
 	}
@@ -33,5 +35,11 @@ public class BlackForm {
 	}
 	public void setNoteinfo(String noteinfo) {
 		this.noteinfo = noteinfo;
+	}
+	public String getPageflag() {
+		return pageflag;
+	}
+	public void setPageflag(String pageflag) {
+		this.pageflag = pageflag;
 	}
 }

@@ -185,7 +185,7 @@ function initAgentpwd(agtid)
         data: {agtid:agtid},  
         success: function(data){  
         	if(data=="ok")
-        		layer.msg("密码初始化成功",1,111);
+        		layer.alert("成功! 初始化密码：123456",111);
         }  
     }); 
 }

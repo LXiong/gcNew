@@ -88,8 +88,6 @@ public class BlackAction extends BaseAction implements ModelDriven<BlackForm>{
     private String uploadExcelContentType;  
     //myFileFileName属性用来封装上传文件的文件名  
     private String uploadExcelFileName;
-    //控制文件类型
-	private static String[] allowFileType = { "xls", "XLS", "xlsx", "XLSX" };
 
 	public File getUploadExcel() {
 		return uploadExcel;

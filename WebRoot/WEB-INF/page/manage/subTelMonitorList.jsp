@@ -19,7 +19,9 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">座席分机监控&nbsp;[<s:property value="#session.vts.curCTS"/>]</h3>
+	<h3 class="h3_title">座席分机监控&nbsp;
+	<s:select list="#session.vts.ctsList" onchange="changeServer(this)" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
+	</h3>
 	<div class="content_List615">
 		<table id="subTelMonitorTab" cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
@@ -99,5 +101,7 @@
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/subtel-monitor.js?v=2'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
 </body>
 </html>

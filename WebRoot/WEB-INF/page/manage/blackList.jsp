@@ -81,6 +81,7 @@
 	<!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
 		<form name="form2" action="<c:url value='/black-saveTelnum.action'/>" method="post">
+	    <input type="hidden" name="pageflag" value="update"/>
 	    <input type="hidden" id="bidx" name="bid"/>
 	    <div class="lab_ipt_item">
 	    	<span class="lab100">电话号码：</span>
@@ -105,9 +106,12 @@
 	</div>
 	<!--POP LAYER END-->
 	
-	<form id="form3" action="<c:url value='/black-emptyBlack.action'/>" method="post"></form>
+	<form id="form3" action="<c:url value='/black-emptyBlack.action'/>" method="post">
+		<input type="hidden" name="pageflag" value="update"/>
+	</form>
 	
 	<form id="form4" action="<c:url value='/black-deleteTelnum.action'/>" method="post">
+		<input type="hidden" name="pageflag" value="update"/>
 		<input type="hidden" id="del_bid" name="bid"/>
 	</form>
 	
@@ -140,6 +144,11 @@
 //jPage分页 
 $(function(){
 	var nowPage = parent.document.getElementById("curBlackPage").value;
+	var pflag = "${pageflag }";
+	if(pflag=="")
+	{
+		nowPage = 1;
+	}
 	$("div.holder").jPages({
 		containerID : "movies",
         first : "首页",
