@@ -121,11 +121,24 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 	}
 	
 	public String cts;
+	private String clientname;
+	private String ctsname;
 	public String getCts() {
 		return cts;
 	}
 	public void setCts(String cts) {
 		this.cts = cts;
 	}
-	
+	public String getClientname() {
+		return clientname;
+	}
+	public void setClientname(String clientname) {
+		this.clientname = clientname;
+	}
+	public String getCtsname() {
+		return ctsname;
+	}
+	public void setCtsname(String ctsname) {
+		this.ctsname = ctsname;
+	}
 }

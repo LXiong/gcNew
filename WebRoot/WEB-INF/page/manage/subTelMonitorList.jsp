@@ -42,7 +42,13 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td><a href="javascript:listen('${telnum }')">监听</a></td>
+					<td>
+					
+						<s:if test="#session.vts.curClientLocal!=clientname && #session.vts.curCTSLocal!=null && #session.vts.curCTSLocal==#session.vts.curCTS">
+						<a href="javascript:listen('${telnum }')">监听</a>
+						</s:if>
+						
+					</td>
 				</tr>
 				</s:iterator>
 			</tbody>

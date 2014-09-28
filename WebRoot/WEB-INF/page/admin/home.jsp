@@ -241,6 +241,23 @@
 		tabObj.rows[i].cells[5].innerText=str[4];
 	}
 
+	/*************** init agent client ***************/
+	/*
+	function js_client_init(clientname,ctsname)
+	{
+		$.ajax({
+			cache: false,
+			async: false,
+			type: "POST",
+			data: {clientname: clientname, ctsname:ctsname},
+			url: "initClientCTS.action",
+			success: function() {
+				
+			}
+		});
+	}
+	*/
+
 </script>
 </body>
 </html>

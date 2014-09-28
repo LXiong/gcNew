@@ -90,7 +90,7 @@
 					<td>${call.endcode }</td>
 					<td>${call.agent }</td>
 					<td>
-						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','/music/mogu.wav')">播放</a>
+						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','http://192.168.1.200:8080/message/${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>
 					</td>
 				</tr>
 				</s:iterator>
