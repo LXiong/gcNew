@@ -59,6 +59,21 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		if(null!=ds.roleID && !ds.roleID.equals("0"))
 		{
 			json.put("status", "ok");
+			//
+			log.info("login complete");
+			if(null!=ds.curClientLocal && null!=ds.curCTSLocal)
+			{
+				log.info("curClientLocal:"+ds.curClientLocal+", curCTSLocal:"+ds.curCTSLocal+", agttelnum:"+ds.agttelnum);
+				userDao.bindCurrentAgt(ds);
+				log.info("bind complete");
+			}
+			else
+			{
+				log.info("curClientLocal or curCTSLocal is null");
+			}
+			
+			
+			
 		}
 		if(null!=request.getSession().getAttribute("rand") && !userForm.getVercode().trim().equals((String) request.getSession().getAttribute("rand")))
 		{

@@ -95,4 +95,22 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		});
 	}
 
+
+	public void bindCurrentAgt(final DotSession ds) {
+		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curClientLocal);
+				cs.setString(2, ds.curCTSLocal);
+				cs.setInt(3, 2127);
+				cs.setInt(4, -1);
+				cs.setInt(5, -1);
+				cs.setString(6, ds.agttelnum);
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
 }
