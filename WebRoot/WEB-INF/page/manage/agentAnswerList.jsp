@@ -81,7 +81,7 @@
 					<td>${wait }</td>
 					<td>${talk }</td>
 					<td>
-						<c:if test="${tid ne 0 }">
+						<c:if test="${kind ne 0 }">
 						<a href="<c:url value='/huifang-agentAnswer.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a>
 						</c:if>
 					</td>
