@@ -230,6 +230,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=27'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=28'/>"></script>
 </body>
 </html>
