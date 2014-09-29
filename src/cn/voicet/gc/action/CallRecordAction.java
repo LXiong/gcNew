@@ -1,4 +1,5 @@
 package cn.voicet.gc.action;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -37,5 +38,4 @@ public class CallRecordAction extends BaseAction implements ModelDriven<CallReco
 		callRecordDao.queryCallRecordList(ds, callRecordForm);
 		return "show_call";
 	}
-	
 }

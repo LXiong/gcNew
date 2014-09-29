@@ -63,6 +63,6 @@ function play(t,w)
 		bgcolor: '#9DA7B0',
 		page:{dom:'#popMusicDiv'}
 	});
-	var info = "<embed src='"+w+"' hidden='no' height='45' width='400' palette='red|white'></embed>";
+	var info = "<embed src='http://192.168.1.201/Message/"+w+"' hidden='no' height='45' width='400' palette='red|white'></embed>";
 	$("#popMusicDiv")[0].innerHTML=info;
 }

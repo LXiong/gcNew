@@ -149,6 +149,16 @@ $(function(){
      	$("div.holder").jPages( page );
    	});
 });
+//bind click event
+document.onkeydown = function(e) {   
+	var theEvent = e || window.event;   
+	var code = theEvent.keyCode || theEvent.which || theEvent.charCode; 
+	if (code == 13) {   
+		submitSaveNtsBtn();
+		return false;   
+	}   
+	return true;
+}
 </script>
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>

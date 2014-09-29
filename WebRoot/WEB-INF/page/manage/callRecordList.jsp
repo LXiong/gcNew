@@ -63,7 +63,7 @@
 			<thead class="tab_head">
                  <tr>
                      <th width="4%">编号</th>
-                     <th width="10%">平台名称</th>
+                     <th width="6%">平台名称</th>
                      <th width="10%">主叫号码</th>
                      <th width="8%">被叫号码</th>
                      <th width="6%">呼叫方向</th>
@@ -74,7 +74,7 @@
                      <th width="4%">通话</th>
                      <th width="6%">结束方式</th>
                      <th width="6%">话务员</th>
-                     <th width="4%">操作</th>
+                     <th width="8%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -93,7 +93,8 @@
 					<td>${call.endcode }</td>
 					<td>${call.agent }</td>
 					<td>
-						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','http://192.168.1.201:8080/message/${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>
+						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>
+						<a href="http://192.168.1.201/Message/${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -145,7 +146,7 @@
 <!--POP PLAYER START-->
 <div id="popMusicDiv" style="display:none;"></div>
 <!--POP PLAYER END-->
-<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=9'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=10'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
 </body>
 </html>
