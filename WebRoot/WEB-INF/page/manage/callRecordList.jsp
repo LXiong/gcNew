@@ -142,39 +142,10 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/music-player/js/jquery.jplayer-2.6.4.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/music-player/js/jplayer.playlist-2.6.4.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/music-player/js/index.js?v=1'/>"></script>
 <!--POP PLAYER START-->
-<div id="popMusicDiv" style="display:none;"> 
-	<div class="music-player">
-	    <div class="info">
-			<div class="center">
-	      		<div class="jp-playlist">
-	        		<ul><li></li></ul>
-	      		</div>
-	      	</div>
-	      	<div class="progress jp-seek-bar">
-	        	<span class="jp-play-bar" style="width: 0%"></span>
-	      	</div>
-		</div>
-	    <div class="controls">
-	      	<div class="current jp-current-time left">00:00</div>
-	      	<div class="play-controls left">
-	        	<a href="javascript:;" class="icon-play jp-play" title="播放"></a>
-	        	<a href="javascript:;" class="icon-pause jp-pause" title="暂停"></a>
-	      	</div>
-	      	<div class="volume-level jp-volume-bar left ">
-	        	<span class="jp-volume-bar-value" style="width: 0%"></span>
-	        	<a href="javascript:;" class="icon-volume-up jp-volume-max" title="max volume"></a>
-	        	<a href="javascript:;" class="icon-volume-down jp-mute" title="mute"></a>
-	      	</div>
-		</div>
-		<div id="jquery_jplayer" class="jp-jplayer"></div>
-	</div>
-</div>
+<div id="popMusicDiv" style="display:none;"></div>
 <!--POP PLAYER END-->
-<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=1'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=4'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
 </body>
 </html>

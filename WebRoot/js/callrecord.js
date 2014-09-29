@@ -53,22 +53,17 @@ function queryCall()
 //play music
 function play(t,w)
 {
-	//set title
-	$(".jp-playlist-item").text(t);
-	$("#jquery_jplayer").jPlayer("setMedia",{
-	    mp3:w
-	});
-	//
 	$.layer({
 		type: 1,
-        title: false,
+        title: "正在播放:"+t,
         offset: [($(window).height() - 290)/2+'px', ''],
         border : [0, 0.5, '#666'],
-        area: ['350px','80px'],
+        area: ['400px','45px'],
         shadeClose: false,
 		bgcolor: '#9DA7B0',
 		page:{dom:'#popMusicDiv'}
 	});
-	//play
-	$("#jquery_jplayer").jPlayer("play");
+	
+	var info = "<embed src='"+w+"' hidden='no' height='45' width='400' palette='red|white'>";
+	$("#popMusicDiv")[0].innerHTML=info;
 }
