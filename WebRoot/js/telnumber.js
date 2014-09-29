@@ -103,7 +103,7 @@ function deleteTaskTel(tid,ttid)
 //recall
 function recall()
 {
-	layer.confirm("确定要重呼所有呼叫失败的号码吗？",function(){
+	layer.confirm("确定重呼所有【呼叫失败】的号码？",function(){
 		$("#form7").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
 				document.form1.submit();		
