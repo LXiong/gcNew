@@ -93,7 +93,7 @@
 					<td>${call.endcode }</td>
 					<td>${call.agent }</td>
 					<td>
-						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','http://192.168.1.200:8080/message/${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>
+						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','http://192.168.1.201:8080/message/${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -145,7 +145,7 @@
 <!--POP PLAYER START-->
 <div id="popMusicDiv" style="display:none;"></div>
 <!--POP PLAYER END-->
-<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=4'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=9'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
 </body>
 </html>
