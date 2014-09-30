@@ -57,10 +57,10 @@
                     <th width="8%">主叫号码</th>
                     <th width="8%">被叫号码</th>
                     <th width="6%">呼叫方向</th>
-                    <th width="10%">呼叫日期</th>
+                    <th width="12%">呼叫日期</th>
                     <th width="8%">等待时长(秒)</th>
                     <th width="8%">通话时长(秒)</th>
-                    <th width="10%">操作</th>
+                    <th width="8%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -77,7 +77,7 @@
 					<td>${ani }</td>
 					<td>${dnis }</td>
 					<td>${callio }</td>
-					<td>${fn:substring(calldt,2,19) }</td>
+					<td>${fn:substring(calldt,0,19) }</td>
 					<td>${wait }</td>
 					<td>${talk }</td>
 					<td>
@@ -111,7 +111,7 @@
 	        next : "下一页",
 	        last : "尾页",
 	        startPage : 1,
-	        perPage : 25,
+	        perPage : 26,
 	        keyBrowse:true,
 	        delay : 0,
 	        callback : function( pages, items ){
