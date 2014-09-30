@@ -32,12 +32,12 @@ public class SysParamAction extends BaseAction{
 		return null;
 	}
 	
-	private int ani;
+	private String ani;
 	private int maxwait;
-	public int getAni() {
+	public String getAni() {
 		return ani;
 	}
-	public void setAni(int ani) {
+	public void setAni(String ani) {
 		this.ani = ani;
 	}
 	public int getMaxwait() {
