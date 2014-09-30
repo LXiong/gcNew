@@ -59,7 +59,7 @@
 	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="filterBlack()" class="btn4" value="号码过滤" />
 	        </li>
 			<li>
-	        	&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="button" onclick="recall()" class="btn4" value="重呼所有" /></label>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="button" onclick="recall()" class="btn4" value="失败重呼" /></label>
 	        </li>
 			<li>
 	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="saveTaskTel('add','${tid }','','')" class="btn4" value="添加" />
