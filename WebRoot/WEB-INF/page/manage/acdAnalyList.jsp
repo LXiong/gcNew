@@ -48,9 +48,9 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
-                     <th width="10%">队列编号</th>
-                     <th width="10%">队列号码</th>
-                     <th width="10%">队列名称</th>
+                     <th width="10%">组编号</th>
+                     <th width="10%">组号码</th>
+                     <th width="10%">组名称</th>
                      <th width="10%">分配总次数</th>
                      <th width="10%">分配成功数</th>
                      <th width="10%">放弃数</th>
