@@ -7,4 +7,8 @@ public interface SysParamDao {
 	String getAni();
 	int getMaxwait();
 	void saveParam(DotSession ds, String ani, int maxwait);
+	void startAcdMonitor(DotSession ds);
+	void stopAcdMonitor(DotSession ds);
+	void startSubtelMonitor(DotSession ds);
+	void stopSubtelMonitor(DotSession ds);
 }

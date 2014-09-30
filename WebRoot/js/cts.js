@@ -18,3 +18,18 @@ function changeServer(obj)
 		}
 	});
 }
+
+function checkCTS(fromClientCts)
+{
+	$.ajax({
+		cache: false,
+		async: false,
+		type: "POST",
+		data: {cts: fromClientCts},
+		url: "saveCTS.action",
+		success: function() {
+			
+		}
+	});	
+}
+

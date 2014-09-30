@@ -146,6 +146,11 @@
 //split page task
 $(function(){
 	var nowPage = parent.document.getElementById("curTaskPage").value;
+	var pflag = "${pageflag }";
+	if(!pflag)
+	{
+		nowPage = 1;
+	}
 	$("div.holder").jPages({
 		containerID : "movies",
         first : "首页",

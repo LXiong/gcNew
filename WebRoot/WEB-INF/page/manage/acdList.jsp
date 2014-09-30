@@ -161,6 +161,11 @@
 <script type="text/javascript">
 	$(function(){
 		var nowPage = parent.document.getElementById("curAcdPage").value;
+		var pflag = "${pageflag }";
+		if(!pflag)
+		{
+			nowPage = 1;
+		}
 		$("div.holder").jPages({
 			containerID : "movies",
 	        first : "首页",
@@ -202,7 +207,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd.js?v=5'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd.js?v=6'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js?v=2'/>"></script>

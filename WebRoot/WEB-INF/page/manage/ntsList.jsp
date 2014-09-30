@@ -124,6 +124,11 @@
 //jPage分页 
 $(function(){
 	var nowPage = parent.document.getElementById("curBlackPage").value;
+	var pflag = "${pageflag }";
+	if(!pflag)
+	{
+		nowPage = 1;
+	}
 	$("div.holder").jPages({
 		containerID : "movies",
         first : "首页",

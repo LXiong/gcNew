@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">座席分机资料维护&nbsp;
+	<h3 class="h3_title">座席分机资料维护&nbsp;${pageflag }
 	<s:select list="#session.vts.ctsList" onchange="changeServer(this)" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
 	</h3>
 	<div class="content_List615">
@@ -128,6 +128,11 @@
 <script type="text/javascript">
 	$(function(){
 		var nowPage = parent.document.getElementById("curSubtelPage").value;
+		var pflag = "${pageflag }";
+		if(!pflag)
+		{
+			nowPage = 1;
+		}
 		$("div.holder").jPages({
 			containerID : "movies",
 	        first : "首页",
@@ -170,7 +175,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/subtel.js?v=6'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/subtel.js?v=7'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>

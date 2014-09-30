@@ -18,6 +18,8 @@ public class AgentForm {
 	private int tid;
 	private int ttid;
 	
+	private String pageflag;
+	
 	public String getSdt() {
 		return sdt;
 	}
@@ -65,5 +67,11 @@ public class AgentForm {
 	}
 	public void setTtid(int ttid) {
 		this.ttid = ttid;
+	}
+	public String getPageflag() {
+		return pageflag;
+	}
+	public void setPageflag(String pageflag) {
+		this.pageflag = pageflag;
 	}
 }

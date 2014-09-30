@@ -143,7 +143,7 @@ function saveAgentBtn()
 			layer.closeAll();
 			if(data=="ok")
 			{
-				location.href="${pageContext.request.contextPath}/agent-list.action";
+				location.href="${pageContext.request.contextPath}/agent-list.action?pageflag=update";
 			}
 			else if(data=="err_telexists")
 			{
@@ -169,7 +169,7 @@ function deleteAgent(agtid)
 	layer.confirm("确定要删除吗？",function(){
 		$("#form3").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
-				location.href="agent-list.action";		
+				location.href="agent-list.action?pageflag=update";		
 	        }  
 		}); 
 	    return false;

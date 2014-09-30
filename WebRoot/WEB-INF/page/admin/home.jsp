@@ -178,7 +178,19 @@
 	@@ani,@@autocalldesc,@@trkapp,@@callnum,@@ansnum,@@ansrate,@@freenum/@@onlinenum"
 	组编号,主叫号码,呼叫状态,补充中继数,呼叫总数,应答数,应答率,空闲座席数/在线总数,
 	*/
-	function js_monitor_acdgrp(str){
+	function js_monitor_acdgrp(fromClientCts, str){
+		//check cts
+		var curCts = "<s:property value='#session.vts.curCTS'/>";
+		if(curCts!=fromClientCts)
+		{
+			checkCTS(fromClientCts);
+		}
+		else
+		{
+			
+		}
+		
+		//
 		str = str.split(",");
 		//获取表格对象
 	    var tabObj = window.frames["mainFrame"].document.getElementById("acdMonitorTab");
@@ -202,7 +214,18 @@
 	/*
 	js提供的内容:电话编号,分机状态,呼叫方向,对方号码,登录话务员
 	*/
-	function js_seat_minitor(str){
+	function js_seat_minitor(fromClientCts, str){
+		//check cts
+		var curCts = "<s:property value='#session.vts.curCTS'/>";
+		if(curCts!=fromClientCts)
+		{
+			checkCTS(fromClientCts);
+		}
+		else
+		{
+			
+		}
+		
 		str = str.split(",");
 		//获取表格对象
 		var tabObj = window.frames["mainFrame"].document.getElementById("subTelMonitorTab");
@@ -217,23 +240,7 @@
 		tabObj.rows[i].cells[5].innerText=str[4];
 	}
 
-	/*************** init agent client ***************/
-	/*
-	function js_client_init(clientname,ctsname)
-	{
-		$.ajax({
-			cache: false,
-			async: false,
-			type: "POST",
-			data: {clientname: clientname, ctsname:ctsname},
-			url: "initClientCTS.action",
-			success: function() {
-				
-			}
-		});
-	}
-	*/
-
 </script>
+<script type="text/javascript" src="<c:url value='/js/cts.js?v=3'/>"></script>
 </body>
 </html>

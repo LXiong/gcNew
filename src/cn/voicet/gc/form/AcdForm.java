@@ -14,6 +14,8 @@ public class AcdForm {
 	private int trknum;
 	private int callstate;
 	
+	private String pageflag;
+	
 	public String getCts() {
 		return cts;
 	}
@@ -67,5 +69,11 @@ public class AcdForm {
 	}
 	public void setCallstate(int callstate) {
 		this.callstate = callstate;
+	}
+	public String getPageflag() {
+		return pageflag;
+	}
+	public void setPageflag(String pageflag) {
+		this.pageflag = pageflag;
 	}
 }

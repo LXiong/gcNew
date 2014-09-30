@@ -6,6 +6,14 @@ public class SubTelForm {
 	private int telid;
 	private String telnum;
 
+	private String pageflag;
+	public String getPageflag() {
+		return pageflag;
+	}
+	public void setPageflag(String pageflag) {
+		this.pageflag = pageflag;
+	}
+	
 	public String[] getSubteltxt() {
 		return subteltxt;
 	}

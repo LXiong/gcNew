@@ -30,6 +30,7 @@
 	<c:if test="${kind eq 3 }">回访3</c:if>
 	)&nbsp;&nbsp;号码管理</h3>
    	<form name="form1" action="<c:url value='/task-telmanage.action'/>" method="post">
+   	<input type="hidden" id="pageflag" name="pageflag" value=""/>
    	<input type="hidden" name="tid" value="${tid }"/>
    	<input type="hidden" name="tname" value="${tname }"/>
    	<input type="hidden" name="kind" value="${kind }"/>
@@ -197,6 +198,11 @@
 <script type="text/javascript">
 	$(function(){
 		var nowPage = parent.document.getElementById("curTelnumPage").value;
+		var pflag = "${pageflag }";
+		if(!pflag)
+		{
+			nowPage = 1;
+		}
 		$("div.holder").jPages({
 			containerID : "movies",
 	        first : "首页",
@@ -240,6 +246,6 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=30'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=31'/>"></script>
 </body>
 </html>

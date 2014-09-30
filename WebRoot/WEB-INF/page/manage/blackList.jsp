@@ -111,7 +111,6 @@
 	</form>
 	
 	<form id="form4" action="<c:url value='/black-deleteTelnum.action'/>" method="post">
-		<input type="hidden" name="pageflag" value="update"/>
 		<input type="hidden" id="del_bid" name="bid"/>
 	</form>
 	
@@ -145,7 +144,7 @@
 $(function(){
 	var nowPage = parent.document.getElementById("curBlackPage").value;
 	var pflag = "${pageflag }";
-	if(pflag=="")
+	if(!pflag)
 	{
 		nowPage = 1;
 	}
@@ -188,7 +187,7 @@ document.onkeydown = function(e) {
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/black.js?v=16'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/black.js?v=17'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

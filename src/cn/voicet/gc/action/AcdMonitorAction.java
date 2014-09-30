@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.voicet.gc.dao.AcdDao;
+import cn.voicet.gc.dao.SysParamDao;
 import cn.voicet.gc.form.AcdForm;
 import cn.voicet.util.DotSession;
 
@@ -22,6 +23,9 @@ public class AcdMonitorAction extends BaseAction implements ModelDriven<AcdForm>
 	private static Logger log = Logger.getLogger(AcdMonitorAction.class);
 	@Resource(name=AcdDao.SERVICE_NAME)
 	private AcdDao acdDao;
+	
+	@Resource(name=SysParamDao.SERVICE_NAME)
+	private SysParamDao sysParamDao;
 	private AcdForm acdForm = new AcdForm();
 	
 	public AcdForm getModel() {
@@ -35,6 +39,12 @@ public class AcdMonitorAction extends BaseAction implements ModelDriven<AcdForm>
 	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
+		if(null!=ds.curClientLocal && null!=ds.curCTS)
+		{
+			log.info("start acdgrp monitor:"+ds.curClientLocal+", "+ds.curCTS+", 2234, -1, -1");
+			sysParamDao.startAcdMonitor(ds);
+			request.getSession().setAttribute("acdm", "acdmonitorstart");
+		}
 		acdDao.getAcdMonitorList(ds);
 		return "show_acd_monitor";
 	}

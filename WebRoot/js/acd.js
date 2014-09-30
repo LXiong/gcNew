@@ -196,7 +196,7 @@ function saveAcdBtn()
 	$("#form2").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.href="${pageContext.request.contextPath}/acd-list.action";
+			location.href="${pageContext.request.contextPath}/acd-list.action?pageflag=update";
         }  
 	}); 
     return false;	//not refresh page
@@ -209,7 +209,7 @@ function deleteAcd(grpid)
 	layer.confirm("确定要删除吗？",function(){
 		$("#form3").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
-				location.href="acd-list.action";		
+				location.href="acd-list.action?pageflag=update";		
 	        }  
 		}); 
 	    return false;

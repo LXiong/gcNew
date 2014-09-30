@@ -143,7 +143,7 @@ function saveSubTelBtn()
 	$("#form2").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.href="${pageContext.request.contextPath}/subtel-list.action";
+			location.href="${pageContext.request.contextPath}/subtel-list.action?pageflag=update";
         }  
 	}); 
     return false;	//not refresh page
@@ -155,7 +155,7 @@ function deleteSubtel(telid)
 	layer.confirm("确定要删除吗？",function(){
 		$("#form3").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
-				location.href="subtel-list.action";		
+				location.href="subtel-list.action?pageflag=update";		
 	        }  
 		}); 
 	    return false;

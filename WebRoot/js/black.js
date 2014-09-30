@@ -84,7 +84,7 @@ function deleteBlack(bid)
 	layer.confirm("确定要删除吗？",function(){
 		$("#form4").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
-				location.href="black-list.action";
+				location.href="black-list.action?pageflag=update";
 	        }  
 		}); 
 	    return false;	//not refresh page

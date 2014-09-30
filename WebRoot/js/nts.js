@@ -122,7 +122,7 @@ function submitSaveNtsBtn()
 	$("#form2").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
-			location.href="${pageContext.request.contextPath}/nts-list.action";
+			location.href="${pageContext.request.contextPath}/nts-list.action?pageflag=update";
         }  
 	}); 
     return false;	//not refresh page
@@ -135,7 +135,7 @@ function deleteNts(account)
 	layer.confirm("确定要删除吗？",function(){
 		$("#form3").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
-				location.href="nts-list.action";		
+				location.href="nts-list.action?pageflag=update";		
 	        }  
 		}); 
 	    return false;

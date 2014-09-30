@@ -92,6 +92,7 @@ function deleteTaskTel(tid,ttid)
 	layer.confirm("确定要删除吗？",function(){
 		$("#form4").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
+				$("#pageflag").val("update");
 				document.form1.submit();		
 	        }  
 		}); 
@@ -106,6 +107,7 @@ function recall()
 	layer.confirm("确定重呼所有【呼叫失败】的号码？",function(){
 		$("#form7").ajaxSubmit({ 
 			success:function(data){ //提交成功的回调函数
+				$("#pageflag").val("update");
 				document.form1.submit();		
 	        }  
 		}); 
@@ -177,6 +179,7 @@ function saveTaskTelBtn()
 	$("#form5").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.closeAll();
+			$("#pageflag").val("update");
 			document.form1.submit();
         }  
 	}); 

@@ -67,4 +67,72 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 		});
 	}
 	
+	public void startAcdMonitor(final DotSession ds) {
+		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curClientLocal);
+				cs.setString(2, ds.curCTS);
+				cs.setInt(3, 2234);
+				cs.setInt(4, -1);
+				cs.setInt(5, -1);
+				cs.setString(6, "start acdgrp monitor");
+				cs.execute();
+				return null;
+			}
+		});
+	}
+	
+	public void stopAcdMonitor(final DotSession ds) {
+		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curClientLocal);
+				cs.setString(2, ds.curCTS);
+				cs.setInt(3, 2235);
+				cs.setInt(4, -1);
+				cs.setInt(5, -1);
+				cs.setString(6, "stop acdgrp monitor");
+				cs.execute();
+				return null;
+			}
+		});
+	}
+	
+	public void startSubtelMonitor(final DotSession ds) {
+		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curClientLocal);
+				cs.setString(2, ds.curCTS);
+				cs.setInt(3, 2241);
+				cs.setInt(4, -1);
+				cs.setInt(5, -1);
+				cs.setString(6, "start subtel monitor");
+				cs.execute();
+				return null;
+			}
+		});
+	}
+	
+	public void stopSubtelMonitor(final DotSession ds) {
+		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
+		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString(1, ds.curClientLocal);
+				cs.setString(2, ds.curCTS);
+				cs.setInt(3, 2240);
+				cs.setInt(4, -1);
+				cs.setInt(5, -1);
+				cs.setString(6, "stop subtel monitor");
+				cs.execute();
+				return null;
+			}
+		});
+	}
+	
 }

@@ -13,6 +13,8 @@ public class TaskForm {
 	private int start=1;	//起始序号
 	private int callret=20;	//呼叫结果
 	
+	private String pageflag;
+	
 	private String[] cts;
 	
 	public int getTid() {
@@ -81,5 +83,10 @@ public class TaskForm {
 	public void setCallret(int callret) {
 		this.callret = callret;
 	}
-	
+	public String getPageflag() {
+		return pageflag;
+	}
+	public void setPageflag(String pageflag) {
+		this.pageflag = pageflag;
+	}
 }

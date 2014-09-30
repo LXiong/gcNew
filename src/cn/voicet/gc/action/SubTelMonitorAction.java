@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.voicet.gc.dao.SubTelDao;
+import cn.voicet.gc.dao.SysParamDao;
 import cn.voicet.gc.form.SubTelForm;
 import cn.voicet.util.DotSession;
 
@@ -18,6 +19,9 @@ public class SubTelMonitorAction extends BaseAction implements ModelDriven<SubTe
 	private static Logger log = Logger.getLogger(SubTelMonitorAction.class);
 	@Resource(name=SubTelDao.SERVICE_NAME)
 	private SubTelDao subTelDao;
+	
+	@Resource(name=SysParamDao.SERVICE_NAME)
+	private SysParamDao sysParamDao;
 	private SubTelForm subTelForm = new SubTelForm();
 	
 	public SubTelForm getModel() {
@@ -31,6 +35,12 @@ public class SubTelMonitorAction extends BaseAction implements ModelDriven<SubTe
 	public String list()
 	{
 		DotSession ds = DotSession.getVTSession(request);
+		if(null!=ds.curClientLocal && null!=ds.curCTS)
+		{
+			log.info("start acdgrp monitor:"+ds.curClientLocal+", "+ds.curCTS+", 2241, -1, -1");
+			sysParamDao.startSubtelMonitor(ds);
+			request.getSession().setAttribute("subtelm", "subtelmonitorstart");
+		}
 		subTelDao.querySubTelMonitorList(ds);
 		return "show_subtel_monitor";
 	}
