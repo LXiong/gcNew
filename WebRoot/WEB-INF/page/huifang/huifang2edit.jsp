@@ -68,8 +68,7 @@
 		</table>
 	</div>
 	
-	<iframe name="enterFrame" style="display:none;"></iframe>
-	<form name="form1" action="${pageContext.request.contextPath }/huifang-agentSave.action" method="post">
+	<form id="form1" action="${pageContext.request.contextPath }/huifang-agentSave.action" method="post">
 	<input type="hidden" name="flag" value="${flag }"/>
 	<input type="hidden" name="tid" value="${tid }"/>
 	<input type="hidden" name="ttid" value="${ttid }"/>
@@ -132,6 +131,8 @@
 	</form>
 </div>
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
+<!-- ajax file upload -->
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/huifang.js?v=1'/>"></script>
 </body>
 </html>

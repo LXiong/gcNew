@@ -43,6 +43,10 @@ function saveHuifangBtn(flag)
 		layer.alert("flag error",111);
 		return false;
 	}
-	document.form1.submit();
-	layer.msg("保存成功!",1,111);
+	$("#form1").ajaxSubmit({ 
+		success:function(data){ //提交成功的回调函数
+		layer.alert("保存成功!",111);
+        }  
+	}); 
+    return false;	//not refresh page
 }
