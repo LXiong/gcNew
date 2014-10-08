@@ -62,7 +62,7 @@
 		</action>
 		
 		<!-- 通话记录查询 -->
-		<action name="callrecord" class="callRecordAction" method="list">
+		<action name="callrecord-*" class="callRecordAction" method="{1}">
 			<result name="show_call">/WEB-INF/page/manage/callRecordList.jsp</result>
 		</action>
 		

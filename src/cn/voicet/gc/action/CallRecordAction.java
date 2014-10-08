@@ -1,6 +1,15 @@
 package cn.voicet.gc.action;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
@@ -37,5 +46,27 @@ public class CallRecordAction extends BaseAction implements ModelDriven<CallReco
 		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
 		callRecordDao.queryCallRecordList(ds, callRecordForm);
 		return "show_call";
+	}
+	
+	// 下载网络文件
+	public void downloadNet() throws MalformedURLException {
+		String wav = request.getParameter("wavFile");
+		URL url = new URL("http://192.168.1.201/Message/"+wav);
+		try {
+			URLConnection conn = url.openConnection();
+			InputStream inStream = conn.getInputStream();
+			// 设置输出的格式
+			response.reset();
+			response.setContentType("bin");
+			response.addHeader("Content-Disposition", "attachment; filename=\"" + "mogu.wav" + "\"");
+			// 循环取出流中的数据
+			byte[] b = new byte[1024];
+			int len;
+			while ((len = inStream.read(b)) > 0)
+			response.getOutputStream().write(b, 0, len);
+			inStream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
