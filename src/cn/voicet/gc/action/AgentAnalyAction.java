@@ -44,8 +44,9 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 	 */
 	public String export()
 	{
-		log.info("sdt:"+agentForm.getSdt()+", edt:"+agentForm.getEdt());
-		agentDao.exportAgentAnalyData(agentForm, response);
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("sdt:"+ds.cursdt+", edt:"+ds.curedt);
+		agentDao.exportAgentAnalyData(ds, response);
 		return null;
 	}
 	

@@ -12,7 +12,7 @@ public interface AgentDao{
 	String saveAgent(AgentForm agentForm);
 	void deleteAgentByAccount(AgentForm agentForm);
 	void initAgentpwdByAgtid(AgentForm agentForm);
-	void exportAgentAnalyData(AgentForm agentForm, HttpServletResponse response);
+	void exportAgentAnalyData(DotSession ds, HttpServletResponse response);
 	void queryAgentAnswerList(DotSession ds, AgentForm agentForm);
 	void emptyAnswerByAgent(DotSession ds);
 }

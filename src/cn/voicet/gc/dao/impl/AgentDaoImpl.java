@@ -74,7 +74,7 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		});
 	}
 	
-	public void exportAgentAnalyData(final AgentForm agentForm, final HttpServletResponse response) {
+	public void exportAgentAnalyData(final DotSession ds, final HttpServletResponse response) {
 		final String excelExportFile = "agt_analy_export.xls";
 		final String outputFileName="agent_analy.xls";
 		//
@@ -82,8 +82,8 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		this.getJdbcTemplate().execute("{call web_agent_analy(?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, agentForm.getSdt());
-				cs.setString(2, agentForm.getEdt());
+				cs.setString(1, ds.cursdt);
+				cs.setString(2, ds.curedt);
 				cs.execute();
 				//
 				ResultSet rs = cs.getResultSet();
