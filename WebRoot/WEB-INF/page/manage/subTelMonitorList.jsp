@@ -101,7 +101,6 @@
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/subtel-monitor.js?v=2'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js?v=1'/>"></script>
 </body>
 </html>
