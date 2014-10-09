@@ -5,7 +5,6 @@ function changeServer(obj)
 	var mframe =window.parent.document.getElementById("mainFrame");
 	var fs = mframe.src;
 	$.ajax({
-		cache: false,
 		async: false,
 		type: "POST",
 		data: {cts: ctsVal},
