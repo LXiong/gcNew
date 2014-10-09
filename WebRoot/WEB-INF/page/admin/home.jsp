@@ -13,6 +13,17 @@
 	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
 	<script type="text/javascript" src="<c:url value='/js/menu.js?v=5'/>"></script>
 	<!-- menu plugin end -->
+	
+	<!-- ocx event -->
+	<!--  
+	<script type="text/javascript" for="OCXPlugin" event="OnDetectRing(a,b,c,d)">alert(b)</script>
+	<script type="text/javascript">
+		function changeOCX(){
+			 var ocxplugin = document.getElementById("OCXPlugin");
+			 ocxplugin.SetLine("1","100","2");	
+		}
+	</script>
+	-->
 </head>
 <body>
 <div id="container">
@@ -27,6 +38,10 @@
   			<input type="button" onclick="js_monitor_acdgrp('5,933300,呼叫,0,0,0,0.00%,0/0')" value="测试业务组监控"/>
   			<input type="button" onclick="js_seat_minitor('0,正常,来电,*9000#,agt000')" value="测试分机监控"/>
   			-->
+  			<!-- 
+  			<input id="button1" type="button" value="Button" onclick="changeOCX()"/>
+			<object id="OCXPlugin" codebase="<%=request.getContextPath()%>/ocx/vtcx3.ocx#version=1.0" classid="clsid:9730588D-7548-42E8-8779-F98D76A2A09E" style="display:none;"></object>
+			-->
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
     </div>
@@ -181,33 +196,31 @@
 	function js_monitor_acdgrp(fromClientCts, str){
 		//check cts
 		var curCts = "<s:property value='#session.vts.curCTS'/>";
-		if(curCts!=fromClientCts)
+		if(curCts==fromClientCts)
 		{
-			checkCTS(fromClientCts);
+			//
+			str = str.split(",");
+			//获取表格对象
+		    var tabObj = window.frames["mainFrame"].document.getElementById("acdMonitorTab");
+		    if (tabObj == null)
+			    return false;
+			//将字符串转化成整型变量
+			var i = parseInt(str[0]);
+			if(tabObj.rows[i] == null)
+				return false;
+			tabObj.rows[i].cells[3].innerText=str[1];
+			tabObj.rows[i].cells[4].innerText=str[2];
+			tabObj.rows[i].cells[5].innerText=str[3];
+			tabObj.rows[i].cells[6].innerText=str[4];
+			tabObj.rows[i].cells[7].innerText=str[5];
+			tabObj.rows[i].cells[8].innerText=str[6];
+			tabObj.rows[i].cells[9].innerText=str[7];
+			tabObj.rows[i].cells[10].innerText=str[8];
 		}
 		else
 		{
 			
 		}
-		
-		//
-		str = str.split(",");
-		//获取表格对象
-	    var tabObj = window.frames["mainFrame"].document.getElementById("acdMonitorTab");
-	    if (tabObj == null)
-		    return false;
-		//将字符串转化成整型变量
-		var i = parseInt(str[0]);
-		if(tabObj.rows[i] == null)
-			return false;
-		tabObj.rows[i].cells[3].innerText=str[1];
-		tabObj.rows[i].cells[4].innerText=str[2];
-		tabObj.rows[i].cells[5].innerText=str[3];
-		tabObj.rows[i].cells[6].innerText=str[4];
-		tabObj.rows[i].cells[7].innerText=str[5];
-		tabObj.rows[i].cells[8].innerText=str[6];
-		tabObj.rows[i].cells[9].innerText=str[7];
-		tabObj.rows[i].cells[10].innerText=str[8];
 	}
 	
 	/*************** 座席分机监控  ***************/
@@ -217,30 +230,28 @@
 	function js_seat_minitor(fromClientCts, str){
 		//check cts
 		var curCts = "<s:property value='#session.vts.curCTS'/>";
-		if(curCts!=fromClientCts)
+		if(curCts==fromClientCts)
 		{
-			checkCTS(fromClientCts);
+			str = str.split(",");
+			//获取表格对象
+			var tabObj = window.frames["mainFrame"].document.getElementById("subTelMonitorTab");
+			if (tabObj == null)
+			    return false;
+			var i = parseInt(str[0])+1;
+			if(tabObj.rows[i] == null)
+				return false;
+			tabObj.rows[i].cells[2].innerText=str[1];
+			tabObj.rows[i].cells[3].innerText=str[2];
+			tabObj.rows[i].cells[4].innerText=str[3];
+			tabObj.rows[i].cells[5].innerText=str[4];
 		}
 		else
 		{
 			
 		}
-		
-		str = str.split(",");
-		//获取表格对象
-		var tabObj = window.frames["mainFrame"].document.getElementById("subTelMonitorTab");
-		if (tabObj == null)
-		    return false;
-		var i = parseInt(str[0])+1;
-		if(tabObj.rows[i] == null)
-			return false;
-		tabObj.rows[i].cells[2].innerText=str[1];
-		tabObj.rows[i].cells[3].innerText=str[2];
-		tabObj.rows[i].cells[4].innerText=str[3];
-		tabObj.rows[i].cells[5].innerText=str[4];
 	}
 
 </script>
-<script type="text/javascript" src="<c:url value='/js/cts.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js?v=4'/>"></script>
 </body>
 </html>

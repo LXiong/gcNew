@@ -18,6 +18,9 @@ function changeServer(obj)
 	});
 }
 
+/**
+ * 上线之后delete
+ */
 function checkCTS(fromClientCts)
 {
 	$.ajax({
