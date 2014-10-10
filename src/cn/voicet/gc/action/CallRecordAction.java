@@ -46,11 +46,14 @@ public class CallRecordAction extends BaseAction implements ModelDriven<CallReco
 	
 	// 下载网络文件
 	public void downloadNet() throws MalformedURLException {
+		DotSession ds = DotSession.getVTSession(request);
 		String wav = request.getParameter("wavFile");
 		log.info("wav:"+wav);
-		URL url = new URL("http://192.168.1.201/Message/"+wav);
+		String ip= ds.getIpWithCTS(ds.curCTS);
+		log.info("ip");
+		URL url = new URL(ip+"/"+wav);
 		log.info("url:"+url);
-		String filename = wav.substring(wav.indexOf("talk")+1, wav.length());
+		String filename = wav.substring(wav.indexOf("talk")+5, wav.length());
 		log.info("filename:"+filename);
 		try {
 			URLConnection conn = url.openConnection();

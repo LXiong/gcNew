@@ -9,14 +9,13 @@
 	<link type="text/css" href="<c:url value='/style/common_cn.css'/>" rel="stylesheet" />
 	<link type="text/css" href="<c:url value='/style/layout.css?v=2'/>" rel="stylesheet" />
 
-	<link type="text/css" href="<c:url value='/music-player/css/style.css?v=1'/>" rel="stylesheet" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
  	<meta http-equiv="expires" content="0"/>
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件 start -->
-    <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/datePicker/WdatePicker.js'/>"></script>
+    <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css?v=1'/>" rel="stylesheet" />
+	<script type="text/javascript" src="<c:url value='/datePicker/WdatePicker.js?v=1'/>"></script>
     <!-- 日期控件 end -->
  	<!-- jPage 分页插件 start -->
  	<link type="text/css" href="<c:url value='/jPage/jPages.css'/>" rel="stylesheet" />
@@ -93,7 +92,7 @@
 					<td>${call.endcode }</td>
 					<td>${call.agent }</td>
 					<td>
-						<a href="javascript:play('${fn:substring(call.recflag,26,fn:length(recflag)) }','${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
+						<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(call.recflag,26,fn:length(recflag)) }','${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>
 					</td>
 				</tr>
@@ -146,7 +145,7 @@
 <!--POP PLAYER START-->
 <div id="popMusicDiv" style="display:none;"></div>
 <!--POP PLAYER END-->
-<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=10'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=16'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
 </body>
 </html>

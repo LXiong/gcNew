@@ -2,9 +2,6 @@ package cn.voicet.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -16,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,7 +21,6 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Workbook;
 
 @SuppressWarnings("unchecked")
 public class DotSession {
@@ -352,6 +347,26 @@ public class DotSession {
 		catch (Exception e) 
 		{
 			e.printStackTrace();
+			return null;
+		}
+	}
+
+	
+	public static final String ONE_IP = "http://192.168.1.114";	//cts100
+	public static final String TWO_IP = "http://192.168.1.10";	//cts200
+	
+	public String getIpWithCTS(String icts)
+	{
+		if(icts.equals("cts100"))
+		{
+			return ONE_IP;
+		}
+		else if(icts.equals("cts200"))
+		{
+			return TWO_IP;
+		}
+		else
+		{
 			return null;
 		}
 	}
