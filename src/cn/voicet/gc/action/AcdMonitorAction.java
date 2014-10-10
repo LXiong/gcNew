@@ -46,6 +46,7 @@ public class AcdMonitorAction extends BaseAction implements ModelDriven<AcdForm>
 			request.getSession().setAttribute("acdm", "acdmonitorstart");
 		}
 		acdDao.getAcdMonitorList(ds);
+		log.info("list size:"+ds.list.size());
 		return "show_acd_monitor";
 	}
 	
