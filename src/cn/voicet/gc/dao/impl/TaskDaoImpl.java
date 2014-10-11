@@ -245,7 +245,7 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 					Sheet sheet = wb.getSheetAt(0);
 					int totalRowNum = sheet.getPhysicalNumberOfRows();
 					//curRow
-					for(int i=1; i<totalRowNum;i++)
+					for(int i=1; i<=totalRowNum;i++)
 					{
 						Row row = sheet.getRow(i);
 						Cell cell;
@@ -253,19 +253,26 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 						//curCol
 						for(int j=0;j<COL_ACTUAL_NUM[iKind];j++)
 						{
-							cell = row.getCell(j);
-							if(null!=cell)
+							if(null!=row)
 							{
-								cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-								cellValues[j] = row.getCell(j).getStringCellValue();
+								cell = row.getCell(j);
+								if(null!=cell)
+								{
+									cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+									cellValues[j] = row.getCell(j).getStringCellValue();
+								}
+								else
+								{
+									cellValues[j]="";
+								}
+								if(!checkCellOK(iKind, i, j, cellValues[j]))
+								{
+									bCheckOK = false;
+								}
 							}
 							else
 							{
-								cellValues[j]="";
-							}
-							if(!checkCellOK(iKind, i, j, cellValues[j]))
-							{
-								bCheckOK = false;
+								log.info("第["+(i+1)+"]行 is null");
 							}
 						}// end col
 						//exec procedure
