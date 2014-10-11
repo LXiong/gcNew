@@ -84,9 +84,21 @@
 		<item id="3" name="3:手机营业厅" />
 	</list>
 	<list name="hfqk" describle="回访情况">
-		<item id="1" name="1:情况一" />
-		<item id="2" name="2:情况二" />
-		<item id="3" name="3:情况三" />
+		<item id="1" name="1:回访成功" />
+		<item id="2" name="2:回访失败" />
+	</list>
+	<list name="hfqk2" describle="回访情况">
+		<item id="1" name="A-全部成功" />
+		<item id="2" name="B-部分成功" />
+		<item id="3" name="C-失败拒绝" />
+		<item id="4" name="D-失败拒访" />
+		<item id="5" name="E-繁忙改约" />
+		<item id="6" name="F-无人接听" />
+		<item id="7" name="G-无法接通 " />
+		<item id="8" name="H-关机" />
+		<item id="9" name="I-占线" />
+		<item id="10" name="J-暂停使用" />
+		<item id="11" name="K-拒接" />
 	</list>
 	<list name="succfail" describle="外呼结果">
 		<item id="1" name="成功" />

@@ -89,15 +89,15 @@
 			<tr>
 				<td align="right">客户建议&nbsp;</td>
 				<td align="left">&nbsp;<input type="text" name="customjy" class="ipt100_24" value="${hfMap.jy }"/></td>
-				<td align="right">外呼结果&nbsp;</td>
+				<td align="right">回访情况&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.whjj"/>
+					<s:select name="hfqk" list="#application.vta.GetList('hfqk2')" listKey="id" listValue="str" value="#request.hfMap.qk"></s:select>	
 				</td>
 			</tr>
 			<tr>
-				<td align="right">回访情况&nbsp;</td>
+				<td align="right">外呼结果&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:select name="hfqk" list="#application.vta.GetList('hfqk')" listKey="id" listValue="str" value="#request.hfMap.qk"></s:select>	
+					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.whjj"/>
 				</td>
 				<td align="right">回访姓名&nbsp;</td>
 				<td align="left">&nbsp;<input type="text" id="hfnamex" name="hfname" value="${hfMap.xm_n }" class="ipt100_24"/></td>
