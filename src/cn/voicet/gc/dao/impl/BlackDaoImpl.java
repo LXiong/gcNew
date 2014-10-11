@@ -198,6 +198,7 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 							}
 							else
 							{
+								bCheckOK = false;
 								log.info("第["+(i+1)+"]行 is null");
 							}
 						}// end col
