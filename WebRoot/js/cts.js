@@ -3,6 +3,10 @@ function changeServer(obj)
 {
 	var ctsVal = obj.options[obj.selectedIndex].text;
 	var mframe =window.parent.document.getElementById("mainFrame");
+	if(mframe.src.indexOf("nofresh")>0)
+	{
+		mframe.src = (mframe.src).substring(0,mframe.src.length-7);
+	}
 	var fs = mframe.src;
 	$.ajax({
 		async: false,

@@ -116,6 +116,6 @@
     	});
 	});
 </script>
-<script type="text/javascript" src="<c:url value='/js/cts.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js?v=1'/>"></script>
 </body>
 </html>

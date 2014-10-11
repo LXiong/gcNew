@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- menu plugin start -->
 	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/js/menu.js?v=5'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/menu.js?v=7'/>"></script>
 	<!-- menu plugin end -->
 	
 	<!-- ocx event -->
@@ -252,6 +252,6 @@
 	}
 
 </script>
-<script type="text/javascript" src="<c:url value='/js/cts.js?v=4'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js?v=7'/>"></script>
 </body>
 </html>
