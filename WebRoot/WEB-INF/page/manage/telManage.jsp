@@ -129,7 +129,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form2" name="form2" 
+		<form id="form2" 
 			action="${pageContext.request.contextPath }/task-importTaskTel.action" 
 			method="post" 
 			enctype="multipart/form-data"
@@ -245,7 +245,7 @@
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
-<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=31'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js?v=1'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=33'/>"></script>
 </body>
 </html>

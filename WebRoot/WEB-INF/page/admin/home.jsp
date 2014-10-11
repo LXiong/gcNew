@@ -250,8 +250,6 @@
 			
 		}
 	}
-
 </script>
-<script type="text/javascript" src="<c:url value='/js/cts.js?v=7'/>"></script>
 </body>
 </html>

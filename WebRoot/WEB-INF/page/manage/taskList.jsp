@@ -26,17 +26,17 @@
 			<thead class="tab_head">
 				<tr>
 					<th width="4%">编号</th>
-                    <th width="10%">任务名称</th>
-                    <th width="6%">类型</th>
-                    <th width="6%">座席组</th>
+                    <th width="15%">任务名称</th>
+                    <th width="4%">类型</th>
+                    <th width="4%">座席组</th>
                     <th width="6%">号码总数</th>
-                    <th width="6%">新建数</th>
-                    <th width="6%">执行中</th>
+                    <th width="4%">新建数</th>
+                    <th width="4%">执行中</th>
                     <th width="6%">执行完成</th>
-                    <th width="6%">接通数</th>
-                    <th width="6%">接通率</th>
-                    <th width="6%">完成率</th>
-                    <th width="20%">
+                    <th width="4%">接通数</th>
+                    <th width="4%">接通率</th>
+                    <th width="4%">完成率</th>
+                    <th width="18%">
                     	<input type="button" class="btn btn-primary" onclick="saveTask('add','0','','0','')" value="添加"/>
 					</th>
 				</tr>
@@ -46,7 +46,7 @@
 				<tr align="center">
 					<td>${tid }</td>
 					<td align="left" title="${tname }">&nbsp;
-						<s:property value="tname.length()>6?tname.substring(0,5)+'...':tname"/>	
+						<s:property value="tname.length()>13?tname.substring(0,12)+'...':tname"/>	
 					</td>
 					<td>
 						<c:if test="${kind eq 0 }">标准</c:if>

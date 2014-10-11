@@ -36,7 +36,7 @@
 	        	<input type="button" class="btn4" onclick="showSelFile()" value="导入"/>
 	        </li>
 	        <li>
-	        	<input type="button" class="btn4" onclick="location.href='${pageContext.request.contextPath }/black-export.action'" value="导出"/>
+	        	<input type="button" class="btn4" onclick="exportBlackData()" value="导出"/>
 	        </li>
 		</ul>
    	</div>
@@ -138,6 +138,10 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<form name="form6" action="${pageContext.request.contextPath }/black-export.action" method="post">
+		<input type="hidden" name="telnum" value="<s:property value="telnum"/>"/>
+	</form>
+	
 </div>
 <script type="text/javascript">
 //jPage分页 
@@ -187,7 +191,7 @@ document.onkeydown = function(e) {
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/black.js?v=17'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/black.js?v=18'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 </body>

@@ -47,16 +47,16 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head2">
                  <tr>
-                     <th width="8%">分机号码</th>
-                     <th width="8%">账号</th>
+                     <th width="6%">分机号码</th>
+                     <th width="10%">账号</th>
                      <th width="8%">姓名</th>
-                     <th width="8%">请求次数</th>
-                     <th width="8%">接听次数</th>
+                     <th width="6%">请求<br/>次数</th>
+                     <th width="6%">接听<br/>次数</th>
                      <th width="8%">总等待<br/>时长(秒)</th>
                      <th width="8%">平均等待<br/>时长(秒)</th>
                      <th width="8%">总通话<br/>时长(秒)</th>
                      <th width="8%">平均通话<br/>时长(秒)</th>
-                     <th width="8%">接听<br/>超时次数</th>
+                     <th width="8%">接听超时<br/>次数</th>
                      <th width="8%">接听本方<br/>挂机次数</th>
                  </tr>
              </thead>

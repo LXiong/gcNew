@@ -1,22 +1,28 @@
 //change cts server
-function changeServer(obj)
+function changeServer(obj,url)
 {
 	var ctsVal = obj.options[obj.selectedIndex].text;
-	var mframe =window.parent.document.getElementById("mainFrame");
-	if(mframe.src.indexOf("nofresh")>0)
-	{
-		mframe.src = (mframe.src).substring(0,mframe.src.length-7);
-	}
-	var fs = mframe.src;
 	$.ajax({
 		async: false,
 		type: "POST",
 		data: {cts: ctsVal},
 		url: "saveCTS.action",
 		success: function() {
-			if(fs.indexOf("acdm")>0 || fs.indexOf("acd-")>0 || fs.indexOf("subtel")>0)
+			if(url=="acdmonitor")
 			{
-				mframe.src = mframe.src;
+				location.href="acdmonitor-list.action";
+			}
+			else if(url=="subtelmonitor")
+			{
+				location.href="subtelmonitor-list.action";
+			}
+			else if(url=="acd")
+			{
+				location.href="acd-list.action";
+			}
+			else if(url=="subtel")
+			{
+				location.href="subtel-list.action";
 			}
 		}
 	});

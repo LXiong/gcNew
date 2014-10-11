@@ -139,7 +139,7 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 				HSSFWorkbook wb=DotSession.fromRStoExcel(filePath, 1, true, rs, columnCount);
 				try {
 					response.reset();
-					response.setHeader("Content-Disposition", "attachment;filename=" + "black_export0.xls");
+					response.setHeader("Content-Disposition", "attachment;filename=" + "black_export.xls");
 					response.setContentType("application/vnd.ms-excel;charset=UTF-8");	
 					wb.write(response.getOutputStream());
 				} catch (IOException e) {

@@ -23,16 +23,16 @@
 <body>
 <div id="contentWrap">
 	<h3 class="h3_title">座席组监控&nbsp;
-	<s:select list="#session.vts.ctsList" onchange="changeServer(this)" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
+	<s:select list="#session.vts.ctsList" onchange="changeServer(this,'acdmonitor')" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
 	</h3>
 	<div class="content_List615">
 		<table id="acdMonitorTab" cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
                      <th width="4%">组编号</th>
-                     <th width="8%">组号码</th>
+                     <th width="6%">组号码</th>
                      <th width="8%">组名称</th>
-                     <th width="6%">外呼主叫</th>
+                     <th width="10%">外呼主叫</th>
                      <th width="4%">任务</th>
                      <th width="4%">状态</th>
                      <th width="6%">添加中继数</th>
@@ -40,7 +40,7 @@
                      <th width="4%">应答数</th>
                      <th width="4%">应答率</th>
                      <th width="6%">在线客服</th>
-                     <th width="14%">操作</th>
+                     <th width="16%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -134,6 +134,6 @@
 <script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=7'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/cts.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js?v=4'/>"></script>
 </body>
 </html>

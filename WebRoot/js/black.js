@@ -160,3 +160,7 @@ function validateExcelUpLoadFile(form)
         return false;
     }	
 }
+function exportBlackData()
+{
+	document.form6.submit();
+}
