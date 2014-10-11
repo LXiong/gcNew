@@ -53,9 +53,9 @@
                      <th width="10%">组名称</th>
                      <th width="6%">分配总次数</th>
                      <th width="6%">分配成功数</th>
-                     <th width="4%">放弃数</th>
-                     <th width="4%">溢出数</th>
-                     <th width="4%">超时数</th>
+                     <th width="6%">放弃数</th>
+                     <th width="6%">溢出数</th>
+                     <th width="6%">超时数</th>
                      <th width="6%">分配错误</th>
                  </tr>
              </thead>

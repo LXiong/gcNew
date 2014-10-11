@@ -57,4 +57,15 @@ public class TestNine {
 		}
 		
 	}
+	
+	public static void main(String[] args) {
+		boolean bs = false;
+		if(!bs){
+			System.out.println("1");
+		}
+		else
+		{
+			System.out.println("2");
+		}
+	}
 }

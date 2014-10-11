@@ -263,8 +263,13 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 							{
 								cellValues[j]="";
 							}
+							if(!checkCellOK(iKind, i, j, cellValues[j]))
+							{
+								bCheckOK = false;
+							}
 						}// end col
 						//exec procedure
+						log.info("bCheckOK:"+bCheckOK);
 						if(bCheckOK)
 						{
 							//set task number
@@ -299,51 +304,52 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 			}
 		});
 	}
-
-	public StringBuffer errorString;  
+	
 	private boolean checkCellOK(int iKind, int curRow, int curCol, String cellValue) {
-		if(null==cellValue || cellValue.length()<=0) return false;
 		//
 		switch (iKind) {
 		case 0:
 			switch (curCol) {
 				case 1:
-					//ttid
-					if(cellValue.equals("") || null==cellValue)
-					{
-						errorString.append("第"+curRow+"行,第"+curCol+"列:"+"电话编号不能为空");
-						return false;
-					}
 					break;
 				case 2:
-					//telnum
-					if(cellValue.equals("") || null==cellValue)
-					{
-						errorString.append("第"+curRow+"行,第"+curCol+"列:"+"电话号码不能为空");
-						return false;
-					}
 					break;
 					
 				default:
 					break;
 			}
 			break;
-			//
+		//huifang1
 		case 1:
 			switch (curCol) {
+				case 0:
+					//telid
+					if(null==cellValue || cellValue.length()<=0)
+					{
+						log.info("tid is null:"+cellValue);
+						return false;
+					}
+					break;
 				case 1:
+					//telnum
+					if(null==cellValue || cellValue.length()<=0)
+					{
+						log.info("telnum is null:"+cellValue);
+						return false;
+					}
 					break;
 				case 2:
 					break;
 				case 3:
 					break;
 				case 4:
+					break;
 				case 5:
+					break;
 				case 6:
+					break;
 				case 7:
-				case 8:
-					
-					return true;
+					break;
 				default:
 					break;
 			}
@@ -351,15 +357,29 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 			//
 		case 2:
 			switch (curCol) {
+				case 0:
+					//telid
+					if(null==cellValue || cellValue.length()<=0)
+					{
+						log.info("tid is null:"+cellValue);
+						return false;
+					}
+					break;
 				case 1:
+					//telnum
+					if(null==cellValue || cellValue.length()<=0)
+					{
+						log.info("telnum is null:"+cellValue);
+						return false;
+					}
 					break;
 				case 2:
 					break;
 				case 3:
 					break;
 				case 4:
+					break;
 				case 5:
-				case 6:
 					break;
 				default:
 					break;
@@ -368,17 +388,34 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 			//
 		case 3:
 			switch (curCol) {
+				case 0:
+					//telid
+					if(null==cellValue || cellValue.length()<=0)
+					{
+						log.info("tid is null:"+cellValue);
+						return false;
+					}
+					break;
 				case 1:
+					//telnum
+					if(null==cellValue || cellValue.length()<=0)
+					{
+						log.info("telnum is null:"+cellValue);
+						return false;
+					}
 					break;
 				case 2:
 					break;
 				case 3:
 					break;
 				case 4:
+					break;
 				case 5:
+					break;
 				case 6:
+					break;
 				case 7:
-				case 8:
+					break;
 				default:
 					break;
 			}

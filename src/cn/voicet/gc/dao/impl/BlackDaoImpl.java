@@ -161,6 +161,7 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 				//close session auto commit
 				conn.setAutoCommit(false);
 				ps = conn.prepareStatement("{call web_black_insert(?,?,?)}");
+				boolean bCheckOK;
 				String cellValues[]=new String[MAX_COL_CHECK];
 				//
 				try 
@@ -174,6 +175,7 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 					{
 						Row row = sheet.getRow(i);
 						Cell cell;
+						bCheckOK=true;
 						//curCol
 						for(int j=0;j<COL_ACTUAL_NUM;j++)
 						{
@@ -187,23 +189,30 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 							{
 								cellValues[j]="";
 							}
+							if(!checkCellOK(i, j, cellValues[j]))
+							{
+								bCheckOK = false;
+							}
 						}// end col
-						//exec procedure
-						//set task number
-						for(int j=0; j<COL_ACTUAL_NUM; j++)
+						if(bCheckOK)
 						{
-							ps.setString(j+1, cellValues[j]);
+							//exec procedure
+							//set task number
+							for(int j=0; j<COL_ACTUAL_NUM; j++)
+							{
+								ps.setString(j+1, cellValues[j]);
+							}
+							ps.setString(3, null);
+							ps.addBatch();
+							//
+							if(i % 1000==0){
+				        		//执行批量更新    
+				        		ps.executeBatch();
+				        		//语句执行完毕，提交本事务 
+				        		conn.commit();
+				        		ps.clearBatch();
+				        	}
 						}
-						ps.setString(3, null);
-						ps.addBatch();
-						//
-						if(i % 1000==0){
-			        		//执行批量更新    
-			        		ps.executeBatch();
-			        		//语句执行完毕，提交本事务 
-			        		conn.commit();
-			        		ps.clearBatch();
-			        	}
 					}// end row
 					ps.executeBatch();
 					conn.commit();
@@ -219,6 +228,24 @@ public class BlackDaoImpl extends BaseDaoImpl implements BlackDao {
 				}
 			}
 		});
+	}
+	
+
+	private boolean checkCellOK(int curRow, int curCol, String cellValue) {
+		//
+		switch (curCol) {
+			case 0:
+				//telnum
+				if(null==cellValue || cellValue.length()<=0)
+				{
+					log.info("telnum is null:"+cellValue);
+					return false;
+				}
+				break;
+			default:
+				break;
+		}
+		return true;
 	}
 
 }
