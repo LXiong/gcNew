@@ -11,19 +11,8 @@
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- menu plugin start -->
 	<link type="text/css" href="<c:url value='/style/menu.css'/>" rel="stylesheet" />
-	<script type="text/javascript" src="<c:url value='/js/menu.js?v=7'/>"></script>
+	<script type="text/javascript" src="<c:url value='/js/menu.js?v=8'/>"></script>
 	<!-- menu plugin end -->
-	
-	<!-- ocx event -->
-	<!--  
-	<script type="text/javascript" for="OCXPlugin" event="OnDetectRing(a,b,c,d)">alert(b)</script>
-	<script type="text/javascript">
-		function changeOCX(){
-			 var ocxplugin = document.getElementById("OCXPlugin");
-			 ocxplugin.SetLine("1","100","2");	
-		}
-	</script>
-	-->
 </head>
 <body>
 <div id="container">
@@ -38,10 +27,9 @@
   			<input type="button" onclick="js_monitor_acdgrp('5,933300,呼叫,0,0,0,0.00%,0/0')" value="测试业务组监控"/>
   			<input type="button" onclick="js_seat_minitor('0,正常,来电,*9000#,agt000')" value="测试分机监控"/>
   			-->
-  			<!-- 
   			<input id="button1" type="button" value="Button" onclick="changeOCX()"/>
-			<object id="OCXPlugin" codebase="<%=request.getContextPath()%>/ocx/vtcx3.ocx#version=1.0" classid="clsid:9730588D-7548-42E8-8779-F98D76A2A09E" style="display:none;"></object>
-			-->
+  			<span id="ocxLog" style="font-size:12px;">ocx log</span>
+			<object id="OCXPlugin" classid="clsid:9730588D-7548-42E8-8779-F98D76A2A09E" width="0" height="0"></object>
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
     </div>
@@ -196,7 +184,7 @@
 	function js_monitor_acdgrp(fromClientCts, str){
 		//check cts
 		var curCts = "<s:property value='#session.vts.curCTS'/>";
-		if(curCts==fromClientCts)
+		if(curCts==fromClientCts.toLowerCase())
 		{
 			//
 			str = str.split(",");
@@ -230,7 +218,7 @@
 	function js_seat_minitor(fromClientCts, str){
 		//check cts
 		var curCts = "<s:property value='#session.vts.curCTS'/>";
-		if(curCts==fromClientCts)
+		if(curCts==fromClientCts.toLowerCase())
 		{
 			str = str.split(",");
 			//获取表格对象
@@ -251,5 +239,37 @@
 		}
 	}
 </script>
+
+
+<!-- ocx event -->
+<script type="text/javascript" for="OCXPlugin" event="OnLog(info)">
+	$("#ocxLog")[0].innerHTML=info;
+</script>
+
+<script type="text/javascript" for="OCXPlugin" event="OnRing(line,ani,dnis,param)">
+	$("#ocxLog")[0].innerHTML=param;
+</script>
+
+<script type="text/javascript" for="OCXPlugin" event="OnACDReport(fromClientCts,str)">
+	js_monitor_acdgrp(fromClientCts, str);
+</script>
+
+<script type="text/javascript" for="OCXPlugin" event="OnSubTelReport(fromClientCts,str)">
+	js_seat_minitor(fromClientCts, str);
+</script>
+
+<script type="text/javascript">
+	function changeOCX(){
+		var ocxplugin = document.getElementById("OCXPlugin");
+		ocxplugin.SetLine("1","100","2");
+	}
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		$("#OCXPlugin")[0].SetLine("1","100","2");
+	});
+</script>
+
 </body>
 </html>

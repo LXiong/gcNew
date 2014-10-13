@@ -45,40 +45,20 @@ function checkAni()
 		return true;
 	}
 }
-function setCallerBtn()
+function setCallerBtn(cts)
 {
 	if(!checkAni()) return false;
-	
-	//
-	$("#form1").ajaxSubmit({ 
-		success:function(data){ //提交成功的回调函数
-			layer.closeAll();
-        }  
-	}); 
-    return false;	//not refresh page
+	$("#OCXPlugin",window.parent.document)[0].SetACDCaller(cts,$("#grpidx").val(),$("#anix").val());
+	layer.closeAll();
+	$("#OCXPlugin",window.parent.document)[0].LookACD(cts);
 }
 
-function editTrunk(grpid,trknum)
+function editTrunk(cts, grpid,trknum)
 {
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		data: {grpid:grpid, trknum:trknum},
-		url: "editTrunk.action",
-		success: function(data) {
-		}
-	});
+	$("#OCXPlugin",window.parent.document)[0].SetACDTrunkChg(cts,grpid,trknum);
 }
 
-function editCall(grpid, callstate)
+function editCall(cts,grpid, callstate)
 {
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		data: {grpid:grpid, callstate:callstate},
-		url: "editCallState.action",
-		success: function(data) {
-			
-		}
-	});
+	$("#OCXPlugin",window.parent.document)[0].SetACDCall(cts,grpid,callstate);
 }
