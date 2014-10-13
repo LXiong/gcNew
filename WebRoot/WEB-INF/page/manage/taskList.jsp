@@ -194,6 +194,6 @@ document.onkeydown = function(e) {
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/json_ie.js?v=1'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/task.js?v=10'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=11'/>"></script>
 </body>
 </html>

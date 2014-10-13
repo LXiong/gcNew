@@ -172,8 +172,6 @@ function clickme(o,links,divs,style2,style3,state){
 }
 //二级菜单点击事件
 function subclick(o,links,style2,style3,state){
-	//change iframe src
-	$("#mainFrame").attr("src",o);
 	if (state!=o.index){
 		for(var i=0;i<links.length;i++){
 			removeClass(links[i],style2);	
