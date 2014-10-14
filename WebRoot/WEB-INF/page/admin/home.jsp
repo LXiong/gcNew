@@ -248,6 +248,7 @@
 
 <script type="text/javascript" for="OCXPlugin" event="OnRing(line,ani,dnis,param)">
 	$("#ocxLog")[0].innerHTML=param;
+	js_detectcall(line,param);
 </script>
 
 <script type="text/javascript" for="OCXPlugin" event="OnACDReport(fromClientCts,str)">
