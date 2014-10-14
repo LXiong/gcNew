@@ -81,7 +81,7 @@
     <!-- jPage end -->
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form1" action="<c:url value='/acdmonitor-setCaller.action'/>" method="post">
+		
 	    <input type="hidden" id="grpidx" name="grpid"/>
 	    <div class="lab_ipt_item" id="whnum">
 	    	<span class="lab150">主叫号码：</span>
@@ -95,7 +95,7 @@
 			<div class="ipt-box"><input type="button" onclick="setCallerBtn('<s:property value="#session.vts.curCTS"/>')" class="btn4" value="确定"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
 		</div>	
-		</form>
+		
 	</div>
 	<!--POP LAYER END-->
 	

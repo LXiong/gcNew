@@ -11,7 +11,4 @@ public interface AcdDao{
 	void deleteAcdByGrpid(AcdForm acdForm);
 	void setTaskForAcd(AcdForm acdForm);
 	void getAcdMonitorList(DotSession ds);
-	void setCaller(DotSession ds, AcdForm acdForm);
-	void changeTrunkByGrpid(DotSession ds, AcdForm acdForm);
-	void changeCallState(DotSession ds, AcdForm acdForm);
 }

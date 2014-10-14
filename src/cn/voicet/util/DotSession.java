@@ -54,8 +54,6 @@ public class DotSession {
 	private int stackPos=0;
 	private StackInfo[] arrayStackInfo;
 	public String curCTS = "cts100";
-	public String curClientLocal;
-	public String curCTSLocal;
 	
 	public String bmhm;
 	

@@ -44,13 +44,7 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>
-					
-						<s:if test="#session.vts.curClientLocal!=clientname && #session.vts.curCTSLocal!=null && #session.vts.curCTSLocal==#session.vts.curCTS">
-						<a href="javascript:listen('${telnum }')">监听</a>
-						</s:if>
-						
-					</td>
+					<td></td>
 				</tr>
 				</s:iterator>
 			</tbody>
@@ -100,7 +94,7 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/subtel-monitor.js?v=2'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/subtel-monitor.js?v=3'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js?v=3'/>"></script>
 <script type="text/javascript">
 	$(function(){

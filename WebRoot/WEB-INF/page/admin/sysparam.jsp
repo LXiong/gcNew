@@ -30,12 +30,12 @@
 	    <div style="height:10px;"></div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
-			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="saveParamBtn()"/></div>
+			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="saveParamBtn('<s:property value="#session.vts.curCTS"/>')"/></div>
 		</div>
 		</form>
     </div>
 </div>	
-<script type="text/javascript" src="<c:url value='/js/sysparam.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/sysparam.js?v=4'/>"></script>
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->

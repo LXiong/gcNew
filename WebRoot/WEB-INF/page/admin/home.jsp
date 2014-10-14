@@ -26,9 +26,9 @@
   			<input type="button" onclick="js_detectcall('callin','ani=808;dnis=10086;param=a,1,1;')" value="测试弹屏"/>
   			<input type="button" onclick="js_monitor_acdgrp('5,933300,呼叫,0,0,0,0.00%,0/0')" value="测试业务组监控"/>
   			<input type="button" onclick="js_seat_minitor('0,正常,来电,*9000#,agt000')" value="测试分机监控"/>
-  			-->
   			<input id="button1" type="button" value="Button" onclick="changeOCX()"/>
-  			<span id="ocxLog" style="font-size:12px;">ocx log</span>
+  			-->
+  			<span id="ocxLog" style="font-size:12px;"></span>
 			<object id="OCXPlugin" classid="clsid:9730588D-7548-42E8-8779-F98D76A2A09E" width="0" height="0"></object>
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
@@ -47,7 +47,7 @@
         		<label></label>
         	</span>
             <span><a class="menu_righta" href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
-            <span><a class="menu_righta" href="javascript:logout('<s:property value='#session.vts.curClientLocal'/>','<s:property value='#session.vts.curCTSLocal'/>')">[&nbsp;注销&nbsp;]</a></span>
+            <span><a class="menu_righta" href="javascript:logout()">[&nbsp;注销&nbsp;]</a></span>
         </div>
     </div>
     <!-- main -->
@@ -136,12 +136,12 @@
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript">
 	//logout
-	function logout(agt,cts)
+	function logout()
 	{
 		layer.confirm("确定要注销吗？",function(){
 			$("#form2").ajaxSubmit({ 
 				success:function(data){ //提交成功的回调函数
-					location.href="index.action?agt="+agt+"&cts="+cts;
+					location.href="index.action";
 		        }  
 			}); 
 		    return false;
@@ -150,21 +150,18 @@
 </script>
 <script type="text/javascript">
 	/*************** 弹屏   ***************/ 
-	function js_detectcall(call,str){
-		var pIndex = str.indexOf("param=")+6; //25
-		var taskstr = str.substr(pIndex);		//a,1,1;
-		taskstr = taskstr.substring(0,taskstr.length-1);	//a,1,1
-		taskstr = taskstr.split(",");				//[a,1,1]
-		if(taskstr[0]=="a")
+	function js_detectcall(line,ani,dnis,param){
+		param = param.split(",");
+		if(param[0]=="a")
 		{
 			//获取回访类型
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				data: {tid: taskstr[1]},
+				data: {tid: param[1]},
 				url: "huifangType.action",
 				success: function(data) {
-					$("#popHuifang")[0].href="huifang-list.action?flag="+data+"&tid="+taskstr[1]+"&ttid="+taskstr[2];
+					$("#popHuifang")[0].href="huifang-list.action?flag="+data+"&tid="+param[1]+"&ttid="+param[2];
 					$("#popHuifang")[0].click();
 				}
 			});
@@ -215,7 +212,7 @@
 	/*
 	js提供的内容:电话编号,分机状态,呼叫方向,对方号码,登录话务员
 	*/
-	function js_seat_minitor(fromClientCts, str){
+	function js_seat_minitor(fromClientCts, str, listen){
 		//check cts
 		var curCts = "<s:property value='#session.vts.curCTS'/>";
 		if(curCts==fromClientCts.toLowerCase())
@@ -232,6 +229,15 @@
 			tabObj.rows[i].cells[3].innerText=str[2];
 			tabObj.rows[i].cells[4].innerText=str[3];
 			tabObj.rows[i].cells[5].innerText=str[4];
+			if(parseInt(listen)==0)
+			{
+				tabObj.rows[i].cells[6].innerText='';
+			}
+			else
+			{
+				var tel = tabObj.rows[i].cells[1].innerText;
+				tabObj.rows[i].cells[6].innerHTML="<a href=\"javascript:listen('"+tel+"')\">监听</a>";
+			}
 		}
 		else
 		{
@@ -243,20 +249,20 @@
 
 <!-- ocx event -->
 <script type="text/javascript" for="OCXPlugin" event="OnLog(info)">
-	$("#ocxLog")[0].innerHTML=info;
+	//$("#ocxLog")[0].innerHTML=info;
 </script>
 
 <script type="text/javascript" for="OCXPlugin" event="OnRing(line,ani,dnis,param)">
-	$("#ocxLog")[0].innerHTML=param;
-	js_detectcall(line,param);
+	//$("#ocxLog")[0].innerHTML=param;
+	js_detectcall(line,ani,dnis,param);
 </script>
 
 <script type="text/javascript" for="OCXPlugin" event="OnACDReport(fromClientCts,str)">
 	js_monitor_acdgrp(fromClientCts, str);
 </script>
 
-<script type="text/javascript" for="OCXPlugin" event="OnSubTelReport(fromClientCts,str)">
-	js_seat_minitor(fromClientCts, str);
+<script type="text/javascript" for="OCXPlugin" event="OnSubTelReport(fromClientCts,str,listen)">
+	js_seat_minitor(fromClientCts, str, listen);
 </script>
 
 <script type="text/javascript">
@@ -268,7 +274,9 @@
 
 <script type="text/javascript">
 	$(function(){
-		$("#OCXPlugin")[0].SetLine("1","100","2");
+		//$("#OCXPlugin")[0].SetLine("1","100","2");
+		//取代登录完成发送消息 
+		$("#OCXPlugin")[0].AgentBind();
 	});
 </script>
 

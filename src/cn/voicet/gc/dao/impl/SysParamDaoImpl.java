@@ -7,7 +7,6 @@ import java.sql.Types;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.CallableStatementCallback;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
@@ -56,80 +55,6 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 				cs.setInt(3, maxwait);
 				cs.execute();
 				//
-				cs.clearParameters();
-				cs = conn.prepareCall("{call web_cts_alter_chggolbal(?)}");
-				log.info("sp:web_cts_alter_chggolbal(?)");
-				cs.setString(1, ds.curCTS);
-				cs.execute();
-				//
-				return null;
-			}
-		});
-	}
-	
-	public void startAcdMonitor(final DotSession ds) {
-		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
-		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curClientLocal);
-				cs.setString(2, ds.curCTS);
-				cs.setInt(3, 2234);
-				cs.setInt(4, -1);
-				cs.setInt(5, -1);
-				cs.setString(6, "start acdgrp monitor");
-				cs.execute();
-				return null;
-			}
-		});
-	}
-	
-	public void stopAcdMonitor(final DotSession ds) {
-		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
-		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curClientLocal);
-				cs.setString(2, ds.curCTS);
-				cs.setInt(3, 2235);
-				cs.setInt(4, -1);
-				cs.setInt(5, -1);
-				cs.setString(6, "stop acdgrp monitor");
-				cs.execute();
-				return null;
-			}
-		});
-	}
-	
-	public void startSubtelMonitor(final DotSession ds) {
-		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
-		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curClientLocal);
-				cs.setString(2, ds.curCTS);
-				cs.setInt(3, 2241);
-				cs.setInt(4, -1);
-				cs.setInt(5, -1);
-				cs.setString(6, "start subtel monitor");
-				cs.execute();
-				return null;
-			}
-		});
-	}
-	
-	public void stopSubtelMonitor(final DotSession ds) {
-		log.info("sp:nts_addmsg(?,?,?,?,?,?)");
-		this.getJdbcTemplate().execute("{call nts_addmsg(?,?,?,?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curClientLocal);
-				cs.setString(2, ds.curCTS);
-				cs.setInt(3, 2240);
-				cs.setInt(4, -1);
-				cs.setInt(5, -1);
-				cs.setString(6, "stop subtel monitor");
-				cs.execute();
 				return null;
 			}
 		});

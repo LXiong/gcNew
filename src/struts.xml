@@ -138,13 +138,5 @@
 		<action name="huifangType" class="huiFangAction" method="getHuiFangType">
 			<result type="json"></result>
 		</action>
-		
-		<action name="editTrunk" class="acdMonitorAction" method="editTrunk">
-			<result type="json"></result>
-		</action>
-		
-		<action name="editCallState" class="acdMonitorAction" method="editCallState">
-			<result type="json"></result>
-		</action>
 	</package>
 </struts>

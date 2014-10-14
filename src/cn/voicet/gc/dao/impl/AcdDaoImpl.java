@@ -140,46 +140,4 @@ public class AcdDaoImpl extends BaseDaoImpl implements AcdDao {
 			}
 		});
 	}
-
-	public void setCaller(final DotSession ds, final AcdForm acdForm) {
-		log.info("sp:web_acd_setcaller(?,?,?)");
-		this.getJdbcTemplate().execute("{call web_acd_setcaller(?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curCTS);
-				cs.setInt(2, acdForm.getGrpid());
-				cs.setString(3, acdForm.getAni());
-				cs.execute();
-				return null;
-			}
-		});
-	}
-
-	public void changeTrunkByGrpid(final DotSession ds, final AcdForm acdForm) {
-		log.info("sp:web_acd_trkchg(?,?,?)");
-		this.getJdbcTemplate().execute("{call web_acd_trkchg(?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curCTS);
-				cs.setInt(2, acdForm.getGrpid());
-				cs.setInt(3, acdForm.getTrknum());
-				cs.execute();
-				return null;
-			}
-		});
-	}
-
-	public void changeCallState(final DotSession ds, final AcdForm acdForm) {
-		this.getJdbcTemplate().execute("{call web_acd_setcall(?,?,?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curCTS);
-				cs.setInt(2, acdForm.getGrpid());
-				cs.setInt(3, acdForm.getCallstate());
-				cs.execute();
-				return null;
-			}
-		});
-	}
-
 }

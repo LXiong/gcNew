@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <html>
 	<head>
-		<title>扶贫观察点管理系统</title>
+		<title>电话自动外呼系统</title>
 		<style>
 		.box_wrap {
 		    width: 866px;

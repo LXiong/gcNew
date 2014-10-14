@@ -10,5 +10,4 @@ public interface UserDao{
 	Map<String, Object> userLogin(UserForm userForm);
 	boolean updateUserPassword(DotSession ds, UserForm userForm);
 	void queryCTSList(DotSession ds);
-	void bindCurrentAgt(DotSession ds);
 }
