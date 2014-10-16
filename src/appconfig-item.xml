@@ -42,8 +42,7 @@
 	</role>
 	<role roleid="3" describle="话务员">
 		<grp name="日常工作">
-	    	<fun name="通话及录音查询" action="callrecord.action" />
-      		<fun name="接听情况统计" action="agentanaly-list.action" />
+	    	<fun name="通话及录音查询" action="callrecord-list.action" />
 	    </grp>
 	</role>
 	
