@@ -28,7 +28,7 @@
   			<input type="button" onclick="js_seat_minitor('0,正常,来电,*9000#,agt000')" value="测试分机监控"/>
   			<input id="button1" type="button" value="Button" onclick="changeOCX()"/>
   			-->
-  			<span id="ocxLog" style="font-size:12px;"></span>
+  			<span id="ocxLog" style="font-size:12px;">ocx log</span>
 			<object id="OCXPlugin" classid="clsid:9730588D-7548-42E8-8779-F98D76A2A09E" width="0" height="0"></object>
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
@@ -249,11 +249,11 @@
 
 <!-- ocx event -->
 <script type="text/javascript" for="OCXPlugin" event="OnLog(info)">
-	//$("#ocxLog")[0].innerHTML=info;
+	$("#ocxLog")[0].innerHTML=info;
 </script>
 
 <script type="text/javascript" for="OCXPlugin" event="OnRing(line,ani,dnis,param)">
-	//$("#ocxLog")[0].innerHTML=param;
+	$("#ocxLog")[0].innerHTML=param;
 	js_detectcall(line,ani,dnis,param);
 </script>
 
@@ -274,7 +274,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		//$("#OCXPlugin")[0].SetLine("1","100","2");
+		$("#OCXPlugin")[0].SetLine("1","100","2");
 		//取代登录完成发送消息 
 		$("#OCXPlugin")[0].AgentBind();
 	});
