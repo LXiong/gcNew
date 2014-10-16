@@ -28,7 +28,6 @@
   			<input type="button" onclick="js_seat_minitor('0,正常,来电,*9000#,agt000')" value="测试分机监控"/>
   			<input id="button1" type="button" value="Button" onclick="changeOCX()"/>
   			-->
-  			<span id="ocxLog" style="font-size:12px;">ocx log</span>
 			<object id="OCXPlugin" classid="clsid:9730588D-7548-42E8-8779-F98D76A2A09E" width="0" height="0"></object>
   		</div>
   		<div class="tit3"><s:property value="#application.vta.provider"/></div>
@@ -82,6 +81,7 @@
         <!-- 记录js分页当前页码 end -->
         </p>
         <span>Copyright @ 2005-2014 All Rights Reserved 版权所有 · 南京威帝通讯科技有限公司&nbsp;&nbsp;V140901</span>
+        <div id="ocxLog" style="font-size:12px; text-align:left; text-indent:10px;">vtcx log</div>
     </div>
     <!-- print window -->
 	<div style="height:0px;">
@@ -274,7 +274,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		$("#OCXPlugin")[0].SetLine("1","100","2");
+		//$("#OCXPlugin")[0].SetLine("1","100","2");
 		//取代登录完成发送消息 
 		$("#OCXPlugin")[0].AgentBind();
 	});
