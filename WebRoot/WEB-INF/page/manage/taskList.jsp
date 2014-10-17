@@ -64,7 +64,7 @@
 					<td>${frr }</td>
 					<td>
 						<a href="javascript:setAcd('${tid }')">指派座席组</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/task-telmanage.action?tid=${tid}&tname=${tname}&kind=${kind}">号码管理</a>&nbsp;&nbsp;
+						<a href="javascript:telManage('${tid }','${kind }','${tname }')">号码管理</a>&nbsp;&nbsp;
 						<a href="javascript:saveTask('edit','${tid }','${tname }','${kind }','${taskinfo }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskPre('${tid }','${tname }','${trn }')">删除</a>
 						<input type="button" class="hide" onclick="deleteTask('${tid }','${tname }')" value="删除"/>
@@ -140,6 +140,13 @@
 	</div>
 	<!--POP LAYER END-->
 	
+	<!-- delete task -->
+	<form name="form4" action="<c:url value='/task-telmanage.action'/>" method="post">
+		<input type="hidden" id="p_tid" name="tid"/>
+		<input type="hidden" id="p_kind" name="kind"/>
+		<input type="hidden" id="p_tname" name="tname"/>
+	</form>
+	
 </div>
 
 <script type="text/javascript">
@@ -194,6 +201,6 @@ document.onkeydown = function(e) {
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/json_ie.js?v=1'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/task.js?v=29'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=33'/>"></script>
 </body>
 </html>

@@ -1,3 +1,11 @@
+function telManage(tid, kind, tname)
+{
+	$("#p_tid").val(tid);
+	$("#p_kind").val(kind);
+	$("#p_tname").val(tname);
+	document.form4.submit();
+}
+
 //save task
 function saveTask(t,tid,tname,kind,taskinfo)
 {

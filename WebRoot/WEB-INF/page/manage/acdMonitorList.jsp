@@ -49,7 +49,7 @@
 					<td>${grpid }</td>
 					<td>${telnum }</td>
 					<td>${grpname }</td>
-					<td>${ani }</td>
+					<td><label id="ani${grpid }">${ani }</label></td>
 					<td>${taskid }</td>
 					<td>${curstate }</td>
 					<td>${addtrk }</td>
@@ -58,7 +58,7 @@
 					<td>${ans_rate }</td>
 					<td>${agt_num }</td>
 					<td>
-						<a href="javascript:setCaller('${grpid }','${ani }')">主叫</a>&nbsp;&nbsp;
+						<a href="javascript:setCaller('${grpid }')">主叫</a>&nbsp;&nbsp;
 						<a href="javascript:editTrunk('<s:property value="#session.vts.curCTS"/>','${grpid }','1')" title="增加中继数">++</a>&nbsp;&nbsp;
 						<a href="javascript:editTrunk('<s:property value="#session.vts.curCTS"/>','${grpid }','-1')" title="减少中继数">--</a>&nbsp;&nbsp;
 						<a href="javascript:editCall('<s:property value="#session.vts.curCTS"/>','${grpid }','1')">启动</a>&nbsp;&nbsp;
@@ -131,14 +131,13 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=28'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=32'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js?v=4'/>"></script>
 <script type="text/javascript">
 	$(function(){
 		var curCts = "<s:property value='#session.vts.curCTS'/>";
-		//window.parent.document.getElementById("OCXPlugin").LookACD("cts100");
 		$("#OCXPlugin",window.parent.document)[0].LookACD(curCts);
 	});
 </script>

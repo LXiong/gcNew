@@ -1,6 +1,7 @@
 package cn.voicet.gc.action;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -174,6 +175,8 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	public String telmanage()
 	{
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("query str:"+request.getQueryString());
+		log.info("tid:"+taskForm.getTid()+", tname:"+taskForm.getTname()+", kind:"+taskForm.getKind());
 		log.info("tid:"+taskForm.getTid()+", telnum:"+taskForm.getTelnum()+", ddstate:"+taskForm.getDdstate()+", callret:"+taskForm.getCallret()+", start:"+taskForm.getStart());
 		taskDao.queryTelByTid(ds, taskForm);
 		return "show_telmanage";

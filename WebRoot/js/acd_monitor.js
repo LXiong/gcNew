@@ -1,13 +1,13 @@
 
 //set caller
-function setCaller(grpid,ani)
+function setCaller(grpid)
 {
 	$(".asterisk").each(function(){
 		this.innerHTML="*";
 	});
 	
 	$("#grpidx").val(grpid);
-	$("#anix").val(ani);
+	$("#anix").val($("#ani"+grpid)[0].innerHTML);
 	$.layer({
 		type: 1,
         title: "设置外呼主叫",

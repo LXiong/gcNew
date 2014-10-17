@@ -276,7 +276,7 @@
 	$(function(){
 		//$("#OCXPlugin")[0].SetLine("1","100","2");
 		//取代登录完成发送消息 
-		$("#OCXPlugin")[0].AgentBind();
+		//$("#OCXPlugin")[0].AgentBind();
 	});
 </script>
 
