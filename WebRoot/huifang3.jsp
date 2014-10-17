@@ -19,7 +19,7 @@
 		.hftitle3{background:#35AA47; color:#fff; font-size:16px; text-indent:10px; font-weight:bold; height:28px; line-height:28px;}
 		.ipt100_24{width:100px;height:20px; padding:2px 5px; border:1px solid #CCC; color:#000;}
 		table{line-height:26px;}
-		.huifanginfo2 .btnline{text-indent:45px;}
+		.huifanginfo2 .btnline{text-indent:185px;}
 		
 		.hftab1{border-top:0; border-color:#ddd;}
 		.hftab1 td{border:1; border-color:#DDDDDD}
@@ -115,6 +115,7 @@
 	<div class="huifanginfo2">
 	<p class="btnline">
 		<input type="button" onclick="saveHuifangBtn('${flag}')" value="保存" class="btn4"/>
+		<input style="margin-left:110px;" type="button" onclick="history.go(-<s:property value='rflag'/>)" value="返回" class="btn4"/>
 	</p>
 	</div>
 	</form>

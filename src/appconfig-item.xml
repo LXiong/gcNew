@@ -25,9 +25,6 @@
 	    </grp>
 	</role>
 	<role roleid="2" describle="业务管理员">
-	    <grp name="日常工作">
-	        <fun name="接听查询" action="agentanaly-answer.action" />
-	    </grp>
 	    <grp name="日常管理">
 	        <fun name="外呼任务管理" action="task-list.action" />
 	        <fun name="座席组监控" action="acdmonitor-list.action" />
@@ -42,7 +39,7 @@
 	</role>
 	<role roleid="3" describle="话务员">
 		<grp name="日常工作">
-	    	<fun name="通话及录音查询" action="callrecord-list.action" />
+			<fun name="接听查询" action="agentanaly-answer.action" />
 	    </grp>
 	</role>
 	
