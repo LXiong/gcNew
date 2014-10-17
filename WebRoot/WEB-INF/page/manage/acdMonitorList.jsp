@@ -131,7 +131,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=27'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=28'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js?v=4'/>"></script>

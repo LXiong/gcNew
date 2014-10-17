@@ -51,6 +51,7 @@ function setCallerBtn(cts)
 	$("#OCXPlugin",window.parent.document)[0].SetACDCaller(cts,$("#grpidx").val(),$("#anix").val());
 	layer.closeAll();
 	$("#OCXPlugin",window.parent.document)[0].LookACD(cts);
+	$("#OCXPlugin",window.parent.document)[0].NoticeFetch(cts);
 }
 
 function editTrunk(cts, grpid,trknum)

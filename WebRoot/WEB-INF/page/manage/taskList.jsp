@@ -133,7 +133,7 @@
 	    <div style="height:10px;"></div>
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
-			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="saveSetAcdBtn()"/></div>
+			<div class="ipt-box"><input type="button" class="btn4" value="确定" onclick="saveSetAcdBtn('<s:property value="#session.vts.curCTS"/>')"/></div>
 			<div class="ipt-box" style="margin-left:20px;"><input type="button" class="btn4" value="取消" onclick="layer.closeAll()"/></div>
 		</div>	
 		</form>
@@ -194,6 +194,6 @@ document.onkeydown = function(e) {
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/json_ie.js?v=1'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/task.js?v=11'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=29'/>"></script>
 </body>
 </html>
