@@ -28,7 +28,7 @@ function checkHfname()
 	}
 }
 
-function saveHuifangBtn(flag)
+function saveHuifangBtn(flag,istp)
 {
 	if(flag==1 || flag==2)
 	{
@@ -45,7 +45,16 @@ function saveHuifangBtn(flag)
 	}
 	$("#form1").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
-		layer.alert("保存成功!",111);
+			if(istp=="1")
+			{
+				layer.alert("保存成功!",111,function(){
+					location.href="agentanaly-answer.action";
+				});
+			}
+			else
+			{
+				layer.alert("保存成功!",111);
+			}
         }  
 	}); 
     return false;	//not refresh page
