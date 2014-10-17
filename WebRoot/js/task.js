@@ -124,8 +124,7 @@ function setAcd(tid)
 		data: {tid: tid},
 		url: "getAcdSelect.action",
 		success: function(data) {
-			var acdHTML=JSON.stringify(data.html);
-			acdHTML = acdHTML.substring(1,acdHTML.length-1);
+			var acdHTML=eval(JSON.stringify(data.html));
 			$("#acdHTML").html(acdHTML);
 		} 
 	});
@@ -142,8 +141,9 @@ function setAcd(tid)
 	});
 }
 
-function saveSetAcdBtn()
+function saveSetAcdBtn(cts)
 {
 	document.form3.submit();
+	$("#OCXPlugin",window.parent.document)[0].NoticeFetch(cts);
 }
 
