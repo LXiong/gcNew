@@ -49,7 +49,7 @@
 					<td>${grpid }</td>
 					<td>${telnum }</td>
 					<td>${grpname }</td>
-					<td><label id="ani${grpid }">${ani }</label></td>
+					<td id="ani${grpid }">${ani }</td>
 					<td>${taskid }</td>
 					<td>${curstate }</td>
 					<td>${addtrk }</td>
@@ -131,7 +131,7 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
-<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=32'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/acd_monitor.js?v=33'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js?v=4'/>"></script>
