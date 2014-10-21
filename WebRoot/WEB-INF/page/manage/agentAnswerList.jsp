@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">接听查询</h3>
+	<h3 class="h3_title">通话记录查询</h3>
    	<form name="form1" action="<c:url value='/agentanaly-answer.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul left">
