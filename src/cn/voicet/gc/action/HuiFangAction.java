@@ -91,13 +91,13 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 		return agentAnswer();
 	}
 	
-	
 	public String viewtel()
 	{
 		log.info("tid:"+huiFangForm.getTid()+", ttid:"+huiFangForm.getTtid());
-		Map<String, Object> hfMap = huiFangDao.getHuiFangInfo(Integer.parseInt(flag), huiFangForm);
+		Map<String, Object> hfMap = huiFangDao.queryAgentAnserDetailList(huiFangForm);
 		log.info("hfMap:"+hfMap);
 		request.setAttribute("hfMap", hfMap);
+		flag = String.valueOf(hfMap.get("iKind"));
 		if(flag.equals("1"))
 		{
 			return "show_hfview1";
