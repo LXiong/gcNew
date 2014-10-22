@@ -107,7 +107,7 @@
 						<a href="<c:url value='/huifang-viewtel.action?tid=${tid }&ttid=${ttid }&flag=${kind }'/>">查看详细</a>&nbsp;&nbsp;
 						</c:if>
 						<c:if test="${tel.stateid ne 0 }">
-						<a href="<c:url value='/task-recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
+						<a href="<c:url value='/task-recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }&kind=${kind }'/>">重呼</a>&nbsp;&nbsp;
 						</c:if>
 						<a href="javascript:saveTaskTel('edit','${tid }','${tel.ttid }','${telnum }')">修改</a>&nbsp;&nbsp;
 						<a href="javascript:deleteTaskTel('${tid }','${tel.ttid }')">删除</a>
