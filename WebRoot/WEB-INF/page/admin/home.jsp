@@ -42,9 +42,6 @@
     		</div>
         </div>
         <div class="nav_right">
-        	<span>
-        		<label></label>
-        	</span>
             <span><a class="menu_righta" href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
             <span><a class="menu_righta" href="javascript:logout()">[&nbsp;注销&nbsp;]</a></span>
         </div>
@@ -81,7 +78,9 @@
         <!-- 记录js分页当前页码 end -->
         </p>
         <span>Copyright @ 2005-2014 All Rights Reserved 版权所有 · 南京威帝通讯科技有限公司&nbsp;&nbsp;V140901</span>
+        <!--
         <div id="ocxLog" style="font-size:12px; text-align:left; text-indent:10px;">vtcx log</div>
+        -->
     </div>
     <!-- print window -->
 	<div style="height:0px;">
@@ -89,7 +88,7 @@
 	</div>
 </div>
 
-<!--POP LAYER START-->
+<!--POP UPDATEPASS START-->
 <div id="popDiv" style="display:none;"> 
 	<form id="form1" action="<c:url value='/user-updatePwd.action'/>" method="post" onsubmit="return validatePwdinput(this)">
     <div class="lab_ipt_item">
@@ -126,6 +125,8 @@
 	</div>	
 	</form>
 </div>
+<!--POP UPDATEPASS END-->
+
 <form id="form2" action="<c:url value='/user-logout.action'/>" method="post"></form>
 <!--POP LAYER END-->
 <script type="text/javascript" src="<c:url value='/js/updatepwd.js?v=3'/>"></script>
@@ -249,11 +250,26 @@
 
 <!-- ocx event -->
 <script type="text/javascript" for="OCXPlugin" event="OnLog(info)">
-	$("#ocxLog")[0].innerHTML=info;
+	//$("#ocxLog")[0].innerHTML=info;
+	//get current time
+	var d = new Date();
+	//
+	var tabId = window.frames["mainFrame"].document.getElementById("ocxTabId"); 
+	var tab_tr = document.createElement("tr"); 
+	//
+	var tab_td1 = document.createElement("td"); 
+	tab_td1.innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"&nbsp;";
+	tab_tr.appendChild(tab_td1);
+	//
+	var tab_td2 = document.createElement("td"); 
+	tab_td2.innerHTML = "&nbsp;"+info;
+	tab_tr.appendChild(tab_td2); 
+	//
+	tabId.appendChild(tab_tr); 
 </script>
 
 <script type="text/javascript" for="OCXPlugin" event="OnRing(line,ani,dnis,param)">
-	$("#ocxLog")[0].innerHTML=param;
+	//$("#ocxLog")[0].innerHTML=param;
 	js_detectcall(line,ani,dnis,param);
 </script>
 
@@ -271,14 +287,5 @@
 		ocxplugin.SetLine("1","100","2");
 	}
 </script>
-
-<script type="text/javascript">
-	$(function(){
-		//$("#OCXPlugin")[0].SetLine("1","100","2");
-		//取代登录完成发送消息 
-		//$("#OCXPlugin")[0].AgentBind();
-	});
-</script>
-
 </body>
 </html>

@@ -104,7 +104,7 @@ function recall()
 //show pop div
 function saveTaskTel(t,tid,ttid,telnum)
 {
-	$(".asterisk")[2].innerHTML="";
+	$(".asterisk")[1].innerHTML="";
 	var tit;
 	if(t=="add")
 	{
@@ -141,17 +141,17 @@ function checkTelnum()
 	
 	if(!telnum)
 	{
-		$(".asterisk")[2].innerHTML="电话号码不能为空";
+		$(".asterisk")[1].innerHTML="电话号码不能为空";
 		return false;
 	}
 	else if(!regexp.exec(telnum))
 	{
-		$(".asterisk")[2].innerHTML="电话号码不合理";
+		$(".asterisk")[1].innerHTML="电话号码不合理";
 		return false;
 	}
 	else
 	{
-		$(".asterisk")[2].innerHTML="";
+		$(".asterisk")[1].innerHTML="";
 		return true;
 	}
 }

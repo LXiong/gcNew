@@ -1,5 +1,5 @@
 $(function(){
-	$("#hfnamex").bind("blur",checkHfname);
+	//$("#hfnamex").bind("blur",checkHfname);
 });
 
 function changeCHKVal(obj)
@@ -32,7 +32,7 @@ function saveHuifangBtn(flag,istp)
 {
 	if(flag==1 || flag==2)
 	{
-		if(!checkHfname()) return false;
+		//if(!checkHfname()) return false;
 	}
 	else if(flag==3)
 	{
