@@ -255,17 +255,23 @@
 	var d = new Date();
 	//
 	var tabId = window.frames["mainFrame"].document.getElementById("ocxTabId"); 
-	var tab_tr = document.createElement("tr"); 
-	//
-	var tab_td1 = document.createElement("td"); 
-	tab_td1.innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"&nbsp;";
-	tab_tr.appendChild(tab_td1);
-	//
-	var tab_td2 = document.createElement("td"); 
-	tab_td2.innerHTML = "&nbsp;"+info;
-	tab_tr.appendChild(tab_td2); 
-	//
-	tabId.appendChild(tab_tr); 
+	if(null!=tabId)
+	{
+		var tab_tr = document.createElement("tr"); 
+		//
+		var tab_td1 = document.createElement("td"); 
+		tab_td1.innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"&nbsp;";
+		tab_tr.appendChild(tab_td1);
+		//
+		var tab_td2 = document.createElement("td"); 
+		tab_td2.innerHTML = "&nbsp;"+info;
+		if(null!=tab_tr)
+		{
+			tab_tr.appendChild(tab_td2);
+			//
+			tabId.appendChild(tab_tr);
+		} 
+	} 
 </script>
 
 <script type="text/javascript" for="OCXPlugin" event="OnRing(line,ani,dnis,param)">
