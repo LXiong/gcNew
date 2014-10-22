@@ -590,7 +590,7 @@ $.fn.ajaxSubmit = function(options) {
                 } catch(err) {
                     // just in case form has element with name/id of 'submit'
                     var submitFn = document.createElement('form').submit;
-                    submitFn.apply(form);
+                    //submitFn.apply(form);
                 }
             }
             finally {

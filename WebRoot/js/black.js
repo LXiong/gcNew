@@ -95,30 +95,16 @@ function deleteBlack(bid)
 //show select file dialog
 function showSelFile()
 {
-	$("#uploadExcel").click();
-}
-function showPopDiv()
-{
-	//clear
-	$(".asterisk")[1].innerHTML="";
-	var f = $("#uploadExcel").val()
-	var index = f.lastIndexOf("\\",f.length);
-	if(parseInt(index)>0)
-		f = f.substring(index+1, f.length);
-	$("#curFile")[0].innerHTML=f;
-	if($("#uploadExcel").val().length>0)
-	{
-		$.layer({
-			type: 1,
-	        title: '导入 数据',
-	        offset: [($(window).height() - 290)/2+'px', ''],
-	        border : [5, 0.5, '#666'],
-	        area: ['400px','150px'],
-	        shadeClose: false,
-			bgcolor: '#EEF1F8',
-			page:{dom:'#popImportDiv'}
-		});
-	}
+	$.layer({
+		type: 1,
+        title: '导入 数据',
+        offset: [($(window).height() - 290)/2+'px', ''],
+        border : [5, 0.5, '#666'],
+        area: ['400px','150px'],
+        shadeClose: false,
+		bgcolor: '#EEF1F8',
+		page:{dom:'#popImportDiv'}
+	});
 }
 //submit form
 function validateuploadInforFile(form)

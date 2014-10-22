@@ -9,7 +9,8 @@
 	<link type="text/css" href="<c:url value='/style/layout.css?v=4'/>" rel="stylesheet" />
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  	<meta http-equiv="cache-control" content="no-cache"/>
- 	<meta http-equiv="expires" content="0"/>
+ 	<meta http-equiv="expires" content="0"/> 
+ 	
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 	<!-- 日期控件开始 -->
     <link type="text/css" href="<c:url value='/datePicker/skin/WdatePicker.css'/>" rel="stylesheet" />
@@ -103,7 +104,7 @@
 					<td>${tel.callret }</td>
 					<td>
 						<c:if test="${kind ne 0 }">
-						<a href="<c:url value='/huifang-viewtel.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a>&nbsp;&nbsp;
+						<a href="<c:url value='/huifang-viewtel.action?tid=${tid }&ttid=${ttid }&flag=${kind }'/>">查看详细</a>&nbsp;&nbsp;
 						</c:if>
 						<c:if test="${tel.stateid ne 0 }">
 						<a href="<c:url value='/task-recall.action?tid=${tid }&ttid=${tel.ttid }&tname=${tname }'/>">重呼</a>&nbsp;&nbsp;
@@ -129,7 +130,7 @@
     
     <!--POP LAYER START-->
 	<div id="popDiv" style="display:none;"> 
-		<form id="form2" 
+		<form id="form2" name="form2" 
 			action="${pageContext.request.contextPath }/task-importTaskTel.action" 
 			method="post" 
 			enctype="multipart/form-data"
@@ -137,13 +138,11 @@
 	    <input type="hidden" id="tidx" name="tid"/>
 	    <input type="hidden" id="kindx" name="kind"/>
 	    <div class="lab_ipt_item">
-	    	<span class="lab120">您当前导入的文件：</span>
+	    	<span class="lab120">选择文件：</span>
 	        <div class="ipt-box">
-	        	<label id="curFile"></label>&nbsp;&nbsp;
-	        	<span class="asterisk"></span>
+	        	<input type="file" id="uploadExcel" name="uploadExcel"/>
 	        </div>
 	    </div>
-	    <input type="file" id="uploadExcel" name="uploadExcel" style="display:none;" onchange="showPopDiv()"/>
 		<div class="lab_ipt_item" id="importBtnDiv">
 			<span class="lab120"></span>
 			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
@@ -245,7 +244,7 @@
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
-<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js?v=1'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=33'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js?v=5'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/telnumber.js?v=44'/>"></script>
 </body>
 </html>

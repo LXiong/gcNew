@@ -124,11 +124,10 @@
 	    <div class="lab_ipt_item">
 	    	<span class="lab120">您当前导入的文件：</span>
 	        <div class="ipt-box">
-	        	<label id="curFile"></label>&nbsp;&nbsp;
-	        	<span class="asterisk"></span>
+	        	<input type="file" id="uploadExcel" name="uploadExcel"/>
 	        </div>
 	    </div>
-	    <input type="file" id="uploadExcel" name="uploadExcel" style="display:none;" onchange="showPopDiv()"/>
+	    
 		<div class="lab_ipt_item">
 			<span class="lab120"></span>
 			<div class="ipt-box"><input type="submit" class="btn4" value="确定"/></div>
