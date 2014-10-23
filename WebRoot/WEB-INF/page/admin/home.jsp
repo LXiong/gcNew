@@ -254,24 +254,23 @@
 	//get current time
 	var d = new Date();
 	//
-	var tabId = window.frames["mainFrame"].document.getElementById("ocxTabId"); 
+	var tabId = window.frames["mainFrame"].document.getElementById("ocxTabId");
+	var doc=window.frames['mainFrame'].document;  
 	if(null!=tabId)
 	{
-		var tab_tr = document.createElement("tr"); 
+		var tab_tr = doc.createElement("tr"); 
 		//
-		var tab_td1 = document.createElement("td"); 
+		var tab_td1 = doc.createElement("td"); 
 		tab_td1.innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"&nbsp;";
 		tab_tr.appendChild(tab_td1);
 		//
-		var tab_td2 = document.createElement("td"); 
+		var tab_td2 = doc.createElement("td"); 
 		tab_td2.innerHTML = "&nbsp;"+info;
-		if(null!=tab_tr)
-		{
-			tab_tr.appendChild(tab_td2);
-			//
-			tabId.appendChild(tab_tr);
-		} 
-	} 
+		tab_tr.appendChild(tab_td2);
+		//
+		tabId.appendChild(tab_tr);
+	}
+	
 </script>
 
 <script type="text/javascript" for="OCXPlugin" event="OnRing(line,ani,dnis,param)">
@@ -293,5 +292,26 @@
 		ocxplugin.SetLine("1","100","2");
 	}
 </script>
+<script type="text/javascript">
+	$(function(){
+		//判断OCX
+		if(document.all.OCXPlugin.object==null)
+		{
+			alert("VTCX控件不存在或没有正确加载，请使用360兼容模式或IE浏览器");
+		}
+		else
+		{
+		}
+	});
+</script>
+<!-- 链接服务器并成功登录时发生的事件 -->
+<script type="text/javascript" for="OCXPlugin" event="OnConnect(serverip,port,client)">
+	//alert("链接服务器成功! IP:"+serverip+", 端口："+port+", 客户端账号:"+client);
+</script>
+<!-- 链接中断或无法链接服务器时,发生的事件 -->
+<script type="text/javascript" for="OCXPlugin" event="OnError(code,info)">
+	//alert("链接中断或无法链接服务器, 原因:"+info);
+</script>
+
 </body>
 </html>
