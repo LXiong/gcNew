@@ -127,7 +127,7 @@
 	
 	<!--POP LAYER START-->
 	<div id="popSetAcdDiv" style="display:none; border:1px solid #50A4C0; margin:10px; border-radius:4px;"> 
-		<form name="form3" action="<c:url value='/task-setAcd.action'/>" method="post">
+		<form id="form3" action="<c:url value='/task-setAcd.action'/>" method="post">
 	    <input type="hidden" id="setacd_tidx" name="tid"/>
 	   	<div id="acdHTML"></div>
 	    <div style="height:10px;"></div>
@@ -201,6 +201,6 @@ document.onkeydown = function(e) {
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/json_ie.js?v=1'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/task.js?v=33'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/task.js?v=39'/>"></script>
 </body>
 </html>

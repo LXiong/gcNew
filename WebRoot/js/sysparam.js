@@ -56,7 +56,7 @@ function saveParamBtn(cts)
 	$("#form1").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			layer.msg("设置成功",1,111,function(){
-				$("#OCXPlugin",window.parent.document)[0].NoticeFetch(cts);
+				$("#OCXPlugin",window.parent.document)[0].NoticeFetch(cts,"");
 				location.href="sysparam-list.action";
 			});
         }  

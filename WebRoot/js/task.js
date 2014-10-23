@@ -151,7 +151,15 @@ function setAcd(tid)
 
 function saveSetAcdBtn(cts)
 {
-	document.form3.submit();
-	$("#OCXPlugin",window.parent.document)[0].NoticeFetch(cts);
+	var tid = $("#setacd_tidx").val();
+	$("#form3").ajaxSubmit({ 
+		success:function(data){ //提交成功的回调函数
+			var obj = eval('(' + data + ')');
+			var acdlist = obj.acds;
+			layer.closeAll();
+			$("#OCXPlugin",window.parent.document)[0].ACDAllocTask(acdlist,tid);
+        }  
+	}); 
+    return false;
 }
 

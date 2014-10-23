@@ -160,12 +160,27 @@ public class TaskAction extends BaseAction implements ModelDriven<TaskForm>{
 	/**
 	 * 为任务设置业务组
 	 * @return
+	 * @throws IOException 
 	 */
-	public String setAcd()
+	public String setAcd() throws IOException
 	{
 		log.info("tid:"+taskForm.getTid());
 		taskDao.setAcdByTid(taskForm);
-		return list();
+		JSONObject json = new JSONObject();
+		String s = "";
+		for(int i=0; i<taskForm.getCts().length; i++)
+		{
+			s+=taskForm.getCts()[i];
+		}
+		s = s.substring(1,s.length());
+
+		log.info("s:"+s);
+		json.put("acds", s);
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().print(json.toString());
+		response.getWriter().flush();
+		log.info("acds:"+json.toString());
+		return null;
 	}
 	
 	/**
