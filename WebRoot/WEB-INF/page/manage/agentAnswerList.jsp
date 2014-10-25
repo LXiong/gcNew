@@ -82,6 +82,7 @@
 					<td>${talk }</td>
 					<td>
 						<c:if test="${kind ne 0 }">
+						<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(rectag,26,fn:length(rectag)) }','${fn:replace(fn:substring(rectag,12,fn:length(rectag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
 						<a href="<c:url value='/huifang-agentAnswer.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a>
 						</c:if>
 					</td>
@@ -134,8 +135,13 @@
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
+<!-- layer 弹出插件 end -->
+<!--POP PLAYER START-->
+<div id="popMusicDiv" style="display:none;"></div>
+<!--POP PLAYER END-->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/agent.js?v=2'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=16'/>"></script>
 </body>
 </html>
