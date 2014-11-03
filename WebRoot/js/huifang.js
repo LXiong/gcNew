@@ -47,13 +47,15 @@ function saveHuifangBtn(flag,istp)
 		success:function(data){ //提交成功的回调函数
 			if(istp=="1")
 			{
-				layer.alert("保存成功!",111,function(){
-					location.href="agentanaly-answer.action";
-				});
+				//layer.alert("保存成功!",111,function(){
+				//	location.href="agentanaly-answer.action";
+				//});
+				alert("保存成功!");
+				location.href="agentanaly-answer.action";
 			}
 			else
 			{
-				layer.alert("保存成功!",111);
+				alert("保存成功!");
 			}
         }  
 	}); 

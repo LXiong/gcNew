@@ -123,6 +123,6 @@
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/huifang.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/huifang.js?v=4'/>"></script>
 </body>
 </html>
