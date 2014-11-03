@@ -115,7 +115,7 @@
 	<div class="huifanginfo2">
 	<p class="btnline">
 		<input type="button" onclick="saveHuifangBtn('${flag}','1')" value="保存" class="btn4"/>
-		<input style="margin-left:110px;" type="button" onclick="locatin.href='agentanaly-answer.action'" value="返回" class="btn4"/>
+		<input style="margin-left:110px;" type="button" onclick="location.href='agentanaly-answer.action'" value="返回" class="btn4"/>
 	</p>
 	</div>
 	</form>
