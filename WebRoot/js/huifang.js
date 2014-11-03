@@ -30,26 +30,10 @@ function checkHfname()
 
 function saveHuifangBtn(flag,istp)
 {
-	if(flag==1 || flag==2)
-	{
-		//if(!checkHfname()) return false;
-	}
-	else if(flag==3)
-	{
-		
-	}
-	else
-	{
-		layer.alert("flag error",111);
-		return false;
-	}
 	$("#form1").ajaxSubmit({ 
 		success:function(data){ //提交成功的回调函数
 			if(istp=="1")
 			{
-				//layer.alert("保存成功!",111,function(){
-				//	location.href="agentanaly-answer.action";
-				//});
 				alert("保存成功!");
 				location.href="agentanaly-answer.action";
 			}
