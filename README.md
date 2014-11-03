@@ -11,3 +11,5 @@
 
 解决IE浏览器Activex控件不加载问题
 www.iefans.net/ie-diaoyong-weiqianming-activex-kongjian-shezhi-fangfa/
+
+添加坐座签系统功能
