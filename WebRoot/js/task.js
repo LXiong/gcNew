@@ -158,6 +158,7 @@ function saveSetAcdBtn(cts)
 			var acdlist = obj.acds;
 			layer.closeAll();
 			$("#OCXPlugin",window.parent.document)[0].ACDAllocTask(acdlist,tid);
+			location.href="task-list.action";
         }  
 	}); 
     return false;
