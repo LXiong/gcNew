@@ -76,4 +76,23 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 		return null;
 	}
 	
+	/**
+	 * 座席签系统查询
+	 * @return
+	 */
+	public String online()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("form sdt:"+agentForm.getSdt()+", edt:"+agentForm.getEdt());
+		if(null!=agentForm.getSdt() || null!=agentForm.getEdt())
+		{
+			ds.cursdt = agentForm.getSdt();
+			ds.curedt = agentForm.getEdt();
+		}
+		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
+		agentDao.queryAgentOnlineList(ds);
+		request.setAttribute("agentList", ds.list);
+		ds.list=null;
+		return "show_agent_online";
+	}
 }
