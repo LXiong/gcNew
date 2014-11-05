@@ -20,6 +20,8 @@ public class AgentForm {
 	
 	private String pageflag;
 	
+	private String account;
+	
 	public String getSdt() {
 		return sdt;
 	}
@@ -73,5 +75,11 @@ public class AgentForm {
 	}
 	public void setPageflag(String pageflag) {
 		this.pageflag = pageflag;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
 	}
 }

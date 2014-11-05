@@ -195,13 +195,14 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		});
 	}
 
-	public void queryAgentOnlineList(final DotSession ds) {
-		log.info("sp:web_agent_online_query(?,?)");
-		this.getJdbcTemplate().execute("{call web_agent_online_query(?,?)}", new CallableStatementCallback() {
+	public void queryAgentOnlineList(final DotSession ds, final AgentForm agentForm) {
+		log.info("sp:web_agent_online_query(?,?,?)");
+		this.getJdbcTemplate().execute("{call web_agent_online_query(?,?,?)}", new CallableStatementCallback() {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
-				cs.setString(1, ds.cursdt);
-				cs.setString(2, ds.curedt);
+				cs.setString(1, agentForm.getAccount());
+				cs.setString(2, ds.cursdt);
+				cs.setString(3, ds.curedt);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();

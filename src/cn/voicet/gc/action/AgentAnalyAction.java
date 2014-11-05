@@ -89,8 +89,8 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 			ds.cursdt = agentForm.getSdt();
 			ds.curedt = agentForm.getEdt();
 		}
-		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
-		agentDao.queryAgentOnlineList(ds);
+		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt+", account:"+agentForm.getAccount());
+		agentDao.queryAgentOnlineList(ds, agentForm);
 		request.setAttribute("agentList", ds.list);
 		ds.list=null;
 		return "show_agent_online";
