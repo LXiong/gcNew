@@ -250,18 +250,37 @@
 
 <!-- ocx event -->
 <script type="text/javascript" for="OCXPlugin" event="OnLog(info)">
+	//js format date
+	Date.prototype.Format = function (fmt) { //author: meizz 
+	    var o = {
+	        "M+": this.getMonth() + 1, //月份 
+	        "d+": this.getDate(), //日 
+	        "h+": this.getHours(), //小时 
+	        "m+": this.getMinutes(), //分 
+	        "s+": this.getSeconds(), //秒 
+	        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+	        "S": this.getMilliseconds() //毫秒 
+	    };
+	    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+	    for (var k in o)
+	    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+	    return fmt;
+	}
+
 	//$("#ocxLog")[0].innerHTML=info;
 	//get current time
-	var d = new Date();
+	var d = new Date().Format("yyyy-MM-dd hh:mm:ss");
 	//
-	var tabId = window.frames["mainFrame"].document.getElementById("ocxTabId");
+	var tabId = window.frames["mainFrame"].document.getElementById("ocxTabId").insertRow(0);
 	var doc=window.frames['mainFrame'].document;  
 	if(null!=tabId)
 	{
+		//添加在表格最后
+		/*
 		var tab_tr = doc.createElement("tr"); 
 		//
 		var tab_td1 = doc.createElement("td"); 
-		tab_td1.innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"&nbsp;";
+		tab_td1.innerHTML = d;
 		tab_tr.appendChild(tab_td1);
 		//
 		var tab_td2 = doc.createElement("td"); 
@@ -269,6 +288,13 @@
 		tab_tr.appendChild(tab_td2);
 		//
 		tabId.appendChild(tab_tr);
+		*/
+		
+		//JS代码通过表格对象的insertRow方法动态向表格的最顶端添加新的行
+		var dateCol = tabId.insertCell(0);
+		var infoCol = tabId.insertCell(1);
+		dateCol.innerHTML="&nbsp;"+d;
+		infoCol.innerHTML="&nbsp;"+info;
 	}
 	
 </script>

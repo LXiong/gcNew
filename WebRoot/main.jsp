@@ -17,13 +17,14 @@
 	<!--POP OCXLOG START-->
 	<h3 class="h3_title">OCX日志信息</h3>
 	<div style="height:635px; min-height:635px; overflow-y:auto;"> 
-	    <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #3B9FFF; border-left:1px solid #3B9FFF;">
-	    	<tbody id="ocxTabId" class="tab_border">
-	    	<tr>
-	    		<td>&nbsp;时间&nbsp;</td>
-	    		<td>&nbsp;日志信息</td>
-	    	</tr>
-	    	</tbody>
+	    <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #3B9FFF; border-left:1px solid #3B9FFF; line-height:18px;">
+	    	<thead class="tab_border">
+	    		<tr style="font-weight:bold;">
+		    		<td width="15%">&nbsp;时间&nbsp;</td>
+		    		<td>&nbsp;日志信息</td>
+		    	</tr>
+	    	</thead>
+	    	<tbody id="ocxTabId" class="tab_border"></tbody>
 	    </table>
 	</div>
 	<!--POP OCXLOG END-->
