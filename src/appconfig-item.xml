@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dot2014 product="电话自动外呼系统" provider="南京威帝通讯科技有限公司" customer="南京联惠电子有限公司"
+<dot2014 product="" provider="南京威帝通讯科技有限公司" customer="呼叫中心系统"
 	fax="02584868924" tel="02584869817" url="http://www.voicet.com.cn"
 	mail="jime6688@163.com" version="1.0">
 	<role roleid="0" describle="未登录"></role>
 	<role roleid="1" describle="系统管理员">
-		<grp name="日常管理">
+		<grp name="日常工作">
 			<fun name="外呼任务管理" action="task-list.action" />
 	        <fun name="座席组监控" action="acdmonitor-list.action" />
 	        <fun name="座席分机监控" action="subtelmonitor-list.action" />
@@ -26,7 +26,7 @@
 	    </grp>
 	</role>
 	<role roleid="2" describle="业务管理员">
-	    <grp name="日常管理">
+	    <grp name="日常工作">
 	        <fun name="外呼任务管理" action="task-list.action" />
 	        <fun name="座席组监控" action="acdmonitor-list.action" />
 	        <fun name="座席分机监控" action="subtelmonitor-list.action" />
