@@ -46,4 +46,9 @@ public class SysParamAction extends BaseAction{
 	public void setMaxwait(int maxwait) {
 		this.maxwait = maxwait;
 	}
+	
+	public String init()
+	{
+		return "sysInitPage";
+	}
 }

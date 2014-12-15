@@ -89,6 +89,7 @@
 		
 		<!-- 系统参数设定 -->
 		<action name="sysparam-*" class="sysParamAction" method="{1}">
+			<result name="sysInitPage">/WEB-INF/page/common/sysInit.jsp</result>
 			<result name="show_sysparam">/WEB-INF/page/admin/sysparam.jsp</result>
 		</action>
 		

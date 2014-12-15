@@ -36,6 +36,17 @@
   	<div id="nav">
     	<div class="nav_left">
     		<div class="nav_left_wel">
+    		<c:choose>
+        		<c:when test="${sessionScope.vts.roleID eq 1 }">
+        			<c:set var="homePage" value="sysparam-init.action"/>
+        		</c:when>
+        		<c:when test="${sessionScope.vts.roleID eq 2 }">
+        			<c:set var="homePage" value="task-list.action"/>
+        		</c:when>
+        		<c:otherwise>
+        			<c:set var="homePage" value="agentanaly-answer.action"/>
+        		</c:otherwise>
+        	</c:choose>
     		<span>欢迎：&nbsp;<s:property value="#session.vts.roleName"/></span><span><s:property value="#session.vts.username"/></span>
     		</div>
     		<div id="navigate" class="nav_left_path">
@@ -44,6 +55,9 @@
         <div class="nav_right">
             <span><a class="menu_righta" href="javascript:showUpdatePwdDiv()" id="bt">修改密码</a></span>
             <span><a class="menu_righta" href="javascript:logout()">[&nbsp;注销&nbsp;]</a></span>
+            <c:if test="${sessionScope.vts.roleID eq 1 }">
+            <span><a class="menu_righta" href="javascript:viewOCXLog()">查看日志</a></span>
+            </c:if>
         </div>
     </div>
     <!-- main -->
@@ -54,7 +68,7 @@
             </ul>
         </div>
         <div class="main_right">
-            <iframe id="mainFrame" name="mainFrame" src="main.jsp" class="mainFrame" scrolling="no" marginwidth="1" marginheight="1" frameborder="0">
+            <iframe id="mainFrame" name="mainFrame" src="<c:url value='${homePage }'/>" class="mainFrame" scrolling="no" marginwidth="1" marginheight="1" frameborder="0">
         		
             </iframe>
         </div>
@@ -127,9 +141,27 @@
 </div>
 <!--POP UPDATEPASS END-->
 
+
+<!--POP OCXLOG START-->
+<div id="popOCXLogDiv" style="display:none;"> 
+	<div style="width:750px; height:300px; max-height:260px; overflow-y:auto;">
+		<table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #3B9FFF; border-left:1px solid #3B9FFF; line-height:18px;">
+	    	<thead class="tab_border">
+	    		<tr style="font-weight:bold;">
+		    		<td width="20%">&nbsp;时间&nbsp;</td>
+		    		<td>&nbsp;日志信息</td>
+		    	</tr>
+	    	</thead>
+	    	<tbody id="ocxLogTabId" class="tab_border"></tbody>
+	    </table>
+    </div>
+</div>
+<!--POP OCXLOG END -->
+
 <form id="form2" action="<c:url value='/user-logout.action'/>" method="post"></form>
 <!--POP LAYER END-->
 <script type="text/javascript" src="<c:url value='/js/updatepwd.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/CM.ocxlog_view.js?v=1'/>"></script>
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
@@ -271,31 +303,12 @@
 	//get current time
 	var d = new Date().Format("yyyy-MM-dd hh:mm:ss");
 	//
-	var tabId = window.frames["mainFrame"].document.getElementById("ocxTabId").insertRow(0);
-	var doc=window.frames['mainFrame'].document;  
-	if(null!=tabId)
-	{
-		//添加在表格最后
-		/*
-		var tab_tr = doc.createElement("tr"); 
-		//
-		var tab_td1 = doc.createElement("td"); 
-		tab_td1.innerHTML = d;
-		tab_tr.appendChild(tab_td1);
-		//
-		var tab_td2 = doc.createElement("td"); 
-		tab_td2.innerHTML = "&nbsp;"+info;
-		tab_tr.appendChild(tab_td2);
-		//
-		tabId.appendChild(tab_tr);
-		*/
-		
-		//JS代码通过表格对象的insertRow方法动态向表格的最顶端添加新的行
-		var dateCol = tabId.insertCell(0);
-		var infoCol = tabId.insertCell(1);
-		dateCol.innerHTML="&nbsp;"+d;
-		infoCol.innerHTML="&nbsp;"+info;
-	}
+	//显示OCX日志信息在弹出层
+	var ocxTab = document.getElementById("ocxLogTabId").insertRow(0);
+	var dtCol = ocxTab.insertCell(0);
+	var ifCol = ocxTab.insertCell(1);
+	dtCol.innerHTML="&nbsp;"+d;
+	ifCol.innerHTML="&nbsp;"+info;
 	
 </script>
 

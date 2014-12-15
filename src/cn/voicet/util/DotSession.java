@@ -368,6 +368,155 @@ public class DotSession {
 			return null;
 		}
 	}
-	
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	public String getAgttelnum() {
+		return agttelnum;
+	}
+	public void setAgttelnum(String agttelnum) {
+		this.agttelnum = agttelnum;
+	}
+	public String getRoleID() {
+		return roleID;
+	}
+	public void setRoleID(String roleID) {
+		this.roleID = roleID;
+	}
+	public String getRbm() {
+		return rbm;
+	}
+	public void setRbm(String rbm) {
+		this.rbm = rbm;
+	}
+	public String getRbn() {
+		return rbn;
+	}
+	public void setRbn(String rbn) {
+		this.rbn = rbn;
+	}
+	public String getNavPath() {
+		return navPath;
+	}
+	public void setNavPath(String navPath) {
+		this.navPath = navPath;
+	}
+	public String getOpCode() {
+		return opCode;
+	}
+	public void setOpCode(String opCode) {
+		this.opCode = opCode;
+	}
+	public int getIsedit() {
+		return isedit;
+	}
+	public void setIsedit(int isedit) {
+		this.isedit = isedit;
+	}
+	public int getWorkyear() {
+		return workyear;
+	}
+	public void setWorkyear(int workyear) {
+		this.workyear = workyear;
+	}
+	public int getYearlock() {
+		return yearlock;
+	}
+	public void setYearlock(int yearlock) {
+		this.yearlock = yearlock;
+	}
+	public Map getMap() {
+		return map;
+	}
+	public void setMap(Map map) {
+		this.map = map;
+	}
+	public List getList() {
+		return list;
+	}
+	public void setList(List list) {
+		this.list = list;
+	}
+	public List getList2() {
+		return list2;
+	}
+	public void setList2(List list2) {
+		this.list2 = list2;
+	}
+	public List getList3() {
+		return list3;
+	}
+	public void setList3(List list3) {
+		this.list3 = list3;
+	}
+	public List getList4() {
+		return list4;
+	}
+	public void setList4(List list4) {
+		this.list4 = list4;
+	}
+	public List getList5() {
+		return list5;
+	}
+	public void setList5(List list5) {
+		this.list5 = list5;
+	}
+	public List getCtsList() {
+		return ctsList;
+	}
+	public void setCtsList(List ctsList) {
+		this.ctsList = ctsList;
+	}
+	public String getCurCTS() {
+		return curCTS;
+	}
+	public void setCurCTS(String curCTS) {
+		this.curCTS = curCTS;
+	}
+	public int getSflag() {
+		return sflag;
+	}
+	public void setSflag(int sflag) {
+		this.sflag = sflag;
+	}
+	public String getCurDate() {
+		return curDate;
+	}
+	public void setCurDate(String curDate) {
+		this.curDate = curDate;
+	}
+	public String getCursdt() {
+		return cursdt;
+	}
+	public void setCursdt(String cursdt) {
+		this.cursdt = cursdt;
+	}
+	public String getCuredt() {
+		return curedt;
+	}
+	public void setCuredt(String curedt) {
+		this.curedt = curedt;
+	}
 }
 
