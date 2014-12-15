@@ -89,3 +89,18 @@ function bindSubTelBtn(acc,pwd)
 	alert("绑定成功");
 }
 
+//绑定话务员号码
+function bindAgtBtn()
+{
+	var agttel = $("#agttelx").val();
+	if(!agttel)
+	{
+		alert("话务员号码不能为空");
+		return false;
+	}
+	else
+	{
+		$("#OCXPlugin",window.parent.document)[0].AgentBind($("#agttelx").val());
+		alert("绑定成功");
+	}
+}

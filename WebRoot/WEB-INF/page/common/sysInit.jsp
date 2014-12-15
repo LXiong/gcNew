@@ -54,7 +54,7 @@
 	    	<span class="lab120">&nbsp;</span>
 	        <div class="ipt-box">
 	        	<input type="button" class="btn4" value="绑定" onclick="bindSubTelBtn()"/>
-	        </div>
+	        </div> 
 	    </div>
 	    <div class="lab_ipt_item">
 	    	<span class="lab120"></span>
@@ -62,6 +62,22 @@
 	            <span class="asterisk"></span>
 	        </div>
 	    </div>
+	    
+	    <div style="width:380px; height:1px; border-bottom:1px dashed #808080;"></div>
+	    
+	    <div class="lab_ipt_item">
+	    	<span class="lab120">绑定话务员号码：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="agttelx" name="agttel" value="${agttel }" maxlength="100" class="ipt_text_w150 inputDefault" />
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
+	    	<span class="lab120">&nbsp;</span>
+	        <div class="ipt-box">
+	        	<input type="button" class="btn4" value="绑定" onclick="bindAgtBtn()"/>
+	        </div> 
+	    </div>
+	    
     </div>
 </div>	
 <script type="text/javascript">
@@ -74,6 +90,8 @@
 		$("#accountx").val($("#OCXPlugin",window.parent.document)[0].GetClientAccount());
 		//获取绑定分机
 		$("#subtelx").val($("#OCXPlugin",window.parent.document)[0].GetBindTelnum());
+		//获取绑定话务员号码
+		$("#agttelx").val($("#OCXPlugin",window.parent.document)[0].GetBindAgent());
 	});
 </script>
 <script type="text/javascript" src="<c:url value='js/CM.sysinit.js?v=17'/>"></script>
