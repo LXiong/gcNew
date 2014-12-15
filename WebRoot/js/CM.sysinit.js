@@ -1,10 +1,13 @@
 $(function(){
-	$(".asterisk")[0].innerHTML="";
-	$(".asterisk")[1].innerHTML="";
+	//
+	$(".asterisk").each(function(){
+		this.innerHTML="";
+	});
 	//
 	$("#ipx").bind("blur",checkIp);
 	$("#portx").bind("blur",checkPort);
 	$("#subtelx").bind("blur",checkSubtel);
+	$("#agttelx").bind("blur",checkAgttel);
 });
 
 
@@ -35,17 +38,17 @@ function checkPort()
 	var reg = /^[0-9]*[0-9][0-9]*$/;
 	if(!port)
 	{
-		$(".asterisk")[0].innerHTML="端口不能为空";
+		$(".asterisk")[1].innerHTML="端口不能为空";
 		return false;
 	}
 	else if(!reg.exec(port))
 	{
-		$(".asterisk")[0].innerHTML="请输入合理的数字";
+		$(".asterisk")[1].innerHTML="请输入合理的数字";
 		return false;
 	}
 	else
 	{
-		$(".asterisk")[0].innerHTML="";
+		$(".asterisk")[1].innerHTML="";
 		return true;
 	}
 }
@@ -56,17 +59,17 @@ function checkSubtel()
 	var reg = /^[0-9]*[0-9][0-9]*$/;
 	if(!subtel)
 	{
-		$(".asterisk")[1].innerHTML="分机号不能为空";
+		$(".asterisk")[3].innerHTML="分机号不能为空";
 		return false;
 	}
 	else if(!reg.exec(subtel))
 	{
-		$(".asterisk")[1].innerHTML="请输入合理的分机号";
+		$(".asterisk")[3].innerHTML="请输入合理的分机号";
 		return false;
 	}
 	else
 	{
-		$(".asterisk")[1].innerHTML="";
+		$(".asterisk")[3].innerHTML="";
 		return true;
 	}
 }
@@ -89,18 +92,31 @@ function bindSubTelBtn(acc,pwd)
 	alert("绑定成功");
 }
 
-//绑定话务员号码
-function bindAgtBtn()
+function checkAgttel()
 {
 	var agttel = $("#agttelx").val();
+	var reg = /^[0-9]*[0-9][0-9]*$/;
 	if(!agttel)
 	{
-		alert("话务员号码不能为空");
+		$(".asterisk")[4].innerHTML="话务员号码不能为空";
+		return false;
+	}
+	else if(!reg.exec(agttel))
+	{
+		$(".asterisk")[4].innerHTML="请输入合理的号码";
 		return false;
 	}
 	else
 	{
-		$("#OCXPlugin",window.parent.document)[0].AgentBind($("#agttelx").val());
-		alert("绑定成功");
+		$(".asterisk")[4].innerHTML="";
+		return true;
 	}
+}
+
+//绑定话务员号码
+function bindAgtBtn()
+{
+	if(!checkAgttel()) return;
+	$("#OCXPlugin",window.parent.document)[0].AgentBind($("#agttelx").val());
+	alert("绑定成功");
 }
