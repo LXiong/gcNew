@@ -350,20 +350,34 @@ public class DotSession {
 	}
 
 	
-	public static final String ONE_IP = "http://192.168.1.114";	//cts100
-	public static final String TWO_IP = "http://192.168.1.10";	//cts200
+	public static final String LH_SERVER_IP1 = "http://192.168.1.114";	//cts100
+	public static final String LH_SERVER_IP2 = "http://192.168.1.10";	//cts200
+	public static final String VT_SERVER_IP = "http://192.168.1.200";	//cts200
+	
+	public String ipflag = "lh";
 	
 	public String getIpWithCTS(String icts)
 	{
-		if(icts.equals("cts100"))
+		if(ipflag.equals("lh"))
 		{
-			return ONE_IP;
+			if(icts.equals("cts100"))
+			{
+				return LH_SERVER_IP1;
+			}
+			else if(icts.equals("cts200"))
+			{
+				return LH_SERVER_IP2;
+			}
+			else
+			{
+				return null;
+			}
 		}
-		else if(icts.equals("cts200"))
+		else if(ipflag.equals("vt"))
 		{
-			return TWO_IP;
+			return VT_SERVER_IP;
 		}
-		else
+		else 
 		{
 			return null;
 		}
