@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">通话记录查询</h3>
+	<h3 class="h3_title">我的通话记录</h3>
    	<form name="form1" action="<c:url value='/agentanaly-answer.action'/>" method="post">
 	<div class="queryDiv">
 	   	<ul class="queryWrap_ul left">
@@ -60,7 +60,7 @@
                     <th width="12%">呼叫日期</th>
                     <th width="8%">等待时长(秒)</th>
                     <th width="8%">通话时长(秒)</th>
-                    <th width="8%">操作</th>
+                    <th width="12%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -81,10 +81,25 @@
 					<td>${wait }</td>
 					<td>${talk }</td>
 					<td>
-						<c:if test="${kind ne 0 }">
-						<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(rectag,26,fn:length(rectag)) }','${fn:replace(fn:substring(rectag,12,fn:length(rectag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
-						<a href="<c:url value='/huifang-agentAnswer.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a>
-						</c:if>
+						<c:choose>
+							<c:when test="${not empty(rectag) }">
+								<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(rectag,26,fn:length(rectag)) }','${fn:replace(fn:substring(rectag,12,fn:length(rectag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
+								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	&nbsp;&nbsp;
+							</c:when>
+							<c:otherwise>
+								<label title="没有录音文件，无法播放" style="color:#808080;">播放&nbsp;&nbsp;</label>
+								<label title="没有录音文件，无法下载" style="color:#808080;">下载&nbsp;&nbsp;</label>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${kind ne 0 }">
+								<a href="<c:url value='/huifang-agentAnswer.action?tid=${tid }&ttid=${ttid }'/>">查看详细</a>	
+							</c:when>
+							<c:otherwise>
+								<label style="color:#808080;">查看详细</label>
+							</c:otherwise>
+						</c:choose>
+						
 					</td>
 				</tr>
 				</s:iterator>

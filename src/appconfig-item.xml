@@ -11,7 +11,7 @@
 	        <fun name="座席分机监控" action="subtelmonitor-list.action" />
 			<fun name="座席组分配统计" action="acdanaly-list.action" />
 			<fun name="接听情况统计" action="agentanaly-list.action" />
-			<fun name="通话及录音查询" action="callrecord-list.action" />
+			<fun name="通话记录查询" action="callrecord-list.action" />
 			<fun name="座席签系统查询" action="agentanaly-online.action" />
 		</grp>
 	    <grp name="维护管理">
@@ -33,7 +33,8 @@
 	        <fun name="座席分机监控" action="subtelmonitor-list.action" />
 			<fun name="座席组分配统计" action="acdanaly-list.action" />
 			<fun name="接听情况统计" action="agentanaly-list.action" />
-			<fun name="通话及录音查询" action="callrecord-list.action" />
+			<fun name="通话记录查询" action="callrecord-list.action" />
+			<fun name="我的通话记录" action="agentanaly-answer.action" />
 			<fun name="座席签系统查询" action="agentanaly-online.action" />
 	    </grp>
     	<grp name="维护管理">
@@ -42,7 +43,7 @@
 	</role>
 	<role roleid="3" describle="话务员">
 		<grp name="日常工作">
-			<fun name="通话记录查询" action="agentanaly-answer.action" />
+			<fun name="我的通话记录" action="agentanaly-answer.action" />
 	    </grp>
 	</role>
 	

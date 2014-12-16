@@ -25,7 +25,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">通话及录音查询&nbsp;</h3>
+	<h3 class="h3_title">通话记录查询&nbsp;</h3>
    	<form name="form1" action="<c:url value='/callrecord-list.action'/>" method="post">
 	<div class="queryDiv_h80">
 	   	<ul class="queryWrap_ul">
@@ -92,8 +92,16 @@
 					<td>${call.endcode }</td>
 					<td>${call.agent }</td>
 					<td>
-						<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(call.recflag,26,fn:length(recflag)) }','${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>
+						<c:choose>
+							<c:when test="${not empty(rectag) }">
+								<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(call.recflag,26,fn:length(recflag)) }','${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
+								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	
+							</c:when>
+							<c:otherwise>
+								<label title="没有录音文件，无法播放" style="color:#808080;">播放&nbsp;&nbsp;</label>
+								<label title="没有录音文件，无法下载" style="color:#808080;">下载</label>
+							</c:otherwise>
+						</c:choose>
 					</td>
 				</tr>
 				</s:iterator>
