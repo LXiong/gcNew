@@ -31,14 +31,13 @@
 	<h3 class="h3_title">座席签系统查询</h3>
    	<form action="<c:url value='/agentanaly-online.action'/>" method="post">
 	<div class="queryDiv">
-	   	<ul class="queryWrap_ul_w600 left">
-	   		<li><label>话务员账号：</label><input type="text" name="account" class="ipt50 inputDefault" value="${account }"/></li>
+	   	<ul class="queryWrap_ul left">
+	   		<li><label>话务员账号：</label>
+	   			<s:select list="alist" cssStyle="width:80px; height:22px;" headerKey="0" headerValue="--请选择话务员--" listKey="account" listValue="account" name="account" value="account"></s:select>
+	   		</li>
 			<li><label>开始日期：</label><input type="text" id="sdt" name="sdt" class="Wdate inputDefault" style="width:90px; height:18px;" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'edt\')||\'2050-01-01\'}',skin:'whyGreen'})" value="<s:property value="#session.vts.cursdt"/>"/></li>
 	        <li><label>结束日期：</label><input type="text" id="edt" name="edt" class="Wdate inputDefault" style="width:90px; height:18px;" onclick="WdatePicker({minDate:'#F{$dp.$D(\'sdt\')}',maxDate:'%y-%M-%d',skin:'whyGreen'})" value="<s:property value="#session.vts.curedt"/>"/></li>
 	        <li><input type="submit" class="btn4" value="查&nbsp;&nbsp;询"/></li>
-		</ul>
-		<ul class="queryWrap_ul_w100 right">
-	        <li></li>
 		</ul>
 	</div>
     </form>

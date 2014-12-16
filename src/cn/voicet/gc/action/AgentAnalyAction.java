@@ -1,4 +1,7 @@
 package cn.voicet.gc.action;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -19,6 +22,7 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 	@Resource(name=AgentDao.SERVICE_NAME)
 	private AgentDao agentDao;
 	private AgentForm agentForm = new AgentForm();
+	private List<Map<String, Object>> alist;
 	
 	public AgentForm getModel() {
 		return agentForm;
@@ -90,9 +94,20 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 			ds.curedt = agentForm.getEdt();
 		}
 		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt+", account:"+agentForm.getAccount());
+		//
+		alist = agentDao.queryAgentAccountList();
+		//
 		agentDao.queryAgentOnlineList(ds, agentForm);
 		request.setAttribute("agentList", ds.list);
 		ds.list=null;
 		return "show_agent_online";
 	}
+
+	public List<Map<String, Object>> getAlist() {
+		return alist;
+	}
+	public void setAlist(List<Map<String, Object>> alist) {
+		this.alist = alist;
+	}
+
 }

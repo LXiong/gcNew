@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -215,6 +216,27 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 					}
 				}
 				return null;
+			}
+		});
+	}
+
+	public List<Map<String, Object>> queryAgentAccountList() {
+		log.info("sp:web_agent_list()");
+		return (List<Map<String, Object>>)this.getJdbcTemplate().execute("{call web_agent_list()}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				List list = new ArrayList();
+				if(rs!=null){
+					while (rs.next()) {
+						 Map map = new HashMap();
+						 VTJime.putMapDataByColName(map, rs);
+						 map.put("telagt", rs.getString("telnum")+"["+rs.getString("agtname")+"]");
+		        		 list.add(map);
+					}
+				}
+				return list;
 			}
 		});
 	}
