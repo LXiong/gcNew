@@ -6,6 +6,7 @@ $(function(){
 	//
 	$("#ipx").bind("blur",checkIp);
 	$("#portx").bind("blur",checkPort);
+	$("#ctsx").bind("blur",checkCts);
 	$("#subtelx").bind("blur",checkSubtel);
 	$("#agttelx").bind("blur",checkAgttel);
 });
@@ -53,23 +54,38 @@ function checkPort()
 	}
 }
 
+function checkCts()
+{
+	var cts = $("#ctsx").val();
+	if(!cts)
+	{
+		$(".asterisk")[3].innerHTML="平台名称不能为空";
+		return false;
+	}
+	else
+	{
+		$(".asterisk")[3].innerHTML="";
+		return true;
+	}
+}
+
 function checkSubtel()
 {
 	var subtel = $("#subtelx").val();
 	var reg = /^[0-9]*[0-9][0-9]*$/;
 	if(!subtel)
 	{
-		$(".asterisk")[3].innerHTML="分机号不能为空";
+		$(".asterisk")[4].innerHTML="分机号不能为空";
 		return false;
 	}
 	else if(!reg.exec(subtel))
 	{
-		$(".asterisk")[3].innerHTML="请输入合理的分机号";
+		$(".asterisk")[4].innerHTML="请输入合理的分机号";
 		return false;
 	}
 	else
 	{
-		$(".asterisk")[3].innerHTML="";
+		$(".asterisk")[4].innerHTML="";
 		return true;
 	}
 }
@@ -85,10 +101,11 @@ function connectNTSServerBtn(acc,pwd)
 }
 
 //绑定分机
-function bindSubTelBtn(acc,pwd)
+function bindSubTelBtn()
 {
+	if(!checkCts()) return;
 	if(!checkSubtel()) return;
-	$("#OCXPlugin",window.parent.document)[0].Bind($("#subtelx").val());
+	$("#OCXPlugin",window.parent.document)[0].SetLine($("#ctsx").val(),$("#subtelx").val());
 	alert("绑定成功");
 }
 
@@ -98,17 +115,17 @@ function checkAgttel()
 	var reg = /^[0-9]*[0-9][0-9]*$/;
 	if(!agttel)
 	{
-		$(".asterisk")[4].innerHTML="话务员号码不能为空";
+		$(".asterisk")[5].innerHTML="话务员号码不能为空";
 		return false;
 	}
 	else if(!reg.exec(agttel))
 	{
-		$(".asterisk")[4].innerHTML="请输入合理的号码";
+		$(".asterisk")[5].innerHTML="请输入合理的号码";
 		return false;
 	}
 	else
 	{
-		$(".asterisk")[4].innerHTML="";
+		$(".asterisk")[5].innerHTML="";
 		return true;
 	}
 }

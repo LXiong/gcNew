@@ -47,6 +47,13 @@
 	    <div style="width:380px; height:1px; border-bottom:1px dashed #808080;"></div>
 	    
 	    <div class="lab_ipt_item">
+	    	<span class="lab120">平台名称：</span>
+	        <div class="ipt-box">
+	        	<input type="text" id="ctsx" name="cts" value="${cts }" maxlength="100" class="ipt_text_w150 inputDefault" />
+	        	<span class="asterisk"></span>
+	        </div>
+	    </div>
+	    <div class="lab_ipt_item">
 	    	<span class="lab120">绑定分机：</span>
 	        <div class="ipt-box">
 	        	<input type="text" id="subtelx" name="subtel" value="${subtel }" maxlength="100" class="ipt_text_w150 inputDefault" />
@@ -86,13 +93,15 @@
 		$("#portx").val($("#OCXPlugin",window.parent.document)[0].GetServerPort());
 		//获取账号
 		$("#accountx").val($("#OCXPlugin",window.parent.document)[0].GetClientAccount());
+		//平台名称 
+		$("#ctsx").val($("#OCXPlugin",window.parent.document)[0].GetCTS());
 		//获取绑定分机
 		$("#subtelx").val($("#OCXPlugin",window.parent.document)[0].GetBindTelnum());
 		//获取绑定话务员号码
 		$("#agttelx").val($("#OCXPlugin",window.parent.document)[0].GetBindAgent());
 	});
 </script>
-<script type="text/javascript" src="<c:url value='js/CM.sysinit.js?v=5'/>"></script>
+<script type="text/javascript" src="<c:url value='js/CM.sysinit.js?v=6'/>"></script>
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
