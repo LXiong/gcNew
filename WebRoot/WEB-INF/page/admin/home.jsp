@@ -258,23 +258,40 @@
 			str = str.split(",");
 			//获取表格对象
 			var tabObj = window.frames["mainFrame"].document.getElementById("subTelMonitorTab");
+			//alert(tabObj);
 			if (tabObj == null)
 			    return false;
 			var i = parseInt(str[0])+1;
-			if(tabObj.rows[i] == null)
-				return false;
-			tabObj.rows[i].cells[2].innerText=str[1];
-			tabObj.rows[i].cells[3].innerText=str[2];
-			tabObj.rows[i].cells[4].innerText=str[3];
-			tabObj.rows[i].cells[5].innerText=str[4];
-			if(parseInt(listen)==0)
+			var tbrow;
+			if(i >= tabObj.rows.length)
 			{
-				tabObj.rows[i].cells[6].innerText='';
+				tbrow = tabObj.insertRow();
+				tbrow.insertCell(0);
+				tbrow.cells[0].innerText=str[0];
+				tbrow.insertCell(1);
+				tbrow.cells[1].innerText=str[1];
+				tbrow.insertCell(2);
+				tbrow.insertCell(3);
+				tbrow.insertCell(4);
+				tbrow.insertCell(5);
+				tbrow.insertCell(6);
 			}
 			else
 			{
-				var tel = tabObj.rows[i].cells[1].innerText;
-				tabObj.rows[i].cells[6].innerHTML="<a href=\"javascript:listen('"+tel+"')\">监听</a>";
+				tbrow=tabObj.rows[i];
+			}
+			tbrow.cells[2].innerText=str[2];
+			tbrow.cells[3].innerText=str[3];
+			tbrow.cells[4].innerText=str[4];
+			tbrow.cells[5].innerText=str[5];
+			if(parseInt(listen)==0)
+			{
+				tbrow.cells[6].innerText='';
+			}
+			else
+			{
+				var tel = tbrow.cells[1].innerText;
+				tbrow.cells[6].innerHTML="<a href=\"javascript:listen('"+tel+"')\">监听</a>";
 			}
 		}
 		else

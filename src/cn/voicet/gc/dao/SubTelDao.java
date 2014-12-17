@@ -8,5 +8,4 @@ public interface SubTelDao{
 	void querySubTelList(DotSession ds);
 	void saveSubTel(DotSession ds, SubTelForm subTelForm);
 	void deleteSubTelByTelid(DotSession ds, SubTelForm subTelForm);
-	void querySubTelMonitorList(DotSession ds);
 }

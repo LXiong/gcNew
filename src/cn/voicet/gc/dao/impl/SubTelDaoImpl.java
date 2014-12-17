@@ -83,26 +83,4 @@ public class SubTelDaoImpl extends BaseDaoImpl implements SubTelDao {
 		});
 	}
 
-	public void querySubTelMonitorList(final DotSession ds) {
-		log.info("sp:web_subtel_monitor(?)");
-		this.getJdbcTemplate().execute("{call web_subtel_monitor(?)}", new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
-				cs.setString(1, ds.curCTS);
-				cs.execute();
-				ResultSet rs = cs.getResultSet();
-				ds.initData();
-				ds.list = new ArrayList();
-				if(rs!=null){
-					while (rs.next()) {
-						 Map map = new HashMap();
-						 VTJime.putMapDataByColName(map, rs);
-		        		 ds.list.add(map);
-					}
-				}
-				return null;
-			}
-		});
-	}
-
 }

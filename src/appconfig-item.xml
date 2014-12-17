@@ -21,7 +21,6 @@
 		<grp name="系统维护">
 			<fun name="话务员维护" action="agent-list.action" />
 			<fun name="业务组维护" action="acd-list.action" />
-			<fun name="座席分机维护" action="subtel-list.action" />
 			<fun name="系统参数设定" action="sysparam-list.action" />
 			<fun name="黑名单维护" action="black-list.action" />
 		</grp>

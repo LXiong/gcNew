@@ -36,17 +36,6 @@
                  </tr>
              </thead>
              <tbody id="movies">
-             	<s:iterator id="subm" value="#session.vts.list">
-				<tr align="center">
-					<td>${telid }</td>
-					<td>${telnum }</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				</s:iterator>
 			</tbody>
 		</table>
 	</div>
