@@ -6,47 +6,56 @@
 	<role roleid="1" describle="系统管理员">
 		<grp name="日常工作">
 			<fun name="客户端配置" action="sysparam-init.action" />
+		</grp>
+		<grp name="任务管理">
 			<fun name="外呼任务管理" action="task-list.action" />
-	        <fun name="座席组监控" action="acdmonitor-list.action" />
-	        <fun name="座席分机监控" action="subtelmonitor-list.action" />
-			<fun name="座席组分配统计" action="acdanaly-list.action" />
-			<fun name="接听情况统计" action="agentanaly-list.action" />
-			<fun name="通话记录查询" action="callrecord-list.action" />
+			<fun name="业务组监控" action="acdmonitor-list.action" />
+			<fun name="座席分机监控" action="subtelmonitor-list.action" />
+		</grp>
+		<grp name="统计查询">
 			<fun name="座席签系统查询" action="agentanaly-online.action" />
+			<fun name="通话记录查询" action="callrecord-list.action" />
+			<fun name="业务组分配统计" action="acdanaly-list.action" />
+			<fun name="接听情况统计" action="agentanaly-list.action" />
 		</grp>
-	    <grp name="维护管理">
-	      	<fun name="话务员资料维护" action="agent-list.action" />
-	      	<fun name="座席组资料维护" action="acd-list.action" />
-	      	<fun name="座席分机资料维护" action="subtel-list.action" />
-	      	<fun name="系统黑名单维护" action="black-list.action" />
-	      	<fun name="NTS服务器维护" action="nts-list.action" />
-	      	<fun name="系统参数设定" action="sysparam-list.action" />
+		<grp name="系统维护">
+			<fun name="话务员维护" action="agent-list.action" />
+			<fun name="业务组维护" action="acd-list.action" />
+			<fun name="座席分机维护" action="subtel-list.action" />
+			<fun name="系统参数设定" action="sysparam-list.action" />
+			<fun name="黑名单维护" action="black-list.action" />
 		</grp>
-	    <grp name="数据库">
-	      	<fun name="数据库维护" action="dbconfig.action" />
-	    </grp>
+		<grp name="数据库">
+			<fun name="数据库维护" action="dbconfig.action" />
+		</grp>
 	</role>
 	<role roleid="2" describle="业务管理员">
-	    <grp name="日常工作">
-	        <fun name="外呼任务管理" action="task-list.action" />
-	        <fun name="座席组监控" action="acdmonitor-list.action" />
-	        <fun name="座席分机监控" action="subtelmonitor-list.action" />
-			<fun name="座席组分配统计" action="acdanaly-list.action" />
-			<fun name="接听情况统计" action="agentanaly-list.action" />
-			<fun name="通话记录查询" action="callrecord-list.action" />
+		<grp name="日常工作">
 			<fun name="我的通话记录" action="agentanaly-answer.action" />
+		</grp>
+		<grp name="任务管理">
+			<fun name="外呼任务管理" action="task-list.action" />
+			<fun name="业务组监控" action="acdmonitor-list.action" />
+			<fun name="座席分机监控" action="subtelmonitor-list.action" />
+		</grp>
+		<grp name="统计查询">
+			<fun name="座席工作概览" action="agentanaly-workinfo.action" />
 			<fun name="座席签系统查询" action="agentanaly-online.action" />
-	    </grp>
-    	<grp name="维护管理">
-      		<fun name="系统黑名单维护" action="black-list.action" />
-    	</grp>
+			<fun name="通话记录查询" action="callrecord-list.action" />
+			<fun name="业务组分配统计" action="acdanaly-list.action" />
+			<fun name="接听情况统计" action="agentanaly-list.action" />
+		</grp>
+		<grp name="维护管理">
+			<fun name="系统黑名单维护" action="black-list.action" />
+		</grp>
 	</role>
 	<role roleid="3" describle="话务员">
 		<grp name="日常工作">
 			<fun name="我的通话记录" action="agentanaly-answer.action" />
-	    </grp>
+			<fun name="座席工作概览" action="agentanaly-workinfo.action" />
+		</grp>
 	</role>
-	
+
 	<list name="callstate" describle="呼叫状态">
 		<item id="0" name="未呼叫" />
 		<item id="1" name="呼叫成功" />
@@ -56,7 +65,7 @@
 		<item id="0" name="0:TTS合成语音播放" />
 		<item id="1" name="1:转入业务组" />
 	</list>
-	
+
 	<list name="taskkind" describle="队列业务类型">
 		<item id="0" name="0:标准" />
 		<item id="1" name="1:回访1" />

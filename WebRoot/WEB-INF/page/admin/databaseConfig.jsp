@@ -5,12 +5,12 @@
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/style/common_cn.css'/>" />
-	<link type="text/css" rel="stylesheet" href="<c:url value='/style/layout.css'/>" />
+	<link type="text/css" rel="stylesheet" href="<c:url value='/style/layout.css?v=1'/>" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 </head>
 <body style="background:#E0EEFB;">
 <div id="dbCon">
-	<h3 class="h3_title">数据库维护</h3>
+	<h3 class="h3_title" style="margin-top:60px;">数据库维护</h3>
 	<div class="db-info">
     	<p>数据库版本：<s:property value="#session.vts.map.serverinfo"/></p>
         <p>数据库名称：<s:property value="#session.vts.map.databasename"/></p>

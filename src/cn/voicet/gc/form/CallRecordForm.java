@@ -7,7 +7,7 @@ public class CallRecordForm {
 	private String edt;	//统计结束日期
 
 	//calltxt size:6
-	private String[] calltxt={"","","2","0","0",""};
+	private String[] calltxt={"","","2","","",""};
 	
 	public String getCts() {
 		return cts;

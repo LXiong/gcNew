@@ -55,6 +55,7 @@
 			<result name="show_agent_analy">/WEB-INF/page/manage/agentAnalyList.jsp</result>
 			<result name="show_agent_answer">/WEB-INF/page/manage/agentAnswerList.jsp</result>
 			<result name="show_agent_online">/WEB-INF/page/manage/agentOnlineList.jsp</result>
+			<result name="agentWorkPage">/WEB-INF/page/manage/agentWorkView.jsp</result>
 		</action>
 		
 		<!-- 话务员档案管理 -->

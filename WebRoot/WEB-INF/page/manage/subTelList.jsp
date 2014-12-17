@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">座席分机资料维护&nbsp;
+	<h3 class="h3_title">座席分机维护&nbsp;
 	<s:select list="#session.vts.ctsList" onchange="changeServer(this,'subtel')" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
 	</h3>
 	<div class="content_List615">

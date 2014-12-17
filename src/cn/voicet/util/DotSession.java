@@ -358,7 +358,7 @@ public class DotSession {
 	
 	public String getIpWithCTS(String icts)
 	{
-		if(ipflag.equals("lh"))
+		if(ipflag.equalsIgnoreCase("lh"))
 		{
 			if(icts.equals("cts100"))
 			{
@@ -373,7 +373,7 @@ public class DotSession {
 				return null;
 			}
 		}
-		else if(ipflag.equals("vt"))
+		else if(ipflag.equalsIgnoreCase("vt"))
 		{
 			return VT_SERVER_IP;
 		}

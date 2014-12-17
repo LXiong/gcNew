@@ -241,4 +241,26 @@ public class AgentDaoImpl extends BaseDaoImpl implements AgentDao {
 		});
 	}
 
+	public Map<String, Object> queryAgentWorkInfo(final DotSession ds) {
+		log.info("sp:web_agent_work_info(?)");
+		return (Map<String, Object>)this.getJdbcTemplate().execute("{call web_agent_work_info(?)}", new CallableStatementCallback() {
+			public Object doInCallableStatement(CallableStatement cs)
+					throws SQLException, DataAccessException {
+				cs.setString("agtacc", ds.agttelnum);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				Map map = null;
+				if(rs!=null)
+				{
+					while (rs.next()) 
+					{
+						map = new HashMap();
+						VTJime.putMapDataByColName(map, rs);
+					}
+				}
+				return map;
+			}
+		});
+	}
+
 }

@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">座席组分配统计&nbsp;</h3>
+	<h3 class="h3_title">业务组分配统计&nbsp;</h3>
    	<form action="<c:url value='/acdanaly-list.action'/>" method="post">
    	<input type="hidden" name="cts" value="<s:property value="#session.vts.curCTS"/>"/>
 	<div class="queryDiv">

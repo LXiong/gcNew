@@ -5,13 +5,13 @@
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/style/common_cn.css'/>" />
-	<link type="text/css" rel="stylesheet" href="<c:url value='/style/layout.css'/>" />
+	<link type="text/css" rel="stylesheet" href="<c:url value='/style/layout.css?v=1'/>" />
 	<script type="text/javascript" src="<c:url value='/js/jquery-1.11.1.min.js'/>"></script>
 </head>
 <body style="background:#E0EEFB;">
 <div id="dbCon">
-	<h3 class="h3_title">系统参数设定</h3>
-	<div class="db-info">
+	<h3 class="h3_title" style="margin-top:60px;">系统参数设定</h3>
+	<div class="sys_param_info">
 		<form id="form1" action="<c:url value='/sysparam-save.action'/>" method="post">
         <div class="lab_ipt_item">
 	    	<span class="lab120">默认外呼主叫：</span>

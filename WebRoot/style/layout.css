@@ -116,7 +116,7 @@
 
 /* db */
 #dbCon{width:866px; height:669px; border:0px solid #3B9FFF; margin-top:1px;}
-.db-info{width:500px; height:400px; margin:80px 0 0 260px;; line-height:30px; padding:10px 0 0 10px;}
+.db-info{width:420px; height:320px; margin:5px 0 0 200px;; line-height:30px; padding:0px 0 0 40px;  border-radius:3px; border:1px solid #3B9FFF;}
 .db-info table{width:360px; line-height:20px; text-align:center; border-right:1px solid #3B9FFF; border-bottom:1px solid #3B9FFF;}
 .db-info table td{border-left:1px solid #3B9FFF; border-top:1px solid #3B9FFF;}
 .db-info .tabtr1{background:url(../images/tab-head.jpg) repeat-x; height:20px;}
@@ -126,6 +126,8 @@
 .db-index li{float:left; margin-right:5px;}
 
 .sys_init_info{width:420px; height:400px; margin:5px 0 0 200px;; line-height:30px; padding:0px 0 0 40px; border-radius:3px; border:1px solid #3B9FFF;}
+.sys_param_info{width:420px; height:140px; margin:5px 0 0 200px;; line-height:30px; padding:0px 0 0 40px; border-radius:3px; border:1px solid #3B9FFF;}
+
 /* h */
 .h3_title{width:100%; height:26px; line-height:26px; text-align:center; color:#8F2629; font-size:14px; font-weight:bold;}
 .h3_title span{float:right; width:180px; font-size:12px; color:#000; font-weight:normal;}

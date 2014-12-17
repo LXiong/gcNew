@@ -109,5 +109,17 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 	public void setAlist(List<Map<String, Object>> alist) {
 		this.alist = alist;
 	}
+	
+	/**
+	 * 座席工作概览
+	 * @return
+	 */
+	public String workinfo()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		Map<String, Object> map = agentDao.queryAgentWorkInfo(ds);
+		request.setAttribute("agtMap", map);
+		return "agentWorkPage";
+	}
 
 }

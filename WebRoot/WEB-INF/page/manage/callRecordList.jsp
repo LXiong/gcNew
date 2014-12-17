@@ -44,15 +44,15 @@
 			</li>	       
 	        <li>
 	        	<label>等待时长：</label>
-	        	<input type="text" id="waittimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[3] }"/>
+	        	<input type="text" id="waittimex" name="calltxt" title="如:>0" class="ipt50 inputDefault" value="${calltxt[3] }"/>
 	        	<span class="asterisk"></span>
 	        </li>
 	        <li>
 	        	<label>通话时长：</label>
-	        	<input type="text" id="calltimex" name="calltxt" class="ipt50 inputDefault" value="${calltxt[4] }"/>
+	        	<input type="text" id="calltimex" name="calltxt" title="如:>0" class="ipt50 inputDefault" value="${calltxt[4] }"/>
 	        	<span class="asterisk"></span>
 	        </li>
-	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt50 inputDefault" value="${calltxt[5] }"/></li>
+	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[5] }"/></li>
 	        <li><input type="button" onclick="queryCall()" class="btn4" value="查&nbsp;&nbsp;询"/></li>
 		</ul>
 	</div>
@@ -93,7 +93,7 @@
 					<td>${call.agent }</td>
 					<td>
 						<c:choose>
-							<c:when test="${not empty(rectag) }">
+							<c:when test="${not empty(recflag) }">
 								<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(call.recflag,26,fn:length(recflag)) }','${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
 								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	
 							</c:when>
@@ -153,7 +153,7 @@
 <!--POP PLAYER START-->
 <div id="popMusicDiv" style="display:none;"></div>
 <!--POP PLAYER END-->
-<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=16'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/callrecord.js?v=18'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/cts.js?v=2'/>"></script>
 </body>
 </html>

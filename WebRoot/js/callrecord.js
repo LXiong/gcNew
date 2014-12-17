@@ -1,18 +1,13 @@
 $(function(){
-	$("#waittimex").bind("blur",checkWaittime);
-	$("#calltimex").bind("blur",checkCalltime);
+	//$("#waittimex").bind("blur",checkWaittime);
+	//$("#calltimex").bind("blur",checkCalltime);
 });
 
 function checkWaittime()
 {
 	var waittime = $("#waittimex").val();
 	var regexp = /^[0-9]*$/;
-	if(!waittime)
-	{
-		$(".asterisk")[0].innerHTML="等待时长不能为空";
-		return false;
-	}
-	else if(!regexp.exec(waittime))
+	if(waittime && !regexp.exec(waittime))
 	{
 		$(".asterisk")[0].innerHTML="等待时长只能是数字";
 		return false;
@@ -27,12 +22,7 @@ function checkCalltime()
 {
 	var calltime = $("#calltimex").val();
 	var regexp = /^[0-9]*$/;
-	if(!calltime)
-	{
-		$(".asterisk")[1].innerHTML="通话时长不能为空";
-		return false;
-	}
-	else if(!regexp.exec(calltime))
+	if(calltime && !regexp.exec(calltime))
 	{
 		$(".asterisk")[1].innerHTML="通话时长只能是数字";
 		return false;
@@ -46,8 +36,8 @@ function checkCalltime()
 
 function queryCall()
 {
-	if(!checkWaittime()) return false;
-	if(!checkCalltime()) return false;
+	//if(!checkWaittime()) return false;
+	//if(!checkCalltime()) return false;
 	document.form1.submit();
 }
 //play music

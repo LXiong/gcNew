@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="contentWrap">
-	<h3 class="h3_title">话务员资料维护</h3>
+	<h3 class="h3_title">话务员维护</h3>
 	<div class="content_List615">
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">

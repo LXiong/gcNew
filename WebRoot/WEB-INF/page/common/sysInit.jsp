@@ -5,7 +5,7 @@
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="<c:url value='style/common_cn.css'/>" />
-	<link type="text/css" rel="stylesheet" href="<c:url value='style/layout.css?v=2'/>" />
+	<link type="text/css" rel="stylesheet" href="<c:url value='style/layout.css?v=3'/>" />
 	<script type="text/javascript" src="<c:url value='js/jquery-1.11.1.min.js'/>"></script>
 </head>
 <body style="background:#E0EEFB;">

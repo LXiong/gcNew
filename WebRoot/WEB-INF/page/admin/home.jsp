@@ -47,7 +47,12 @@
         			<c:set var="homePage" value="agentanaly-answer.action"/>
         		</c:otherwise>
         	</c:choose>
-    		<span>欢迎：&nbsp;<s:property value="#session.vts.roleName"/></span><span><s:property value="#session.vts.username"/></span>
+        	<span><a href="<c:url value='${homePage }'/>" target="mainFrame" title="首页" style="color:#fff;">首页</a></span>
+    		<span>欢迎：&nbsp;<s:property value="#session.vts.roleName"/></span>
+    		<span>
+    			<s:property value="#session.vts.username"/>&nbsp;&nbsp;
+    			<c:if test="${sessionScope.vts.roleID ne 1 }">[<s:property value="#session.vts.agttelnum"/>]</c:if>
+    		</span>
     		</div>
     		<div id="navigate" class="nav_left_path">
     		</div>
