@@ -22,7 +22,7 @@
 	<h3 class="h3_title">座席分机监控&nbsp;
 	<s:select list="#session.vts.ctsList" onchange="changeServer(this,'subtelmonitor')" listKey="ctsname" listValue="ctsname" value="#session.vts.curCTS" cssStyle="height:22px; margin:1px;"></s:select>
 	</h3>
-	<div class="content_List615">
+	<div class="content_List615" style="height:635px; max-height:630px; overflow-y:auto;">
 		<table id="subTelMonitorTab" cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head">
                  <tr>
@@ -35,49 +35,10 @@
                      <th width="20%">操作</th>
                  </tr>
              </thead>
-             <tbody id="movies">
-			</tbody>
+             <tbody id="movies"></tbody>
 		</table>
 	</div>
-	<!-- jPage start -->
-   	<div class="holder left"></div>
-   	<div id="legend1" class="holder left"></div>
-    <!-- Item oriented legend -->
-    <div id="legend2" class="holder left"></div>
-    <div class="left">
-	    <input type="text" id="tzval" value="1" class="ipt20 inputDefault"/>
- 		<button id="tiaozhuan" class="btn btn-primary">跳转</button>
-	</div>
-    <!-- jPage end -->
 </div>
-<script type="text/javascript">
-	$(function(){
-		$("div.holder").jPages({
-			containerID : "movies",
-	        first : "首页",
-	        previous : "上一页",
-	        next : "下一页",
-	        last : "尾页",
-	        startPage : 1,
-	        perPage : 28,
-	        keyBrowse:true,
-	        delay : 0,
-	        callback : function( pages, items ){
-		        $("#legend1").html("&nbsp;&nbsp;当前第"+pages.current+"页 ,&nbsp;&nbsp;总共"+pages.count+"页,&nbsp;&nbsp;");
-		        $("#legend2").html("当前显示第"+items.range.start+" - "+items.range.end+"条记录,&nbsp;&nbsp;总共"+items.count+"条记录&nbsp;&nbsp;");
-		    }
-		});
-	      /* when button is clicked */
-    	$("#tiaozhuan").click(function(){
-      		/* get given page */
-			var page = parseInt( $("#tzval").val() );
-
-      		/* jump to that page */
-      		$("div.holder").jPages( page );
-
-    	});
-	});
-</script>
 <!-- layer 弹出插件 start -->
 <script type="text/javascript" src="<c:url value='/layer/layer.min.js'/>"></script>
 <!-- layer 弹出插件 end -->
