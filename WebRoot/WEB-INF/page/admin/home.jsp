@@ -358,7 +358,7 @@
 		//判断OCX
 		if(document.all.OCXPlugin.object==null)
 		{
-			alert("VTCX控件不存在或没有正确加载，请使用360兼容模式或IE浏览器");
+			//alert("VTCX控件不存在或没有正确加载，请使用360兼容模式或IE浏览器");
 		}
 		else
 		{
