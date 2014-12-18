@@ -46,7 +46,7 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 				cs.setString(2, "ani");
 				cs.setString(3, ani);
 				cs.execute();
-				//		
+				//
 				cs.clearParameters();		
 				cs = conn.prepareCall("{call sys_setparam(?,?,?)}");
 				log.info("sp:sys_setparam(?,?,?)");

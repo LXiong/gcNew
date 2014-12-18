@@ -351,7 +351,7 @@ public class DotSession {
 
 	
 	public static final String LH_SERVER_IP1 = "http://192.168.1.114";	//cts100
-	public static final String LH_SERVER_IP2 = "http://192.168.1.10";	//cts200
+	public static final String LH_SERVER_IP2 = "http://192.168.1.15";	//cts200
 	public static final String VT_SERVER_IP = "http://192.168.1.200";	//cts200
 	
 	public String ipflag = "lh";
