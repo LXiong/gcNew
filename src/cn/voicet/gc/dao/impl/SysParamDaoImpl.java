@@ -23,7 +23,7 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
 				CallableStatement cs = null;
-				cs = conn.prepareCall("{?=call sys_getparam ('cts100_golable','ani')}");
+				cs = conn.prepareCall("{?=call sys_getparam ('cts100_golable','manualani')}");
 				cs.registerOutParameter(1, Types.VARCHAR);
 				cs.execute();
 				return cs.getString(1);
@@ -42,17 +42,17 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 				CallableStatement cs = null;
 				cs = conn.prepareCall("{call sys_setparam(?,?,?)}");
 				log.info("sp:sys_setparam(?,?,?)");
-				cs.setString(1, "cts100_golable");
-				cs.setString(2, "ani");
-				cs.setString(3, ani);
+				cs.setString("segment", "cts100_golable");
+				cs.setString("key", "manualani");
+				cs.setString("val", ani);
 				cs.execute();
 				//
 				cs.clearParameters();		
 				cs = conn.prepareCall("{call sys_setparam(?,?,?)}");
 				log.info("sp:sys_setparam(?,?,?)");
-				cs.setString(1, "cts100_golable");
-				cs.setString(2, "maxwait");
-				cs.setInt(3, maxwait);
+				cs.setString("segment", "cts100_golable");
+				cs.setString("key", "maxwait");
+				cs.setInt("val", maxwait);
 				cs.execute();
 				//
 				return null;
