@@ -1,4 +1,4 @@
-电话自动外呼系统
+电话自动外呼系统[南京联惠公司]
 ============
 
 2014-10-12 release 1.0 通过客户端收发消息, 监控ACD,分机信息.
@@ -13,3 +13,6 @@
 www.iefans.net/ie-diaoyong-weiqianming-activex-kongjian-shezhi-fangfa/
 
 添加坐座签系统功能,待完善
+
+============
+64位Win7系统，ocx写缓存目录：C:\Users\iXueping\AppData\Local\VirtualStore\Windows\SysWOW64
