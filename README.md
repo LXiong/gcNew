@@ -16,3 +16,5 @@ www.iefans.net/ie-diaoyong-weiqianming-activex-kongjian-shezhi-fangfa/
 
 ============
 64位Win7系统，ocx写缓存目录：C:\Users\iXueping\AppData\Local\VirtualStore\Windows\SysWOW64
+IE，360兼容模式在win7以上系统不写缓存文件解决办法，右键【管理员模式运行】
+
