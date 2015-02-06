@@ -222,12 +222,12 @@ public class TaskDaoImpl extends BaseDaoImpl implements TaskDao {
 		final int MAX_COL_CHECK = 200;
 		final String sp_name[] = {
 				"{call web_tasktel_import(?,?,?)}",
-				"{call web_huifang_import1(?,?,?,?,?,?,?,?,?)}",
-				"{call web_huifang_import2(?,?,?,?,?,?,?)}",
-				"{call web_huifang_import3(?,?,?,?,?,?,?,?,?)}"};
+				"{call web_huifang_import1(?,?,?,?,?,?,?,?,?,?,?,?)}",
+				"{call web_huifang_import2(?,?,?,?,?,?,?,?,?,?)}",
+				"{call web_huifang_import3(?,?,?,?,?,?,?,?,?,?,?,?)}"};
 		log.info("sp:"+sp_name[iKind]);
 		//col_max[] excel actual column num
-		final int COL_ACTUAL_NUM[] = {2,8,6,8};
+		final int COL_ACTUAL_NUM[] = {2,11,9,11};
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {

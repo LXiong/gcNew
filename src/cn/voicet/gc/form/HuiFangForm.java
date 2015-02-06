@@ -16,6 +16,12 @@ public class HuiFangForm {
 	private int jkfl;			//机卡分离
 	private String gkd;			//购卡点
 	private String remark;		//备注
+	
+	//20150204 add
+	private String bz1;
+	private String bz2;
+	private String bz3;
+	
 	//
 	private int jffs;			//缴费方式
 	private String customjy;	//客户建议
@@ -173,5 +179,23 @@ public class HuiFangForm {
 	}
 	public void setYxsuccfail(int yxsuccfail) {
 		this.yxsuccfail = yxsuccfail;
+	}
+	public String getBz1() {
+		return bz1;
+	}
+	public void setBz1(String bz1) {
+		this.bz1 = bz1;
+	}
+	public String getBz2() {
+		return bz2;
+	}
+	public void setBz2(String bz2) {
+		this.bz2 = bz2;
+	}
+	public String getBz3() {
+		return bz3;
+	}
+	public void setBz3(String bz3) {
+		this.bz3 = bz3;
 	}
 }

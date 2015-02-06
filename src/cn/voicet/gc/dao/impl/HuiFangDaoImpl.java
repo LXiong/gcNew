@@ -59,53 +59,62 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 
 	public void saveHuiFangInfo(final int flag, final HuiFangForm huiFangForm) {
 		String sp_huifangs[] = {
-				"{call web_huifang_enter1(?,?,?,?,?,?,?,?,?,?,?)}",
-				"{call web_huifang_enter2(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}",
-				"{call web_huifang_enter3(?,?,?,?,?,?,?,?,?)}"};
+				"{call web_huifang_enter1(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}",
+				"{call web_huifang_enter2(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}",
+				"{call web_huifang_enter3(?,?,?,?,?,?,?,?,?,?,?,?)}"};
 		if(flag>0 && flag<4)
 		{
 			log.info("sp:"+sp_huifangs[flag-1]);
 			this.getJdbcTemplate().execute(sp_huifangs[flag-1], new CallableStatementCallback() {
 				public Object doInCallableStatement(CallableStatement cs)
 						throws SQLException, DataAccessException {
-					cs.setInt(1, huiFangForm.getTid());
-					cs.setInt(2, huiFangForm.getTtid());
+					cs.setInt("tid", huiFangForm.getTid());
+					cs.setInt("ttid", huiFangForm.getTtid());
 					if(flag==1)
 					{
-						cs.setInt(3, huiFangForm.getHfqk());
-						cs.setString(4, huiFangForm.getHfname());
-						cs.setInt(5, huiFangForm.getSex());
-						cs.setInt(6, huiFangForm.getYwbwdc());
-						cs.setInt(7, huiFangForm.getManyid());
-						cs.setString(8, huiFangForm.getPhonemodel());
-						cs.setInt(9, huiFangForm.getJkfl());
-						cs.setString(10, huiFangForm.getGkd());
-						cs.setString(11, huiFangForm.getRemark());
+						cs.setInt("hfqk", huiFangForm.getHfqk());
+						cs.setString("xm", huiFangForm.getHfname());
+						cs.setInt("xb", huiFangForm.getSex());
+						cs.setInt("ywbwdc", huiFangForm.getYwbwdc());
+						cs.setInt("qdmyddc", huiFangForm.getManyid());
+						cs.setString("sjppxh", huiFangForm.getPhonemodel());
+						cs.setInt("jkfl", huiFangForm.getJkfl());
+						cs.setString("gkd", huiFangForm.getGkd());
+						cs.setString("bz", huiFangForm.getRemark());
+						cs.setString("bz1", huiFangForm.getBz1());
+						cs.setString("bz2", huiFangForm.getBz2());
+						cs.setString("bz3", huiFangForm.getBz3());
 					}
 					else if(flag==2)
 					{
-						cs.setInt(3, huiFangForm.getJffs());
-						cs.setInt(4, huiFangForm.getManyid());
-						cs.setString(5, huiFangForm.getCustomjy());
-						cs.setInt(6, huiFangForm.getSuccfail());
-						cs.setInt(7, huiFangForm.getHfqk());
-						cs.setString(8, huiFangForm.getHfname());
-						cs.setString(9, huiFangForm.getHfzjh());
-						cs.setString(10, huiFangForm.getHfstel());
-						cs.setString(11, huiFangForm.getAddress());
-						cs.setString(12, huiFangForm.getPhonemodel());
-						cs.setString(13, huiFangForm.getEmail());
-						cs.setString(14, huiFangForm.getRemark());
+						cs.setInt("jffs", huiFangForm.getJffs());
+						cs.setInt("fwtd", huiFangForm.getManyid());
+						cs.setString("jy", huiFangForm.getCustomjy());
+						cs.setInt("whjj", huiFangForm.getSuccfail());
+						cs.setInt("qk", huiFangForm.getHfqk());
+						cs.setString("xm", huiFangForm.getHfname());
+						cs.setString("zjh", huiFangForm.getHfzjh());
+						cs.setString("dh2", huiFangForm.getHfstel());
+						cs.setString("dz", huiFangForm.getAddress());
+						cs.setString("pp", huiFangForm.getPhonemodel());
+						cs.setString("email", huiFangForm.getEmail());
+						cs.setString("bz", huiFangForm.getRemark());
+						cs.setString("bz1", huiFangForm.getBz1());
+						cs.setString("bz2", huiFangForm.getBz2());
+						cs.setString("bz3", huiFangForm.getBz3());
 					}
 					else if(flag==3)
 					{
-						cs.setInt(3, huiFangForm.getYxsuccfail());
-						cs.setString(4, huiFangForm.getTccon());
-						cs.setString(5, huiFangForm.getQxtccon());
-						cs.setString(6, huiFangForm.getYxfaildecause());
-						cs.setString(7, huiFangForm.getAddress());
-						cs.setInt(8, huiFangForm.getSuccfail());
-						cs.setString(9, huiFangForm.getRemark());
+						cs.setInt("cgf", huiFangForm.getYxsuccfail());
+						cs.setString("tclr", huiFangForm.getTccon());
+						cs.setString("qxtclr", huiFangForm.getQxtccon());
+						cs.setString("sbyy", huiFangForm.getYxfaildecause());
+						cs.setString("lxdz", huiFangForm.getAddress());
+						cs.setInt("hjjj", huiFangForm.getSuccfail());
+						cs.setString("bz", huiFangForm.getRemark());
+						cs.setString("bz1", huiFangForm.getBz1());
+						cs.setString("bz2", huiFangForm.getBz2());
+						cs.setString("bz3", huiFangForm.getBz3());
 					}
 					cs.execute();
 					return null;

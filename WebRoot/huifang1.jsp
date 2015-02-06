@@ -69,8 +69,14 @@
 			<tr>
 				<td align="right">预警生效时间&nbsp;</td>
 				<td align="left">&nbsp;${hfMap.yjsxsj }</td>
-				<td align="right"></td>
-				<td align="left">&nbsp;</td>
+				<td align="right">备注1&nbsp;</td>
+				<td align="left">&nbsp;${hfMap.ybz1 }</td>
+			</tr>
+			<tr>
+				<td align="right">备注2&nbsp;</td>
+				<td align="left">&nbsp;${hfMap.ybz2 }</td>
+				<td align="right">备注3&nbsp;</td>
+				<td align="left">&nbsp;${hfMap.ybz3 }</td>
 			</tr>
 		</table>
 	</div>
@@ -120,8 +126,14 @@
 			<tr>
 				<td align="right">备注信息&nbsp;</td>
 				<td align="left">&nbsp;<input type="text" name="remark" value="${remark }" class="ipt100_24"/></td>
-				<td align="right">&nbsp;</td>
-				<td align="left">&nbsp;</td>
+				<td align="right">备注1&nbsp;</td>
+				<td align="left">&nbsp;<input type="text" name="bz1" value="${bz1 }" class="ipt100_24"/></td>
+			</tr>
+			<tr>
+				<td align="right">备注2&nbsp;</td>
+				<td align="left">&nbsp;<input type="text" name="bz2" value="${bz2 }" class="ipt100_24"/></td>
+				<td align="right">备注3&nbsp;</td>
+				<td align="left">&nbsp;<input type="text" name="bz3" value="${bz3 }" class="ipt100_24"/></td>
 			</tr>
 		</table>
 	</div>
