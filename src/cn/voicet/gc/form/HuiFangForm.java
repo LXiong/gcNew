@@ -34,7 +34,7 @@ public class HuiFangForm {
 	private String tccon;		//套餐内容
 	private String qxtccon;		//需取消套餐内容
 	private String yxfaildecause;	//营销失败原因
-	private int yxsuccfail = 1; 	//是否营销成功,默认1:成功	
+	private int yxsuccfail = 0; 	//是否营销成功,默认1:成功	
 	
 	public int getTid() {
 		return tid;
