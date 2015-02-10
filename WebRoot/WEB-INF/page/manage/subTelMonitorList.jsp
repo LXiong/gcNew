@@ -45,7 +45,7 @@
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/subtel-monitor.js?v=3'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/cts.js?v=3'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/cts.js?v=4'/>"></script>
 <script type="text/javascript">
 	$(function(){
 		var curCts = "<s:property value='#session.vts.curCTS'/>";

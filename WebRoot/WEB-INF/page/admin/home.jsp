@@ -15,6 +15,7 @@
 	<!-- menu plugin end -->
 </head>
 <body>
+<input type="hidden" id="globalCTS" value="cts100" />
 <div id="container">
 <a id="popHuifang" target="mainFrame"></a>
 	<!-- header -->
@@ -218,7 +219,11 @@
 	*/
 	function js_monitor_acdgrp(fromClientCts, str){
 		//check cts
-		var curCts = "<s:property value='#session.vts.curCTS'/>";
+		var curCts = $("#globalCTS").val();
+		if(fromClientCts.toLowerCase()=="cts200")
+		{
+			//alert("fromClientCts:"+fromClientCts);
+		}
 		if(curCts==fromClientCts.toLowerCase())
 		{
 			//
@@ -252,7 +257,7 @@
 	*/
 	function js_seat_minitor(fromClientCts, str, listen){
 		//check cts
-		var curCts = "<s:property value='#session.vts.curCTS'/>";
+		var curCts = $("#globalCTS").val();
 		if(curCts==fromClientCts.toLowerCase())
 		{
 			str = str.split(",");

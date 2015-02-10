@@ -2,6 +2,7 @@
 function changeServer(obj,url)
 {
 	var ctsVal = obj.options[obj.selectedIndex].text;
+	parent.document.getElementById("globalCTS").value = ctsVal;
 	$.ajax({
 		async: false,
 		type: "POST",
