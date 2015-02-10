@@ -16,9 +16,11 @@ import cn.voicet.util.DotSession;
 @Repository(SysParamDao.SERVICE_NAME)
 public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 	
-	private static Logger log = Logger.getLogger(SysParamDaoImpl.class);
+	private static Logger logger = Logger.getLogger(SysParamDaoImpl.class);
 
+	/** 默认外呼主叫 */
 	public String getAni() {
+		logger.info("fn:sys_getparam ('cts100_golable','manualani')");
 		return (String)this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
@@ -30,8 +32,10 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 			}
 		});
 	}
-
+	
+	/** 外呼等待时长  */
 	public int getMaxwait() {
+		logger.info("fn:sys_getparam ('cts100_golable','maxwait')");
 		return this.getJdbcTemplate().queryForInt("select dbo.sys_getparam ('cts100_golable','maxwait')");
 	}
 
@@ -41,7 +45,7 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 					DataAccessException {
 				CallableStatement cs = null;
 				cs = conn.prepareCall("{call sys_setparam(?,?,?)}");
-				log.info("sp:sys_setparam(?,?,?)");
+				logger.info("sp:sys_setparam(?,?,?)");
 				cs.setString("segment", "cts100_golable");
 				cs.setString("key", "manualani");
 				cs.setString("val", ani);
@@ -49,7 +53,7 @@ public class SysParamDaoImpl extends BaseDaoImpl implements SysParamDao {
 				//
 				cs.clearParameters();		
 				cs = conn.prepareCall("{call sys_setparam(?,?,?)}");
-				log.info("sp:sys_setparam(?,?,?)");
+				logger.info("sp:sys_setparam(?,?,?)");
 				cs.setString("segment", "cts100_golable");
 				cs.setString("key", "maxwait");
 				cs.setInt("val", maxwait);
