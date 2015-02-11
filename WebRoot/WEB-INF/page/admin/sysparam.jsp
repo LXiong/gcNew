@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +13,25 @@
 <div id="dbCon">
 	<h3 class="h3_title" style="margin-top:60px;">系统参数设定</h3>
 	<div class="sys_param_info">
-		<form id="form1" action="<c:url value='/sysparam-save.action'/>" method="post">
+		<form id="form1" name="form1" action="<c:url value='/sysparam-save.action'/>" method="post">
+        <div class="lab_ipt_item">
+	    	<span class="lab120">平台名称：</span>
+	        <div class="ipt-box">
+	        	<c:set var="cs" value="${fn:substring(defcts,3,4) }"></c:set>
+	        	<c:choose>
+	        		<c:when test="${cs eq 1 }">
+	        			<c:set var="se1" value="1"></c:set>
+	        		</c:when>
+	        		<c:otherwise>
+	        			<c:set var="se2" value="2"></c:set>
+	        		</c:otherwise>
+	        	</c:choose>
+	        	<select name="defcts" onchange="changeDefaultCTS(this)">
+	        		<option value="cts100" <c:if test='${se1 eq 1 }'>selected="selected"</c:if>>CTS100</option>
+	        		<option value="cts200" <c:if test='${se2 eq 2 }'>selected="selected"</c:if>>CTS200</option>
+	        	</select>
+	        </div>
+	    </div>
         <div class="lab_ipt_item">
 	    	<span class="lab120">默认外呼主叫：</span>
 	        <div class="ipt-box">
@@ -41,5 +60,12 @@
 <!-- layer 弹出插件 end -->
 <!-- ajax file upload -->
 <script type="text/javascript" src="<c:url value='/js/jquery.form-3.46.0.js'/>"></script>
+<script type="text/javascript">
+	function changeDefaultCTS(obj)
+	{
+		
+		location.href="sysparam-list.action?defcts="+obj.options[obj.selectedIndex].value;
+	}
+</script>
 </body>
 </html>

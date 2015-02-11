@@ -19,21 +19,23 @@ public class SysParamAction extends BaseAction{
 	private SysParamDao sysParamDao;
 	
 	public String list() {
-		request.setAttribute("ani", sysParamDao.getAni());
-		request.setAttribute("maxwait", sysParamDao.getMaxwait());
+		log.info("defcts:"+defcts);
+		request.setAttribute("ani", sysParamDao.getAni(defcts));
+		request.setAttribute("maxwait", sysParamDao.getMaxwait(defcts));
 		return "show_sysparam";
 	}
 	
 	public String save()
 	{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("ani:"+ani+", maxwait:"+maxwait);
-		sysParamDao.saveParam(ds, ani, maxwait);
+		log.info("defcts:"+defcts+", ani:"+ani+", maxwait:"+maxwait);
+		sysParamDao.saveParam(ds, defcts, ani, maxwait);
 		return null;
 	}
 	
 	private String ani;
 	private int maxwait;
+	private String defcts = "cts100";
 	public String getAni() {
 		return ani;
 	}
@@ -46,9 +48,17 @@ public class SysParamAction extends BaseAction{
 	public void setMaxwait(int maxwait) {
 		this.maxwait = maxwait;
 	}
-	
+	//
+	public String getDefcts() {
+		return defcts;
+	}
+	public void setDefcts(String defcts) {
+		this.defcts = defcts;
+	}
+	//
 	public String init()
 	{
 		return "sysInitPage";
 	}
+
 }

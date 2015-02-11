@@ -126,7 +126,7 @@
 .db-index li{float:left; margin-right:5px;}
 
 .sys_init_info{width:420px; height:400px; margin:5px 0 0 200px;; line-height:30px; padding:0px 0 0 40px; border-radius:3px; border:1px solid #3B9FFF;}
-.sys_param_info{width:420px; height:140px; margin:5px 0 0 200px;; line-height:30px; padding:0px 0 0 40px; border-radius:3px; border:1px solid #3B9FFF;}
+.sys_param_info{width:420px; height:160px; margin:5px 0 0 200px;; line-height:30px; padding:0px 0 0 40px; border-radius:3px; border:1px solid #3B9FFF;}
 
 /* h */
 .h3_title{width:100%; height:26px; line-height:26px; text-align:center; color:#8F2629; font-size:14px; font-weight:bold;}
