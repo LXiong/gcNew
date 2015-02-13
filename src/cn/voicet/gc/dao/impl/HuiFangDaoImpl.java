@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import cn.voicet.gc.dao.HuiFangDao;
 import cn.voicet.gc.form.HuiFangForm;
+import cn.voicet.util.DotSession;
 @Repository(HuiFangDao.SERVICE_NAME)
 @SuppressWarnings("unchecked")
 public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
@@ -57,11 +58,11 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 		}
 	}
 
-	public void saveHuiFangInfo(final int flag, final HuiFangForm huiFangForm) {
+	public void saveHuiFangInfo(final DotSession ds, final int flag, final HuiFangForm huiFangForm) {
 		String sp_huifangs[] = {
-				"{call web_huifang_enter1(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}",
-				"{call web_huifang_enter2(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}",
-				"{call web_huifang_enter3(?,?,?,?,?,?,?,?,?,?,?,?)}"};
+				"{call web_huifang_enter1(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}",
+				"{call web_huifang_enter2(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}",
+				"{call web_huifang_enter3(?,?,?,?,?,?,?,?,?,?,?,?,?)}"};
 		if(flag>0 && flag<4)
 		{
 			log.info("sp:"+sp_huifangs[flag-1]);
@@ -116,6 +117,7 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 						cs.setString("bz2", huiFangForm.getBz2());
 						cs.setString("bz3", huiFangForm.getBz3());
 					}
+					cs.setString("agttel", ds.agttelnum);
 					cs.execute();
 					return null;
 				}

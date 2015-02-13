@@ -26,8 +26,8 @@
 			<thead class="tab_head">
 				<tr>
 					<th width="4%">编号</th>
-                    <th width="15%">任务名称</th>
-                    <th width="4%">类型</th>
+                    <th width="12%">任务名称</th>
+                    <th width="6%">类型</th>
                     <th width="4%">座席组</th>
                     <th width="6%">号码总数</th>
                     <th width="4%">新建数</th>
@@ -54,7 +54,7 @@
 						<c:if test="${kind eq 2 }">回访2</c:if>
 						<c:if test="${kind eq 3 }">回访3</c:if>
 					</td>
-					<td>${acdnum }</td>
+					<td>${grpname }</td>
 					<td>${trn }</td>
 					<td>${nrn }</td>
 					<td>${drn }</td>

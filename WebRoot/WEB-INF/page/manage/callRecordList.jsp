@@ -95,7 +95,7 @@
 						<c:choose>
 							<c:when test="${not empty(recflag) }">
 								<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(call.recflag,26,fn:length(recflag)) }','${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
-								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	
+								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?ip=<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>&wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	
 							</c:when>
 							<c:otherwise>
 								<label title="没有录音文件，无法播放" style="color:#808080;">播放&nbsp;&nbsp;</label>

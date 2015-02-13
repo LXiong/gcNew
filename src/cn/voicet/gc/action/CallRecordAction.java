@@ -49,8 +49,8 @@ public class CallRecordAction extends BaseAction implements ModelDriven<CallReco
 		DotSession ds = DotSession.getVTSession(request);
 		String wav = request.getParameter("wavFile");
 		log.info("wav:"+wav);
-		String ip= ds.getIpWithCTS(ds.curCTS);
-		log.info("ip");
+		String ip= request.getParameter("ip");
+		log.info("ip:"+ip);
 		URL url = new URL(ip+"/"+wav);
 		log.info("url:"+url);
 		String filename = wav.substring(wav.indexOf("talk")+5, wav.length());

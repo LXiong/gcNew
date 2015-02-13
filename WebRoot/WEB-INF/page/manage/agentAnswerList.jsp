@@ -83,8 +83,17 @@
 					<td>
 						<c:choose>
 							<c:when test="${not empty(rectag) }">
-								<a href="javascript:play('<s:property value="#session.vts.getIpWithCTS(#session.vts.curCTS)"/>','${fn:substring(rectag,26,fn:length(rectag)) }','${fn:replace(fn:substring(rectag,12,fn:length(rectag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
-								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	&nbsp;&nbsp;
+								<c:set var="cts" value="${fn:toLowerCase(ls.cts) }"></c:set>
+								<c:choose>
+									<c:when test="${cts=='cts100' }">
+										<c:set var="ip" value="http://192.168.1.114"></c:set>
+									</c:when>
+									<c:otherwise>
+										<c:set var="ip" value="http://192.168.1.11"></c:set>
+									</c:otherwise>
+								</c:choose>
+								<a href="javascript:play('${ip }','${fn:substring(rectag,26,fn:length(rectag)) }','${fn:replace(fn:substring(rectag,12,fn:length(rectag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
+								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?ip=${ip }&wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	&nbsp;&nbsp;
 							</c:when>
 							<c:otherwise>
 								<label title="没有录音文件，无法播放" style="color:#808080;">播放&nbsp;&nbsp;</label>

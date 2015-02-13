@@ -21,4 +21,5 @@ public interface AgentDao{
 	void queryAgentOnlineList(DotSession ds, AgentForm agentForm);
 	List<Map<String, Object>> queryAgentAccountList();
 	Map<String, Object> queryAgentWorkInfo(DotSession ds);
+	List<Map<String, Object>> queryTaskCompleteInfo(AgentForm agentForm);
 }

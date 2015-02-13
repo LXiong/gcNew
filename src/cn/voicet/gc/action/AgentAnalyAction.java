@@ -122,4 +122,21 @@ public class AgentAnalyAction extends BaseAction implements ModelDriven<AgentFor
 		return "agentWorkPage";
 	}
 
+	/**
+	 * 任务完成统计
+	 * @return
+	 */
+	public String taskcomplete()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		alist = agentDao.queryAgentAccountList();
+		if(ds.roleID.equals("3"))
+		{
+			agentForm.setTelnum(ds.agttelnum);
+		}
+		log.info("agttel:"+agentForm.getTelnum());
+		List<Map<String, Object>> list = agentDao.queryTaskCompleteInfo(agentForm);
+		request.setAttribute("tcList", list);
+		return "taskCompletePage";
+	}
 }
