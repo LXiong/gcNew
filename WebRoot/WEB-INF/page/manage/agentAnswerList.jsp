@@ -93,7 +93,7 @@
 									</c:otherwise>
 								</c:choose>
 								<a href="javascript:play('${ip }','${fn:substring(rectag,26,fn:length(rectag)) }','${fn:replace(fn:substring(rectag,12,fn:length(rectag)),'\\','/') }')">播放</a>&nbsp;&nbsp;
-								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?ip=${ip }&wavFile=${fn:replace(fn:substring(recflag,12,fn:length(recflag)),'\\','/') }">下载</a>	&nbsp;&nbsp;
+								<a href="${pageContext.request.contextPath }/callrecord-downloadNet.action?ip=${ip }&wavFile=${fn:replace(fn:substring(rectag,12,fn:length(rectag)),'\\','/') }">下载</a>	&nbsp;&nbsp;
 							</c:when>
 							<c:otherwise>
 								<label title="没有录音文件，无法播放" style="color:#808080;">播放&nbsp;&nbsp;</label>
