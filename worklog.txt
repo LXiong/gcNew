@@ -1,1 +1,11 @@
-修改存储过程:cts_cdr_session GETDATA()->@callin
+﻿修改存储过程:cts_cdr_session GETDATA()->@callin
+
+2015-03-03修改
+存储过程web_huifang_import1,2,3添加如下语句,在录入信息栏显示导入的原始数据。
+insert into huifang1,2,3_enter(tid,ttid,bz1,bz2,bz3)
+		values(@tid,@ttid,@bz1,@bz2,@bz3)
+
+2015-03-12修改
+存储过程web_huifang_import3 添加客户联系地址
+insert into huifang1,2,3_enter(tid,ttid,bz1,bz2,bz3,lxdz)
+		values(@tid,@ttid,@bz1,@bz2,@bz3,@dz)
