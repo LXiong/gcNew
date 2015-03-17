@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import cn.voicet.gc.dao.CallRecordDao;
 import cn.voicet.gc.form.CallRecordForm;
 import cn.voicet.util.DotSession;
+import cn.voicet.util.SimpleFileUtils;
+import cn.voicet.util.SimpleJxlUtils;
 
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -71,5 +73,28 @@ public class CallRecordAction extends BaseAction implements ModelDriven<CallReco
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void exportData()
+	{
+		String templateFile = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"record_exportTemplate.xls";
+		log.info("templateFile:"+templateFile);
+		String destFile = request.getSession().getServletContext().getRealPath("download")+"/"+"record_exportTemplate.xls";
+		log.info("destFile:"+destFile);
+		//
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("form sdt:"+callRecordForm.getSdt()+", edt:"+callRecordForm.getEdt());
+		if(null!=callRecordForm.getSdt() || null!=callRecordForm.getEdt())
+		{
+			ds.cursdt = callRecordForm.getSdt();
+			ds.curedt = callRecordForm.getEdt();
+		}
+		log.info("ds cursdt:"+ds.cursdt+", curedt:"+ds.curedt);
+		callRecordDao.queryAllCallRecordList(ds, callRecordForm);
+		//
+		SimpleJxlUtils.writeExcelFile(ds.list, "reList", templateFile, destFile);
+		//
+		SimpleFileUtils.downloadExcelFile(destFile, response);
+		ds.list=null;
 	}
 }

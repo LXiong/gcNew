@@ -54,6 +54,7 @@
 	        </li>
 	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[5] }"/></li>
 	        <li><input type="button" onclick="queryCall()" class="btn4" value="查&nbsp;&nbsp;询"/></li>
+	        <li><input type="button" onclick="location.href='${pageContext.request.contextPath }/callrecord-exportData.action'" class="btn4" value="导&nbsp;&nbsp;出"/></li>
 		</ul>
 	</div>
     </form>

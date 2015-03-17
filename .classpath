@@ -34,5 +34,9 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.3.16.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.3.16.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/freemarker-2.3.18.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/freemarker-util-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jxl-2.6.10.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jxl-report-1.0.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
