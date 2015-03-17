@@ -30,9 +30,9 @@
 			<thead class="tab_head">
                  <tr>
                      <th width="4%">组编号</th>
-                     <th width="6%">组号码</th>
+                     <th width="12%">任务名称</th>
                      <th width="8%">组名称</th>
-                     <th width="10%">外呼主叫</th>
+                     <th width="8%">外呼主叫</th>
                      <th width="4%">任务</th>
                      <th width="4%">状态</th>
                      <th width="6%">添加中继数</th>
@@ -40,14 +40,16 @@
                      <th width="4%">应答数</th>
                      <th width="4%">应答率</th>
                      <th width="6%">在线客服</th>
-                     <th width="16%">操作</th>
+                     <th width="12%">操作</th>
                  </tr>
              </thead>
              <tbody id="movies">
              	<s:iterator id="monitor" value="#session.vts.list">
 				<tr align="center">
 					<td>${grpid }</td>
-					<td>${telnum }</td>
+					<td title="${tname }">
+						<s:property value="tname.length()>13?tname.substring(0,12)+'...':tname"/>
+					</td>
 					<td>${grpname }</td>
 					<td id="ani${grpid }">${ani }</td>
 					<td>${taskid }</td>
