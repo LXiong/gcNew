@@ -22,6 +22,13 @@
 	<script type="text/javascript" src="<c:url value='/jPage/jPages.js'/>"></script>
  	<!-- jPage 分页插件  end -->
  	<script type="text/javascript" src="<c:url value='/js/changeTabColor.js'/>"></script>
+ 	<script type="text/javascript">
+ 		function exportData()
+ 		{
+			document.form1.action = "callrecord-exportData.action";
+			document.form1.submit();
+ 		}
+ 	</script>
 </head>
 <body>
 <div id="contentWrap">
@@ -54,7 +61,7 @@
 	        </li>
 	        <li><label>话务员号码：</label><input type="text" name="calltxt" class="ipt100 inputDefault" value="${calltxt[5] }"/></li>
 	        <li><input type="button" onclick="queryCall()" class="btn4" value="查&nbsp;&nbsp;询"/></li>
-	        <li><input type="button" onclick="location.href='${pageContext.request.contextPath }/callrecord-exportData.action'" class="btn4" value="导&nbsp;&nbsp;出"/></li>
+	        <li><input type="button" onclick="exportData()" class="btn4" value="导&nbsp;&nbsp;出"/></li>
 		</ul>
 	</div>
     </form>
