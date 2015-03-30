@@ -92,7 +92,7 @@
 			<tr>
 				<td width="25%" align="right">回访情况&nbsp;</td>
 				<td width="25%" align="left">&nbsp;
-					<s:select name="hfqk" list="#application.vta.GetList('hfqk')" listKey="id" listValue="str" value="${hfMap.ybz2 }"></s:select>
+					<s:select name="hfqk" list="#application.vta.GetList('hfqk')" listKey="id" listValue="str" value="#request.hfMap.hfqk"></s:select>
 				</td>
 				<td width="25%" align="right">回访姓名&nbsp;</td>
 				<td width="25%" align="left">&nbsp;<input type="text" id="hfnamex" name="hfname" value="${hfname }" class="ipt100_24"/></td>
