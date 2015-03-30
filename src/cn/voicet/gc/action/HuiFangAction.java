@@ -33,6 +33,10 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 		log.info("flag:"+flag+", tid:"+huiFangForm.getTid()+", ttid:"+huiFangForm.getTtid());
 		Map<String, Object> hfMap = huiFangDao.getHuiFangInfo(Integer.parseInt(flag), huiFangForm);
 		log.info("hfMap:"+hfMap);
+		if(null==hfMap.get("hfqk") || hfMap.get("hfqk").equals(""))
+		{
+			hfMap.put("hfqk", "2");
+		}
 		request.setAttribute("hfMap", hfMap);
 		if(flag.equals("1"))
 		{
@@ -66,6 +70,10 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 		log.info("tid:"+huiFangForm.getTid()+", ttid:"+huiFangForm.getTtid());
 		Map<String, Object> hfMap = huiFangDao.queryAgentAnserDetailList(huiFangForm);
 		log.info("hfMap:"+hfMap);
+		if(null==hfMap.get("hfqk") || hfMap.get("hfqk").equals(""))
+		{
+			hfMap.put("hfqk", "2");
+		}
 		request.setAttribute("hfMap", hfMap);
 		flag = String.valueOf(hfMap.get("iKind"));
 		if(flag.equals("1"))
@@ -101,6 +109,10 @@ public class HuiFangAction extends BaseAction implements ModelDriven<HuiFangForm
 		log.info("tid:"+huiFangForm.getTid()+", ttid:"+huiFangForm.getTtid());
 		Map<String, Object> hfMap = huiFangDao.queryAgentAnserDetailList(huiFangForm);
 		log.info("hfMap:"+hfMap);
+		if(null==hfMap.get("hfqk") || hfMap.get("hfqk").equals(""))
+		{
+			hfMap.put("hfqk", "2");
+		}
 		request.setAttribute("hfMap", hfMap);
 		flag = String.valueOf(hfMap.get("iKind"));
 		if(flag.equals("1"))
