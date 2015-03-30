@@ -9,3 +9,7 @@ insert into huifang1,2,3_enter(tid,ttid,bz1,bz2,bz3)
 存储过程web_huifang_import3 添加客户联系地址
 insert into huifang1,2,3_enter(tid,ttid,bz1,bz2,bz3,lxdz)
 		values(@tid,@ttid,@bz1,@bz2,@bz3,@dz)
+		
+2015-03-30修改
+huifang3_enter表的字段长度  lxdz 200->300
+huifang3_org表的字段长度 xm 100->200 dz 200->300
