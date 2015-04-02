@@ -94,6 +94,7 @@
 		<action name="sysparam-*" class="sysParamAction" method="{1}">
 			<result name="sysInitPage">/WEB-INF/page/common/sysInit.jsp</result>
 			<result name="show_sysparam">/WEB-INF/page/admin/sysparam.jsp</result>
+			<result name="show_call">/WEB-INF/page/admin/syscall.jsp</result>
 		</action>
 		
 		<!-- 系统日志查看 -->

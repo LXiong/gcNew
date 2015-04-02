@@ -33,6 +33,11 @@ public class SysParamAction extends BaseAction{
 		return null;
 	}
 	
+	public String call()
+	{
+		return "show_call";
+	}
+	
 	private String ani;
 	private int maxwait;
 	private String defcts = "cts100";

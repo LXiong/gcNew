@@ -11,6 +11,7 @@
 			<fun name="外呼任务管理" action="task-list.action" />
 			<fun name="业务组监控" action="acdmonitor-list.action" />
 			<fun name="座席分机监控" action="subtelmonitor-list.action" />
+			<fun name="拔打电话" action="sysparam-call.action"></fun>
 		</grp>
 		<grp name="统计查询">
 			<fun name="座席签系统查询" action="agentanaly-online.action" />
@@ -32,6 +33,7 @@
 	<role roleid="2" describle="业务管理员">
 		<grp name="日常工作">
 			<fun name="我的通话记录" action="agentanaly-answer.action" />
+			<fun name="拔打电话" action="sysparam-call.action"></fun>
 		</grp>
 		<grp name="任务管理">
 			<fun name="外呼任务管理" action="task-list.action" />
@@ -55,6 +57,7 @@
 			<fun name="我的通话记录" action="agentanaly-answer.action" />
 			<fun name="座席工作概览" action="agentanaly-workinfo.action" />
 			<fun name="任务完成统计" action="agentanaly-taskcomplete.action" />
+			<fun name="拔打电话" action="sysparam-call.action"></fun>
 		</grp>
 	</role>
 
