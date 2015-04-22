@@ -91,8 +91,8 @@ public class HuiFangDaoImpl extends BaseDaoImpl implements HuiFangDao {
 						cs.setInt("jffs", huiFangForm.getJffs());
 						cs.setInt("fwtd", huiFangForm.getManyid());
 						cs.setString("jy", huiFangForm.getCustomjy());
-						cs.setInt("whjj", huiFangForm.getSuccfail());
-						cs.setInt("qk", huiFangForm.getHfqk());
+						cs.setInt("whjj", huiFangForm.getHfqk());
+						cs.setInt("qk", huiFangForm.getSuccfail());
 						cs.setString("xm", huiFangForm.getHfname());
 						cs.setString("zjh", huiFangForm.getHfzjh());
 						cs.setString("dh2", huiFangForm.getHfstel());
