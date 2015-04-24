@@ -91,23 +91,23 @@
 			<tr>
 				<td width="25%" align="right">是否营销成功&nbsp;</td>
 				<td width="25%" align="left">&nbsp;
-					<s:radio name="yxsuccfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.cgf"/>
+					<s:radio name="yxsuccfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="0"/>
 				</td>
 				<td width="25%" align="right">办理套餐内容&nbsp;</td>
-				<td width="25%" align="left">&nbsp;<input type="text" name="tccon" value="${hfMap.tclr }" class="ipt100_24"/></td>
+				<td width="25%" align="left">&nbsp;<input type="text" name="tccon" value="" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">需取消套餐内容&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="qxtccon" value="${hfMap.qxtclr }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="qxtccon" value="" class="ipt100_24"/></td>
 				<td align="right">营销失败原因&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="yxfaildecause" value="${hfMap.sbyy }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="yxfaildecause" value="" class="ipt100_24"/></td>
 			</tr>
 			<tr>
 				<td align="right">客户联系地址&nbsp;</td>
-				<td align="left">&nbsp;<input type="text" name="address" value="${hfMap.lxdz }" class="ipt100_24"/></td>
+				<td align="left">&nbsp;<input type="text" name="address" value="${hfMap.dz }" class="ipt100_24"/></td>
 				<td align="right">呼叫结果&nbsp;</td>
 				<td align="left">&nbsp;
-					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.hjjj"/>
+					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value=""/>
 				</td>
 			</tr>
 			<tr>
