@@ -26,10 +26,6 @@
 		destroy-method="close">
 		<property name="driverClass" value="${driver}" />
 		<property name="jdbcUrl" value="${url}" />
-		<!--  
-		<property name="user" value="govadmin" />
-		<property name="password" value="begin110" />
-		-->
 		<property name="properties" ref="dataSourceProperties"/>
 
 		<property name="minPoolSize" value="5" />
@@ -46,8 +42,8 @@
 	<bean id="dataSourceProperties" class="cn.voicet.util.PropertiesEncryptFactoryBean">
         <property name="properties">
             <props>
-                <prop key="user">g5B14wNMM167G8kPCis0PA==</prop>
-                <prop key="password">xRfaaCXNT0y7G8kPCis0PA==</prop>
+                <prop key="user"></prop>
+                <prop key="password"></prop>
             </props>
         </property>
     </bean>
