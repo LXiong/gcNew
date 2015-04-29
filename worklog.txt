@@ -13,3 +13,7 @@ insert into huifang1,2,3_enter(tid,ttid,bz1,bz2,bz3,lxdz)
 2015-03-30修改
 huifang3_enter表的字段长度  lxdz 200->300
 huifang3_org表的字段长度 xm 100->200 dz 200->300
+
+2015-04-29
+调整存储过程web_huifang_import3入参字段长度
+调整 table huifang3_org[lx,lxfs2,zj]字段长度200
