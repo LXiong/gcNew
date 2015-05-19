@@ -105,9 +105,12 @@
 			<tr>
 				<td align="right">客户联系地址&nbsp;</td>
 				<td align="left">&nbsp;<input type="text" name="address" value="${hfMap.lxdz }" class="ipt100_24"/></td>
-				<td align="right">呼叫结果&nbsp;</td>
+				<td align="right"><!--呼叫结果-->&nbsp;</td>
 				<td align="left">&nbsp;
+					<!-- 
 					<s:radio name="succfail" list="#application.vta.GetList('succfail')" listKey="id" listValue="str" value="#request.hfMap.hjjj"/>
+					-->
+					<input type="hidden" name="succfail" value="1"/>
 				</td>
 			</tr>
 			<tr>

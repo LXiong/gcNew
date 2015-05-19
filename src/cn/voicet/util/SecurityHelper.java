@@ -71,7 +71,7 @@ public class SecurityHelper {
 	 * 测试加密后的密文
 	 */
 	public static void main(String[] args) {
-		String banks[] = { "admin", "123456" };
+		String banks[] = { "govadmin", "begin110" };
 		String key = "8a!2e4b4%1b6e2&ba5.-011b?720f-=+";
 		for (String a : banks) {
 			a = DESEncrypt(a, key);
