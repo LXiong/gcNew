@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,11 +53,13 @@
 		<table cellpadding="0" cellspacing="0" class="tab_border">
 			<thead class="tab_head2">
                  <tr>
-                     <th width="20%">任务号</th>
+                     <th width="10%">任务号</th>
                      <th width="20%">任务名称</th>
-                     <th width="20%">成功数</th>
-                     <th width="20%">失败数</th>
-                     <th width="20%">号码总数</th>
+                     <th width="10%">成功数</th>
+                     <th width="10%">失败数</th>
+                     <th width="10%">号码总数</th>
+                     <th width="10%">接通总数</th>
+                     <th width="10%">成功率</th>
                  </tr>
              </thead>
              <tbody id="movies">
@@ -67,6 +70,8 @@
 					<td>${ls.cgn }</td>
 					<td>${ls.sbn }</td>
 					<td>${ls.tn }</td>
+					<td>${ls.ans }</td>
+					<td>${ls.cgr }</td>
 				</tr>
 				</c:forEach>
 			</tbody>
